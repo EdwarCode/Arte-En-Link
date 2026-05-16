@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡El Cumple de Leo! | ArteEnLink</title>
+    
+    <!-- Fuentes de Google Fonts (Divertidas y Amigables) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fredoka para títulos juguetones, Nunito para lectura fácil -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-fill ph-balloon globo-loader"></i>
+        <div class="texto-loader">¡Inflando globos!</div>
+    </div>
+
+    <!-- PORTADA PRINCIPAL -->
+    <header class="portada">
+        <i class="ph-fill ph-confetti confeti-decor confeti-1"></i>
+        <i class="ph-fill ph-star confeti-decor confeti-2"></i>
+        <i class="ph-fill ph-music-note confeti-decor confeti-3"></i>
+        <i class="ph-fill ph-sparkle confeti-decor confeti-4"></i>
+
+        <div class="marco-foto bounce-up visible">
+            <div class="imagen-hero">
+                <!-- Foto de un niño sonriendo -->
+                <img src="https://images.unsplash.com/photo-1519338381761-cb7223b1bfbc?q=80&w=400&auto=format&fit=crop" alt="Cumpleañero">
+            </div>
+        </div>
+        
+        <div class="portada-titulos bounce-up delay-1 visible">
+            <div class="texto-edad">¡Ya cumplo 5 añitos!</div>
+            <h1 class="nombre-cumple">Leo</h1>
+            <div class="fecha-hero">Sábado 20 de Mayo</div>
+        </div>
+    </header>
+
+    <!-- MENSAJE DE INVITACIÓN -->
+    <section class="seccion-padding" style="padding-top: 10px; padding-bottom: 20px;">
+        <div class="contenedor bounce-up">
+            <h2 class="titulo-seccion" style="color: var(--color-rojo); font-size: 1.8rem;">¡Estás Invitado!</h2>
+            <p style="font-size: 1.1rem; color: var(--color-texto); line-height: 1.8; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; font-weight: 600;">
+                ¡Prepárate para la aventura más increíble del año! Ha llegado el momento de celebrar en grande mi cumpleaños y no sería lo mismo si no estás ahí para compartirlo conmigo. 
+                <br><br>
+                Habrá muchísimos juegos, un pastel delicioso, sorpresas por todos lados y, sobre todo, ¡mucha diversión! Trae toda tu energía y ganas de pasarlo genial, porque esta fiesta será inolvidable.
+            </p>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 20px;">
+        <div class="contenedor bounce-up">
+            <h2 class="titulo-seccion">Faltan</h2>
+            <div class="contador-grid" id="contador-cumple">
+                <div class="contador-box bounce-up delay-1 visible">
+                    <span class="contador-numero" id="dias">00</span>
+                    <span class="contador-label">Días</span>
+                </div>
+                <div class="contador-box bounce-up delay-2 visible">
+                    <span class="contador-numero" id="horas">00</span>
+                    <span class="contador-label">Hrs</span>
+                </div>
+                <div class="contador-box bounce-up delay-3 visible">
+                    <span class="contador-numero" id="minutos">00</span>
+                    <span class="contador-label">Min</span>
+                </div>
+                <div class="contador-box bounce-up delay-4 visible">
+                    <span class="contador-numero" id="segundos">00</span>
+                    <span class="contador-label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor bounce-up">
+            <h2 class="titulo-seccion">La Fiesta es en...</h2>
+            
+            <div class="ubicacion-card bounce-up delay-1">
+                <i class="ph-fill ph-map-pin-line ubicacion-icon"></i>
+                <h3>Salón "Planeta Diversión"</h3>
+                <div class="ubicacion-hora">De 4:00 PM a 8:00 PM</div>
+                <p class="ubicacion-direccion">Av. de los Niños Héroes #450, Plaza Comercial La Alegría.</p>
+                <a href="#" class="btn-maps">Abrir en Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP (CONFIRMACIÓN) -->
+    <section class="seccion-rsvp seccion-padding">
+        <div class="contenedor bounce-up">
+            <h2 class="titulo-seccion">¡No faltes!</h2>
+            <p style="margin-bottom: 30px;">Acompáñame a jugar, comer pastel y romper la piñata. Confirma tu asistencia con mi mamá.</p>
+            
+            <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20nuestra%20asistencia%20a%20la%20fiesta%20de%20Leo.%20¡Ahí%20nos%20vemos!%20🎉" target="_blank" class="btn-rsvp">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar Asistencia
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor">
+            <h3>¿Te gustó esta invitación interactiva?</h3>
+            
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20básica%20infantil%20y%20me%20gustaría%20información." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+
+            <div class="creditos">
+                Creada con diversión por <a href="index.html" target="_blank">ArteEnLink</a>.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

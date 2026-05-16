@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentina | Mis XV Años</title>
+    
+    <!-- Fuentes de Google Fonts (Estilo Princesa y Limpio) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Great Vibes (Firma elegante/Princesa) y Montserrat (Lectura clara) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="preloader-inicial">V</div>
+        <div class="preloader-texto">Cargando magia...</div>
+    </div>
+
+    <!-- PORTADA PRINCIPAL -->
+    <header class="portada">
+        <div class="portada-bg">
+            <!-- Imagen sugerida: Vestido, destellos, o tiara -->
+            <img src="https://images.unsplash.com/photo-1549474757-047b85e05417?q=80&w=800&auto=format&fit=crop" alt="Mis XV Años">
+        </div>
+        
+        <div class="portada-contenido fade-in visible">
+            <div class="texto-mis-xv">Mis XV Años</div>
+            <h1 class="nombre-quinceanera">Valentina</h1>
+            <div class="fecha-portada">Sábado, 15 de Noviembre</div>
+        </div>
+    </header>
+
+    <!-- MENSAJE Y CUENTA REGRESIVA -->
+    <section class="seccion-mensaje seccion-padding">
+        <div class="contenedor fade-in">
+            <div class="divisor-floral"><i class="ph-fill ph-crown"></i></div>
+            
+            <p class="mensaje-texto">
+                "Hay momentos inolvidables que se atesoran en el corazón para siempre, y se vuelven aún más especiales cuando los compartimos con las personas que más queremos. ¡Acompáñame a celebrar!"
+            </p>
+            
+            <div class="contador-grid" id="contador-xv">
+                <div class="contador-box">
+                    <span class="contador-numero" id="dias">00</span>
+                    <span class="contador-label">Días</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="horas">00</span>
+                    <span class="contador-label">Horas</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="minutos">00</span>
+                    <span class="contador-label">Min</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="segundos">00</span>
+                    <span class="contador-label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIONES (MISA Y RECEPCIÓN) -->
+    <section class="seccion-ubicacion seccion-padding">
+        <div class="contenedor fade-in">
+            <h2 class="titulo-seccion">Dónde y Cuándo</h2>
+            <div class="divisor-floral" style="margin-bottom: 40px;"><i class="ph-fill ph-church"></i></div>
+            
+            <!-- Tarjeta Misa -->
+            <div class="tarjeta-ubicacion">
+                <i class="ph ph-church icono-ubicacion"></i>
+                <div class="tipo-evento">Ceremonia Religiosa</div>
+                <h3 class="nombre-lugar">Parroquia de San Miguel</h3>
+                <div class="hora-evento">5:00 PM</div>
+                <p>Av. Las Rosas #123, Colonia Centro.</p>
+                <a href="#" class="btn-outline"><i class="ph-fill ph-map-pin"></i> Ver Mapa</a>
+            </div>
+
+            <!-- Tarjeta Recepción -->
+            <div class="tarjeta-ubicacion">
+                <i class="ph ph-champagne icono-ubicacion"></i>
+                <div class="tipo-evento">Recepción y Fiesta</div>
+                <h3 class="nombre-lugar">Salón "El Gran Jardín"</h3>
+                <div class="hora-evento">7:00 PM</div>
+                <p>Carretera Norte Km 15, Zona Esmeralda.</p>
+                <a href="#" class="btn-outline"><i class="ph-fill ph-map-pin"></i> Ver Mapa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIRMACIÓN DIRECTA (RSVP BÁSICO) -->
+    <section class="seccion-rsvp seccion-padding">
+        <div class="contenedor fade-in">
+            <h2 class="titulo-seccion">Confirmación</h2>
+            <div class="divisor-floral" style="margin-bottom: 30px;"><i class="ph-fill ph-envelope-simple-open"></i></div>
+            
+            <p style="margin-bottom: 30px; color: var(--color-texto);">
+                Para mí es muy importante contar con tu presencia en este día tan especial. Por favor confirma tu asistencia antes del 1 de Noviembre.
+            </p>
+            
+            <!-- Botón directo a WhatsApp (Sin formulario complejo) -->
+            <button class="btn-rosa" onclick="confirmarAsistencia()">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.2rem;"></i> Confirmar Asistencia
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-in">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20básica%20de%20XV%20Años%20y%20me%20gustaría%20información." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+
+            <div class="creditos">
+                Diseño exclusivo creado por <a href="index.html" target="_blank">ArteEnLink</a>. <br>Hacemos de tus XV Años un sueño desde el primer clic.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

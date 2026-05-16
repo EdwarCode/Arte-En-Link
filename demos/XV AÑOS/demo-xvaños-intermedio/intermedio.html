@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentina | Mis XV Años (Intermedio)</title>
+    
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Playfair para títulos elegantes, Montserrat para textos limpios, Great Vibes para la firma -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- AUDIO DE FONDO (ROMÁNTICO / ELEGANTE) -->
+    <audio id="musica-fondo" loop>
+        <!-- Pista sugerida: Piano suave y elegante -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_febc508520.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PANTALLA DE BIENVENIDA (SOBRE VIRTUAL) -->
+    <div id="pantalla-bienvenida">
+        <div class="sello-monograma">V</div>
+        <h1 style="font-family: var(--fuente-titulos); font-size: 2rem; color: var(--color-texto); margin-bottom: 5px;">Valentina</h1>
+        <div class="bienvenida-texto">Mis XV Años</div>
+        <button id="btn-abrir" class="btn-abrir">Abrir Invitación</button>
+    </div>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE -->
+    <div id="btn-musica" title="Reproducir / Pausar Música">
+        <i class="ph-fill ph-music-notes girar"></i>
+    </div>
+
+    <!-- PORTADA PRINCIPAL -->
+    <header class="portada">
+        <div class="marco-foto fade-up visible">
+            <div class="imagen-hero">
+                <!-- Imagen sugerida: Quinceañera o vestido elegante floral -->
+                <img src="https://images.unsplash.com/photo-1588665796262-ecb7b43f9a94?q=80&w=600&auto=format&fit=crop" alt="Mis XV Años Valentina">
+            </div>
+        </div>
+        
+        <div class="portada-titulos fade-up delay-1 visible">
+            <div class="texto-mis-xv">Mis XV Años</div>
+            <h1 class="nombre-quinceanera">Valentina</h1>
+            <div class="fecha-hero">Sábado 15 de Noviembre</div>
+        </div>
+    </header>
+
+    <!-- MIS PADRES Y PADRINOS -->
+    <section class="seccion-padres seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="divisor-hojas"><i class="ph-fill ph-plant"></i></div>
+            
+            <p class="texto-bendicion">
+                "Con la bendición de Dios y el amor de mi familia, me llena de alegría compartir con ustedes este día tan especial."
+            </p>
+            
+            <div class="bloque-nombres">
+                <h3>Mis Padres</h3>
+                <p>Roberto Gómez & María Silva</p>
+            </div>
+            
+            <div class="bloque-nombres" style="margin-bottom: 0;">
+                <h3>Mis Padrinos</h3>
+                <p>Carlos López & Ana Martínez</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Faltan</h2>
+            <div class="contador-grid" id="contador-xv">
+                <div class="contador-box">
+                    <span class="contador-numero" id="dias">00</span>
+                    <span class="contador-label">Días</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="horas">00</span>
+                    <span class="contador-label">Hrs</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="minutos">00</span>
+                    <span class="contador-label">Min</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="segundos">00</span>
+                    <span class="contador-label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIONES (MISA Y RECEPCIÓN) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Dónde y Cuándo</h2>
+            <div class="divisor-hojas" style="margin-bottom: 40px;"><i class="ph-fill ph-map-pin-line"></i></div>
+            
+            <!-- Tarjeta Misa -->
+            <div class="ubicacion-card fade-up delay-1">
+                <div class="ubicacion-icon"><i class="ph ph-church"></i></div>
+                <h3>Ceremonia Religiosa</h3>
+                <div class="ubicacion-hora">17:00 Hrs</div>
+                <p class="ubicacion-direccion">Parroquia de San Miguel Arcángel.<br>Av. Las Rosas #123, Colonia Centro.</p>
+                <a href="#" class="btn-outline">Ver en Google Maps</a>
+            </div>
+
+            <!-- Tarjeta Recepción -->
+            <div class="ubicacion-card fade-up delay-2">
+                <div class="ubicacion-icon"><i class="ph ph-champagne"></i></div>
+                <h3>Recepción y Fiesta</h3>
+                <div class="ubicacion-hora">19:30 Hrs</div>
+                <p class="ubicacion-direccion">Salón de Eventos "El Gran Jardín".<br>Carretera Norte Km 15, Zona Esmeralda.</p>
+                <a href="#" class="btn-outline">Ver en Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARIO (TIMELINE) -->
+    <section class="seccion-itinerario seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Itinerario</h2>
+            <p style="margin-bottom: 40px; color: var(--color-texto-suave);">Acompáñame a vivir cada momento de esta gran noche.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-up">
+                    <div class="timeline-icon"><i class="ph-fill ph-church"></i></div>
+                    <div class="timeline-titulo">Ceremonia</div>
+                    <div class="timeline-hora">17:00 Hrs</div>
+                    <div class="timeline-desc">Misa de Acción de Gracias.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-icon"><i class="ph-fill ph-camera"></i></div>
+                    <div class="timeline-titulo">Recepción</div>
+                    <div class="timeline-hora">19:30 Hrs</div>
+                    <div class="timeline-desc">Llegada de invitados y sesión fotográfica.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-2">
+                    <div class="timeline-icon"><i class="ph-fill ph-crown"></i></div>
+                    <div class="timeline-titulo">Mi Primer Vals</div>
+                    <div class="timeline-hora">20:30 Hrs</div>
+                    <div class="timeline-desc">Un momento mágico junto a mi familia y chambelanes.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-icon"><i class="ph-fill ph-star"></i></div>
+                    <div class="timeline-titulo">Baile Sorpresa</div>
+                    <div class="timeline-hora">21:00 Hrs</div>
+                    <div class="timeline-desc">¡Abrimos la pista de baile con mucha energía!</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-2">
+                    <div class="timeline-icon"><i class="ph-fill ph-fork-knife"></i></div>
+                    <div class="timeline-titulo">Cena</div>
+                    <div class="timeline-hora">21:30 Hrs</div>
+                    <div class="timeline-desc">A disfrutar de un delicioso banquete.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA FOTOGRÁFICA -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="divisor-hojas"><i class="ph-fill ph-camera-plus"></i></div>
+            <h2 class="titulo-seccion" style="margin-bottom: 10px;">Mis Favoritas</h2>
+            <p style="margin-bottom: 30px; color: var(--color-texto-suave);">Desliza para ver la sesión de fotos</p>
+            
+            <div class="galeria-container">
+                <button class="carrusel-btn carrusel-prev" id="btn-prev" aria-label="Anterior"><i class="ph ph-caret-left"></i></button>
+                <div class="galeria-wrapper">
+                    <div class="galeria-scroll" id="carrusel">
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1549474757-047b85e05417?q=80&w=600&auto=format&fit=crop" alt="Foto XV 1"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1522856339183-5a97c2fe12cc?q=80&w=600&auto=format&fit=crop" alt="Foto XV 2"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1621258957812-788dbd1451dc?q=80&w=600&auto=format&fit=crop" alt="Foto XV 3"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop" alt="Foto XV 4"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=600&auto=format&fit=crop" alt="Foto XV 5"></div>
+                    </div>
+                </div>
+                <button class="carrusel-btn carrusel-next" id="btn-next" aria-label="Siguiente"><i class="ph ph-caret-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MESA DE REGALOS / LLUVIA DE SOBRES -->
+    <section class="seccion-regalos seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="icono-regalo"><i class="ph-fill ph-envelope-simple-heart"></i></div>
+            <h2 class="titulo-seccion" style="margin-bottom: 15px;">Lluvia de Sobres</h2>
+            <p style="max-width: 500px; margin: 0 auto 30px;">
+                El mejor regalo que puedo recibir es tu presencia y cariño en este día, pero si deseas tener un detalle adicional conmigo, hemos preparado una opción.
+            </p>
+            
+            <button class="btn-outline" id="btn-regalos" style="background: white;">Ver Datos Bancarios</button>
+            
+            <div class="datos-bancarios" id="datos-regalos">
+                <p style="color: var(--color-acento-mauve); font-weight: 600; margin-bottom: 10px;">Transferencia Bancaria</p>
+                <p><b>Banco:</b> BBVA Bancomer</p>
+                <p><b>Titular:</b> Roberto Gómez (Papá)</p>
+                <p><b>CLABE:</b> 012 345 6789 0123 4567</p>
+                <p style="margin-top: 15px; font-style: italic; color: var(--color-texto-suave); font-size: 0.85rem;">También habrá un buzón de sobres en la entrada de la recepción.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP (CONFIRMACIÓN) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion" style="margin-bottom: 15px;">Confirmación</h2>
+            <p style="margin-bottom: 30px;">Por favor, confirma tu asistencia antes del 1 de Noviembre para considerarte en mi gran día.</p>
+            
+            <a href="https://wa.me/520000000000?text=¡Hola!%20He%20recibido%20la%20invitación.%20Confirmo%20mi%20asistencia%20a%20los%20XV%20Años%20de%20Valentina.%20👑" target="_blank" class="btn-rsvp">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar Asistencia
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20intermedia%20de%20XV%20Años%20y%20me%20gustaría%20información." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+
+            <div class="creditos">
+                Diseño exclusivo creado por <a href="index.html" target="_blank">ArteEnLink</a>. <br>Elegancia, tecnología y magia para tus eventos.
+            </div>
+        </div>
+    </footer>
+
+        <script src="script.js"></script>
+
+</body>
+</html>

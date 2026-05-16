@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>¿Niño o Niña? | Diego & Laura (Intermedio)</title>
+
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+<!-- FONDO ANIMADO: ORBES, GLOBOS Y CHUPONES -->
+<div class="bg-animado">
+    <div class="orbe orbe-rosa"></div>
+    <div class="orbe orbe-azul"></div>
+    
+    <!-- Elementos Temáticos en SVG para nitidez perfecta -->
+    <!-- Globo Rosa 1 -->
+    <svg class="elemento-tema el-1 svg-globo" viewBox="0 0 24 36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12,0 C5.373,0 0,5.373 0,12 C0,19.925 12,28 12,28 C12,28 24,19.925 24,12 C24,5.373 18.627,0 12,0 Z" />
+        <path d="M11,28 L13,28 L14,31 L10,31 Z" />
+        <path d="M12,31 C12,31 10,34 14,36" stroke="currentColor" fill="none" stroke-width="1.5" />
+    </svg>
+    
+    <!-- Chupón Azul 1 -->
+    <svg class="elemento-tema el-2 svg-chupon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12,2 C10,2 8,4 8,8 C8,10 16,10 16,8 C16,4 14,2 12,2 Z" />
+        <path d="M4,10 C4,8 20,8 20,10 C20,13 4,13 4,10 Z" rx="2" />
+        <path d="M10,13 L14,13 L14,15 L10,15 Z" />
+        <path d="M12,15 C8,15 5,18 5,22 L7,22 C7,19 9,17 12,17 C15,17 17,19 17,22 L19,22 C19,18 16,15 12,15 Z" />
+    </svg>
+
+    <!-- Globo Azul 2 -->
+    <svg class="elemento-tema el-3 svg-globo" viewBox="0 0 24 36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12,0 C5.373,0 0,5.373 0,12 C0,19.925 12,28 12,28 C12,28 24,19.925 24,12 C24,5.373 18.627,0 12,0 Z" />
+        <path d="M11,28 L13,28 L14,31 L10,31 Z" />
+        <path d="M12,31 C12,31 10,34 14,36" stroke="currentColor" fill="none" stroke-width="1.5" />
+    </svg>
+
+    <!-- Chupón Rosa 2 -->
+    <svg class="elemento-tema el-4 svg-chupon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12,2 C10,2 8,4 8,8 C8,10 16,10 16,8 C16,4 14,2 12,2 Z" />
+        <path d="M4,10 C4,8 20,8 20,10 C20,13 4,13 4,10 Z" rx="2" />
+        <path d="M10,13 L14,13 L14,15 L10,15 Z" />
+        <path d="M12,15 C8,15 5,18 5,22 L7,22 C7,19 9,17 12,17 C15,17 17,19 17,22 L19,22 C19,18 16,15 12,15 Z" />
+    </svg>
+    
+    <!-- Globo Acento (Morado) -->
+    <svg class="elemento-tema el-5 svg-globo" viewBox="0 0 24 36" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12,0 C5.373,0 0,5.373 0,12 C0,19.925 12,28 12,28 C12,28 24,19.925 24,12 C24,5.373 18.627,0 12,0 Z" />
+        <path d="M11,28 L13,28 L14,31 L10,31 Z" />
+        <path d="M12,31 C12,31 10,34 14,36" stroke="currentColor" fill="none" stroke-width="1.5" />
+    </svg>
+</div>
+
+<!-- AUDIO DE FONDO -->
+<audio id="musica-fondo" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PRELOADER -->
+<div id="preloader">
+    <i class="ph-fill ph-question loader-icono"></i>
+    <div class="loader-texto"><span class="color-azul">ArteEn</span><span class="color-rosa">Link</span></div>
+</div>
+
+<!-- BOTÓN DE MÚSICA FLOTANTE -->
+<div id="btn-musica" title="Reproducir Música">
+    <i class="ph-fill ph-play-circle" id="icono-musica"></i>
+</div>
+
+<!-- PORTADA (HERO) -->
+<header class="hero">
+    <div class="hero-card fade-up">
+        <div class="hero-tag">Revelación de Género</div>
+        <h1 class="hero-title">¿Qué<br>Será?</h1>
+        <div class="divisor">
+            <div class="divisor-line"></div>
+            <i class="ph-fill ph-baby divisor-icon"></i>
+            <div class="divisor-line"></div>
+        </div>
+        <p class="hero-names">Diego & Laura</p>
+        <p class="hero-date">Sábado, 15 de Noviembre 2026</p>
+    </div>
+</header>
+
+<!-- ITINERARIO -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up">
+        <h2 class="seccion-titulo">Nuestro Día</h2>
+        <p class="seccion-subtitulo">Acompáñanos en cada momento de esta celebración.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item glass-panel">
+                <div class="timeline-punto"></div>
+                <div class="timeline-hora">4:00 PM</div>
+                <div class="timeline-desc">Llegada y Bienvenida</div>
+            </div>
+            <div class="timeline-item glass-panel">
+                <div class="timeline-punto"></div>
+                <div class="timeline-hora">5:00 PM</div>
+                <div class="timeline-desc">Juegos y Dinámicas</div>
+            </div>
+            <div class="timeline-item glass-panel">
+                <div class="timeline-punto"></div>
+                <div class="timeline-hora">6:30 PM</div>
+                <div class="timeline-desc"><b>¡La Gran Revelación!</b></div>
+            </div>
+            <div class="timeline-item glass-panel">
+                <div class="timeline-punto"></div>
+                <div class="timeline-hora">7:00 PM</div>
+                <div class="timeline-desc">Cena y Celebración</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALERÍA FOTOGRÁFICA -->
+<section class="seccion-padding">
+    <div class="contenedor">
+        <div class="fade-up" style="margin-bottom: 30px;">
+            <h2 class="seccion-titulo">Dulce Espera</h2>
+            <p class="seccion-subtitulo" style="margin-bottom: 0;">Compartiendo nuestra alegría con ustedes.</p>
+        </div>
+        
+        <div class="galeria-grid">
+            <div class="fade-up">
+                <div class="foto-item marco-rosa t-1"><img src="https://images.unsplash.com/photo-1584100525282-386055d21a2c?q=80&w=400&auto=format&fit=crop" alt=""></div>
+            </div>
+            <div class="fade-up delay-1">
+                <div class="foto-item marco-azul t-2"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt=""></div>
+            </div>
+            <div class="fade-up delay-2">
+                <div class="foto-item marco-rosa t-3"><img src="https://images.unsplash.com/photo-1554188248-986adbb56375?q=80&w=400&auto=format&fit=crop" alt=""></div>
+            </div>
+            <div class="fade-up">
+                <div class="foto-item marco-azul t-4"><img src="https://images.unsplash.com/photo-1518831959646-742c3e14ebf3?q=80&w=400&auto=format&fit=crop" alt=""></div>
+            </div>
+            <div class="fade-up delay-1">
+                <div class="foto-item marco-rosa t-5"><img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?q=80&w=400&auto=format&fit=crop" alt=""></div>
+            </div>
+            <div class="fade-up delay-2">
+                <div class="foto-item marco-azul t-6"><img src="https://images.unsplash.com/photo-1522856339183-5a97c2fe12cc?q=80&w=400&auto=format&fit=crop" alt=""></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DRESS CODE & REGALOS -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up">
+        
+        <!-- Dress Code -->
+        <div class="info-card glass-panel">
+            <i class="ph-fill ph-t-shirt info-icono"></i>
+            <h2 class="info-titulo">Código de Vestimenta</h2>
+            <p class="info-texto">Para hacer nuestras fotos más divertidas, te invitamos a venir vestido del color del equipo que crees que ganará.</p>
+            <div class="equipos-colores">
+                <div class="equipo">
+                    <div class="circulo-color circulo-rosa"><i class="ph-fill ph-gender-female"></i></div>
+                    <span style="color: var(--color-rosa); text-shadow: 1px 1px 0 #fff;">Team Niña</span>
+                </div>
+                <div class="equipo">
+                    <div class="circulo-color circulo-azul"><i class="ph-fill ph-gender-male"></i></div>
+                    <span style="color: var(--color-azul); text-shadow: 1px 1px 0 #fff;">Team Niño</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Regalos -->
+        <div class="info-card glass-panel delay-1">
+            <i class="ph-fill ph-gift info-icono"></i>
+            <h2 class="info-titulo">Lluvia de Pañales</h2>
+            <p class="info-texto">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nuestro bebé, te agradeceríamos regalarnos <b>pañales</b>, toallitas húmedas o artículos en colores neutros.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CUENTA REGRESIVA -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up">
+        <h2 class="seccion-titulo">Faltan</h2>
+        <div class="countdown-grid" id="contador-reveal">
+            <div class="countdown-box glass-panel"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+            <div class="countdown-box glass-panel"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Hrs</span></div>
+            <div class="countdown-box glass-panel"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+            <div class="countdown-box glass-panel"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up">
+        <div class="info-card glass-panel" style="margin-bottom: 0;">
+            <i class="ph-fill ph-map-pin info-icono"></i>
+            <h2 class="info-titulo">Jardín Encantado</h2>
+            <p class="info-texto">Sábado 15 de Noviembre, 4:00 PM.<br>Av. de las Rosas #123, Col. Primavera.<br>Ciudad de México.</p>
+            <div class="btn-container">
+                <a href="#" class="btn btn-maps"><i class="ph-fill ph-google-logo"></i> Google Maps</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RSVP CON EFECTO CRISTAL -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up text-center">
+        <div class="rsvp-wrapper glass-panel">
+            <h2 class="seccion-titulo">Confirmar Asistencia</h2>
+            <p class="seccion-subtitulo" style="margin-bottom: 25px;">Por favor, confírmanos tu asistencia antes del 1 de Noviembre para contemplarte en esta gran celebración.</p>
+            <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20Revelación%20de%20Género%20de%20Diego%20y%20Laura." target="_blank" class="btn btn-whatsapp" style="max-width: 300px; margin: 0 auto; display: flex;">
+                <i class="ph-fill ph-whatsapp-logo"></i> Confirmar por WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER COMERCIAL -->
+<footer>
+    <div class="contenedor fade-up">
+        <h3 style="font-family: var(--fuente-titulos); font-size: 1.2rem; margin-bottom: 15px; font-weight: 500;">¿Te gustó esta invitación? ¡Contáctanos!</h3>
+        <div class="social-links">
+            <a href="#" target="_blank" class="social-link wa" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            <a href="#" target="_blank" class="social-link fb" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" target="_blank" class="social-link ig" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 20px;">
+            <div class="footer-logo"><span class="color-azul">ArteEn</span><span class="color-rosa">Link</span></div>
+            <div class="footer-texto">Diseño Exclusivo | Invitaciones Interactivas</div>
+        </div>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

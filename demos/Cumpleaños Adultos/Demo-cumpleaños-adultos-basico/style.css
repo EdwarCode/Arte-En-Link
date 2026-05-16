@@ -1,0 +1,467 @@
+
+        /* =========================================
+           1. SISTEMA DE DISEÑO (ELEGANCIA OSCURA / ORO)
+           ========================================= */
+        :root {
+            /* Tema Dark VIP */
+            --color-texto-principal: #FFFFFF;
+            --color-texto-secundario: #D0D0D0;
+            --color-medianoche: #050505;
+            
+            /* Tonos Dorados */
+            --color-oro: #D4AF37;
+            --color-oro-claro: #F3E5AB;
+            --color-oro-oscuro: #997A00;
+            
+            /* Glassmorphism (Cristal Ahumado) */
+            --bg-cristal: rgba(20, 20, 20, 0.45);
+            --blur-cristal: blur(16px);
+            --borde-cristal: 1px solid rgba(212, 175, 55, 0.15);
+            --sombra-cristal: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.02);
+            
+            /* Tipografías */
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Montserrat', sans-serif;
+        }
+
+        /* =========================================
+           2. RESET Y UTILIDADES GLOBALES
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--fuente-textos);
+            background-color: var(--color-medianoche);
+            color: var(--color-texto-principal);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 { font-family: var(--fuente-titulos); font-weight: 600; }
+        
+        .contenedor { max-width: 600px; margin: 0 auto; padding: 0 6%; position: relative; z-index: 10; }
+        .seccion-padding { padding: 80px 0; }
+        
+        a { text-decoration: none; color: inherit; }
+
+        /* Animaciones Scroll (Regla Cero text jitter) */
+        .fade-up {
+            opacity: 0;
+            transform: translate3d(0, 40px, 0);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        .delay-1 { transition-delay: 200ms; }
+
+        /* =========================================
+           3. FONDO GLOBAL FIJO (MEDIANOCHE + RUIDO)
+           ========================================= */
+        .bg-global {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-color: var(--color-medianoche);
+        }
+
+        /* Textura de Grano/Ruido (Ultra ligero) */
+        .bg-ruido {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.9;
+        }
+
+        /* =========================================
+           4. POLVO DE ORO (PARTÍCULAS CSS)
+           ========================================= */
+        .particulas-container {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particula {
+            position: absolute;
+            bottom: -20px;
+            width: 4px;
+            height: 4px;
+            background-color: var(--color-oro);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(212, 175, 55, 0.4);
+            animation: flotarPolvo linear infinite;
+            will-change: transform, opacity;
+        }
+
+        /* Posiciones y velocidades aleatorias */
+        .particula:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; width: 3px; height: 3px; }
+        .particula:nth-child(2) { left: 25%; animation-duration: 18s; animation-delay: 2s; width: 5px; height: 5px; opacity: 0.6;}
+        .particula:nth-child(3) { left: 40%; animation-duration: 12s; animation-delay: 5s; width: 2px; height: 2px; }
+        .particula:nth-child(4) { left: 55%; animation-duration: 20s; animation-delay: 1s; opacity: 0.8;}
+        .particula:nth-child(5) { left: 70%; animation-duration: 16s; animation-delay: 7s; width: 4px; height: 4px; }
+        .particula:nth-child(6) { left: 85%; animation-duration: 14s; animation-delay: 3s; width: 3px; height: 3px; opacity: 0.5;}
+        .particula:nth-child(7) { left: 15%; animation-duration: 19s; animation-delay: 8s; }
+        .particula:nth-child(8) { left: 65%; animation-duration: 13s; animation-delay: 4s; width: 5px; height: 5px; opacity: 0.7;}
+        .particula:nth-child(9) { left: 80%; animation-duration: 17s; animation-delay: 6s; width: 2px; height: 2px; }
+        .particula:nth-child(10) { left: 35%; animation-duration: 22s; animation-delay: 2s; opacity: 0.4;}
+
+        @keyframes flotarPolvo {
+            0% { transform: translate3d(0, 0, 0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate3d(0, -110vh, 0); opacity: 0; }
+        }
+
+        /* =========================================
+           5. CRISTAL AHUMADO (Clase Maestra)
+           ========================================= */
+        .glass-card {
+            background: var(--bg-cristal);
+            backdrop-filter: var(--blur-cristal);
+            -webkit-backdrop-filter: var(--blur-cristal);
+            border: var(--borde-cristal);
+            border-radius: 20px;
+            box-shadow: var(--sombra-cristal);
+        }
+
+        /* =========================================
+           6. BOTONES
+           ========================================= */
+        .btn-oro {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--color-oro);
+            color: #000000;
+            padding: 15px 35px;
+            font-family: var(--fuente-textos);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .btn-oro::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50px;
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.4);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .btn-oro:hover {
+            transform: translate3d(0, -4px, 0);
+        }
+        .btn-oro:hover::after {
+            opacity: 1;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(0,0,0,0.3);
+            color: var(--color-oro);
+            border: 1px solid var(--color-oro);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            will-change: transform;
+        }
+
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translate3d(0, -3px, 0);
+        }
+
+        /* =========================================
+           7. PRELOADER
+           ========================================= */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--color-medianoche);
+            z-index: 99999;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            transition: opacity 0.8s ease;
+        }
+        #preloader.oculto { opacity: 0; pointer-events: none; }
+        
+        .loader-copas {
+            font-size: 4rem;
+            color: var(--color-oro);
+            animation: brindar 2s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes brindar {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            50% { transform: translate3d(0, -10px, 0) rotate(5deg); }
+        }
+
+        /* =========================================
+           8. PORTADA (HERO) CON FUNDIDO A MEDIANOCHE
+           ========================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Contenedor de la foto de portada */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.55; /* Opacidad para legibilidad del texto */
+        }
+
+        /* Gradiente para fundir la parte inferior de la foto hacia el color de fondo */
+        .hero-fade-bottom {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.2) 60%, var(--color-medianoche) 100%);
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-edad {
+            font-family: var(--fuente-textos);
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--color-oro);
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-nombre {
+            font-family: var(--fuente-titulos);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            color: var(--color-texto-principal);
+            margin-bottom: 20px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        }
+
+        .hero-fecha {
+            font-family: var(--fuente-textos);
+            font-size: 1.1rem;
+            color: var(--color-texto-secundario);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(212, 175, 55, 0.4);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            display: inline-block;
+            padding: 10px 30px;
+            margin-top: 10px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        /* =========================================
+           9. MENSAJE DE INVITACIÓN
+           ========================================= */
+        .mensaje-intro {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--color-texto-secundario);
+            line-height: 1.8;
+            font-weight: 300;
+            padding: 40px 30px;
+        }
+        
+        .mensaje-intro i {
+            font-size: 2.5rem;
+            color: var(--color-oro);
+            margin-bottom: 20px;
+            display: block;
+            text-shadow: 0 2px 10px rgba(212,175,55,0.3);
+        }
+
+        /* =========================================
+           10. CUENTA REGRESIVA
+           ========================================= */
+        .titulo-seccion {
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--color-oro);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .contador-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            margin-top: 30px;
+        }
+
+        .contador-box {
+            flex: 1;
+            max-width: 80px;
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contador-numero {
+            font-family: var(--fuente-titulos);
+            font-size: 2rem;
+            color: var(--color-texto-principal);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .contador-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-oro);
+        }
+
+        /* =========================================
+           11. UBICACIÓN
+           ========================================= */
+        .ubicacion-card {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .ubicacion-icono {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--color-oro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            box-shadow: inset 0 0 10px rgba(212,175,55,0.2);
+        }
+
+        .ubicacion-titulo {
+            font-family: var(--fuente-titulos);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .ubicacion-texto {
+            font-size: 0.95rem;
+            color: var(--color-texto-secundario);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .botones-mapa {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* =========================================
+           12. CONFIRMACIÓN RSVP SIMPLE
+           ========================================= */
+        .rsvp-section {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 40px;
+            margin-bottom: 80px; /* Espacio antes del footer */
+            border-top: 1px solid rgba(212,175,55,0.3);
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+        }
+
+        .rsvp-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .rsvp-section p {
+            color: var(--color-texto-secundario);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           13. FOOTER
+           ========================================= */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 10;
+        }
+        
+        footer a {
+            color: var(--color-oro);
+            font-weight: 500;
+        }
+
+        /* =========================================
+           RESPONSIVO
+           ========================================= */
+        @media (max-width: 480px) {
+            .hero-nombre { font-size: 3.5rem; }
+            .contador-box { max-width: 70px; height: 80px; }
+            .contador-numero { font-size: 1.6rem; }
+            .contador-label { font-size: 0.55rem; }
+            .mensaje-intro { padding: 30px 20px; }
+        }

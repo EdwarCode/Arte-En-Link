@@ -1,0 +1,319 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (BOUTIQUE DE LUJO / VERDE SALVIA)
+           ========================================================================== */
+        :root {
+            --color-fondo-base: #FAF6F0;
+            --color-tarjetas: #FFFFFF;
+            --color-texto-oscuro: #3A4A3F;
+            --color-texto-claro: #7A897F; 
+            
+            --color-salvia: #A3B19B; 
+            --color-salvia-oscuro: #82937A;
+            --color-salvia-claro: #EAEFE9;
+            --color-oro-suave: #D4C4A8;
+            
+            --fuente-titulos: 'Cormorant Garamond', serif;
+            --fuente-textos: 'Montserrat', sans-serif;
+            --fuente-firmas: 'Caveat', cursive;
+
+            --sombra-premium: 0 20px 40px rgba(163, 177, 155, 0.15);
+            --borde-redondeado: 24px;
+        }
+
+        /* ==========================================================================
+           2. RESET Y GLOBALES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--fuente-textos); 
+            background-color: var(--color-fondo-base); 
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            color: var(--color-texto-oscuro); 
+            line-height: 1.8; 
+            font-weight: 300; 
+            overflow-x: hidden; 
+        }
+        
+        h1, h2, h3, h4 { font-family: var(--fuente-titulos); font-weight: 500; }
+        p { font-size: 0.95rem; }
+        a { text-decoration: none; color: inherit; }
+        
+        .contenedor { max-width: 650px; margin: 0 auto; padding: 0 6%; }
+        .seccion-padding { padding: 90px 0; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--borde-redondeado);
+            box-shadow: var(--sombra-premium);
+            padding: 40px 25px;
+        }
+
+        .divisor-floral { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 0 auto 30px; color: var(--color-salvia); }
+        .divisor-floral::before, .divisor-floral::after { content: ''; width: 40px; height: 1px; background-color: var(--color-salvia); opacity: 0.5; }
+
+        .btn-vip { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--color-salvia); color: white; padding: 16px 35px; border-radius: 50px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(163, 177, 155, 0.4); }
+        .btn-vip:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(163, 177, 155, 0.5); background-color: var(--color-salvia-oscuro); }
+        
+        .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--color-salvia-oscuro); padding: 14px 30px; border-radius: 50px; border: 1px solid var(--color-salvia); font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; }
+        .btn-outline:hover { background: var(--color-salvia); color: white; }
+
+        /* ==========================================================================
+           2.5 NUEVO MOTOR DE ANIMACIONES SCROLL VIP
+           ========================================================================== */
+        /* Efecto Flotar Arriba */
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Efecto Zoom Profundo */
+        .zoom-in { opacity: 0; transform: scale(0.85); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .zoom-in.visible { opacity: 1; transform: scale(1); }
+
+        /* Efecto Deslizar desde Derecha */
+        .slide-right { opacity: 0; transform: translateX(-60px); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .slide-right.visible { opacity: 1; transform: translateX(0); }
+
+        /* Efecto Deslizar desde Izquierda */
+        .slide-left { opacity: 0; transform: translateX(60px); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .slide-left.visible { opacity: 1; transform: translateX(0); }
+
+        /* Efecto Cinematográfico (Desenfoque a Enfoque) */
+        .blur-in { opacity: 0; filter: blur(12px); transform: translateY(20px) scale(1.02); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.2s ease, transform 1.2s ease; }
+        .blur-in.visible { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
+
+        /* Retrasos para crear coreografías */
+        .delay-1 { transition-delay: 200ms; } 
+        .delay-2 { transition-delay: 400ms; }
+        .delay-3 { transition-delay: 600ms; }
+
+        /* ==========================================================================
+           3. PRELOADER Y SOBRE DIGITAL 3D
+           ========================================================================== */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-fondo-base); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s; }
+        #preloader.oculto { opacity: 0; pointer-events: none; }
+        .loader-icono { font-size: 4rem; color: var(--color-salvia); animation: pulse 1.5s infinite; margin-bottom: 20px; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+
+        #pantalla-sobre {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(250, 246, 240, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 99998; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1.2s ease, visibility 1.2s ease, transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+            perspective: 1200px;
+        }
+        #pantalla-sobre.abierto { opacity: 0; visibility: hidden; transform: scale(1.1) translateY(-20px); pointer-events: none; }
+        
+        .sobre-texto-top { font-family: var(--fuente-textos); text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; color: var(--color-salvia-oscuro); margin-bottom: 40px; z-index: 10; font-weight: 500;}
+
+        .sobre-wrapper {
+            position: relative; width: 90%; max-width: 450px; height: 300px;
+            background: #fff; box-shadow: 0 20px 50px rgba(163, 177, 155, 0.2);
+            border-radius: 8px; display: flex; justify-content: center; align-items: center;
+        }
+
+        .sobre-flap-top {
+            position: absolute; top: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to bottom, #FFFFFF, #F8F9F8);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top; transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4; border-top-left-radius: 8px; border-top-right-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.03);
+        }
+        .sobre-body-bottom { position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: #F5F7F5; clip-path: polygon(0 100%, 100% 100%, 50% 0); z-index: 3; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;}
+        .sobre-body-left { position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: #FCFDFC; clip-path: polygon(0 0, 0 100%, 100% 50%); z-index: 2; border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+        .sobre-body-right { position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: #FAFCFA; clip-path: polygon(100% 0, 100% 100%, 0 50%); z-index: 2; border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+
+        .sobre-carta-interior {
+            position: absolute; width: 90%; height: 90%; background: white;
+            border: 1px solid var(--color-salvia-claro); border-radius: 8px;
+            display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+            padding-top: 30px; z-index: 1; transition: transform 1s ease 0.3s;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+        .sobre-carta-interior h2 { font-family: var(--fuente-titulos); font-size: 3rem; color: var(--color-texto-oscuro); font-style: italic; line-height: 1;}
+
+        .sello-cera {
+            width: 80px; height: 80px;
+            background: var(--color-salvia);
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); 
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 5px 15px rgba(163, 177, 155, 0.4), inset 0 0 10px rgba(0,0,0,0.1);
+            cursor: pointer; position: absolute; left: 50%; top: 56%;
+            transform: translate(-50%, -50%); z-index: 5;
+            animation: latidoSello 2.5s infinite; transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .sello-cera::before { content: ''; position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; border: 1px dashed rgba(255,255,255,0.5); border-radius: 50%; }
+        .sello-cera:hover { transform: translate(-50%, -50%) scale(1.1); animation-play-state: paused; }
+        .sello-inicial { font-family: var(--fuente-titulos); font-size: 2.2rem; font-style: italic; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        
+        .sobre-texto-bottom { font-family: var(--fuente-textos); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-texto-claro); margin-top: 40px; z-index: 10;}
+
+        .sobre-wrapper.abriendo .sello-cera { transform: translate(-50%, -50%) scale(1.5); opacity: 0; pointer-events: none; }
+        .sobre-wrapper.abriendo .sobre-flap-top { transform: rotateX(180deg); }
+        .sobre-wrapper.abriendo .sobre-carta-interior { transform: translateY(-40px); }
+
+        @keyframes latidoSello { 0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 5px 15px rgba(163, 177, 155, 0.4); } 50% { transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 10px 25px rgba(163, 177, 155, 0.6); } }
+
+        #btn-musica { position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 9990; cursor: pointer; font-size: 1.3rem; color: var(--color-salvia-oscuro); background: rgba(255,255,255,0.9); box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid var(--color-salvia-claro); }
+        .girar { animation: girarDisco 4s linear infinite; }
+        @keyframes girarDisco { 100% { transform: rotate(360deg); } }
+
+        /* ==========================================================================
+           4. PORTADA (REVISTA / LIBRO DE CUENTOS)
+           ========================================================================== */
+        .portada { position: relative; padding: 60px 20px 80px; text-align: center; }
+        
+        .marco-editorial {
+            width: 100%; max-width: 400px; margin: 0 auto 30px;
+            padding: 15px; border: 1px solid var(--color-salvia);
+            border-radius: 200px 200px 0 0; position: relative;
+        }
+        .marco-editorial::after {
+            content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px;
+            border: 1px solid rgba(163, 177, 155, 0.3); border-radius: 205px 205px 0 0;
+        }
+
+        .imagen-hero { width: 100%; aspect-ratio: 3/4; border-radius: 200px 200px 0 0; overflow: hidden; }
+        .imagen-hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.05) contrast(0.95); }
+
+        .portada-titulos { margin-top: 15px; position: relative; z-index: 5; }
+        .texto-evento { font-family: var(--fuente-textos); font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--color-salvia-oscuro); margin-bottom: 10px; }
+        .nombre-bebe { font-family: var(--fuente-titulos); font-size: 4.5rem; line-height: 1; color: var(--color-texto-oscuro); font-style: italic; margin-bottom: 15px; text-shadow: 2px 2px 10px rgba(255,255,255,0.9); }
+        .fecha-hero { font-family: var(--fuente-textos); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: var(--color-texto-claro); font-weight: 500; }
+
+        /* ==========================================================================
+           5. PASE VIP (LEE LA URL) Y MENSAJE
+           ========================================================================== */
+        .pase-vip { background: var(--color-salvia-claro); border-radius: 12px; padding: 25px; margin: 20px auto 50px; border-left: 4px solid var(--color-salvia); text-align: left; max-width: 600px; }
+        .pase-vip h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-salvia-oscuro); margin-bottom: 5px; }
+        .pase-invitado { font-family: var(--fuente-titulos); font-size: 1.8rem; color: var(--color-texto-oscuro); line-height: 1.2; margin-bottom: 10px; font-style: italic; }
+        .pase-numero { font-size: 0.9rem; color: var(--color-texto-claro); }
+
+        .texto-invitacion { font-family: var(--fuente-titulos); font-size: 1.3rem; font-style: italic; line-height: 1.6; color: var(--color-texto-oscuro); margin-bottom: 30px; text-align: center;}
+        
+        .cuerpo-invitacion { font-size: 1.05rem; line-height: 1.9; color: var(--color-texto-claro); margin: 0 auto 50px; max-width: 550px; text-align: center; font-weight: 300; }
+
+        .bloque-nombres { margin-bottom: 25px; text-align: center;}
+        .bloque-nombres h3 { font-family: var(--fuente-textos); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-salvia-oscuro); margin-bottom: 5px; font-weight: 500; }
+        .bloque-nombres p { font-family: var(--fuente-titulos); font-size: 1.5rem; color: var(--color-texto-oscuro); }
+
+        /* ==========================================================================
+           6. MI PRIMERA HISTORIA (LÍNEA DE TIEMPO VIP)
+           ========================================================================== */
+        .seccion-historia { position: relative; }
+        .titulo-seccion { font-family: var(--fuente-titulos); font-size: 2.8rem; color: var(--color-texto-oscuro); font-style: italic; text-align: center; margin-bottom: 10px; line-height: 1.1; }
+        
+        .timeline-historia { position: relative; max-width: 450px; margin: 0 auto; text-align: left; padding: 20px 0; }
+        .timeline-historia::before { content: ''; position: absolute; top: 0; bottom: 0; left: 24px; width: 2px; background-color: rgba(163, 177, 155, 0.4); }
+        
+        .historia-item { position: relative; padding-left: 65px; margin-bottom: 60px; }
+        .historia-icon { position: absolute; left: 0; top: 0; width: 50px; height: 50px; background-color: var(--color-fondo-base); border: 2px solid var(--color-salvia); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-salvia); font-size: 1.2rem; z-index: 2; }
+        
+        .historia-img { width: 100%; height: 200px; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: var(--sombra-premium); border: 3px solid white; }
+        .historia-img img { width: 100%; height: 100%; object-fit: cover; filter: sepia(20%) brightness(1.05); }
+        
+        .historia-mes { font-family: var(--fuente-textos); font-size: 0.75rem; color: var(--color-salvia-oscuro); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; font-weight: 600; }
+        .historia-titulo { font-family: var(--fuente-titulos); font-size: 1.5rem; color: var(--color-texto-oscuro); margin-bottom: 10px; line-height: 1.2; font-style: italic; }
+        .historia-desc { font-size: 0.9rem; color: var(--color-texto-claro); line-height: 1.6; }
+
+        /* ==========================================================================
+           7. CUENTA REGRESIVA Y CALENDARIO
+           ========================================================================== */
+        .contador-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: nowrap; margin-bottom: 30px; }
+        .contador-box { background: white; flex: 1; max-width: 80px; padding: 15px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 12px; box-shadow: var(--sombra-premium); border: 1px solid var(--color-salvia-claro); }
+        .contador-numero { font-family: var(--fuente-titulos); font-size: 2.2rem; color: var(--color-salvia-oscuro); line-height: 1; font-style: italic; }
+        .contador-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: var(--color-texto-claro); font-weight: 500; }
+
+        /* ==========================================================================
+           8. UBICACIONES (GLASSMORPHISM)
+           ========================================================================== */
+        .ubicacion-card { text-align: center; margin-bottom: 30px; }
+        .ubicacion-icon { font-size: 2.5rem; color: var(--color-salvia); margin-bottom: 15px; }
+        .ubicacion-card h3 { font-family: var(--fuente-titulos); font-size: 1.8rem; margin-bottom: 5px; color: var(--color-texto-oscuro); font-style: italic; }
+        .ubicacion-hora { font-family: var(--fuente-textos); font-weight: 500; color: var(--color-salvia-oscuro); font-size: 0.95rem; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
+        .ubicacion-direccion { margin-bottom: 25px; color: var(--color-texto-claro); font-size: 0.9rem; }
+
+        /* ==========================================================================
+           9. GALERÍA 3D EN CASCADA (MOBILE FIRST)
+           ========================================================================== */
+        .galeria-3d-wrapper { 
+            display: flex; flex-direction: column; align-items: center; 
+            padding: 20px 0 60px 0; perspective: 1000px; gap: 0; 
+        }
+        
+        .foto-3d { 
+            position: relative; width: 85%; height: 350px; 
+            margin-bottom: -100px; /* Superposición extrema */
+            border: 5px solid #fff; border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s;
+        }
+        .foto-3d img { width: 100%; height: 100%; object-fit: cover; filter: sepia(10%); }
+        
+        /* Rotaciones asimétricas para simular fotos cayendo */
+        .foto-3d:nth-child(1) { height: 450px; width: 90%; margin-bottom: -120px; transform: rotate(0deg) translateZ(10px); z-index: 10; }
+        .foto-3d:nth-child(2) { transform: rotate(-3deg) translateX(-10px); z-index: 9; align-self: flex-end; }
+        .foto-3d:nth-child(3) { transform: rotate(4deg) translateX(10px); z-index: 8; align-self: flex-start; height: 320px; }
+        .foto-3d:nth-child(4) { transform: rotate(-2deg); z-index: 7; align-self: center; width: 95%; height: 280px; } /* Horizontal */
+        .foto-3d:nth-child(5) { transform: rotate(2deg) translateY(20px); z-index: 6; align-self: center; margin-bottom: 0; }
+
+        .foto-3d:hover, .foto-3d:active {
+            transform: scale(1.05) translateZ(50px) rotate(0deg);
+            z-index: 20; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        /* ==========================================================================
+           10. MESA DE REGALOS
+           ========================================================================== */
+        .icono-regalo { font-size: 3rem; color: var(--color-salvia); margin-bottom: 15px; text-align: center; }
+        .datos-bancarios { display: none; margin-top: 20px; padding: 25px; background: white; border-radius: 12px; font-size: 0.9rem; box-shadow: var(--sombra-premium); text-align: left; border-left: 4px solid var(--color-salvia); }
+        .datos-bancarios.visible { display: block; animation: fadeIn 0.5s ease; }
+
+        /* ==========================================================================
+           11. LIBRO DE FIRMAS (Guestbook)
+           ========================================================================== */
+        .buzon-container { background: white; border-radius: 16px; padding: 30px 20px; box-shadow: var(--sombra-premium); border: 1px solid var(--color-salvia-claro); }
+        .input-firma { width: 100%; background: var(--color-fondo-base); border: 1px solid var(--color-salvia-claro); color: var(--color-texto-oscuro); padding: 12px 15px; font-family: var(--fuente-textos); font-size: 0.9rem; margin-bottom: 15px; border-radius: 8px; outline: none; transition: border-color 0.3s; }
+        .input-firma:focus { border-color: var(--color-salvia); }
+        textarea.input-firma { resize: vertical; min-height: 80px; }
+        
+        .muro-mensajes { margin-top: 40px; display: grid; grid-template-columns: 1fr; gap: 15px; text-align: left; max-height: 400px; overflow-y: auto; padding-right: 5px;}
+        /* Scrollbar bonito para el muro */
+        .muro-mensajes::-webkit-scrollbar { width: 6px; }
+        .muro-mensajes::-webkit-scrollbar-thumb { background-color: var(--color-salvia-claro); border-radius: 10px; }
+        
+        .nota-deseo { background: var(--color-fondo-base); padding: 20px; border-radius: 12px; border-left: 3px solid var(--color-salvia); animation: fadeIn 0.5s ease; position: relative;}
+        .nota-texto { font-family: var(--fuente-firmas); font-size: 1.4rem; color: var(--color-texto-oscuro); line-height: 1.4; margin-bottom: 10px; }
+        .nota-autor { font-family: var(--fuente-textos); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-salvia-oscuro); text-align: right; font-weight: 600; }
+
+        /* ==========================================================================
+           12. RSVP VIP
+           ========================================================================== */
+        .rsvp-form { display: flex; flex-direction: column; gap: 15px; text-align: left; }
+        .rsvp-form label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-texto-claro); }
+        .select-vip { width: 100%; background: white; border: 1px solid var(--color-salvia-claro); color: var(--color-texto-oscuro); padding: 14px; font-family: var(--fuente-textos); font-size: 0.95rem; border-radius: 8px; outline: none; }
+
+        /* ==========================================================================
+           13. FOOTER COMERCIAL
+           ========================================================================== */
+        .footer-comercial { padding: 60px 20px; text-align: center; border-top: 1px solid var(--color-salvia-claro); }
+        .footer-comercial h3 { font-family: var(--fuente-textos); font-size: 1rem; color: var(--color-texto-oscuro); margin-bottom: 20px; font-weight: 500; }
+        .social-link { color: var(--color-salvia); font-size: 1.5rem; transition: transform 0.3s; margin: 0 10px; display: inline-block;}
+        .social-link:hover { transform: scale(1.2); color: var(--color-salvia-oscuro); }
+        .creditos { font-size: 0.75rem; color: var(--color-texto-claro); margin-top: 30px;}
+        .creditos a { color: var(--color-salvia-oscuro); font-weight: 600; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (min-width: 768px) {
+            .historia-item { padding-left: 50%; }
+            .timeline-historia::before { left: 50%; margin-left: -1px; }
+            .historia-icon { left: 50%; margin-left: -25px; }
+            .historia-item:nth-child(odd) .historia-contenido { text-align: right; padding-right: 40px; margin-left: -100%; }
+            .historia-item:nth-child(even) .historia-contenido { text-align: left; padding-left: 40px; }
+            .historia-item:nth-child(odd) .historia-img { display: none; } /* En PC simplificamos para no saturar */
+        }

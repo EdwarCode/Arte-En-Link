@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandro Mendoza | Graduación Summa Cum Laude</title>
+
+    <!-- Google Fonts: Cinzel (Elegancia Clásica) y Montserrat (Legibilidad) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons (Para la variante Duotone de Lujo) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Anime.js v4 (Motor de Animación Físico) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- AUDIO DE FONDO: RUTA LOCAL LISTA PARA TU VS CODE -->
+    <audio id="musica-fondo" preload="auto" loop playsinline>
+        <source src="assets/audio/tu-cancion-aqui.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BACKGROUND FLOTANTE -->
+    <div class="bg-flotantes" id="flotantes-container"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-duotone ph-graduation-cap birrete-animado" id="birrete-loader"></i>
+        <div style="font-family: var(--fuente-titulos); color: var(--color-oro); letter-spacing: 5px;">SUMMA CUM LAUDE</div>
+    </div>
+
+    <!-- UNBOXING VIP -->
+    <div id="pantalla-unboxing">
+        <div class="porta-diplomas" id="porta-btn">
+            <div class="porta-base">
+                <div class="diploma-interior">
+                    <h2>Alejandro Mendoza</h2>
+                    <p>Ingeniería en Software</p>
+                    <div class="cinta-oro"></div>
+                </div>
+            </div>
+            <div class="porta-tapa" id="tapa-cuero">
+                <div class="esquinero esq-tl"></div><div class="esquinero esq-tr"></div>
+                <div class="esquinero esq-bl"></div><div class="esquinero esq-br"></div>
+                <div class="escudo-central" id="sello-oro"><i class="ph-fill ph-student"></i></div>
+            </div>
+            <div class="instruccion-unboxing" id="instruccion">Toca para abrir</div>
+        </div>
+    </div>
+
+    <!-- BOTÓN DE MÚSICA (Limpio y Elegante) -->
+    <div id="btn-musica" title="Música">
+        <i class="ph-fill ph-play-circle" id="icono-musica"></i>
+    </div>
+
+    <!-- PORTADA HERO -->
+    <header class="hero">
+        <div class="hero-bg"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop" alt="Fondo Graduación"></div>
+        <div class="hero-content reveal-item">
+            <div class="hero-grado">Ingeniero en Software</div>
+            <h1 class="hero-nombre">Alejandro Mendoza</h1>
+            <div class="hero-linea"></div>
+            <div class="hero-generacion">Generación 2022 - 2026</div>
+        </div>
+    </header>
+
+    <!-- INVITACIÓN FORMAL -->
+    <section class="seccion-padding" style="padding-bottom: 0;">
+        <div class="contenedor reveal-item text-center">
+            <i class="ph-duotone ph-envelope-open" style="font-size: 3.5rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+            <h2 class="titulo-seccion" style="margin-bottom: 25px;">Estás Invitado</h2>
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 50px 40px;">
+                <p style="font-size: 1.15rem; line-height: 2; color: var(--color-texto-secundario); font-weight: 300; font-style: italic;">
+                    "Hay momentos en la vida que son especiales por sí solos, pero compartirlos con las personas que más estimas los convierte en instantes verdaderamente inolvidables. Después de años de esfuerzo, desvelos, retos superados y muchísima dedicación, por fin he llegado a la meta."
+                </p>
+                <p style="font-size: 1.1rem; color: var(--color-oro); margin-top: 30px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;">
+                    Es un inmenso honor para mí invitarte a celebrar mi Gran Noche.
+                </p>
+                <div style="width: 60px; height: 2px; background: var(--color-oro); margin: 30px auto 0;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARTA EDITORIAL -->
+    <section class="seccion-padding">
+        <div class="contenedor reveal-item glass-card">
+            <i class="ph-duotone ph-quotes" style="font-size: 3rem; color: var(--color-oro); margin-bottom: 20px; opacity: 0.5;"></i>
+            <h2 class="titulo-seccion" style="text-align: left; margin-bottom: 30px;">A mis Padres</h2>
+            <div class="editorial-text">
+                <p>Por darme las alas para volar, por su sacrificio incalculable y por creer en mí incluso cuando yo mismo dudaba. Cada desvelo, cada lágrima de estrés y cada alegría compartida durante estos cuatro años, lleva sus nombres escritos en oro. Este título universitario no es solo mi logro profesional; es el resultado de la educación, el amor y los valores que sembraron en mí desde el primer día.</p>
+                <p>A mis mentores y amigos que se convirtieron en familia: gracias por las noches de café interminables, por enseñarme que el trabajo en equipo lo vence todo y por ser mi red de apoyo. ¡Lo logramos juntos!</p>
+                <div class="firma">Con gratitud profunda,<br>Alejandro.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA Y CALENDARIO -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor reveal-item text-center">
+            <h2 class="titulo-seccion" style="margin-bottom: 40px;">La Gran Noche</h2>
+            <div class="contador-grid" id="contador-graduacion">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+            <a href="#" class="btn-calendario" title="Guardar en mi móvil">
+                <i class="ph-fill ph-calendar-plus" style="font-size: 1.5rem;"></i> Agendar en mi Calendario
+            </a>
+        </div>
+    </section>
+
+    <!-- UBICACIONES -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor grid-2">
+            <div class="glass-card reveal-item text-center">
+                <i class="ph-duotone ph-bank ubicacion-icono"></i>
+                <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Acto Académico</h3>
+                <div class="ubicacion-hora"><i class="ph ph-clock"></i> 17:00 Hrs</div>
+                <p style="margin-bottom: 25px; color: var(--color-texto-secundario);">
+                    <b>Auditorio Principal Universitario</b><br>Av. de la Sabiduría 123, Zona Centro.
+                </p>
+                <a href="#" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-map-pin"></i> Abrir Maps</a>
+            </div>
+            <div class="glass-card reveal-item text-center">
+                <i class="ph-duotone ph-martini ubicacion-icono"></i>
+                <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Cena de Gala</h3>
+                <div class="ubicacion-hora"><i class="ph ph-clock"></i> 21:00 Hrs</div>
+                <p style="margin-bottom: 25px; color: var(--color-texto-secundario);">
+                    <b>Salón de Eventos "El Dorado"</b><br>Blvd. de los Éxitos 456, Col. Las Palmas.
+                </p>
+                <a href="#" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-map-pin"></i> Abrir Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LÍNEA DE TIEMPO -->
+    <section class="seccion-padding" id="seccion-timeline">
+        <div class="contenedor">
+            <h2 class="titulo-seccion reveal-item">Mi Trayectoria</h2>
+            <p class="subtitulo-seccion reveal-item">Los momentos que marcaron mi historia universitaria.</p>
+            <div class="trayectoria-wrapper">
+                <div class="trayectoria-linea"><div class="trayectoria-progreso" id="linea-progreso"></div></div>
+                <div class="hito-item" data-progreso="14">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-numero">01</div><h4 class="hito-titulo">El Inicio del Sueño</h4><p class="hito-texto">El primer día de clases. Muchos nervios, un campus enorme y la ilusión de comerme al mundo.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="28">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-numero">02</div><h4 class="hito-titulo">Los Primeros Retos</h4><p class="hito-texto">Cuando me di cuenta de que no sería fácil. El primer examen reprobado que me enseñó a estudiar de verdad.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="42">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-numero">03</div><h4 class="hito-titulo">Noches de Desvelo</h4><p class="hito-texto">Sobreviviendo a base de café, pizzas frías y proyectos entregados a las 11:59 p.m.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="57">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-numero">04</div><h4 class="hito-titulo">Mi Segunda Familia</h4><p class="hito-texto">Conocer a los amigos que se volvieron hermanos. Las risas en los pasillos que me salvaron la carrera.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="71">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-numero">05</div><h4 class="hito-titulo">Prácticas Profesionales</h4><p class="hito-texto">Mi primer contacto con el mundo laboral real. Ponerme el uniforme y aplicar lo aprendido en el aula.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="85">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-numero">06</div><h4 class="hito-titulo">La Tesis</h4><p class="hito-texto">El jefe final del videojuego. Meses de investigación, redacción y el inmenso alivio de la impresión final.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="100">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-numero">07</div><h4 class="hito-titulo">La Meta Alcanzada</h4><p class="hito-texto">¡Mamá, papá, soy ingeniero! El día en que el sueño de aquel novato por fin se hace realidad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor text-center reveal-item">
+            <h2 class="titulo-seccion">Código de Vestimenta</h2>
+            <p class="subtitulo-seccion">Etiqueta Rigurosa / Gala</p>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <div class="arte-vestimenta"><div class="css-vestido"></div></div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Damas</h3>
+                    <p style="color: var(--color-texto-secundario);">Vestido largo de noche elegante. <br><small>(Evitar blanco o tonos muy claros)</small></p>
+                </div>
+                <div class="glass-card">
+                    <div class="arte-vestimenta"><div class="css-traje"></div></div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Caballeros</h3>
+                    <p style="color: var(--color-texto-secundario);">Traje sastre oscuro formal o Smoking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LLUVIA DE SOBRES -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor reveal-item">
+            <div class="glass-card text-center" style="border-color: var(--color-oro);">
+                <i class="ph-duotone ph-envelope-open" style="font-size: 4rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Mesa de Regalos</h2>
+                <p style="margin-bottom: 30px; color: var(--color-texto-secundario); font-size: 1.05rem;">Tu presencia es mi mayor regalo. Sin embargo, si deseas apoyarme en el inicio de mi vida profesional o en mi viaje de graduación, te dejo mis datos bancarios:</p>
+                <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; font-family: monospace; font-size: 1.2rem; color: var(--color-oro-brillante); border: 1px dashed rgba(212, 175, 55, 0.4); display: inline-block;">
+                    Banco de la Nación<br>CLABE: 1234 5678 9012 3456 78<br>Alejandro Mendoza
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA 3D COVERFLOW -->
+    <section class="seccion-galeria reveal-item">
+        <div class="contenedor text-center">
+            <h2 class="titulo-seccion">Mi Historia Visual</h2>
+            <p class="subtitulo-seccion">Desliza para explorar la galería 3D.</p>
+        </div>
+        <div class="carrusel-contenedor" id="carrusel">
+            <div class="carrusel-track" id="track"></div>
+        </div>
+        <div class="instruccion-drag"><i class="ph ph-hand-swipe-left"></i> Desliza para girar <i class="ph ph-hand-swipe-right"></i></div>
+    </section>
+
+    <!-- MÓDULO UNIFICADO VIP -->
+    <section class="seccion-rsvp reveal-item">
+        <div class="rsvp-content text-center">
+            <i class="ph-duotone ph-envelope-simple-open" style="font-size: 4rem; color: var(--color-oro); margin-bottom: 15px;"></i>
+            <h2 style="font-size: 2.4rem; margin-bottom: 10px; color: var(--color-oro);">Tu Presencia y tus Palabras</h2>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-texto-secundario);">Confírmame tu asistencia en esta noche tan especial, compárteme un consejo para mi futuro profesional y dime qué canción no debe faltar.</p>
+            
+            <div class="form-vip">
+                <div class="input-group">
+                    <label for="rsvp-nombre"><i class="ph-fill ph-user"></i> Tu Nombre Completo: *</label>
+                    <input type="text" id="rsvp-nombre" class="input-vip" placeholder="Ej. Familia Sánchez o María López">
+                </div>
+                <div class="input-group">
+                    <label for="vip-consejo"><i class="ph-fill ph-pen-nib"></i> Un consejo para mi nueva etapa:</label>
+                    <textarea id="vip-consejo" class="input-vip" placeholder="Escribe aquí tus palabras de sabiduría..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="vip-cancion"><i class="ph-fill ph-music-notes"></i> ¿Qué rola sugieres para el DJ?</label>
+                    <input type="text" id="vip-cancion" class="input-vip" placeholder="Ej. El Sonidito, Don't Stop Me Now...">
+                </div>
+                
+                <button id="btn-enviar-rsvp" class="btn-oro" style="margin-top: 15px;">
+                    <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar y Enviar Huella
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER COMERCIAL -->
+    <footer class="footer-comercial reveal-item">
+        <h3 style="color: var(--color-texto-principal); font-family: var(--fuente-textos); font-weight: 500; font-size: 1rem; margin-bottom: 20px;">¿Te encantó esta invitación VIP? ¡Contáctanos!</h3>
+        <div class="social-links">
+            <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20Premium%20VIP%20de%20Graduaciones%20y%20quiero%20una%20igual." target="_blank" class="social-link"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            <a href="#" class="social-link"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" class="social-link"><i class="ph-fill ph-instagram-logo"></i></a>
+        </div>
+        <div class="creditos">
+            Ingeniería y Diseño de Alta Costura por <a href="index.html" target="_blank" style="color: var(--color-oro); font-weight: bold;">ArteEnLink</a>.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

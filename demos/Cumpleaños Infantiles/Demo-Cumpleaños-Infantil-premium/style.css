@@ -1,0 +1,349 @@
+
+        :root {
+            /* NUEVA PALETA SPIDER-MAN */
+            --spidey-red: #E23636;
+            --spidey-blue: #024FA1;
+            --spidey-dark-blue: #012E5F;
+            --spidey-black: #111111;
+            --web-white: #F8F8F8;
+            --texto: #333333;
+            --dorado: #FFD700; /* Mantenemos dorado para detalles VIP */
+        }
+
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            margin: 0; 
+            color: var(--texto); 
+            /* Fondo base por si no carga el degradado */
+            background: var(--spidey-dark-blue); 
+            overflow-x: hidden; 
+            padding-bottom: 60px; 
+            position: relative; 
+        }
+
+        /* Títulos estilo Cómic */
+        h1, h2, h3 { 
+            font-family: 'Bebas Neue', sans-serif; /* Fuente más legible */
+            color: var(--dorado); 
+            letter-spacing: 2px;
+            margin: 10px 0; 
+            font-weight: normal; /* Bebas es bold por defecto */
+            /* Borde negro más fino para legibilidad */
+            -webkit-text-stroke: 1px var(--spidey-black); 
+            text-shadow: 2px 2px 0px var(--spidey-black);
+        }
+
+        /* --- DECORACIÓN SPIDER-MAN --- */
+        .spidey-web-corner {
+            position: fixed; top: 0; right: 0;
+            width: 200px; height: 200px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100 0 L0 0 Q50 50 100 100 Z' fill='none'/%3E%3Cpath d='M100 0 L0 0' stroke='%23ffffff' stroke-width='2' opacity='0.3'/%3E%3Cpath d='M100 0 L20 0' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M100 0 L0 20' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M100 0 L10 80' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M100 0 L80 10' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M100 0 L50 50' stroke='%23ffffff' stroke-width='2' opacity='0.3'/%3E%3Ccircle cx='100' cy='0' r='20' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='100' cy='0' r='40' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='100' cy='0' r='60' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='100' cy='0' r='80' fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E");
+            background-size: contain; background-repeat: no-repeat; background-position: top right;
+            z-index: -1; /* AL FONDO */
+            pointer-events: none; opacity: 0.8;
+        }
+
+        .spidey-hanging {
+            position: fixed; top: -50px; left: 10px;
+            width: 150px; /* Ajusta el tamaño si tu PNG es más grande */
+            height: 250px;
+            
+            /* --- AQUÍ VA TU IMAGEN DE SPIDERMAN COLGANDO (PNG) --- */
+            background-image: url('spiderman_colgando.png'); 
+            
+            background-size: contain; background-repeat: no-repeat;
+            z-index: 91; pointer-events: none;
+            animation: swingSpidey 4s ease-in-out infinite alternate;
+            transform-origin: top center;
+        }
+        @keyframes swingSpidey { 0% { transform: rotate(5deg); } 100% { transform: rotate(-5deg); } }
+
+        /* --- 1. FONDO NUEVO: DEGRADADO TRAJE SPIDERMAN CON TEXTURA --- */
+        .webs-bg { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: -10; 
+            pointer-events: none; overflow: hidden; 
+            /* Degradado de Rojo a Azul (Estilo Traje) */
+            background: linear-gradient(to bottom, #E23636 0%, #B01E1E 40%, #012E5F 100%);
+            /* Cuadrícula sutil encima para dar textura */
+            background-image: 
+                linear-gradient(to bottom, #E23636 0%, #B01E1E 40%, #012E5F 100%),
+                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            background-blend-mode: normal, overlay, overlay;
+        }
+        
+        .floating-web { 
+            position: absolute; opacity: 0.3; /* Ajusta opacidad si quieres que se vean más */
+            
+            /* --- AQUÍ VA TU IMAGEN DE TELARAÑA DE FONDO (PNG) --- */
+            background-image: url('telarana_fondo.png');
+            
+            background-size: contain; background-repeat: no-repeat;
+            animation: floatWebs 20s linear infinite; 
+        }
+        .w1 { width: 120px; height: 120px; top: 10%; left: -10%; animation-duration: 25s; }
+        .w2 { width: 180px; height: 180px; top: 40%; left: -20%; animation-duration: 35s; animation-delay: 5s; }
+        .w3 { width: 100px; height: 100px; top: 70%; left: -15%; animation-duration: 30s; animation-delay: 2s; }
+        
+        /* Arañita subiendo (blanca para contraste) */
+        .mini-spider {
+            position: absolute; width: 50px; height: 50px; bottom: -50px; right: 10%;
+            
+            /* --- AQUÍ VA TU IMAGEN DE ARAÑA REALISTA (PNG) --- */
+            background-image: url('arana_realista.png');
+            
+            background-size: contain; background-repeat: no-repeat;
+            animation: crawlUp 15s linear infinite; opacity: 0.8;
+        }
+        @keyframes floatWebs { 0% { transform: translateX(0) rotate(0deg); } 100% { transform: translateX(120vw) rotate(180deg); } }
+        @keyframes crawlUp { 0% { bottom: -50px; } 100% { bottom: 110vh; } }
+
+        /* --- 1.5 IMÁGENES FLOTANTES --- */
+        .floating-images-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 5; 
+            pointer-events: none; 
+            overflow: hidden;
+        }
+        
+        /* --- PRELOADER --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--spidey-dark-blue); z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
+        #preloader.oculto { opacity: 0; pointer-events: none; }
+        .spider-loader { font-size: 4.5rem; animation: latido 1s infinite; margin-bottom: 15px; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5)); }
+        .texto-loader { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: white; letter-spacing: 2px; text-shadow: 2px 2px 0 var(--spidey-black); }
+        @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+        /* --- REPRODUCTOR DE MÚSICA FLOTANTE --- */
+        #btn-musica {
+            position: fixed; bottom: 20px; left: 20px; width: 55px; height: 55px;
+            background: var(--spidey-red); border: 2px solid var(--spidey-black); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; z-index: 9990;
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: transform 0.3s;
+        }
+        #btn-musica:hover { transform: scale(1.1); }
+        #btn-musica i { font-size: 1.6rem; color: white; }
+        .girar { animation: girarDisco 4s linear infinite; }
+        @keyframes girarDisco { 100% { transform: rotate(360deg); } }
+
+        /* --- BOTÓN AGREGAR AL CALENDARIO --- */
+        .btn-calendar {
+            display: inline-block; background: var(--dorado); color: var(--spidey-black);
+            padding: 8px 20px; border-radius: 5px; font-family: 'Bebas Neue', sans-serif;
+            text-decoration: none; font-size: 1.2rem; margin-top: 10px; border: 2px solid var(--spidey-black);
+            transition: transform 0.2s; letter-spacing: 1px; box-shadow: 3px 3px 0 var(--spidey-black);
+        }
+        .btn-calendar:hover { transform: scale(1.05); background: #FFF05A; }
+
+        .float-img {
+            position: absolute;
+            width: 150px; 
+            opacity: 0.95; 
+            filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
+            transition: transform 0.3s ease;
+        }
+        
+        /* Posiciones ajustadas para celulares */
+        @media (max-width: 600px) {
+            .float-img { width: 80px !important; } 
+        }
+        
+        /* POSICIONES ORIGINALES (Menos al borde) */
+        .pos-1 { top: 10%; left: -10px; width: 120px; transform: rotate(10deg); }
+        .pos-2 { top: 21%; right: -10px; width: 140px; transform: rotate(-15deg); }
+        .pos-3 { top: 35%; left: 0px; width: 100px; transform: rotate(5deg); }
+        .pos-4 { top: 48%; right: 0px; width: 130px; transform: rotate(-10deg); }
+        .pos-5 { top: 59%; left: -5px; width: 150px; transform: rotate(20deg); }
+        .pos-6 { top: 71%; right: -5px; width: 120px; transform: rotate(-5deg); }
+        .pos-7 { top: 86%; left: 0px; width: 110px; transform: rotate(15deg); }
+        .pos-8 { top: 95%; right: 0px; width: 130px; transform: rotate(-10deg); }
+
+        /* --- SOBRE --- */
+        #envelope-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--spidey-blue); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 1s ease; flex-direction: column; }
+        .envelope-container { cursor: pointer; position: relative; transition: transform 0.3s; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .envelope-container:hover { transform: scale(1.05); }
+        .envelope { width: 300px; height: 200px; background: #ddd; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .envelope .front { position: absolute; width: 0; height: 0; z-index: 3; }
+        .envelope .flap { border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 110px solid #ff5252; top: 0; left: 0; transform-origin: top; transition: transform 0.6s 0.4s; }
+        .envelope .pocket { border-left: 150px solid var(--spidey-red); border-right: 150px solid var(--spidey-red); border-bottom: 100px solid #c02e2e; bottom: 0; left: 0; z-index: 4; }
+        .envelope .letter { position: absolute; top: 10px; left: 10px; width: 280px; height: 180px; background: white; z-index: 2; transition: transform 0.6s 1s; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; color: var(--texto); font-size: 1.5rem; border: 2px solid var(--spidey-blue); }
+        .envelope .seal { position: absolute; top: 80px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: var(--spidey-black); border-radius: 50%; z-index: 5; border: 2px solid white; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; transition: opacity 0.4s; }
+        .tap-text { color: white; margin-top: 25px; animation: bounce 2s infinite; font-weight: bold; font-size: 1.2rem; width: 100%; text-align: center; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+        .envelope-container.open-it .flap { transform: rotateX(180deg); z-index: 1; }
+        .envelope-container.open-it .seal { opacity: 0; }
+        .envelope-container.open-it .letter { transform: translateY(-120px); z-index: 5; }
+
+        /* --- 2. VINILO MUSICAL --- */
+        .music-btn { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: var(--spidey-black); border: 2px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 100; cursor: pointer; background-image: repeating-radial-gradient(#111, #111 5px, #333 6px); animation: spin 3s linear infinite; display: flex; justify-content: center; align-items: center; }
+        .music-btn.paused { animation-play-state: paused; }
+        .vinyl-center { width: 20px; height: 20px; background: var(--spidey-red); border-radius: 50%; border: 2px solid white; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- 3. HERO --- */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-top: 50px; padding-bottom: 50px; }
+        .welcome-cloud { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 20px; 
+            position: relative; max-width: 80%; 
+            box-shadow: 8px 8px 0px var(--spidey-black); 
+            margin-bottom: 30px; 
+            border: 3px solid var(--spidey-black); 
+        }
+        .welcome-text { margin: 0; font-style: italic; color: var(--spidey-dark-blue); font-weight: bold; font-size: 1.2rem; line-height: 1.5; }
+        .star { position: absolute; font-size: 1.5rem; animation: twinkle 1.5s infinite; color: var(--dorado); }
+        .s1 { top: -15px; left: 10px; } .s2 { bottom: -15px; right: 10px; animation-delay: 0.5s; }
+        @keyframes twinkle { 0%, 100% { opacity: 1; scale: 1; } 50% { opacity: 0.5; scale: 0.8; } }
+        
+        .badge { background: var(--spidey-blue); padding: 5px 20px; border-radius: 20px; display: inline-block; font-weight: bold; color: #fff; border: 2px solid var(--spidey-black); }
+        
+        .scroll-hint { margin-top: 40px; color: white; animation: bounce 2s infinite; text-shadow: 2px 2px 0 var(--spidey-black); }
+        .scroll-hint p { font-size: 1.2rem; margin-bottom: 5px; font-weight: bold; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+        .arrow { font-size: 2.5rem; }
+        @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+
+        /* --- 3.5 INVITACIÓN FORMAL --- */
+        .invite-content { 
+            max-width: 700px; margin: 0 auto 30px auto; 
+            padding: 40px; 
+            border: 3px solid var(--spidey-black); 
+            border-radius: 15px; 
+            background: #fff;
+            box-shadow: 10px 10px 0px var(--spidey-dark-blue); 
+            position: relative;
+            width: 90%;
+        }
+        .invite-content h2 { font-family: 'Bebas Neue', sans-serif; color: var(--spidey-red); font-size: 2.5rem; margin-bottom: 20px; margin-top: 0; letter-spacing: 2px; -webkit-text-stroke: 1px var(--spidey-black); text-shadow: 2px 2px 0 var(--spidey-black); }
+        .invite-text { font-family: 'Quicksand', sans-serif; font-size: 1.2rem; line-height: 1.8; color: var(--texto); margin: 0; }
+        .invite-text strong { color: var(--spidey-blue); font-size: 1.3rem; }
+        .invite-content::before { content: '🕸️'; position: absolute; top: 10px; left: 10px; font-size: 1.5rem; }
+        .invite-content::after { content: '🕷️'; position: absolute; bottom: 10px; right: 10px; font-size: 1.5rem; }
+
+        /* --- 4. HISTORIA (TIMELINE) --- */
+        .story-section { padding: 40px 20px; }
+        .timeline { position: relative; max-width: 600px; margin: 0 auto; }
+        /* Línea ahora es azul para resaltar sobre rojo */
+        .timeline-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 4px; background-image: linear-gradient(to bottom, #fff 50%, transparent 50%); background-size: 4px 20px; z-index: 1; }
+        .timeline-item { position: relative; padding-left: 60px; margin-bottom: 80px; }
+        .timeline-icon { position: absolute; left: 0; top: 0; width: 44px; height: 44px; background: #fff; border: 3px solid var(--spidey-black); border-radius: 50%; z-index: 2; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: 0.5s; box-shadow: 3px 3px 0 var(--spidey-blue); }
+        .timeline-icon.active { border-color: var(--spidey-red); transform: scale(1.2); background: #fff; }
+        
+        .timeline-item .content { 
+            background: white; padding: 25px; border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2); position: relative;
+            border: 2px solid #333; margin-top: 15px;
+        }
+        .timeline-item .content h2 {
+            color: var(--spidey-blue); font-size: 1.5rem; margin-top: 0; margin-bottom: 10px;
+            border-bottom: 2px dashed var(--spidey-red); padding-bottom: 10px; display: inline-block;
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; -webkit-text-stroke: 0px; text-shadow: none;
+        }
+        .timeline-item .content p { text-align: left; line-height: 1.6; margin-bottom: 0; font-family: 'Quicksand', sans-serif; font-size: 0.95rem; font-weight: bold;}
+
+        .special-act .content {
+            background: #fff;
+            border: 3px solid var(--dorado);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+        .special-act .content h2 { color: #d4af37; border-bottom-color: var(--dorado); -webkit-text-stroke: 0.5px black; }
+
+        .special-heaven .content {
+            background: #fff;
+            border: 3px solid #A9D6E5;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 5px 5px 10px rgba(0,0,0,0.3); margin-bottom: 20px; transition: transform 0.3s; border: 1px solid #ccc; transform: rotate(-2deg); }
+        
+        /* FOTOS VERTICALES 3024x4032 */
+        .photo { 
+            width: 100%; 
+            aspect-ratio: 3024 / 4032; 
+            background-color: #eee; background-size: cover; background-position: center; border-radius: 2px; border: 2px solid var(--spidey-black); 
+        }
+
+        .caption { font-family: 'Bebas Neue', sans-serif; text-align: center; margin-top: 10px; color: var(--spidey-black); letter-spacing: 1px; font-size: 1.2rem; }
+        
+        .special-act .timeline-icon { border-color: var(--dorado); background: #fffbe6; }
+        .special-border { border: 4px solid var(--dorado); }
+        .special-heaven .timeline-icon { border-color: #A9D6E5; background: #f0faff; }
+        .heaven-border { border: 4px solid #fff; box-shadow: 0 0 20px rgba(169, 214, 229, 0.6); position: relative; overflow: hidden; }
+        .quote { font-style: italic; background: rgba(226, 54, 54, 0.05); padding: 15px; border-radius: 10px; border-left: 3px solid var(--spidey-red); margin-top: 15px; font-size: 0.9rem; line-height: 1.5; font-family: 'Quicksand', sans-serif; font-weight: normal;}
+
+        /* --- 5. FUN FACTS --- */
+        .fun-facts { text-align: center; padding: 40px 20px; background: transparent; }
+        .facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: 20px auto; }
+        .fact-card { background: white; padding: 15px; border-radius: 15px; box-shadow: 5px 5px 0px var(--spidey-blue); text-align: center; border: 2px solid var(--spidey-black); font-family: 'Quicksand', sans-serif; font-weight: bold;}
+        .fact-icon { font-size: 2rem; margin-bottom: 5px; }
+
+        /* --- 6. CARRUSEL --- */
+        .moments-carousel { padding: 40px 20px; background-color: transparent; text-align: center; overflow: hidden; }
+        .swiper { width: 280px; height: 380px; margin-top: 20px; }
+        .swiper-slide { border-radius: 18px; background: #fff; border: 5px solid var(--spidey-black); box-shadow: 0 10px 20px rgba(0,0,0,0.3); overflow: hidden; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- 8. TICKET VIP SPIDER-VERSE --- */
+        .rsvp-section { padding: 60px 20px; text-align: center; background: transparent; }
+        .ticket-vip { 
+            max-width: 350px; margin: 0 auto; background: white; 
+            border-radius: 10px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            position: relative; 
+            border: 3px solid var(--spidey-black); 
+        }
+        .ticket-header { background: var(--spidey-red); padding: 15px; color: white; border-bottom: 3px dashed var(--spidey-black); }
+        .ticket-header h3 { color: white; margin: 0; font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 2px; text-shadow: 2px 2px 0 var(--spidey-black); }
+        /* Trama de fondo estilo cómic para el ticket */
+        .ticket-body { padding: 20px; background-color: #ffffff; background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 10px 10px; }
+        .ticket-info p { margin: 10px 0; font-size: 0.95rem; font-weight: bold; color: var(--spidey-black); font-family: 'Quicksand', sans-serif;}
+        .ticket-actions { margin-top: 20px; border-top: 3px solid var(--spidey-black); padding-top: 15px; }
+        /* BOTONES CENTRADOS */
+        .btn-ticket { 
+            display: block; width: 90%; 
+            margin: 10px auto; 
+            background: var(--spidey-blue); color: white; 
+            padding: 12px; text-decoration: none; font-weight: bold; text-align: center;
+            border-radius: 5px; text-transform: uppercase; font-size: 1rem; transition: 0.2s; 
+            border: 2px solid var(--spidey-black); 
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px;
+        }
+        .btn-ticket:hover { background: var(--spidey-dark-blue); transform: scale(1.02); }
+        .ticket-footer { background: var(--spidey-black); padding: 10px; font-family: monospace; color: white; }
+        .barcode { font-family: 'Libre Barcode 39', cursive; font-size: 1.5rem; letter-spacing: 3px; }
+        #timer { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--spidey-red); margin: 15px 0; background: #fff; padding: 5px; border-radius: 5px; border: 2px solid var(--spidey-black); }
+        .btn-small { display: inline-block; padding: 8px 15px; font-size: 0.9rem; text-decoration: none; border-radius: 20px; margin: 0 5px; color: white; font-weight: bold; border: 2px solid var(--spidey-black); font-family: 'Quicksand', sans-serif;}
+        .map { background: var(--spidey-red); } .waze { background: var(--spidey-blue); }
+
+        /* Caja de Regalos */
+        .gift-info-box { background: #fff; border: 3px solid var(--spidey-blue); border-radius: 15px; padding: 20px; max-width: 400px; margin: 0 auto; text-align: left; box-shadow: 5px 5px 0 var(--spidey-red); font-family: 'Quicksand', sans-serif;}
+        .gift-info-box h3 { margin-top: 0; color: var(--spidey-red); font-family: 'Bebas Neue', sans-serif; text-shadow: 1px 1px 0 black; letter-spacing: 1px; font-size: 1.5rem; }
+
+        /* --- 9. GALERÍA --- */
+        .gallery-section { padding: 40px 20px; background: transparent; text-align: center; font-family: 'Quicksand', sans-serif;}
+        .gallery-box { background: #fff; border: 3px dashed var(--spidey-red); border-radius: 20px; padding: 30px; max-width: 500px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .btn-gallery { background: var(--spidey-red); color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 15px; box-shadow: 4px 4px 0 var(--spidey-black); border: 2px solid var(--spidey-black); font-family: 'Quicksand', sans-serif;}
+
+        .floating-btn { position: fixed; bottom: 90px; right: 20px; z-index: 90; transform: translateY(200px); transition: transform 0.4s; opacity: 0; pointer-events: none; }
+        .floating-btn.visible { transform: translateY(0); opacity: 1; pointer-events: all; }
+        .floating-btn a { background: #25D366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 20px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 5px; border: 2px solid white; font-family: 'Quicksand', sans-serif;}
+
+        /* --- FOOTER ARTEENLINK (COMERCIAL) --- */
+        .footer-comercial { background-color: #FAF6F0; padding: 60px 20px; text-align: center; font-family: 'Poppins', sans-serif; color: #0A192F; border-top: 4px solid var(--spidey-red);}
+        .footer-comercial h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #0A192F; margin-bottom: 20px; font-weight: 600; text-shadow: none; -webkit-text-stroke: 0;}
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .social-link { width: 40px; height: 40px; background: rgba(0,0,0,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #E23636; transition: all 0.3s ease; }
+        .social-link:hover { background: #E23636; color: white; transform: translateY(-3px); }
+        .creditos { font-size: 0.8rem; color: #666; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 15px; max-width: 300px; margin: 0 auto; text-shadow: none; -webkit-text-stroke: 0; font-family: 'Poppins', sans-serif;}
+        .creditos a { color: var(--spidey-red); font-weight: 600; text-decoration: none;}
+
+        /* RESPONSIVE */
+        @media (min-width: 600px) {
+            .timeline-line { left: 50%; margin-left: -2px; }
+            .timeline-item { width: 45%; margin-left: 0; padding-left: 0; }
+            .timeline-item:nth-child(odd) { margin-left: 55%; }
+            .timeline-item:nth-child(even) { margin-left: 0; text-align: right; }
+            .timeline-icon { left: auto; right: -66px; }
+            .timeline-item:nth-child(odd) .timeline-icon { left: -66px; right: auto; }
+        }

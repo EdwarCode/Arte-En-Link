@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos | Mis 40 Años VIP</title>
+
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- FONDO GLOBAL FIJO (Medianoche + Ruido Texturizado) -->
+    <div class="bg-global">
+        <div class="bg-ruido"></div>
+    </div>
+
+    <!-- POLVO DE ORO ANIMADO -->
+    <div class="particulas-container">
+        <div class="particula"></div><div class="particula"></div>
+        <div class="particula"></div><div class="particula"></div>
+        <div class="particula"></div><div class="particula"></div>
+        <div class="particula"></div><div class="particula"></div>
+        <div class="particula"></div><div class="particula"></div>
+    </div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-fill ph-wine loader-copas"></i>
+        <div style="font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-oro); letter-spacing: 3px;">Carlos</div>
+        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-texto-secundario); margin-top: 5px;">Preparando detalles...</div>
+    </div>
+
+    <!-- PORTADA (HERO) -->
+    <header class="hero">
+        <!-- ==============================================================
+             AQUÍ PONES EL ENLACE DE TU FOTO DE FONDO (Reemplaza el src="")
+             ============================================================== -->
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=1080" alt="Fondo Cumpleaños VIP">
+            <div class="hero-fade-bottom"></div>
+        </div>
+
+        <div class="hero-content fade-up visible">
+            <div class="hero-edad">Llegaron los 40</div>
+            <h1 class="hero-nombre">Carlos</h1>
+            <div class="hero-fecha">Sábado, 28 de Octubre</div>
+        </div>
+    </header>
+
+    <!-- MENSAJE -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="glass-card mensaje-intro">
+                <i class="ph-fill ph-quotes"></i>
+                Hay momentos en la vida que merecen ser celebrados por todo lo alto, y llegar a esta etapa es uno de ellos. Me encantaría que me acompañaras a disfrutar de una noche inolvidable llena de buenos amigos, risas y excelentes recuerdos.
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">El Gran Día</h2>
+            <div class="contador-grid">
+                <div class="glass-card contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="glass-card contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="glass-card contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="glass-card contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="glass-card ubicacion-card">
+                <div class="ubicacion-icono">
+                    <i class="ph-fill ph-map-pin"></i>
+                </div>
+                <h3 class="ubicacion-titulo">La Recepción</h3>
+                <p class="ubicacion-texto">
+                    <b>Salón "El Dorado VIP"</b><br>
+                    Av. Paseo de la Reforma 123, Ciudad de México.<br>
+                    A partir de las 20:00 Hrs.
+                </p>
+                <div class="botones-mapa">
+                    <a href="#" target="_blank" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-google-logo"></i> Google Maps</a>
+                    <a href="#" target="_blank" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-navigation-arrow"></i> Waze</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIRMACIÓN SIMPLE (WHATSAPP) -->
+    <div class="contenedor fade-up delay-1">
+        <section class="glass-card rsvp-section">
+            <h2>Confirmar Asistencia</h2>
+            <p>Por favor, confírmame tu asistencia antes del 15 de Octubre para contemplarte en la reservación.</p>
+            
+            <a href="https://wa.me/520000000000?text=¡Hola%20Carlos!%20Confirmo%20mi%20asistencia%20a%20tu%20cumpleaños.%20¡Ahí%20nos%20vemos!" target="_blank" class="btn-oro" style="width: 100%; max-width: 300px;">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar por WA
+            </a>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        Invitación digital diseñada por <a href="#" target="_blank">ArteEnLink</a>.
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

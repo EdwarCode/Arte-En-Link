@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Baby Shower | Leonardo (Premium VIP)</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Iconos y Confeti -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- FONDO VIVO CON LUCES Y PARTÍCULAS -->
+    <div class="bg-luces">
+        <div class="bg-luces-inner">
+            <div class="luz luz-1"></div>
+            <div class="luz luz-2"></div>
+            <div class="particulas-container" id="particulas">
+                <!-- Se llenan con JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO INVISIBLE -->
+    <audio id="musicaFondo" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PRELOADER MÁGICO VIP (CARTA) -->
+    <div id="preloader">
+        <div class="sobre-wrapper" onclick="abrirInvitacion()">
+            <div class="sobre-cuerpo"></div>
+            <div class="sobre-solapa"></div>
+            <div class="sobre-sello">
+                <div class="sobre-sello-inner">
+                    <span class="sobre-sello-letra">L</span>
+                </div>
+            </div>
+        </div>
+        <div class="instruccion-abrir">Toca el sello para abrir</div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL (MOBILE FIRST / DESKTOP ADAPTATIVE) -->
+    <div class="app-wrapper">
+        
+        <!-- BOTÓN MÚSICA FLOTANTE -->
+        <button class="btn-musica" id="btnMusica" onclick="toggleMusica()">
+            <i class="ph-fill ph-speaker-slash"></i>
+        </button>
+
+        <!-- PORTADA -->
+        <header class="portada">
+            <div class="marco-foto fade-up visible">
+                <div class="imagen-hero">
+                    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=400&auto=format&fit=crop" alt="Baby Shower Leonardo">
+                </div>
+            </div>
+            <div class="portada-titulos fade-up delay-1 visible">
+                <div class="texto-evento">Baby Shower de</div>
+                <h1 class="nombre-bebe">Leonardo</h1>
+                <div class="fecha-hero">Sábado 15 de Noviembre</div>
+            </div>
+        </header>
+
+        <!-- MENSAJE -->
+        <section class="seccion-padding" style="padding-top: 10px;">
+            <div class="contenedor fade-up">
+                <div class="divisor-icono"><i class="ph-fill ph-sparkle"></i></div>
+                <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 30px;">
+                    "Tu presencia en este día significa el mundo para nosotros. Estamos preparando cada detalle con muchísimo amor y nos encantaría que formes parte de esta hermosa celebración en honor a la próxima llegada de Leonardo."
+                </p>
+                <h3 style="font-family: var(--fuente-textos); font-size: 0.8rem; text-transform: uppercase; color: var(--color-acento-teddy); margin-bottom: 5px;">Con amor, sus papás:</h3>
+                <p style="font-family: var(--fuente-titulos); font-size: 1.5rem; color: var(--color-dorado);">Sofía & Alejandro</p>
+            </div>
+        </section>
+
+        <!-- FRASE BÍBLICA Y PADRINOS -->
+        <section class="seccion-padding" style="padding-top: 0;">
+            <div class="contenedor">
+                <!-- Frase -->
+                <div class="fade-up delay-1" style="position: relative; margin-bottom: 40px; padding: 20px 10px;">
+                    <i class="ph-fill ph-quotes" style="font-size: 4rem; color: var(--color-teddy-claro); position: absolute; top: -10px; left: 50%; transform: translateX(-50%); z-index: -1;"></i>
+                    <p style="font-family: var(--fuente-titulos); font-size: 1.25rem; font-style: italic; color: var(--color-texto); line-height: 1.8;">
+                        "Desde antes de formarte en el vientre te conocí, y antes de que nacieras te consagré. Toda buena dádiva y todo don perfecto desciende de lo alto."
+                    </p>
+                    <p style="font-size: 0.8rem; color: var(--color-acento-teddy); margin-top: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Jeremías 1:5 / Santiago 1:17</p>
+                </div>
+
+                <!-- Padrinos -->
+                <div class="fade-up delay-2">
+                    <div class="divisor-icono" style="margin-bottom: 20px;"><i class="ph-fill ph-hands-praying"></i></div>
+                    <h3 style="font-family: var(--fuente-textos); font-size: 0.8rem; text-transform: uppercase; color: var(--color-acento-teddy); margin-bottom: 5px;">Con la bendición y guía de sus padrinos:</h3>
+                    <p style="font-family: var(--fuente-titulos); font-size: 1.5rem; color: var(--color-dorado);">David Gómez & Mariana Ríos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CUENTA REGRESIVA -->
+        <section class="seccion-padding fondo-alterno">
+            <div class="contenedor fade-up">
+                <h2 class="titulo-seccion">Faltan solo...</h2>
+                <div class="contador-grid">
+                    <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                    <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                    <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                    <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+                </div>
+                
+                <button class="btn-calendario" style="margin-top: 35px;" onclick="mostrarToast('En la versión real se agendará en tu Calendario.')">
+                    <i class="ph ph-calendar-plus"></i> Agendar en mi Calendario
+                </button>
+            </div>
+        </section>
+
+        <!-- ITINERARIO EN CASCADA -->
+        <section class="seccion-padding">
+            <div class="contenedor">
+                <h2 class="titulo-seccion fade-up">El Gran Día</h2>
+                <div class="divisor-icono fade-up delay-1"><i class="ph-fill ph-clock"></i></div>
+                <p class="fade-up delay-2" style="margin-bottom: 40px;">Conoce los momentos especiales que hemos preparado para celebrar juntos.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item fade-up delay-1">
+                        <div class="timeline-icono"><i class="ph-fill ph-cheers"></i></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-hora">4:00 PM</div>
+                            <div class="timeline-texto">Recepción y Bienvenida</div>
+                            <div class="timeline-desc">Llegada de invitados, toma de fotografías y deliciosos cocteles de bienvenida.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-up delay-2">
+                        <div class="timeline-icono"><i class="ph-fill ph-puzzle-piece"></i></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-hora">5:00 PM</div>
+                            <div class="timeline-texto">Dinámicas y Juegos</div>
+                            <div class="timeline-desc">Momentos de mucha diversión, premios y risas garantizadas para todos.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-up delay-3">
+                        <div class="timeline-icono"><i class="ph-fill ph-fork-knife"></i></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-hora">6:30 PM</div>
+                            <div class="timeline-texto">Cena Familiar</div>
+                            <div class="timeline-desc">Compartiremos un delicioso banquete en compañía de nuestros seres queridos.</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-up delay-3" style="transition-delay: 600ms;">
+                        <div class="timeline-icono"><i class="ph-fill ph-cake"></i></div>
+                        <div class="timeline-contenido">
+                            <div class="timeline-hora">8:00 PM</div>
+                        <div class="timeline-texto">Pastel y Brindis</div>
+                        <div class="timeline-desc">Cortaremos el pastel y daremos un emotivo brindis por la próxima llegada de Leonardo.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERÍA COLLAGE EDITORIAL -->
+        <section class="seccion-padding fondo-alterno" style="padding-bottom: 60px;">
+            <div class="contenedor fade-up">
+                <h2 class="titulo-seccion">Nuestra Dulce Espera</h2>
+                <div class="divisor-icono"><i class="ph-fill ph-camera"></i></div>
+                <p>Un pequeño vistazo a los momentos más mágicos antes de tu llegada.</p>
+                
+                <div class="galeria-collage">
+                    <!-- Agregado fade-up y delays individuales para entrada en cascada -->
+                    <div class="foto-item f-1 fade-up delay-1"><img src="https://images.unsplash.com/photo-1593808544073-827993a4bc4d?q=80&w=600&auto=format&fit=crop" alt="Sesión 1"></div>
+                    <div class="foto-item f-2 fade-up delay-2"><img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?q=80&w=400&auto=format&fit=crop" alt="Sesión 2"></div>
+                    <div class="foto-item f-3 fade-up delay-3"><img src="https://images.unsplash.com/photo-1554520735-0a1429b19e76?q=80&w=400&auto=format&fit=crop" alt="Sesión 3"></div>
+                    <div class="foto-item f-4 fade-up delay-1"><img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=400&auto=format&fit=crop" alt="Sesión 4"></div>
+                    <div class="foto-item f-5 fade-up delay-2"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400&auto=format&fit=crop" alt="Sesión 5"></div>
+                    <div class="foto-item f-6 fade-up delay-3"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Sesión 6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DRESS CODE VIP -->
+        <section class="seccion-padding">
+            <div class="contenedor fade-up">
+                <h2 class="titulo-seccion">Código de Vestimenta</h2>
+                <div class="divisor-icono"><i class="ph-fill ph-t-shirt"></i></div>
+                <p>Nos encantaría que nos acompañes usando tonos neutros o cálidos para armonizar con nuestra celebración.</p>
+                
+                <div class="colores-grid">
+                    <div class="color-swatch" style="background-color: #FAF6F0;" title="Beige"></div>
+                    <div class="color-swatch" style="background-color: #D4A373;" title="Café Claro"></div>
+                    <div class="color-swatch" style="background-color: #8B5E3C;" title="Café Oscuro"></div>
+                    <div class="color-swatch" style="background-color: #FFFFFF;" title="Blanco"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MESA DE REGALOS VIP -->
+        <section class="seccion-padding fondo-alterno">
+            <div class="contenedor fade-up">
+                <h2 class="titulo-seccion">Mesa de Regalos</h2>
+                <div class="divisor-icono"><i class="ph-fill ph-gift"></i></div>
+                <p style="margin-bottom: 30px;">Tu presencia es lo más importante, pero si deseas tener un detalle, te damos algunas opciones:</p>
+                
+                <!-- Amazon -->
+                <div class="regalo-card fade-up">
+                    <div class="regalo-icon"><i class="ph-fill ph-amazon-logo"></i></div>
+                    <h3>Lista en Amazon</h3>
+                    <p style="font-size: 0.85rem; color: #777; margin-bottom: 15px;">Hemos seleccionado algunas cositas online.</p>
+                    <a href="#" target="_blank" style="display: inline-block; background: var(--color-acento-teddy); color: white; padding: 10px 25px; border-radius: 50px; font-weight: 500; font-size: 0.9rem;">Ver Lista</a>
+                </div>
+
+                <!-- Lluvia de Sobres -->
+                <div class="regalo-card fade-up delay-1">
+                    <div class="regalo-icon"><i class="ph-fill ph-envelope-open"></i></div>
+                    <h3>Lluvia de Sobres</h3>
+                    <p style="font-size: 0.85rem; color: #777; margin-bottom: 15px;">Habrá un lindo buzón en la recepción. También puedes realizar una transferencia.</p>
+                    <button style="background: transparent; border: 2px solid var(--color-dorado); color: var(--color-dorado); padding: 10px 25px; border-radius: 50px; cursor: pointer; font-family: var(--fuente-textos); font-weight: 500;" onclick="toggleCuenta()">Ver Datos Bancarios</button>
+                    
+                    <div class="cuenta-bancaria" id="datosCuenta">
+                        <strong>Banco:</strong> BBVA Bancomer<br>
+                        <strong>Nombre:</strong> Sofía Herrera<br>
+                        <strong>CLABE:</strong> <span id="clabeTxt">0123 4567 8910 1112 13</span><br>
+                        <button style="margin-top: 15px; width: 100%; background: white; border: 1px solid var(--color-acento-teddy); padding: 10px; border-radius: 8px; cursor: pointer; font-family: var(--fuente-textos); font-size: 0.85rem; color: var(--color-acento-teddy); display: flex; justify-content: center; align-items: center; gap: 8px;" onclick="copiarCLABE()">
+                        <i class="ph ph-copy"></i> Copiar CLABE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP VIP Y CALENDARIO -->
+    <section class="seccion-padding fondo-alterno" style="padding-bottom: 70px;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Confirma tu Asistencia</h2>
+                <div class="divisor-icono"><i class="ph-fill ph-check-circle"></i></div>
+                <p style="margin-bottom: 25px;">Por favor, ayúdanos a contemplarte llenando este breve formulario.</p>
+                
+                <div class="rsvp-vip-card">
+                    <div class="input-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="rsvpNombre" placeholder="Tu nombre y apellido">
+                    </div>
+                    <div class="rsvp-grid" style="margin-top: 20px;">
+                        <div class="input-group">
+                            <label>Asistencia</label>
+                            <select id="rsvpEstado">
+                                <option value="Sí asisto">Sí, ahí estaré</option>
+                                <option value="No podré asistir">No podré asistir</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Pases Extras</label>
+                            <select id="rsvpPases">
+                                <option value="Voy solo(a)">Voy solo(a)</option>
+                                <option value="+1 Acompañante">+1 Acompañante</option>
+                                <option value="+2 Acompañantes">+2 Acompañantes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-enviar" style="background: #25D366;" onclick="enviarRSVP()">
+                        <i class="ph-fill ph-whatsapp-logo"></i> Confirmar vía WhatsApp
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- Fin .app-wrapper -->
+
+    <!-- TOAST DE NOTIFICACIONES -->
+    <div id="toast" class="toast-notificacion"></div>
+
+    <!-- FOOTER COMERCIAL ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3 style="font-family: var(--fuente-textos); font-size: 1.1rem; margin-bottom: 20px; color: #FFF;">
+                ¿Te gustó esta invitación? <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20me%20encantó%20la%20demo%20VIP%20de%20Baby%20Shower.%20Quiero%20información." target="_blank" style="color: var(--color-dorado); font-weight: 600; text-decoration: none; padding-left: 5px;">Contáctanos</a>
+            </h3>
+
+            <div style="margin-bottom: 20px; margin-top: 10px;">
+                <a href="https://wa.me/520000000000?text=Hola" target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+            <div class="creditos">
+                Diseño Interactivo y de Alta Gama por <br>
+                <a href="#" target="_blank" style="font-family: var(--fuente-titulos); font-size: 1.4rem; color: #FFF; text-decoration: none; display: inline-block; margin-top: 8px; margin-bottom: 8px; letter-spacing: 0.5px; transition: transform 0.3s;" onmouseover="this.style.transform='translate3d(0,-2px,0)'" onmouseout="this.style.transform='translate3d(0,0,0)'">
+                    ArteEn<span style="color: var(--color-dorado); font-style: italic;">Link</span>
+                </a>
+                <br>Inmortalizando tus momentos.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

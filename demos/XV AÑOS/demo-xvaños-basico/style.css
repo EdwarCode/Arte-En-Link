@@ -1,0 +1,128 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (ROSE GOLD MINIMALISTA)
+           ========================================================================== */
+        :root {
+            --color-fondo: #FFFFFF; /* Blanco puro para máxima limpieza */
+            --color-fondo-alt: #FFF5F7; /* Un toque levísimo de rosa para separar secciones */
+            --color-texto: #4A4A4A; /* Gris oscuro para lectura suave, no negro puro */
+            --color-texto-suave: #7A7A7A;
+            
+            /* Tonos Rose Gold / Rosa Princesa */
+            --color-rosa-gold: #D48C9A;
+            --color-rosa-oscuro: #B86B7A;
+            --gradiente-rosa: linear-gradient(135deg, #E8B4BC, #D48C9A);
+            
+            --fuente-nombres: 'Great Vibes', cursive;
+            --fuente-textos: 'Montserrat', sans-serif;
+
+            --espaciado-seccion: 80px 0;
+        }
+
+        /* ==========================================================================
+           2. RESET Y ESTILOS GLOBALES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--fuente-textos); background-color: var(--color-fondo); color: var(--color-texto); line-height: 1.6; font-weight: 300; text-align: center; }
+        
+        h1, h2, h3 { font-weight: 400; }
+        p { font-size: 0.95rem; color: var(--color-texto-suave); margin-bottom: 20px; }
+        a { text-decoration: none; color: inherit; }
+        
+        .contenedor { max-width: 600px; margin: 0 auto; padding: 0 8%; }
+        .seccion-padding { padding: var(--espaciado-seccion); }
+        
+        .divisor-floral { width: 100%; max-width: 150px; margin: 0 auto 30px; display: flex; justify-content: center; align-items: center; gap: 10px; color: var(--color-rosa-gold); }
+        .divisor-floral::before, .divisor-floral::after { content: ''; height: 1px; width: 40px; background-color: var(--color-rosa-gold); opacity: 0.5; }
+        .divisor-floral i { font-size: 1.2rem; }
+
+        /* --- PRELOADER --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-fondo); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
+        #preloader.oculto { opacity: 0; visibility: hidden; }
+        .preloader-inicial { font-family: var(--fuente-nombres); font-size: 5rem; color: var(--color-rosa-gold); animation: latido 1.5s infinite ease-in-out; line-height: 1; margin-bottom: 10px; }
+        .preloader-texto { font-family: var(--fuente-textos); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--color-rosa-oscuro); }
+        @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+        /* Animaciones suaves al hacer scroll */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ==========================================================================
+           3. BOTONES
+           ========================================================================== */
+        .btn-rosa { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--gradiente-rosa); color: white; padding: 15px 35px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.9rem; border-radius: 30px; border: none; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 15px rgba(212, 140, 154, 0.3); text-transform: uppercase; letter-spacing: 1px; width: 100%; max-width: 300px; margin: 0 auto; }
+        .btn-rosa:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 140, 154, 0.4); }
+
+        .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--color-rosa-gold); padding: 12px 25px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.85rem; border-radius: 30px; border: 1px solid var(--color-rosa-gold); cursor: pointer; transition: all 0.3s; }
+        .btn-outline:hover { background: var(--color-rosa-gold); color: white; }
+
+        /* ==========================================================================
+           4. PORTADA PRINCIPAL (HERO)
+           ========================================================================== */
+        .portada { height: 100vh; min-height: 600px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; background-color: #f8f8f8; }
+        
+        .portada-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .portada-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        /* Gradiente para que el texto se lea bien sobre la foto */
+        .portada-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.9) 100%); }
+
+        .portada-contenido { position: relative; z-index: 2; text-align: center; width: 100%; padding: 0 20px; margin-top: 150px; /* Empujamos el texto hacia abajo */ }
+        
+        .texto-mis-xv { font-family: var(--fuente-textos); font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--color-rosa-oscuro); margin-bottom: 10px; font-weight: 500; }
+        
+        .nombre-quinceanera { font-family: var(--fuente-nombres); font-size: 6.5rem; line-height: 1; color: var(--color-rosa-gold); margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.05); }
+        
+        .fecha-portada { font-family: var(--fuente-textos); font-size: 1.1rem; color: var(--color-texto); font-weight: 400; letter-spacing: 2px; }
+
+        /* ==========================================================================
+           5. MENSAJE Y CUENTA REGRESIVA
+           ========================================================================== */
+        .seccion-mensaje { background-color: var(--color-fondo); }
+        .mensaje-texto { font-size: 1.1rem; font-style: italic; line-height: 1.8; color: var(--color-texto); margin-bottom: 40px; }
+
+        .contador-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: nowrap; margin-top: 30px; }
+        .contador-box { flex: 1; max-width: 80px; padding: 15px 0; background: var(--color-fondo-alt); border-radius: 8px; border: 1px solid rgba(212, 140, 154, 0.2); }
+        .contador-numero { font-family: var(--fuente-textos); font-size: 1.8rem; color: var(--color-rosa-oscuro); font-weight: 600; line-height: 1; display: block; }
+        .contador-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-texto-suave); margin-top: 5px; display: block; }
+
+        /* ==========================================================================
+           6. UBICACIONES
+           ========================================================================== */
+        .seccion-ubicacion { background-color: var(--color-fondo-alt); border-top: 1px dashed rgba(212, 140, 154, 0.3); border-bottom: 1px dashed rgba(212, 140, 154, 0.3); }
+        .titulo-seccion { font-family: var(--fuente-nombres); font-size: 3.5rem; color: var(--color-rosa-gold); margin-bottom: 10px; line-height: 1; }
+        
+        .tarjeta-ubicacion { background: var(--color-fondo); padding: 40px 20px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .icono-ubicacion { font-size: 2.5rem; color: var(--color-rosa-gold); margin-bottom: 15px; }
+        .tipo-evento { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-rosa-oscuro); font-weight: 600; margin-bottom: 5px; }
+        .nombre-lugar { font-size: 1.4rem; font-weight: 500; color: var(--color-texto); margin-bottom: 10px; }
+        .hora-evento { font-size: 1.1rem; color: var(--color-texto); font-weight: 400; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; display: inline-block; }
+
+        /* ==========================================================================
+           7. CONFIRMACIÓN (RSVP BÁSICO)
+           ========================================================================== */
+        .seccion-rsvp { background-color: var(--color-fondo); }
+        
+        /* ==========================================================================
+           8. FOOTER COMERCIAL
+           ========================================================================== */
+        .footer-comercial { background-color: var(--color-fondo-alt); padding: 50px 20px; text-align: center; border-top: 1px solid rgba(212, 140, 154, 0.2); }
+        .footer-comercial h3 { font-family: var(--fuente-textos); font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; letter-spacing: 1px; color: var(--color-texto); }
+        
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+        .social-link { width: 45px; height: 45px; background: var(--color-fondo); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--color-rosa-gold); transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid rgba(212, 140, 154, 0.2); }
+        .social-link:hover { background: var(--color-rosa-gold); color: white; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(212, 140, 154, 0.3); }
+        
+        .creditos { font-size: 0.8rem; color: var(--color-texto-suave); border-top: 1px dashed rgba(212, 140, 154, 0.3); padding-top: 20px; max-width: 400px; margin: 0 auto; }
+        .creditos a { color: var(--color-rosa-oscuro); font-weight: 600; text-decoration: underline; }
+
+        /* ==========================================================================
+           9. RESPONSIVO
+           ========================================================================== */
+        @media (max-width: 480px) {
+            .nombre-quinceanera { font-size: 5rem; }
+            .contador-grid { gap: 10px; }
+            .contador-box { padding: 10px 0; }
+            .contador-numero { font-size: 1.5rem; }
+            .titulo-seccion { font-size: 3rem; }
+        }

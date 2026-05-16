@@ -1,0 +1,162 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (TEDDY BEAR)
+           ========================================================================== */
+        :root {
+            --color-fondo: #FAF6F0; 
+            --color-blanco: #FFFFFF;
+            --color-texto: #4A5568; 
+            --color-titulos: #0A192F; 
+            
+            --color-acento-teddy: #D4A373; 
+            --color-teddy-claro: #FEFAE0; 
+            --color-teddy-oscuro: #B58453;
+            --color-bg-seccion: #F3EBE1; /* Un beige un poquito más oscuro para contrastar secciones */
+            
+            --fuente-firma: 'Great Vibes', cursive;
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Poppins', sans-serif;
+
+            --espaciado-seccion: 70px 0;
+            --sombra-tierna: 0 10px 25px rgba(212, 163, 115, 0.12);
+            --radio-borde: 24px;
+        }
+
+        /* ==========================================================================
+           2. BASE Y UTILIDADES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--fuente-textos); background-color: var(--color-fondo); 
+            color: var(--color-texto); line-height: 1.7; font-weight: 300; 
+            overflow-x: hidden; text-align: center;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4 { font-family: var(--fuente-titulos); font-weight: 500; color: var(--color-titulos); }
+        p { font-size: 0.95rem; }
+        a { text-decoration: none; color: inherit; }
+        
+        .contenedor { max-width: 600px; margin: 0 auto; padding: 0 7%; }
+        .seccion-padding { padding: var(--espaciado-seccion); }
+        .fondo-alterno { background-color: var(--color-bg-seccion); border-radius: 40px; margin: 0 15px; }
+
+        .divisor-icono { font-size: 1.8rem; color: var(--color-acento-teddy); margin: 0 auto 25px; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .divisor-icono::before, .divisor-icono::after { content: ''; width: 40px; height: 1px; background-color: var(--color-acento-teddy); opacity: 0.4; }
+        .titulo-seccion { font-size: 2.2rem; margin-bottom: 10px; color: var(--color-titulos); }
+
+        /* Regla Anti-Bugs */
+        .fade-up { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform, opacity; }
+        .fade-up.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        .delay-1 { transition-delay: 150ms; } .delay-2 { transition-delay: 300ms; }
+
+        /* ==========================================================================
+           3. COMPONENTES GLOBALES (Preloader, Música)
+           ========================================================================== */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-fondo); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
+        #preloader.oculto { opacity: 0; visibility: hidden; }
+        .preloader-icono { font-size: 3.5rem; color: var(--color-acento-teddy); animation: latido 2s infinite ease-in-out; margin-bottom: 15px; }
+        .preloader-texto { font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-titulos); font-style: italic; }
+        @keyframes latido { 0%, 100% { transform: translate3d(0, 0, 0); opacity: 1; } 50% { transform: translate3d(0, -6px, 0); opacity: 0.7; } }
+
+        /* Botón de Música Flotante */
+        .btn-musica {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background-color: var(--color-acento-teddy); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            z-index: 1000; cursor: pointer; border: none; box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
+            transition: background-color 0.3s;
+        }
+        .btn-musica.reproduciendo { animation: pulsoSombra 2s infinite; }
+        @keyframes pulsoSombra { 0%, 100% { box-shadow: 0 0 0 0 rgba(212, 163, 115, 0.6); } 50% { box-shadow: 0 0 0 15px rgba(212, 163, 115, 0); } }
+
+        /* ==========================================================================
+           4. PORTADA Y CUENTA REGRESIVA (Básico +)
+           ========================================================================== */
+        .portada { position: relative; padding: 50px 20px 70px; background-color: var(--color-blanco); border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; box-shadow: var(--sombra-tierna); margin-bottom: 30px; }
+        .marco-foto { width: 180px; height: 180px; margin: 0 auto 30px; border-radius: 50%; padding: 8px; border: 2px dashed var(--color-acento-teddy); position: relative; }
+        .imagen-hero { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background-color: var(--color-teddy-claro); }
+        .imagen-hero img { width: 100%; height: 100%; object-fit: cover; }
+        .texto-evento { font-family: var(--fuente-titulos); font-size: 1.3rem; font-style: italic; margin-bottom: 5px; }
+        .nombre-bebe { font-family: var(--fuente-firma); font-size: 5.5rem; line-height: 1; color: var(--color-titulos); margin-bottom: 10px; padding: 10px 0;}
+        .fecha-hero { font-family: var(--fuente-textos); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: var(--color-acento-teddy); font-weight: 500; margin-top: 10px; }
+
+        .contador-grid { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+        .contador-box { background: var(--color-blanco); flex: 1; max-width: 75px; padding: 15px 0; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--radio-borde); box-shadow: var(--sombra-tierna); }
+        .contador-numero { font-family: var(--fuente-titulos); font-size: 1.8rem; color: var(--color-acento-teddy); line-height: 1; }
+        .contador-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: var(--color-texto); font-weight: 500; }
+
+        /* ==========================================================================
+           5. NUEVO: ITINERARIO DEL EVENTO
+           ========================================================================== */
+        .timeline { position: relative; margin-top: 40px; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: rgba(212, 163, 115, 0.3); transform: translateX(-50%); }
+        
+        .timeline-item { position: relative; margin-bottom: 30px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        
+        .timeline-icono { width: 40px; height: 40px; background: var(--color-acento-teddy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; position: absolute; left: 50%; transform: translateX(-50%); z-index: 2; box-shadow: 0 0 0 6px var(--color-fondo); }
+        
+        .timeline-contenido { width: 42%; background: var(--color-blanco); padding: 15px; border-radius: 16px; box-shadow: var(--sombra-tierna); text-align: center; }
+        .timeline-hora { font-weight: 600; color: var(--color-acento-teddy); font-size: 0.85rem; margin-bottom: 5px; }
+        .timeline-texto { font-family: var(--fuente-titulos); font-size: 1.1rem; color: var(--color-titulos); }
+
+        /* ==========================================================================
+           6. NUEVO: GALERÍA DE FOTOS
+           ========================================================================== */
+        .galeria-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
+        .foto-item { border-radius: var(--radio-borde); overflow: hidden; aspect-ratio: 1; box-shadow: var(--sombra-tierna); transition: transform 0.4s; }
+        .foto-item:hover { transform: translate3d(0, -5px, 0); }
+        .foto-item img { width: 100%; height: 100%; object-fit: cover; }
+        .foto-item.destacada { grid-column: span 2; aspect-ratio: 16/9; }
+
+        /* ==========================================================================
+           7. NUEVO: DRESS CODE & MESA DE REGALOS
+           ========================================================================== */
+        /* Dress Code */
+        .colores-grid { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .color-swatch { width: 45px; height: 45px; border-radius: 50%; box-shadow: inset 0 0 0 2px rgba(0,0,0,0.05), var(--sombra-tierna); }
+        
+        /* Mesa de Regalos */
+        .regalo-card { background: var(--color-blanco); padding: 25px 20px; border-radius: var(--radio-borde); box-shadow: var(--sombra-tierna); margin-bottom: 20px; transition: transform 0.3s; }
+        .regalo-card:hover { transform: translate3d(0, -3px, 0); }
+        .regalo-icon { font-size: 2.5rem; color: var(--color-acento-teddy); margin-bottom: 10px; }
+        .regalo-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--color-acento-teddy); padding: 10px 25px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.85rem; border-radius: 50px; border: 2px solid var(--color-acento-teddy); transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; width: 100%; margin-top: 10px;}
+        .btn-outline:hover { background: var(--color-acento-teddy); color: var(--color-blanco); }
+
+        /* Efectivo / Sobre */
+        .cuenta-bancaria { background: var(--color-teddy-claro); padding: 15px; border-radius: 12px; margin-top: 15px; font-size: 0.9rem; text-align: left; border: 1px dashed var(--color-acento-teddy); display: none;}
+        .cuenta-bancaria.visible { display: block; animation: aparecer 0.3s ease; }
+        @keyframes aparecer { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ==========================================================================
+           8. UBICACIÓN Y RSVP
+           ========================================================================== */
+        .ubicacion-card { background: var(--color-blanco); padding: 35px 20px; border-radius: var(--radio-borde); box-shadow: var(--sombra-tierna); position: relative; overflow: hidden; margin-top: 20px;}
+        .ubicacion-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--color-teddy-claro); }
+        .seccion-rsvp { background-color: var(--color-teddy-claro); border-top-left-radius: 40px; border-top-right-radius: 40px; padding-bottom: 60px; margin-top: 40px;}
+        .btn-rsvp { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--color-acento-teddy); color: white; padding: 16px 35px; border-radius: 50px; font-weight: 500; font-size: 0.95rem; text-transform: uppercase; transition: transform 0.3s; box-shadow: 0 8px 20px rgba(212, 163, 115, 0.4); border: none; width: 100%; max-width: 300px; margin-top: 10px; }
+        .btn-rsvp:hover { transform: translate3d(0,-3px,0); background-color: var(--color-teddy-oscuro); }
+
+        /* ==========================================================================
+           9. FOOTER
+           ========================================================================== */
+        .footer-comercial { background-color: var(--color-titulos); color: #FFFFFF; padding: 50px 20px 30px; text-align: center; }
+        
+        .btn-agencia { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--color-acento-teddy); padding: 12px 30px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.95rem; border-radius: 50px; border: 2px solid var(--color-acento-teddy); transition: all 0.3s; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-agencia:hover { background: var(--color-acento-teddy); color: #FFF; transform: translate3d(0,-3px,0); box-shadow: 0 8px 20px rgba(212, 163, 115, 0.3); }
+
+        .social-link { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--color-acento-teddy); margin: 0 5px; display: inline-flex; transition: 0.3s;}
+        .social-link:hover { transform: translate3d(0,-3px,0); background: var(--color-acento-teddy); color: white;}
+        .creditos { font-size: 0.75rem; color: #999; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 20px;}
+        .creditos a { color: var(--color-acento-teddy); }
+
+        @media (max-width: 480px) {
+            .nombre-bebe { font-size: 4.8rem; }
+            .timeline::before { left: 30px; }
+            .timeline-icono { left: 30px; }
+            .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; align-items: flex-end; }
+            .timeline-contenido { width: calc(100% - 70px); text-align: left; }
+        }

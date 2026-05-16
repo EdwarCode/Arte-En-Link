@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caleb Fest - 1er Añito</title>
+    
+    <!-- Fuentes y Librerías Externas -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Bangers&family=Bebas+Neue&family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="spider-loader">🕷️</div>
+        <div class="texto-loader">Cargando Aventura...</div>
+    </div>
+
+    <!-- AUDIO DE FONDO -->
+    <audio id="musica-fondo" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_febc508520.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE -->
+    <div id="btn-musica" title="Reproducir / Pausar Música">
+        <i class="ph-fill ph-music-notes girar"></i>
+    </div>
+
+    <div class="spidey-web-corner"></div>
+    <div class="spidey-hanging"></div>
+    
+    <!-- CONTENEDOR DE IMÁGENES FLOTANTES -->
+    <div class="floating-images-container">
+        <img src="pngwing.com (4).png" class="float-img pos-1" data-aos="fade-right" data-aos-duration="2000">
+        <img src="pngwing.com (5).png" class="float-img pos-2" data-aos="fade-left" data-aos-duration="2200">
+        <img src="pngwing.com (6).png" class="float-img pos-3" data-aos="zoom-in" data-aos-duration="2400">
+        <img src="pngwing.com (7).png" class="float-img pos-4" data-aos="flip-right" data-aos-duration="2600">
+        <img src="pngwing.com.png" class="float-img pos-5" data-aos="fade-up-right" data-aos-duration="2800">
+        <img src="pngwing.com (11).png" class="float-img pos-6" data-aos="fade-up-left" data-aos-duration="3000">
+        <img src="pngwing.com (12).png" class="float-img pos-7" data-aos="zoom-in-up" data-aos-duration="3200">
+        <img src="pngwing.com (14).png" class="float-img pos-8" data-aos="zoom-in-left" data-aos-duration="3400">
+    </div>
+
+    <!-- FONDO DE TELARAÑAS FLOTANTES -->
+    <div class="webs-bg">
+        <div class="floating-web w1"></div>
+        <div class="floating-web w2"></div>
+        <div class="floating-web w3"></div>
+        <div class="mini-spider"></div>
+    </div>
+
+    <div id="envelope-overlay">
+        <div class="envelope-container" onclick="openEnvelope()">
+            <div class="envelope">
+                <div class="front flap"></div>
+                <div class="front pocket"></div>
+                <div class="letter">
+                    <div class="letter-corner"></div>
+                    <p>¡Hola!</p>
+                </div>
+                <div class="seal"><span>Caleb</span></div>
+            </div>
+            <p class="tap-text">Toca el sobre para abrir 👆</p>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="welcome-cloud" data-aos="zoom-in" data-aos-duration="1500">
+            <span class="star s1">✨</span><span class="star s2">✨</span>
+            <p class="welcome-text">"Fuiste seleccionado para ser parte de la aventura de mi primer año"</p>
+        </div>
+
+        <div class="invite-content" data-aos="fade-up">
+            <h2>¡Estás Invitado!</h2>
+            <p class="invite-text">
+                Con inmensa alegría y gratitud, queremos invitarte a celebrar el<br>
+                <strong>Primer Añito de Caleb Eduardo</strong>.<br><br>
+                Ha sido un año lleno de amor, música y aventuras, y no imaginamos<br>
+                mejor manera de festejarlo que rodeados de las personas que más queremos.<br>
+                ¡Tu presencia hará este día inolvidable!
+            </p>
+        </div>
+
+        <div class="hero-title" data-aos="fade-up">
+            <h1>Caleb Eduardo</h1>
+            <div class="badge">Díaz Vázquez</div>
+        </div>
+        <div class="scroll-hint">
+            <p>Conoce mi historia</p>
+            <div class="arrow">↓</div>
+        </div>
+    </section>
+
+    <section class="story-section">
+        <div class="timeline">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">🌙</div>
+                <div class="polaroid rotate-left">
+                    <div class="photo" style="background-image: url('CALEB-ULTRASONIDO.jpg');"></div>
+                    <div class="caption">El Sueño</div>
+                </div>
+                <div class="content">
+                    <h2>1. La Dulce Espera</h2>
+                    <p>Mucho antes de ver tu rostro, ya te amábamos. Todo comenzó con una pequeña prueba positiva y un corazón latiendo fuerte en el monitor que se convirtió en nuestra primera melodía favorita. Papá y Mamá pasaban las noches imaginando cómo serías, preparando tu nido y prometiéndote que, aunque no sabíamos mucho de ser padres, seríamos expertos en amarte.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-icon">👶</div>
+                <div class="polaroid rotate-right">
+                    <div class="photo" style="background-image: url('CALEB-NACIMIENTO.jpeg');"></div>
+                    <div class="caption">¡Hola Mundo!</div>
+                </div>
+                <div class="content">
+                    <h2>2. El Milagro</h2>
+                    <p>Y entonces, el tiempo se detuvo. El 28 de enero de 2025, escuchamos tu llanto por primera vez y supimos que la vida acababa de cambiar para siempre. Al ver tus ojos, descubrimos un amor que no cabe en el pecho. Ese día no solo naciste tú, Caleb; ese día nacimos nosotros como familia. Fue el 'drop' más emocionante de nuestras vidas.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item special-act" data-aos="zoom-in">
+                <div class="timeline-icon">👑</div>
+                <div class="polaroid rotate-center special-border">
+                    <div class="photo" style="background-image: url('MAMA-HOSPITAL.jpeg');"></div> 
+                    <div class="caption">Mi Heroína ❤️</div>
+                </div>
+                <div class="content">
+                    <h2>3. La Fuerza de Mamá</h2>
+                    <p>Pero esta historia tiene una heroína silenciosa: Mamá. Tu llegada fue una batalla que ella peleó con el cuerpo y el alma. A pesar del dolor de la cesárea y de una recuperación lenta y difícil, ella sacó fuerzas de donde no las tenía para alimentarte y acunarte.</p>
+                    <p class="quote"><strong>Y si yo, Caleb, pudiera hablarte hoy con palabras de grande, te diría:</strong> <em>"Gracias, Mamita, por prestarme tu cuerpo para vivir. Sé que te dolió, sé que sufriste, pero tus brazos siempre fueron mi paz. Eres mi guerrera, mi primer hogar y el amor de mi vida. Te amo infinito."</em></p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">🏠</div>
+                <div class="polaroid rotate-left">
+                    <div class="photo" style="background-image: url('CALEB-MADRUGADAS.jpeg');"></div>
+                    <div class="caption">Hogar</div>
+                </div>
+                <div class="content">
+                    <h2>4. Refugio de Amor</h2>
+                    <p>Superada la tormenta, los primeros meses se convirtieron en nuestro pequeño mundo. Entre desvelos y pañales, descubrimos la magia de dormirte en nuestros brazos. Aprendimos a descifrar tus gestos, y tú aprendiste que nosotros somos tu lugar seguro. Cada madrugada despiertos valió la pena solo por ver cómo te aferrabas a nosotros. Éramos tú y nosotros, aprendiendo a ser uno solo.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-icon">🍋</div>
+                <div class="polaroid rotate-right">
+                    <div class="photo" style="background-image: url('CALEB-COMIENDO.jpeg');"></div>
+                    <div class="caption">¡Qué ácido!</div>
+                </div>
+                <div class="content">
+                    <h2>5. Descubriendo Sabores</h2>
+                    <p>A mitad del camino comenzó la aventura de los sabores. Descubrí que el limón hace que haga caras chistosas y que la papilla termina más en mi cara que en mi boca. Cada comida es un nuevo descubrimiento y, aunque termino todo manchado, ¡tengo la barriga llena y el corazón contento!</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">🚀</div>
+                <div class="polaroid rotate-left">
+                    <div class="photo" style="background-image: url('CALEB-CRECIENDOO.jpeg');"></div>
+                    <div class="caption">Creciendo</div>
+                </div>
+                <div class="content">
+                    <h2>6. El Explorador</h2>
+                    <p>De repente, dejaste de ser un bebé pequeñito para convertirte en un curioso incansable. Vimos con orgullo cómo aprendiste a sentarte y cómo tus balbuceos se convirtieron en tus primeras palabras: 'Papá', 'Mamá', 'Yaaa' y ese 'Nooo' tan firme que nos da risa. Ya nos dices 'Sí' y 'No' con tu cabecita, demostrándonos que tienes tu propia opinión sobre todo.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-icon">🎧</div>
+                <div class="polaroid rotate-right">
+                    <div class="photo" style="background-image: url('CALEB\ MEZCLA.jpeg');"></div>
+                    <div class="caption">En la mezcla</div>
+                </div>
+                <div class="content">
+                    <h2>7. El Pequeño DJ</h2>
+                    <p>Dicen que de tal palo, tal astilla. No hay nada que te guste más que estar donde está la música. Te encanta subirte a la mesa y mover las perillas y botones de la mezcladora DDJ de Papá, sintiéndote el rey de la fiesta. Tienes el ritmo en las venas y una curiosidad que te lleva a investigar cómo funciona todo.</p>
+                </div>
+            </div>
+
+            <!-- ACTO 8: ACTUALIZADO -->
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">👫</div>
+                <div class="polaroid rotate-left">
+                    <div class="photo" style="background-image: url('CALEB-ZARETH.jpeg');"></div>
+                    <div class="caption">MEJORES AMIGOS</div>
+                </div>
+                <div class="content">
+                    <h2>8. Primos Inseparables</h2>
+                    <p>La vida es más divertida cuando tienes una cómplice. Mi primita Zareth se ha convertido en mi compañera inseparable. Nos encanta estar juntos, jugar y compartir nuestro propio idioma. No importa el momento, si ella está conmigo, ¡todo es alegría y risas!</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-icon">👵👴</div>
+                <div class="polaroid rotate-right">
+                    <div class="photo" style="background-image: url('ABUELITA.jpeg');"></div>
+                    <div class="caption">Amor Puro</div>
+                </div>
+                <div class="content">
+                    <h2>9. Mis Raíces</h2>
+                    <p>Esta aventura no estaría completa sin mis abuelitos. Dicen que los padres educan, pero los abuelos... ¡los abuelos están para amarme y consentirme sin medida! Gracias a mis abuelitos (paternos y maternos) por sus brazos que siempre están abiertos para mi, por sus bendiciones y por ser las raíces fuertes de mi vida. Ver sus caras de felicidad cuando me cargan es uno de mis regalos favoritos. ¡Los amo muchísimo!</p>
+                </div>
+            </div>
+
+            <div class="timeline-item special-heaven" data-aos="zoom-in">
+                <div class="timeline-icon">🕊️</div>
+                <div class="polaroid rotate-center heaven-border">
+                    <div class="photo" style="background-image: url('DOÑA\ LUCITA.jpeg');"></div>
+                    <div class="caption">Doña Lucita ✨</div>
+                </div>
+                <div class="content">
+                    <h2>10. Un Ángel Llamado Abuelita Luci</h2>
+                    <p>Papá me cuenta una historia con un nudo en la garganta. Hubo un ángel que me soñó mucho antes de que yo existiera: <strong>mi Abuelita Luci (Doña Lucita)</strong>. Ella fue como una madre para papá y, desde mucho antes de que él tuviera esposa o de que yo estuviera en planes, ella ya guardaba un deseo sagrado. Su anhelo más grande, con toda el alma, era que llegara el día en que pudiera cargar al hijo de papá en sus brazos.</p>
+                    <p class="quote"><strong>Y si pudiera verla hoy, le diría:</strong> <em>"Abuelita Luci, aunque mis ojos no te vieron, mi corazón te siente. Gracias por susurrarle mi nombre a Dios y cuidarme desde tu nube. Sé que eres la estrella más brillante que me ilumina cada noche. ¡Te mando un beso hasta el cielo! <strong>Este primer año también es para ti.</strong>"</em></p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">👣</div>
+                <div class="polaroid rotate-left">
+                    <div class="photo" style="background-image: url('CALEB-CAMINANDO.jpeg');"></div>
+                    <div class="caption">Casi camino</div>
+                </div>
+                <div class="content">
+                    <h2>11. Pasos de Gigante</h2>
+                    <p>Ahora, al cumplir 12 meses, gatear ya me queda chico. Mis piernas son fuertes y firmes; me paro solito agarrándome del sofá, de la mesa ¡y de la mezcladora! Fuerza no me falta, solo estoy practicando mi equilibrio. Estoy a nada de soltarme y correr hacia sus brazos.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" id="final-story">
+                <div class="timeline-icon">🎂</div>
+                <div class="polaroid rotate-center">
+                    <div class="photo" style="background-image: url('CALEB-LENTES.jpeg');"></div>
+                    <div class="caption">¡Felicidades a mí!</div>
+                </div>
+                <div class="content">
+                    <h2>12. ¡Un Año Contigo!</h2>
+                    <p>Hoy miramos atrás y no podemos creer lo rápido que has crecido. 365 días, 8 dientes nuevos y millones de recuerdos. Caleb, eres nuestro orgullo, nuestro pequeño DJ y nuestra aventura favorita. ¡Gracias por regalarnos el mejor año de nuestras vidas!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fun-facts">
+        <h2>Datos Curiosos de Caleb</h2>
+        <div class="facts-grid">
+            <div class="fact-card" data-aos="flip-left">
+                <div class="fact-icon">🦷</div>
+                <p><strong>Sonrisa Peligrosa</strong><br>Ya tengo 8 dientes (¡y muerdo fuerte!)</p>
+            </div>
+            <div class="fact-card" data-aos="flip-right" data-aos-delay="100">
+                <div class="fact-icon">🎧</div>
+                <div class="fact-text"><strong>Futuro DJ</strong><br>Me gustan las canciones de Skrillex y toco la mezcladora.</div>
+            </div>
+            <div class="fact-card" data-aos="flip-left" data-aos-delay="200">
+                <div class="fact-icon">🍼</div>
+                <div class="fact-text"><strong>Mis "Juguetes"</strong><br>Prefiero botellas vacías y controles remotos.</div>
+            </div>
+            <div class="fact-card" data-aos="flip-right" data-aos-delay="300">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-text"><strong>Diccionario</strong><br>Papá, Mamá, Yaaa, Nooo, Si y No (con la cabeza).</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rsvp-section" data-aos="fade-up">
+        <div class="ticket-vip">
+            <div class="ticket-header">
+                <h3>CALEB FEST</h3>
+                <span>1ra EDICIÓN</span>
+            </div>
+            <div class="ticket-body">
+                <div class="ticket-info">
+                    <p><strong>FECHA:</strong> Miercoles 28 Enero, 2026</p>
+                    <p><strong>HORA:</strong> 4:00 PM - Hasta que el cuerpo aguante</p>
+                    <p><strong>LUGAR:</strong> Salón Disney, Periférico Sur s/n, Barrio de Maria Auxiliadora</p>
+                    
+                    <div id="timer">00d 00h 00m 00s</div>
+                    <a href="#" class="btn-calendar">📅 Agregar al Calendario</a>
+                </div>
+                <div class="ticket-actions">
+                    <p>CONFIRMA TU ASISTENCIA:</p>
+                    <a href="https://wa.me/529671067628?text=%C2%A1Hola%20Mam%C3%A1!%20Confirmamos%20asistencia%20al%20cumple%20de%20Caleb.%20Somos%3A%20...%20personas%2C%20nos%20vemos%20en%20la%20fiesta." class="btn-ticket">CONFIRMAR CON MAMÁ</a>
+                    <a href="https://wa.me/529671715333?text=%C2%A1Hola%20Pap%C3%A1!%20Confirmamos%20asistencia%20al%20cumple%20de%20Caleb.%20Somos%3A%20...%20personas%2C%20nos%20vemos%20en%20la%20fiesta." class="btn-ticket">CONFIRMAR CON PAPÁ</a>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <div class="barcode">||| || ||| || |||| |||</div>
+                <span>ID: 28-01-2025-CALEB</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; margin-bottom: 40px;">
+            <a href="https://maps.google.com/?q=Periferico+Sur+Barrio+Maria+Auxiliadora+Salon+Disney" target="_blank" class="btn-small map">📍 Google Maps</a>
+            
+        </div>
+        
+        <div class="gift-info-box" data-aos="flip-up">
+             <h3>🎁 Regalos:</h3>
+             <p>El regalo es libre. Si deseas regalarnos ropa, Caleb usa <b>talla 3-4 años</b> (la talla de 1 año ya no le queda y la talla de 2 años le queda justa).</p>
+        </div>
+
+    </section>
+
+    <!-- GALERÍA DE RECUERDOS (REUBICADA ENTRE REGALOS Y ÁLBUM COMPARTIDO) -->
+    <section class="moments-carousel" data-aos="zoom-in">
+        <h2>Galería de Recuerdos</h2>
+        <p style="color: white; font-weight: bold; margin-top: -10px;">Desliza las cartas ➡️</p>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- CARRUSEL MODIFICADO: 8 FOTOS -->
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-box" data-aos="zoom-in">
+            <h3>📸 Álbum Compartido</h3>
+            <p>Ayúdanos a juntar todos los recuerdos. Sube tus fotos y videos de la fiesta aquí:</p>
+            <a href="https://photos.app.goo.gl/fiLLRVvfuWkzRVKaA" target="_blank" class="btn-gallery">Ver y Subir Fotos</a>
+        </div>
+    </section>
+
+    <!-- FOOTER COMERCIAL ARTEENLINK (AÑADIDO PARA LA DEMO) -->
+    <footer class="footer-comercial">
+        <div class="contenedor">
+            <h3>¿Te encantó esta invitación nivel VIP?</h3>
+            <p style="margin-bottom: 25px;">Podemos crear una igual de increíble para la fiesta de tu peque, adaptada 100% a su temática favorita.</p>
+            
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20Premium%20VIP%20de%20Caleb%20y%20me%20gustaría%20información." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+
+            <div class="creditos">
+                Magia y Tecnología desarrolladas por <a href="index.html" target="_blank">ArteEnLink</a>.
+            </div>
+        </div>
+    </footer>
+
+    <div id="floating-rsvp" class="floating-btn">
+        <a href="#" onclick="document.querySelector('.rsvp-section').scrollIntoView({behavior: 'smooth'}); return false;">
+            🎟️ Confirmar
+        </a>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>

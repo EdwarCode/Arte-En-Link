@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡El Cumple de Isabella! | Nivel Intermedio</title>
+    
+    <!-- Fuentes de Google Fonts (Estilo Realeza / Cuento de Hadas) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Great Vibes para firmas mágicas, Cinzel para títulos de la realeza, Montserrat para lectura -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- MÚSICA MÁGICA (Instrumental tipo cajita de música) -->
+    <audio id="musica-fondo" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_febc508520.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PRELOADER CON NOMBRE -->
+    <div id="preloader">
+        <div class="preloader-nombre">Isabella</div>
+        <div class="preloader-texto">Preparando el carruaje...</div>
+    </div>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE -->
+    <div id="btn-musica" title="Reproducir / Pausar Música">
+        <i class="ph-fill ph-music-notes girar"></i>
+    </div>
+
+    <!-- PORTADA PRINCIPAL (EL CASTILLO) -->
+    <header class="portada">
+        <div class="marco-espejo fade-up visible">
+            <div class="imagen-hero">
+                <!-- Foto sugerida: Niña con vestido de princesa -->
+                <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=600&auto=format&fit=crop" alt="Princesa Isabella">
+            </div>
+        </div>
+        
+        <div class="portada-titulos fade-up delay-1 visible">
+            <div class="texto-top">Mis 5 Añitos</div>
+            <h1 class="nombre-princesa">Isabella</h1>
+            <div class="texto-edad">Sábado 10 de Agosto</div>
+        </div>
+    </header>
+
+    <!-- TEXTO DE INVITACIÓN LARGO (EL DECRETO REAL) -->
+    <section class="seccion-decreto">
+        <div class="contenedor fade-up">
+            <div class="divisor-real"><i class="ph-fill ph-crown"></i></div>
+            
+            <div class="pergamino">
+                <div class="texto-invitacion">
+                    <span class="letra-capital">H</span>abía una vez, en un reino no muy lejano, una princesa muy feliz que estaba a punto de cumplir 5 añitos. 
+                    <br><br>
+                    Por decreto real, los Reyes (mis papás) y yo, tenemos el inmenso honor de invitarte a mi Gran Baile de Cumpleaños. Será una tarde llena de magia, juegos encantados, un festín delicioso y muchísima diversión. 
+                    <br><br>
+                    Tu presencia es el ingrediente secreto para que este cuento de hadas sea verdaderamente inolvidable. ¡Te esperamos en el castillo para celebrar juntos!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA MÁGICA -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Faltan para la magia:</h2>
+            
+            <div class="contador-grid" id="contador-cumple">
+                <div class="contador-box">
+                    <span class="contador-numero" id="dias">00</span>
+                    <span class="contador-label">Días</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="horas">00</span>
+                    <span class="contador-label">Hrs</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="minutos">00</span>
+                    <span class="contador-label">Min</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="segundos">00</span>
+                    <span class="contador-label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DÓNDE Y CUÁNDO -->
+    <section class="seccion-padding" style="background-color: var(--color-blanco);">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">El Gran Baile</h2>
+            <div class="divisor-real"><i class="ph-fill ph-castle-turret"></i></div>
+            
+            <div class="ubicacion-card">
+                <i class="ph-fill ph-map-pin-line ubicacion-icon"></i>
+                <h3>Salón "Castillo de los Sueños"</h3>
+                <div class="ubicacion-hora">De 4:00 PM a 8:00 PM</div>
+                <p class="ubicacion-direccion">Avenida de la Fantasía #123, Plaza Real, Ciudad Encantada.</p>
+                <a href="#" class="btn-magico"><i class="ph-fill ph-navigation-arrow"></i> Guiar Carruaje (Ver Mapa)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARIO DEL REINO -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Itinerario del Reino</h2>
+            <p style="margin-bottom: 40px;">Para que no te pierdas ninguna sorpresa.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-up">
+                    <div class="timeline-icon"><i class="ph-fill ph-star"></i></div>
+                    <div class="timeline-hora">4:00 PM</div>
+                    <div class="timeline-titulo">Llegada al Castillo</div>
+                    <div class="timeline-desc">Recepción de los invitados y apertura de los juegos reales.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-icon"><i class="ph-fill ph-magic-wand"></i></div>
+                    <div class="timeline-hora">5:30 PM</div>
+                    <div class="timeline-titulo">Magia y Diversión</div>
+                    <div class="timeline-desc">El show especial comienza. ¡A divertirse!</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-2">
+                    <div class="timeline-icon"><i class="ph-fill ph-pizza"></i></div>
+                    <div class="timeline-hora">6:30 PM</div>
+                    <div class="timeline-titulo">Banquete Real</div>
+                    <div class="timeline-desc">Es hora de comer cosas deliciosas para recargar energía.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-icon"><i class="ph-fill ph-cake"></i></div>
+                    <div class="timeline-hora">7:30 PM</div>
+                    <div class="timeline-titulo">Coronación y Pastel</div>
+                    <div class="timeline-desc">Le cantamos las mañanitas a la princesa y comemos pastelito.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE FOTOS (ESPEJOS MÁGICOS) -->
+    <section class="seccion-galeria seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="divisor-real"><i class="ph-fill ph-camera-rotate"></i></div>
+            <h2 class="titulo-seccion">Mis Aventuras</h2>
+            <p style="margin-bottom: 30px;">Desliza para ver mis fotos favoritas.</p>
+            
+            <div class="galeria-container">
+                <button class="carrusel-btn carrusel-prev" id="btn-prev"><i class="ph ph-caret-left"></i></button>
+                <div class="galeria-wrapper">
+                    <div class="galeria-scroll" id="carrusel">
+                        <!-- Fotos con estilo editorial / mágico -->
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=500&auto=format&fit=crop" alt="Princesa 1"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?q=80&w=500&auto=format&fit=crop" alt="Princesa 2"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=500&auto=format&fit=crop" alt="Princesa 3"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1522771730849-f25c4e142e05?q=80&w=500&auto=format&fit=crop" alt="Princesa 4"></div>
+                    </div>
+                </div>
+                <button class="carrusel-btn carrusel-next" id="btn-next"><i class="ph ph-caret-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE Y EL TESORO (REGALOS) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="info-grid">
+                
+                <!-- Dress Code -->
+                <div class="info-card fade-up">
+                    <i class="ph-fill ph-dress info-icon"></i>
+                    <h3 style="color: var(--color-rosa-fuerte);">Código de Vestimenta</h3>
+                    <p>¡Prepara tu mejor atuendo! Ven disfrazado de tu princesa, príncipe o personaje favorito. O si prefieres, trae ropa súper cómoda para jugar en el castillo.</p>
+                    <p style="font-size: 0.8rem; margin-top: 10px; color: var(--color-oro);">*No olvides traer calcetines para entrar a los juegos.</p>
+                </div>
+
+                <!-- Regalos / Tallas -->
+                <div class="info-card fade-up delay-1">
+                    <i class="ph-fill ph-gift info-icon"></i>
+                    <h3 style="color: var(--color-rosa-fuerte);">El Tesoro Real</h3>
+                    <p>El mejor regalo es que vengas a jugar conmigo. Pero si deseas sorprenderme con un detallito, aquí te dejo unas pistas:</p>
+                    
+                    <div class="tallas-box">
+                        <p><i class="ph-fill ph-t-shirt" style="color: var(--color-oro);"></i> <b>Talla de Vestido:</b> 6 Años</p>
+                        <p style="margin-top: 5px;"><i class="ph-fill ph-sneaker" style="color: var(--color-oro);"></i> <b>Zapatitos de Cristal:</b> 18 MX</p>
+                    </div>
+                    <p style="font-size: 0.85rem; margin-top: 15px; font-style: italic;">¡Me encantan las muñecas, los rompecabezas y pintar!</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP (CONFIRMACIÓN) -->
+    <section class="seccion-rsvp seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="divisor-real" style="color: white; margin-bottom: 20px;"><i class="ph-fill ph-envelope-open"></i></div>
+            <h2 class="titulo-seccion">¡Confirma tu asistencia!</h2>
+            <p style="margin-bottom: 40px; font-size: 1.1rem;">Dile a mi mami si nos acompañarán para reservar su lugar en la mesa real.</p>
+            
+            <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20nuestra%20asistencia%20al%20Gran%20Baile%20de%20Isabella.%20¡Ahí%20nos%20vemos!%20👑" target="_blank" class="btn-rsvp-wa">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20intermedia%20infantil%20y%20me%20gustaría%20información." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+            <div class="creditos">
+                Diseño Mágico por <a href="index.html" target="_blank" style="color: var(--color-oro);">ArteEnLink</a>. <br>Haciendo de cada cumpleaños un cuento de hadas.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

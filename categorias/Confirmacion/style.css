@@ -1,0 +1,378 @@
+
+        /* ==========================================================
+           1. SISTEMA DE DISEÑO (CONFIRMACIÓN / FUEGO Y ORO)
+           ========================================================== */
+        :root {
+            /* Paleta Corporativa (ArteEnLink) */
+            --color-fondo: #FAF6F0; /* Beige cálido */
+            --color-seccion-clara: #F0EBE1; /* Beige secundario */
+            
+            /* Textos con alto contraste */
+            --color-texto-principal: #1A202C; /* Pizarra oscuro */
+            --color-texto-secundario: #4A5568; /* Gris asfalto */
+            
+            /* Acentos Fuego y Oro (Temática Confirmación) */
+            --color-acento-oro: #CBA365; /* Oro principal elegante */
+            --color-oro-hover: #A8854D; /* Oro oscuro para hovers */
+            --color-acento-vino: #8C2131; /* Vino tinto / Carmesí (Fuego del Espíritu) */
+            --color-oro-claro: #FDF8ED; /* Fondo de acento oro muy suave */
+
+            /* Tipografías Originales ArteEnLink */
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Poppins', sans-serif;
+
+            /* Sombras UI */
+            --sombra-suave: 0 10px 30px rgba(26, 32, 44, 0.05);
+            --sombra-fuerte: 0 20px 40px rgba(203, 163, 101, 0.25);
+            --borde-radio: 16px;
+        }
+
+        /* ==========================================================
+           2. RESET Y ESTILOS GLOBALES (RENDERIZADO NÍTIDO)
+           ========================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: var(--fuente-textos); 
+            background-color: var(--color-fondo); 
+            color: var(--color-texto-principal); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--fuente-titulos); color: var(--color-texto-principal); }
+        p { color: var(--color-texto-secundario); font-size: 1rem; }
+        a { text-decoration: none; color: inherit; }
+
+        .contenedor { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .seccion-padding { padding: 80px 0; }
+
+        /* --- PRELOADER --- */
+        #preloader { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: var(--color-fondo); z-index: 99999; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            transition: opacity 0.6s ease, visibility 0.6s ease; 
+        }
+        #preloader.oculto { opacity: 0; visibility: hidden; }
+
+        .loader-logo { 
+            font-family: var(--fuente-titulos); font-size: 2.5rem; font-weight: 700; 
+            color: var(--color-texto-principal); margin-bottom: 20px; 
+            animation: pulseLoader 1.5s infinite ease-in-out; 
+            will-change: transform, opacity;
+        }
+        .loader-logo span { color: var(--color-acento-oro); font-style: italic; }
+
+        .loader-spinner { 
+            width: 40px; height: 40px; 
+            border: 3px solid rgba(203, 163, 101, 0.2); 
+            border-top: 3px solid var(--color-acento-oro); 
+            border-radius: 50%; 
+            animation: spin 1s linear infinite; 
+            will-change: transform;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulseLoader {
+            0%, 100% { opacity: 1; transform: translate3d(0, 0, 0); } 
+            50% { opacity: 0.7; transform: translate3d(0, -5px, 0); } 
+        }
+
+        /* --- CLASES DE ANIMACIÓN INTERSECTION OBSERVER --- */
+        .animar-oculto { 
+            opacity: 0; transform: translate3d(0, 40px, 0); 
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
+            will-change: opacity, transform;
+        }
+        .animar-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        .delay-1 { transition-delay: 100ms; } .delay-2 { transition-delay: 200ms; } 
+        .delay-3 { transition-delay: 300ms; } .delay-4 { transition-delay: 400ms; }
+
+        /* ==========================================================
+           3. BOTONES (ESTILO ORO Y VINO)
+           ========================================================== */
+        .btn-principal { 
+            display: inline-block; background-color: var(--color-acento-oro); color: #FFFFFF; 
+            padding: 12px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; 
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(203, 163, 101, 0.3); 
+            text-align: center; cursor: pointer; border: none; will-change: transform;
+        }
+        .btn-principal:hover { 
+            background-color: var(--color-oro-hover); transform: translate3d(0, -3px, 0); 
+            box-shadow: 0 6px 20px rgba(203, 163, 101, 0.4); color: #FFFFFF; 
+        }
+
+        .btn-secundario { 
+            display: inline-block; background-color: transparent; color: var(--color-texto-principal); 
+            padding: 10px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; 
+            border: 2px solid var(--color-texto-principal); transition: all 0.3s ease; 
+            text-align: center; will-change: transform;
+        }
+        .btn-secundario:hover { 
+            background-color: var(--color-texto-principal); color: #FFFFFF; 
+            transform: translate3d(0, -3px, 0);
+        }
+
+        .btn-premium { 
+            display: inline-block; background-color: transparent; color: var(--color-acento-vino); 
+            padding: 12px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; 
+            border: 2px solid var(--color-acento-vino); transition: all 0.3s ease; 
+            text-align: center; will-change: transform;
+        }
+        .btn-premium:hover { 
+            background-color: var(--color-acento-vino); color: #FFFFFF; 
+            transform: translate3d(0, -3px, 0); box-shadow: 0 6px 20px rgba(140, 33, 49, 0.3); 
+        }
+
+        .btn-whatsapp { 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            background-color: #25D366; color: white; padding: 12px 24px; border-radius: 50px; 
+            font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); will-change: transform;
+        }
+        .btn-whatsapp:hover { 
+            background-color: #128C7E; transform: translate3d(0, -3px, 0); 
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); color: white; 
+        }
+
+        /* ==========================================================
+           4. CABECERA
+           ========================================================== */
+        header { 
+            position: fixed; top: 0; left: 0; width: 100%; 
+            background-color: rgba(250, 246, 240, 0.95); backdrop-filter: blur(10px); 
+            z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.03); padding: 15px 0; 
+            transition: all 0.3s ease; 
+        }
+        .nav-container { 
+            display: flex; justify-content: space-between; align-items: center; 
+            max-width: 1200px; margin: 0 auto; padding: 0 5%; 
+        }
+        .logo { 
+            font-family: var(--fuente-titulos); font-size: 1.8rem; font-weight: 700; 
+            color: var(--color-texto-principal); letter-spacing: -0.5px; 
+        }
+        .logo span { color: var(--color-acento-oro); font-style: italic; }
+        
+        .volver-inicio { 
+            display: flex; align-items: center; gap: 8px; font-weight: 500; 
+            font-size: 0.95rem; transition: color 0.3s; 
+        }
+        .volver-inicio:hover { color: var(--color-acento-oro); }
+
+        /* ==========================================================
+           5. HERO DE CATEGORÍA
+           ========================================================== */
+        .hero-categoria { padding-top: 140px; padding-bottom: 40px; text-align: center; position: relative; }
+        .hero-categoria h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        .hero-categoria p { font-size: 1.1rem; max-width: 700px; margin: 0 auto; margin-bottom: 30px; }
+
+        .alerta-personalizacion {
+            background-color: var(--color-seccion-clara);
+            border: 1px solid rgba(203, 163, 101, 0.2);
+            border-left: 4px solid var(--color-acento-oro);
+            padding: 20px 30px; border-radius: 0 12px 12px 0;
+            display: inline-flex; align-items: center; gap: 15px;
+            max-width: 800px; margin: 0 auto; text-align: left;
+            box-shadow: var(--sombra-suave);
+        }
+        .alerta-personalizacion i { font-size: 2.2rem; color: var(--color-acento-oro); }
+        .alerta-personalizacion p { margin: 0; font-size: 0.95rem; color: var(--color-texto-principal); }
+
+        /* ==========================================================
+           6. ESCAPARATE VIP (CELULARES)
+           ========================================================== */
+        .escaparate-vip { padding: 60px 0; }
+        .grid-celulares { 
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; 
+            justify-items: center; align-items: end; 
+        }
+        .columna-modelo { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 320px; }
+        .etiqueta-nivel { 
+            font-family: var(--fuente-titulos); font-size: 1.5rem; margin-bottom: 20px; 
+            color: var(--color-texto-principal); font-weight: 600; text-align: center;
+        }
+
+        /* Estructura Base del Celular */
+        .celular-demo {
+            background: var(--color-fondo); border-radius: 40px; border: 10px solid var(--color-texto-principal);
+            overflow: hidden; position: relative; width: 100%; aspect-ratio: 9/19; margin-bottom: 25px; 
+            will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; 
+            transform-style: preserve-3d; box-shadow: var(--sombra-suave); transform: translate3d(0, 0, 0);
+        }
+
+        /* Notch (Cámara) */
+        .celular-demo::before { 
+            content: ''; position: absolute; top: 0; left: 50%; transform: translate3d(-50%, 0, 0); 
+            width: 120px; height: 25px; background-color: var(--color-texto-principal); 
+            border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 10; 
+        }
+
+        .celular-demo img { 
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; will-change: transform;
+        }
+        .celular-demo:hover img { transform: scale(1.05); } 
+
+        /* --- 1. BÁSICO --- */
+        .celular-basico { animation: flotarBasico 5s ease-in-out infinite; }
+        @keyframes flotarBasico { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -10px, 0); } }
+
+        /* --- 2. INTERMEDIO --- */
+        .celular-intermedio { 
+            border-color: var(--color-acento-oro); 
+            box-shadow: 0 15px 35px rgba(203, 163, 101, 0.2);
+            width: 105%; max-width: 336px;
+            animation: flotarInter 4.5s ease-in-out 0.5s infinite; 
+        }
+        .celular-intermedio::before { background-color: var(--color-acento-oro); }
+        @keyframes flotarInter { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -15px, 0); } }
+
+        /* --- 3. PREMIUM (Toque Vino Tinto) --- */
+        .celular-premium { 
+            background: #1A202C; border-color: #1A202C; width: 100%; 
+            animation: flotarPremium 4s ease-in-out 1s infinite; box-shadow: none; 
+        }
+        .celular-premium::before { background-color: #1A202C; }
+        .celular-premium::after { 
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            border-radius: 30px; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); 
+            pointer-events: none; z-index: 5; 
+        }
+        /* Sombra externa Premium con tono Vino/Carmesí suave */
+        .celular-sombra-premium {
+            content: ''; position: absolute; inset: -10px; border-radius: 50px; background: transparent;
+            box-shadow: 0 25px 45px rgba(26, 32, 44, 0.4), 0 0 40px rgba(140, 33, 49, 0.3); /* Toque vino */
+            z-index: -1; pointer-events: none; opacity: 0.5; will-change: opacity;
+            animation: respirarSombraPremium 4s ease-in-out 1s infinite;
+        }
+
+        @keyframes flotarPremium { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -18px, 0); } }
+        @keyframes respirarSombraPremium { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+        .acciones-modelo { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+
+        /* ==========================================================
+           7. PASOS DE COMPRA
+           ========================================================== */
+        .pasos-compra { margin-top: 60px; padding-top: 60px; border-top: 1px solid rgba(0,0,0,0.05); }
+        .pasos-header { text-align: center; margin-bottom: 40px; }
+        .pasos-header h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        
+        .pasos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .paso-card { 
+            background: #FFFFFF; padding: 30px 25px; border-radius: var(--borde-radio); 
+            box-shadow: var(--sombra-suave); position: relative; 
+            transition: transform 0.3s ease, border-color 0.3s ease; 
+            border-top: 3px solid transparent; will-change: transform;
+        }
+        .paso-card:hover { transform: translate3d(0, -8px, 0); border-top-color: var(--color-acento-oro); }
+        
+        .paso-numero { 
+            width: 45px; height: 45px; background: var(--color-oro-claro); 
+            color: var(--color-acento-oro); border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-family: var(--fuente-titulos); 
+            font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; 
+        }
+        .paso-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--color-texto-principal); }
+        .paso-card p { font-size: 0.9rem; }
+
+        /* ==========================================================
+           8. PAQUETES Y PRECIOS
+           ========================================================== */
+        .precios { background-color: var(--color-seccion-clara); }
+        .precios-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 30px; margin-top: 40px; }
+        
+        .precio-card { 
+            background: var(--color-fondo); border-radius: var(--borde-radio); 
+            padding: 40px 30px; width: 100%; text-align: center; 
+            box-shadow: var(--sombra-suave); position: relative; 
+            transition: transform 0.3s ease; will-change: transform;
+        }
+        .precio-card:hover { transform: translate3d(0, -10px, 0); }
+
+        .precio-card.popular { border: 2px solid var(--color-acento-oro); box-shadow: var(--sombra-fuerte); z-index: 2; }
+        .etiqueta-popular { 
+            position: absolute; top: -15px; left: 50%; transform: translate3d(-50%, 0, 0); 
+            background: var(--color-acento-oro); color: #fff; padding: 5px 15px; 
+            border-radius: 20px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; 
+        }
+
+        /* Premium Card */
+        .precio-card.premium { 
+            background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%); 
+            color: #FFFFFF; border: 1px solid rgba(203, 163, 101, 0.3); z-index: 1; 
+            transform-style: preserve-3d; box-shadow: none;
+        }
+        .precio-card.premium::before {
+            content: ''; position: absolute; inset: 0; border-radius: var(--borde-radio);
+            box-shadow: 0 20px 45px rgba(26, 32, 44, 0.3), 0 0 30px rgba(140, 33, 49, 0.2);
+            opacity: 0.5; z-index: -1; pointer-events: none; transition: opacity 0.4s ease; will-change: opacity;
+        }
+        .precio-card.premium.animar-visible { animation: flotarPrecioPremium 4s ease-in-out 1.5s infinite; }
+        .precio-card.premium.animar-visible::before { animation: respirarPrecioSombra 4s ease-in-out 1.5s infinite; }
+
+        @keyframes flotarPrecioPremium { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -12px, 0); } }
+        @keyframes respirarPrecioSombra { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+        .precio-card.premium:hover { animation-play-state: paused; transform: translate3d(0, -12px, 0) !important; }
+        .precio-card.premium:hover::before { 
+            animation-play-state: paused; opacity: 1 !important; 
+            box-shadow: 0 25px 50px rgba(26, 32, 44, 0.4), 0 0 45px rgba(140, 33, 49, 0.4);
+        }
+
+        .etiqueta-estrella { 
+            position: absolute; top: -15px; left: 50%; transform: translate3d(-50%, 0, 0); 
+            background: linear-gradient(90deg, #A8854D, #CBA365, #A8854D); 
+            color: #FFFFFF; padding: 6px 20px; border-radius: 20px; 
+            font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; 
+            box-shadow: 0 4px 10px rgba(203, 163, 101, 0.4); white-space: nowrap;
+        }
+
+        .precio-header h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .precio-card.premium .precio-header h3 { color: var(--color-acento-oro); }
+        
+        .precio-monto { font-family: var(--fuente-titulos); font-size: 3rem; color: var(--color-texto-principal); font-weight: 700; margin-bottom: 20px; }
+        .precio-card.premium .precio-monto { color: #FFFFFF; }
+        .precio-monto span { font-size: 1rem; color: var(--color-texto-secundario); font-weight: 400; font-family: var(--fuente-textos); }
+        .precio-card.premium .precio-monto span { color: #A0AEC0; }
+
+        .lista-funciones { list-style: none; text-align: left; margin-bottom: 30px; }
+        .lista-funciones li { margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; }
+        .lista-funciones li i { color: var(--color-acento-oro); margin-top: 4px; font-size: 1.1rem; }
+        
+        .lista-funciones li.no-incluido { color: #A0AEC0; text-decoration: line-through; }
+        .lista-funciones li.no-incluido i { color: #A0AEC0; }
+        .precio-card.premium .lista-funciones li { color: #F1F5F9; }
+
+        /* ==========================================================
+           9. FOOTER
+           ========================================================== */
+        footer { background-color: var(--color-texto-principal); color: #FFFFFF; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { font-family: var(--fuente-titulos); color: var(--color-acento-oro); font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-col p { color: #A0AEC0; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        
+        .copyright { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; color: #A0AEC0; font-size: 0.85rem; }
+
+        /* ==========================================================
+           10. RESPONSIVO
+           ========================================================== */
+        @media (max-width: 992px) {
+            .grid-celulares { grid-template-columns: 1fr; gap: 60px; }
+            .celular-intermedio { width: 100%; max-width: 320px; }
+            .pasos-grid { grid-template-columns: repeat(2, 1fr); }
+            .precios-grid { grid-template-columns: 1fr; max-width: 450px; margin: 40px auto 0; }
+        }
+        @media (max-width: 768px) {
+            .hero-categoria { padding-top: 110px; }
+            .hero-categoria h1 { font-size: 2.8rem; }
+            .alerta-personalizacion { flex-direction: column; text-align: center; border-left: none; border-top: 4px solid var(--color-acento-oro); border-radius: 12px; padding: 25px 20px; }
+            .pasos-grid { grid-template-columns: 1fr; }
+            .acciones-modelo a { font-size: 0.9rem; padding: 12px 20px; }
+            .celular-basico, .celular-intermedio, .celular-premium { animation-duration: 6s; }
+        }

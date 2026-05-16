@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carmen y Roberto | 50 Aniversario VIP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+
+</head>
+<body>
+
+    <div id="vanta-bg"></div>
+
+    <audio id="musica-fondo" preload="auto" loop playsinline>
+        <source src="assets/audio/tu-cancion-aqui.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="preloader">
+        <i class="ph-duotone ph-rings anillos-loader"></i>
+        <div style="font-family: var(--fuente-titulos); color: var(--color-oro); letter-spacing: 5px; text-transform: uppercase;">Preparando Historia...</div>
+    </div>
+
+    <div id="pantalla-unboxing">
+        <div class="estuche-vip" id="estuche-btn">
+            <div class="estuche-base">
+                <div class="carta-interior">
+                    <h2>Carmen & Roberto</h2>
+                    <p>Renovación de Votos</p>
+                </div>
+            </div>
+            <div class="estuche-tapa" id="tapa-terciopelo">
+                <div class="emblema-50" id="sello-oro">
+                    <span class="num">50</span>
+                    <span class="txt">Años</span>
+                </div>
+            </div>
+            <div class="instruccion-unboxing" id="instruccion">Toca para abrir estuche</div>
+        </div>
+    </div>
+
+    <div id="btn-musica" title="Música">
+        <i class="ph-fill ph-play-circle" id="icono-musica"></i>
+    </div>
+
+    <div id="lightbox-vip">
+        <i class="ph-bold ph-x cerrar-lightbox" id="cerrar-lightbox"></i>
+        <img src="" alt="Foto Ampliada" id="lightbox-img">
+    </div>
+
+    <header class="hero">
+        <div class="hero-content reveal-item">
+            
+            <div class="contenedor-anillos-3d">
+                <div class="anillo-obj anillo-1"></div>
+                <div class="anillo-obj anillo-2"></div>
+            </div>
+
+            <div class="hero-grado">Renovación de Votos</div>
+            <h1 class="hero-nombre">Carmen & Roberto</h1>
+            <div class="hero-generacion">Medio siglo de amor verdadero</div>
+        </div>
+    </header>
+
+    <section class="seccion-padding" style="padding-bottom: 0;">
+        <div class="contenedor reveal-item text-center">
+            <i class="ph-duotone ph-envelope-open" style="font-size: 4rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+            <h2 class="titulo-seccion">Estás Invitado</h2>
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto; padding: 50px 40px;">
+                <p class="texto-protocolo">
+                    Con la bendición de Dios y llenos de inmensa gratitud por la vida que hemos construido, tenemos el honor de invitarte a ser testigo de nuestra Renovación de Votos. Han pasado cinco décadas desde que prometimos amarnos, y hoy, acompañados de nuestra amada familia, queremos reafirmar esa promesa para siempre.
+                </p>
+                <div class="nombres-destacados">Nuestros Hijos y Nietos</div>
+                <p class="texto-protocolo">Tienen el placer de convocar a usted y a su apreciable familia a esta Gran Cena de Gala.</p>
+                <div style="width: 60px; height: 2px; background: var(--color-oro); margin: 30px auto 0;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding">
+        <div class="contenedor reveal-item text-center">
+            <h2 class="titulo-seccion">El Gran Día</h2>
+            <p class="subtitulo-seccion">Falta muy poco para volver a decir "Sí, acepto".</p>
+            <div class="contador-grid" id="contador-aniversario">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+            <a href="#" class="btn-calendario" title="Guardar en mi móvil">
+                <i class="ph-fill ph-calendar-plus" style="font-size: 1.5rem;"></i> Agendar en mi Calendario
+            </a>
+        </div>
+    </section>
+
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor reveal-item glass-card">
+            <i class="ph-duotone ph-heart-straight" style="font-size: 3.5rem; color: var(--color-oro); margin-bottom: 20px; opacity: 0.8;"></i>
+            <h2 class="titulo-seccion" style="text-align: left; margin-bottom: 30px;">Una Vida Juntos</h2>
+            <div class="editorial-text">
+                <p>Parece que fue ayer cuando nuestras miradas se cruzaron por primera vez. El tiempo ha volado, dejando a su paso el mejor de los tesoros: nuestra familia. Atravesar 50 años juntos no ha sido obra de la casualidad, sino el resultado de la paciencia, el respeto mutuo, innumerables perdones y un amor que decidió quedarse incluso en las tormentas más fuertes.</p>
+                <p>Hoy miramos hacia atrás y nuestros corazones se llenan de profunda gratitud. Agradecemos a Dios por darnos salud y fuerza. A nuestros hijos, por ser el orgullo más grande de nuestras vidas. Y a nuestros nietos, por devolvernos la juventud con sus risas. A todos ustedes, amigos y familiares, gracias por ser parte de nuestra historia y acompañarnos en este hermoso viaje llamado vida.</p>
+                <div class="firma">Con todo nuestro amor,<br>Carmen y Roberto.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding">
+        <div class="contenedor">
+            <h2 class="titulo-seccion reveal-item">Nuestro Museo</h2>
+            <p class="subtitulo-seccion reveal-item">Medio siglo de memorias imborrables.</p>
+            <div class="trayectoria-wrapper">
+                <div class="trayectoria-linea"><div class="trayectoria-progreso" id="linea-progreso"></div></div>
+                
+                <div class="hito-item" data-progreso="12">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=400&auto=format&fit=crop" alt="1976 Boda" class="hito-foto">
+                        <div class="hito-ano">1976</div><h4 class="hito-titulo">El Gran Sí</h4><p class="hito-texto">Un día mágico frente al altar. Con nervios y mucha ilusión, comenzamos a escribir nuestra propia historia.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="25">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=400&auto=format&fit=crop" alt="1978 Hijos" class="hito-foto">
+                        <div class="hito-ano">1978</div><h4 class="hito-titulo">Nuestra Primera Bendición</h4><p class="hito-texto">La familia crece. El nacimiento de nuestro primer hijo nos enseñó el verdadero significado del amor incondicional.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="37">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=400&auto=format&fit=crop" alt="1985 Viaje" class="hito-foto">
+                        <div class="hito-ano">1985</div><h4 class="hito-titulo">Nuestro Hogar</h4><p class="hito-texto">Con mucho esfuerzo logramos construir nuestra primera casa. El lugar donde viviríamos nuestras mejores anécdotas.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="50">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=400&auto=format&fit=crop" alt="1995 Plata" class="hito-foto">
+                        <div class="hito-ano">1995</div><h4 class="hito-titulo">Bodas de Plata</h4><p class="hito-texto">Celebramos nuestros primeros 25 años juntos. Una hermosa fiesta rodeados de amigos de toda la vida.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="62">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?q=80&w=400&auto=format&fit=crop" alt="2005 Nietos" class="hito-foto">
+                        <div class="hito-ano">2005</div><h4 class="hito-titulo">La Alegría de ser Abuelos</h4><p class="hito-texto">Nuestra familia se extendió. La llegada de los nietos trajo una nueva luz y energía a nuestras vidas.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="75">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=400&auto=format&fit=crop" alt="2015 Viaje" class="hito-foto">
+                        <div class="hito-ano">2015</div><h4 class="hito-titulo">Viaje de Ensueño</h4><p class="hito-texto">Ese viaje por Europa que planeamos toda la vida. Disfrutando juntos la recompensa de años de trabajo.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="87">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=400&auto=format&fit=crop" alt="2020 Juntos" class="hito-foto">
+                        <div class="hito-ano">2020</div><h4 class="hito-titulo">Superando la Tormenta</h4><p class="hito-texto">Cuidándonos mutuamente en tiempos difíciles, demostrando que nuestro refugio más seguro siempre seremos nosotros.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="100">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=400&auto=format&fit=crop" alt="2026 Oro" class="hito-foto">
+                        <div class="hito-ano">2026</div><h4 class="hito-titulo">Bodas de Oro</h4><p class="hito-texto">50 años exactos. Medio siglo de respeto y amor. Listos para renovar la promesa frente a toda nuestra familia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding seccion-memoriam">
+        <div class="contenedor reveal-item">
+            <div class="luz-cielo"></div>
+            <h2 class="titulo-seccion" style="margin-bottom: 20px;">Un Brindis al Cielo</h2>
+            <p class="texto-memoriam">
+                "En esta noche de tanta alegría, nuestros corazones también miran hacia el cielo. Recordamos con amor profundo a nuestros padres, hermanos y amigos que hoy no pueden estar físicamente con nosotros. Sabemos que desde arriba sonríen, bendicen nuestra unión y celebran con nosotros. Esta copa también es para ustedes."
+            </p>
+        </div>
+    </section>
+
+    <section class="seccion-galeria reveal-item">
+        <div class="contenedor text-center">
+            <h2 class="titulo-seccion">Nuestras Memorias</h2>
+            <p class="subtitulo-seccion">Toca cualquier fotografía para verla en grande.</p>
+        </div>
+        
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=500&auto=format&fit=crop" alt="Recuerdo 1"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=500&auto=format&fit=crop" alt="Recuerdo 2"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=500&auto=format&fit=crop" alt="Recuerdo 3"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?q=80&w=500&auto=format&fit=crop" alt="Recuerdo 4"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=500&auto=format&fit=crop" alt="Recuerdo 5"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=500&auto=format&fit=crop" alt="Recuerdo 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor reveal-item">
+            <div class="glass-card text-center" style="border-top-color: var(--color-oro-brillante);">
+                <i class="ph-duotone ph-camera" style="font-size: 4rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Captura el Momento</h2>
+                <p style="margin-bottom: 30px; font-size: 1.05rem; color: var(--color-texto-secundario);">¡Ayúdanos a no perder ni un solo recuerdo de esta noche! Si tomas fotos o videos divertidos durante la fiesta, por favor súbelos a nuestra carpeta compartida.</p>
+                <a href="#" class="btn-outline"><i class="ph-fill ph-google-drive-logo"></i> Subir a Google Drive</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor grid-2">
+            <div class="glass-card reveal-item text-center">
+                <i class="ph-duotone ph-church ubicacion-icono"></i>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Ceremonia</h3>
+                <div class="ubicacion-hora"><i class="ph ph-clock"></i> 17:00 Hrs</div>
+                <p style="margin-bottom: 25px; color: var(--color-texto-secundario);">
+                    <b>Catedral Basílica de la Asunción</b><br>Av. Revolución 123, Centro Histórico.
+                </p>
+                <a href="#" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-map-pin"></i> Abrir Maps</a>
+            </div>
+            <div class="glass-card reveal-item text-center">
+                <i class="ph-duotone ph-wine ubicacion-icono"></i>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Cena de Gala</h3>
+                <div class="ubicacion-hora"><i class="ph ph-clock"></i> 19:30 Hrs</div>
+                <p style="margin-bottom: 25px; color: var(--color-texto-secundario);">
+                    <b>Hacienda Real "La Esperanza"</b><br>Camino Real 456, A las afueras de la ciudad.
+                </p>
+                <a href="#" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-map-pin"></i> Abrir Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor text-center reveal-item">
+            <h2 class="titulo-seccion">Código de Vestimenta</h2>
+            <p class="subtitulo-seccion" style="color: var(--color-oro); text-transform: uppercase; font-weight: bold;">Rigurosa Etiqueta Formal</p>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <div class="arte-vestimenta"><div class="css-vestido"></div></div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Damas</h3>
+                    <p style="color: var(--color-texto-secundario);">Vestido largo de noche elegante. <br><small>(Evitar blanco o tonos perla)</small></p>
+                </div>
+                <div class="glass-card">
+                    <div class="arte-vestimenta"><div class="css-traje"></div></div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Caballeros</h3>
+                    <p style="color: var(--color-texto-secundario);">Traje sastre oscuro formal o Smoking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor reveal-item">
+            <div class="glass-card text-center" style="border-color: var(--color-oro);">
+                <i class="ph-duotone ph-gift" style="font-size: 4rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Lluvia de Sobres</h2>
+                <p style="margin-bottom: 30px; color: var(--color-texto-secundario); font-size: 1.05rem;">El mejor regalo de aniversario es contar con su presencia. Si desean tener un detalle adicional con nosotros, contaremos con un buzón de sobres en el salón, o pueden realizar una transferencia:</p>
+                <div style="background: rgba(0,0,0,0.5); padding: 25px; border-radius: 12px; font-family: monospace; font-size: 1.2rem; color: var(--color-oro-brillante); border: 1px dashed rgba(212, 175, 55, 0.4); display: inline-block;">
+                    Banco de la Nación<br>CLABE: 1234 5678 9012 3456 78<br>Carmen y Roberto
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-rsvp reveal-item">
+        <div class="rsvp-content text-center">
+            <i class="ph-duotone ph-envelope-simple-open" style="font-size: 4.5rem; color: var(--color-oro); margin-bottom: 15px;"></i>
+            <h2 style="font-size: 2.6rem; margin-bottom: 10px; color: var(--color-oro);">Tu Presencia es Vital</h2>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-texto-secundario);">Por favor, confírmanos tu amable asistencia, déjanos un mensaje para guardar en el corazón y pide una canción para bailar juntos.</p>
+            
+            <div class="form-vip">
+                <div class="input-group">
+                    <label for="rsvp-nombre"><i class="ph-fill ph-user"></i> Tu Nombre o Familia: *</label>
+                    <input type="text" id="rsvp-nombre" class="input-vip" placeholder="Ej. Familia López Sánchez">
+                </div>
+                <div class="input-group">
+                    <label for="vip-mensaje"><i class="ph-fill ph-chat-centered-text"></i> Un mensaje para nosotros:</label>
+                    <textarea id="vip-mensaje" class="input-vip" placeholder="Escribe aquí tus palabras o felicitaciones..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="vip-cancion"><i class="ph-fill ph-music-notes"></i> ¿Qué canción quieres bailar?</label>
+                    <input type="text" id="vip-cancion" class="input-vip" placeholder="Ej. Hasta mi final - Il Divo...">
+                </div>
+                
+                <button id="btn-enviar-rsvp" class="btn-oro" style="margin-top: 15px;">
+                    <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Confirmar y Enviar Mensaje
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-comercial reveal-item">
+        <h3 style="color: var(--color-texto-principal); font-family: var(--fuente-textos); font-weight: 500; font-size: 1rem; margin-bottom: 20px;">¿Deseas una invitación con este nivel de lujo? ¡Contáctanos!</h3>
+        <div class="social-links">
+            <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20Premium%20VIP%20de%20Aniversarios%20y%20quiero%20una%20igual." target="_blank" class="social-link"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            <a href="#" class="social-link"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" class="social-link"><i class="ph-fill ph-instagram-logo"></i></a>
+        </div>
+        <div class="creditos">
+            Ingeniería Inmersiva y Diseño de Alta Costura por <br><a href="index.html" target="_blank" style="color: var(--color-oro); font-weight: bold; font-size: 1.1rem; display: inline-block; margin-top: 10px;">ArteEnLink</a>.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+
+/* ==========================================
+   1. SISTEMA DE DISEÑO Y VARIABLES
+   ========================================== */
+:root {
+    /* Paleta Misterio Elegante */
+    --color-fondo: #FAFAFA;
+    --color-texto-oscuro: #2D3748;
+    --color-texto-claro: #718096;
+    
+    --color-rosa: #F4C2C2;
+    --color-azul: #89CFF0;
+    --color-acento: #B39DDB;
+    
+    --fuente-titulos: 'Playfair Display', serif;
+    --fuente-textos: 'Poppins', sans-serif;
+    
+    --sombra-elegante: 0 10px 25px rgba(0,0,0,0.05);
+    --sombra-flotante: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* ==========================================
+   2. RESET Y REGLA DE ORO ANTI-BUGS
+   ========================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+    font-family: var(--fuente-textos); 
+    background-color: var(--color-fondo); 
+    color: var(--color-texto-oscuro); 
+    line-height: 1.6; 
+    overflow-x: hidden; 
+    /* SUAVIZADO DE FUENTES OBLIGATORIO */
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* Contenedor Mobile-First */
+.contenedor { width: 100%; padding: 0 20px; margin: 0 auto; }
+.seccion-padding { padding: 60px 0; }
+
+/* ==========================================
+   3. PRELOADER
+   ========================================== */
+#preloader { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background-color: var(--color-fondo); z-index: 99999; 
+    display: flex; flex-direction: column; justify-content: center; align-items: center; 
+    transition: opacity 0.8s ease, visibility 0.8s ease; 
+}
+#preloader.oculto { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.loader-icono { font-size: 3rem; color: var(--color-acento); margin-bottom: 15px; }
+.loader-texto { 
+    font-family: var(--fuente-titulos); font-size: 1.5rem; letter-spacing: 2px;
+    animation: pulsoNitido 2s infinite ease-in-out;
+    /* FIX ANTI-JITTER */
+    will-change: transform, opacity;
+    -webkit-backface-visibility: hidden; backface-visibility: hidden; transform: translateZ(0);
+}
+
+@keyframes pulsoNitido {
+    0%, 100% { opacity: 1; transform: translate3d(0, 0, 0); } 
+    50% { opacity: 0.5; transform: translate3d(0, -3px, 0); } 
+}
+
+/* ==========================================
+   4. ANIMACIONES SCROLL (Intersection Observer)
+   ========================================== */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 150ms; }
+.delay-2 { transition-delay: 300ms; }
+
+/* ==========================================
+   5. PORTADA (HERO) - MISTERIO ELEGANTE
+   ========================================== */
+.hero { 
+    position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; 
+    background: linear-gradient(135deg, rgba(244,194,194,0.15) 0%, rgba(250,250,250,1) 50%, rgba(137,207,240,0.15) 100%);
+    overflow: hidden; padding: 20px;
+}
+/* Elementos decorativos de fondo abstractos */
+.hero::before, .hero::after {
+    content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; filter: blur(60px); z-index: 0; opacity: 0.4;
+}
+.hero::before { top: -50px; left: -50px; background-color: var(--color-rosa); }
+.hero::after { bottom: -50px; right: -50px; background-color: var(--color-azul); }
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5); border-radius: 24px; padding: 50px 30px;
+    text-align: center; width: 100%; max-width: 450px; position: relative; z-index: 2;
+    box-shadow: var(--sombra-elegante);
+    /* ANIMACIÓN CONTINUA DE FLOTACIÓN (Regla Anti-Bugs Aplicada estricta) */
+    animation: flotacionElegante 6s ease-in-out infinite;
+    will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; transform: translateZ(0);
+}
+
+/* FIX ANTI-JITTER: Animamos la sombra fuerte usando la opacidad de un pseudo-elemento para liberar la GPU */
+.hero-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: inherit;
+    box-shadow: var(--sombra-flotante);
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    animation: sombraFlotante 6s ease-in-out infinite;
+    will-change: opacity;
+}
+
+@keyframes flotacionElegante {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -12px, 0); }
+}
+
+@keyframes sombraFlotante {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.hero-tag { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-texto-claro); margin-bottom: 15px; }
+.hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: var(--color-texto-oscuro); }
+.hero-names { font-family: var(--fuente-textos); font-size: 1.1rem; font-weight: 500; color: var(--color-acento); margin-bottom: 10px; }
+.hero-date { font-size: 0.95rem; color: var(--color-texto-claro); }
+
+.divisor { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 25px 0; }
+.divisor-line { height: 1px; background: rgba(0,0,0,0.1); flex-grow: 1; }
+.divisor-icon { color: var(--color-acento); font-size: 1.2rem; }
+
+/* ==========================================
+   6. CUENTA REGRESIVA
+   ========================================== */
+.seccion-titulo { font-family: var(--fuente-titulos); font-size: 2rem; text-align: center; margin-bottom: 10px; }
+.seccion-subtitulo { text-align: center; font-size: 0.95rem; color: var(--color-texto-claro); margin-bottom: 35px; }
+
+.countdown-grid { display: flex; justify-content: center; gap: 10px; margin: 0 auto; max-width: 400px; }
+.countdown-box { 
+    background: #FFFFFF; flex: 1; padding: 15px 5px; border-radius: 12px; text-align: center;
+    box-shadow: var(--sombra-elegante); border-top: 3px solid var(--color-acento);
+}
+.countdown-box:nth-child(even) { border-top-color: var(--color-azul); }
+.countdown-box:nth-child(odd) { border-top-color: var(--color-rosa); }
+
+.countdown-num { font-family: var(--fuente-titulos); font-size: 1.8rem; font-weight: 600; color: var(--color-texto-oscuro); line-height: 1; display: block;}
+.countdown-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-texto-claro); margin-top: 5px; display: block;}
+
+/* ==========================================
+   7. UBICACIÓN
+   ========================================== */
+.ubicacion-card { 
+    background: #FFFFFF; border-radius: 20px; padding: 30px 20px; text-align: center;
+    box-shadow: var(--sombra-elegante); margin: 0 auto; max-width: 500px;
+}
+.ubicacion-icono { font-size: 2.5rem; color: var(--color-acento); margin-bottom: 15px; }
+.ubicacion-nombre { font-family: var(--fuente-titulos); font-size: 1.5rem; margin-bottom: 10px; }
+.ubicacion-direccion { font-size: 0.95rem; color: var(--color-texto-claro); margin-bottom: 25px; line-height: 1.5; }
+
+.btn-container { display: flex; flex-direction: column; gap: 12px; }
+.btn { 
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 24px; border-radius: 50px; font-weight: 500; font-size: 0.95rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; border: none; cursor: pointer; width: 100%;
+}
+.btn:active { transform: translateY(2px); } /* Touch feedback */
+
+.btn-maps { background-color: #F0F4F8; color: var(--color-texto-oscuro); }
+.btn-waze { background-color: #F0F4F8; color: var(--color-texto-oscuro); }
+.btn-whatsapp { background-color: #25D366; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+
+/* ==========================================
+   8. RSVP / CONFIRMACIÓN
+   ========================================== */
+.rsvp-wrapper { text-align: center; margin: 0 auto; max-width: 500px; background: #FFFFFF; padding: 40px 20px; border-radius: 24px; box-shadow: var(--sombra-elegante); }
+.rsvp-wrapper p { margin-bottom: 25px; color: var(--color-texto-claro); font-size: 0.95rem; }
+
+/* ==========================================
+   9. FOOTER Y CONTACTO COMERCIAL
+   ========================================== */
+footer { text-align: center; padding: 60px 20px 30px; background-color: var(--color-texto-oscuro); color: white; }
+.footer-logo { font-family: var(--fuente-titulos); font-size: 1.4rem; margin-bottom: 10px; }
+.color-azul { color: var(--color-azul); }
+.color-rosa { color: var(--color-rosa); font-style: italic; }
+.footer-texto { font-size: 0.85rem; color: #A0AEC0; }
+
+.social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
+.social-link { font-size: 1.8rem; color: #A0AEC0; transition: color 0.3s ease, transform 0.3s ease; }
+.social-link:hover { color: white; transform: translateY(-3px); }
+.social-link.wa:hover { color: #25D366; }
+.social-link.fb:hover { color: #1877F2; }
+.social-link.ig:hover { color: #E1306C; }
+
+/* ==========================================
+   10. MEDIA QUERIES (ESCALADO HACIA DESKTOP)
+   ========================================== */
+@media (min-width: 768px) {
+    .contenedor { padding: 0 40px; }
+    .hero-title { font-size: 4.5rem; }
+    .countdown-box { padding: 25px 15px; }
+    .countdown-num { font-size: 2.5rem; }
+    .countdown-label { font-size: 0.8rem; }
+    .btn-container { flex-direction: row; justify-content: center; }
+    .btn { width: auto; padding: 14px 30px; }
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo | Mi Confirmación</title>
+
+    <!-- Fuentes de Google Fonts (Solemne y Elegante) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- TEXTURA DE PERGAMINO GLOBAL -->
+    <div class="textura-pergamino"></div>
+
+    <!-- CAPAS DE ALTA COSTURA (FONDO Y FRENTE) -->
+    <svg class="capa-sello" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21.9,8.4c-2.3-1.6-6-1.5-8.8,1c-1.3,1.2-2.3,2.6-2.9,4.2c-0.6-1.7-1.8-3.1-3.2-4.3C4.1,6.8,0.5,6.6,0.5,6.6s1,1.5,2.1,3c1.7,2.2,3.3,5.1,3,8c0,0.1,0,0.2,0,0.3c0,1,0.8,1.7,1.7,1.7c0.8,0,1.5-0.5,1.7-1.3c0.3-1.6,1.4-3.5,2.9-4.8c1.5-1.3,3.3-2,5-2c1.9,0,3.8,0.7,5.5,1.9C23.9,14.6,24,10,21.9,8.4z"/>
+    </svg>
+    <div class="capa-luces"></div>
+    <div class="contenedor-chispas" id="chispas-espiritu"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-fill ph-fire loader-icono"></i>
+        <div style="font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-texto-oscuro); letter-spacing: 3px; text-transform: uppercase;">Mateo</div>
+        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-texto-medio); margin-top: 5px;">Confirmación</div>
+    </div>
+
+    <!-- PORTADA HERO -->
+    <header class="hero">
+        <div class="hero-bg">
+            <!-- Fondo elegante: Arquitectura de iglesia, vitral o luz cálida -->
+            <img src="https://images.unsplash.com/photo-1519818177695-10330de2eaad?q=80&w=800&auto=format&fit=crop" alt="Fondo Confirmación">
+        </div>
+        <div class="hero-marco-interno"></div>
+        
+        <div class="hero-content fade-up visible">
+            <div class="caja-hero">
+                <div class="hero-etiqueta">Nuestra Alegría</div>
+                <h1 class="hero-nombre">Mateo</h1>
+                
+                <div class="divisor-diploma" style="margin: 20px auto;">
+                    <div class="linea"></div><i class="ph-fill ph-cross"></i><div class="linea"></div>
+                </div>
+
+                <div class="hero-fecha">Sábado, 15 de Noviembre</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENSAJE Y PILARES -->
+    <section class="seccion-padding seccion-mensaje">
+        <div class="contenedor fade-up">
+            
+            <i class="ph-fill ph-dove" style="font-size: 2.5rem; color: var(--color-oro); margin-bottom: 25px;"></i>
+            
+            <div class="texto-certificado" style="display: flex; flex-direction: column; gap: 20px;">
+                <p>"Hay momentos en nuestro caminar que definen quiénes somos y el rumbo que elegimos tomar. Hoy, con plena conciencia y el corazón abierto, decido confirmar mi fe y encender en mi interior la luz inextinguible del Espíritu Santo.</p>
+                <p>Este sacramento representa mi compromiso personal y maduro con Dios, una promesa de guiar mis pasos con amor, esperanza y fortaleza ante los retos de la vida. Es un paso trascendental que deseo dar rodeado de las personas que han iluminado mi historia.</p>
+                <p>Es un inmenso honor para mí invitarte a compartir esta celebración de madurez espiritual. Tu presencia, tus consejos y tus oraciones serán el regalo más hermoso en este día que marcará mi camino para siempre."</p>
+            </div>
+
+            <div class="bloque-pilares">
+                <div class="etiqueta-honor">Con el amor de mis padres</div>
+                <p class="nombres-honor">Roberto Garza & Elena Mendoza</p>
+
+                <div class="divisor-diploma" style="margin: 25px auto;">
+                    <i class="ph-fill ph-circle" style="font-size: 0.4rem;"></i>
+                </div>
+
+                <div class="etiqueta-honor">La guía de mis padrinos</div>
+                <p class="nombres-honor">Fernando Ruiz & Sofía Valdés</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Faltan</h2>
+            <div class="contador-grid" id="contador">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIONES BÁSICAS -->
+    <section class="seccion-padding" style="background: var(--color-fondo-secundario);">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up" style="margin-bottom: 40px;">Dónde y Cuándo</h2>
+            
+            <div class="ubicaciones-contenedor">
+                <!-- Ceremonia -->
+                <div class="ubicacion-card fade-up">
+                    <i class="ph-fill ph-church ubicacion-icono"></i>
+                    <h3 class="ubicacion-titulo">Ceremonia Religiosa</h3>
+                    <div class="ubicacion-hora">12:00 PM</div>
+                    <p class="ubicacion-direccion">Catedral de Nuestra Señora<br>Av. Principal #123, Centro Histórico.</p>
+                    <a href="#" target="_blank" class="btn-outline-oro"><i class="ph-fill ph-map-pin"></i> Ver Ubicación</a>
+                </div>
+
+                <!-- Recepción -->
+                <div class="ubicacion-card fade-up delay-1">
+                    <i class="ph-fill ph-wine ubicacion-icono"></i>
+                    <h3 class="ubicacion-titulo">Recepción</h3>
+                    <div class="ubicacion-hora">02:30 PM</div>
+                    <p class="ubicacion-direccion">Hacienda Los Arcángeles<br>Camino Real #456, Zona Sur.</p>
+                    <a href="#" target="_blank" class="btn-outline-oro"><i class="ph-fill ph-map-pin"></i> Ver Ubicación</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RSVP BÁSICO (WHATSAPP) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="seccion-rsvp">
+                <i class="ph-fill ph-envelope-open icono-rsvp"></i>
+                <h2>Confirmar<br>Asistencia</h2>
+                
+                <div class="divisor-diploma" style="margin: 20px auto;">
+                    <div class="linea" style="width: 30px;"></div>
+                    <i class="ph-fill ph-check-circle" style="font-size: 0.8rem;"></i>
+                    <div class="linea" style="width: 30px;"></div>
+                </div>
+
+                <p>Tu presencia es sumamente importante para la logística de este día. Por favor, confírmanos antes del 01 de Noviembre.</p>
+                
+                <a href="https://wa.me/520000000000?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20Confirmación%20de%20Mateo." target="_blank" class="btn-whatsapp-vino">
+                    <i class="ph-fill ph-whatsapp-logo"></i> Enviar Mensaje
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="fade-up">
+        <div class="contenedor">
+            <h3 class="logo">ArteEn<span>Link</span></h3>
+            
+            <!-- Redes Sociales de la Agencia -->
+            <div class="redes">
+                <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="https://wa.me/520000000000" target="_blank" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            </div>
+
+            <!-- Call To Action (Ventas de ArteEnLink) -->
+            <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 300px; margin-left: auto; margin-right: auto;">
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 15px;">¿Te gustó esta invitación?</p>
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20Demo%20Básica%20de%20Confirmación%20y%20me%20gustaría%20información%20para%20mi%20evento." target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: white; padding: 10px 25px; border-radius: 50px; font-weight: 500; font-family: var(--fuente-textos); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.4); transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-oro)'; this.style.borderColor='var(--color-oro)';" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.4)';">
+                    <i class="ph-fill ph-whatsapp-logo"></i> ¡Contáctanos!
+                </a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 ArteEnLink. Todos los derechos reservados.<br>
+                Invitaciones Digitales de Alta Costura.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

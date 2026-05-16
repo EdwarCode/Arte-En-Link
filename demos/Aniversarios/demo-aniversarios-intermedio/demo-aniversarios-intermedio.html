@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carmen y Roberto | Bodas de Oro - VIP</title>
+
+    <!-- Fuentes de Alta Costura: Cinzel (Elegancia Clásica) y Montserrat (Lectura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Librería 1: Phosphor Icons (Fill / Relleno para máxima presencia) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Librería 2: Swiper.js (Para la Galería Coverflow 3D) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Librería 3: Three.js y Vanta.js (Para el fondo de Niebla 3D) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+
+    <!-- Librería 4: Anime.js (Para las físicas del Sobre y Fade-Ups) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- FONDO WEBGL VANTA.JS (Niebla Interactiva) -->
+    <div id="vanta-bg"></div>
+
+    <!-- RUTA LOCAL DE AUDIO ESTRICTA -->
+    <audio id="musica-fondo" preload="auto" loop playsinline>
+        <source src="assets/audio/tu-cancion-aqui.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-fill ph-infinity loader-icon"></i>
+        <div class="loader-text">Preparando Memorias...</div>
+    </div>
+
+    <!-- SOBRE 3D INTERACTIVO (Portal de Entrada VIP) -->
+    <div id="pantalla-sobre">
+        <div class="sobre-wrapper" id="sobre-btn">
+            <div class="sobre-back"></div>
+            <div class="sobre-carta" id="carta-interior">
+                <h2>Carmen & Roberto</h2>
+                <p>Bodas de Oro</p>
+            </div>
+            <div class="sobre-solapa-left"></div>
+            <div class="sobre-solapa-right"></div>
+            <div class="sobre-solapa-bottom"></div>
+            <div class="sobre-solapa-top" id="solapa-arriba"></div>
+            
+            <div class="sello-cera" id="sello-oro">50</div>
+        </div>
+        <div class="instruccion-sobre" id="instruccion-sobre">Toca para abrir</div>
+    </div>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE -->
+    <div id="btn-musica" title="Música">
+        <i class="ph-fill ph-play-circle" id="icono-musica"></i>
+    </div>
+
+    <!-- PORTADA HERO INMERSIVA -->
+    <header class="hero">
+        <div class="contenedor">
+            <div class="marco-foto-hero fade-up">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600&auto=format&fit=crop" alt="Retrato Aniversario">
+            </div>
+            <div class="hero-grado fade-up delay-1">50 Aniversario</div>
+            <h1 class="hero-nombre fade-up delay-1">Carmen & Roberto</h1>
+            <div class="hero-generacion fade-up delay-2">Un amor que trasciende el tiempo</div>
+        </div>
+    </header>
+
+    <!-- INVITACIÓN ELEGANTE -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up glass-card" style="text-align: center;">
+            <i class="ph-fill ph-heart-straight" style="font-size: 3rem; color: var(--color-borgoña); margin-bottom: 20px;"></i>
+            <h2 class="titulo-seccion" style="margin-bottom: 30px;">Renovación de Votos</h2>
+            <p class="texto-emotivo">
+                "Han pasado 50 años desde aquel día en que decidimos entrelazar nuestras vidas. Hoy, con la sabiduría del tiempo y el corazón rebosante de gratitud por la familia que hemos formado, queremos reafirmar nuestro compromiso frente a Dios y a las personas que más amamos."
+            </p>
+            
+            <div class="divisor-elegante">
+                <div class="divisor-linea"></div>
+                <div class="divisor-rombo"></div>
+                <div class="divisor-linea"></div>
+            </div>
+            
+            <p class="texto-invitacion">
+                Acompañados de nuestros hijos y nietos,<br>tenemos el inmenso honor de invitarte a celebrar<br><span style="color: var(--color-oro);">nuestra historia de amor.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up text-center">
+            <h2 class="titulo-seccion">El Gran Día</h2>
+            <p class="subtitulo-seccion">Falta muy poco para celebrar el amor.</p>
+            
+            <div class="contador-grid" id="contador-aniversario">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LÍNEA DE TIEMPO (NUESTRA HISTORIA) -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up">Nuestra Historia</h2>
+            <p class="subtitulo-seccion fade-up">Los momentos que marcaron nuestro camino.</p>
+            
+            <div class="timeline-wrapper">
+                <div class="timeline-linea"><div class="timeline-progreso" id="linea-progreso"></div></div>
+                
+                <div class="hito-item" data-progreso="20">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-ano">1976</div>
+                        <h4 class="hito-titulo">El Gran Sí</h4>
+                        <p class="hito-texto">Nos juramos amor eterno frente al altar, comenzando nuestra mayor aventura.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="45">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-ano">1980</div>
+                        <h4 class="hito-titulo">La Familia Crece</h4>
+                        <p class="hito-texto">Llegaron nuestros hijos para llenarnos de alegría y darnos un nuevo propósito.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="70">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-ano">2005</div>
+                        <h4 class="hito-titulo">Nuevas Generaciones</h4>
+                        <p class="hito-texto">Nos convertimos en abuelos. Ver crecer a nuestros nietos ha sido nuestra mayor bendición.</p>
+                    </div>
+                </div>
+                <div class="hito-item" data-progreso="100">
+                    <div class="hito-punto"></div>
+                    <div class="hito-content">
+                        <div class="hito-ano">2026</div>
+                        <h4 class="hito-titulo">Bodas de Oro</h4>
+                        <p class="hito-texto">Cincuenta años de paciencia, respeto y un amor que demostró ser inquebrantable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA SWIPER COVERFLOW 3D -->
+    <section class="seccion-galeria fade-up">
+        <div class="contenedor text-center">
+            <h2 class="titulo-seccion">Baúl de Recuerdos</h2>
+            <p class="subtitulo-seccion">Una vida entera en imágenes.</p>
+        </div>
+        
+        <!-- Swiper Container -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Se usan imágenes vintage/doradas genéricas como placeholders -->
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=400&auto=format&fit=crop" alt="Foto 1"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=400&auto=format&fit=crop" alt="Foto 2"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=400&auto=format&fit=crop" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?q=80&w=400&auto=format&fit=crop" alt="Foto 4"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=400&auto=format&fit=crop" alt="Foto 5"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=400&auto=format&fit=crop" alt="Foto 6"></div>
+            </div>
+            <!-- Paginación opcional de Swiper -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="instruccion-swipe"><i class="ph-fill ph-hand-swipe-left"></i> Desliza para explorar <i class="ph-fill ph-hand-swipe-right"></i></div>
+    </section>
+
+    <!-- UBICACIONES (CRISTAL) -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor grid-2">
+            
+            <div class="glass-card ubicacion-card fade-up">
+                <i class="ph-fill ph-church ubicacion-icono"></i>
+                <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Misa de Acción de Gracias</h3>
+                <div><span class="ubicacion-hora"><i class="ph-bold ph-clock"></i> 17:00 Hrs</span></div>
+                <p style="margin-bottom: 25px; flex-grow: 1;">
+                    <b>Catedral Basílica de la Asunción</b><br>
+                    Av. Revolución 123, Centro Histórico.
+                </p>
+                <a href="#" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-map-pin"></i> Abrir Maps</a>
+            </div>
+
+            <div class="glass-card ubicacion-card fade-up delay-1">
+                <i class="ph-fill ph-wine ubicacion-icono"></i>
+                <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Cena de Gala</h3>
+                <div><span class="ubicacion-hora"><i class="ph-bold ph-clock"></i> 19:30 Hrs</span></div>
+                <p style="margin-bottom: 25px; flex-grow: 1;">
+                    <b>Hacienda "La Esperanza"</b><br>
+                    Camino Real 456, a las afueras de la ciudad.
+                </p>
+                <a href="#" class="btn-outline" style="width: 100%;"><i class="ph-fill ph-map-pin"></i> Abrir Maps</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DRESS CODE (ARTE CSS) -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor text-center">
+            <h2 class="titulo-seccion fade-up">Código de Vestimenta</h2>
+            <p class="subtitulo-seccion fade-up" style="color: var(--color-oro); text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">Rigurosa Etiqueta Formal</p>
+            
+            <div class="grid-2">
+                <!-- Damas -->
+                <div class="glass-card fade-up">
+                    <div class="arte-vestimenta"><div class="css-vestido"></div></div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Damas</h3>
+                    <p style="font-size: 0.95rem;">Vestido largo de noche elegante.<br><small style="color: var(--color-texto-plata);">(Evitar blanco o tonos crema)</small></p>
+                </div>
+
+                <!-- Caballeros -->
+                <div class="glass-card fade-up delay-1">
+                    <div class="arte-vestimenta"><div class="css-traje"></div></div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Caballeros</h3>
+                    <p style="font-size: 0.95rem;">Traje sastre oscuro formal o Smoking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGALOS (LLUVIA DE SOBRES) -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="glass-card text-center" style="border-color: var(--color-oro);">
+                <i class="ph-fill ph-gift ubicacion-icono" style="font-size: 3.5rem;"></i>
+                <h2 style="font-size: 2rem; margin-bottom: 15px;">Lluvia de Sobres</h2>
+                <p style="margin-bottom: 20px;">El mejor regalo es su presencia. Si desean tener un detalle adicional con nosotros, contaremos con un buzón en la recepción o pueden realizar una transferencia:</p>
+                
+                <div class="caja-regalo" style="display: inline-block; padding: 25px 40px; margin-top: 10px;">
+                    Banco Ficticio<br>CLABE: 1234 5678 9012 3456<br>Carmen y Roberto
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP LIQUID GOLD VIP -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            <div class="seccion-rsvp fade-up">
+                <div class="rsvp-content">
+                    <i class="ph-fill ph-envelope-simple-open rsvp-icono"></i>
+                    <h2>Celebra con Nosotros</h2>
+                    <p>Por motivos de organización, les suplicamos confirmar su amable asistencia a más tardar el 01 de Noviembre. ¡Los esperamos con mucha ilusión!</p>
+                    
+                    <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20con%20mucha%20emoción%20mi%20asistencia%20a%20sus%20Bodas%20de%20Oro.%20¡Felicidades!" target="_blank" class="btn-oro" style="width: 100%; max-width: 400px; margin: 0 auto;">
+                        <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar Asistencia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER COMERCIAL -->
+    <footer class="footer-comercial fade-up">
+        <h3 style="color: var(--color-texto-blanco); font-family: var(--fuente-textos); font-weight: 500; font-size: 1rem; margin-bottom: 20px;">¿Deseas una invitación como esta? ¡Contáctanos!</h3>
+        <div class="social-links">
+            <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20Intermedia%20VIP%20de%20Aniversarios%20y%20me%20encantó." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+        </div>
+        <div class="creditos">
+            Diseño e Ingeniería Inmersiva por <a href="index.html" target="_blank" style="color: var(--color-oro); font-weight: bold;">ArteEnLink</a>.
+        </div>
+    </footer>
+
+        <script src="script.js"></script>
+
+</body>
+</html>

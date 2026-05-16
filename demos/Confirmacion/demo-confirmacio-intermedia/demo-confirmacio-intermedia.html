@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo | Mi Confirmación (Intermedio)</title>
+
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body class="bloqueado">
+
+    <!-- CAPAS DE FONDO DE ALTA COSTURA -->
+    <div class="textura-pergamino"></div>
+    <svg class="capa-sello" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21.9,8.4c-2.3-1.6-6-1.5-8.8,1c-1.3,1.2-2.3,2.6-2.9,4.2c-0.6-1.7-1.8-3.1-3.2-4.3C4.1,6.8,0.5,6.6,0.5,6.6s1,1.5,2.1,3c1.7,2.2,3.3,5.1,3,8c0,0.1,0,0.2,0,0.3c0,1,0.8,1.7,1.7,1.7c0.8,0,1.5-0.5,1.7-1.3c0.3-1.6,1.4-3.5,2.9-4.8c1.5-1.3,3.3-2,5-2c1.9,0,3.8,0.7,5.5,1.9C23.9,14.6,24,10,21.9,8.4z"/>
+    </svg>
+    <div class="capa-luces"></div>
+    <div class="contenedor-chispas" id="chispas-espiritu"></div>
+
+    <!-- MÚSICA SOLEMNE -->
+    <audio id="audio-fondo" loop>
+        <!-- Cello/Piano solemne -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- EL PERGAMINO SAGRADO (MECANISMO DE APERTURA) -->
+    <div id="pergamino-intro">
+        <div class="pergamino-mitad pergamino-top"></div>
+        <div class="pergamino-mitad pergamino-bottom"></div>
+        
+        <div class="sello-wrapper">
+            <div class="sello-texto">Toca el sello para abrir</div>
+            <div class="sello-cera" id="btn-abrir-pergamino">M</div>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR FLOTANTE -->
+    <div id="btn-musica" onclick="toggleMusica()">
+        <i class="ph-fill ph-music-note"></i>
+    </div>
+
+    <!-- PORTADA HERO PARALLAX -->
+    <header class="hero">
+        <div class="hero-bg">
+            <!-- Arquitectura de iglesia o vitral -->
+            <img src="https://images.unsplash.com/photo-1519818177695-10330de2eaad?q=80&w=800&auto=format&fit=crop" alt="Fondo Confirmación" id="hero-img">
+        </div>
+        <div class="hero-marco-interno"></div>
+        
+        <div class="hero-content fade-up">
+            <div class="caja-hero">
+                <div class="hero-etiqueta">Nuestra Alegría</div>
+                <h1 class="hero-nombre">Mateo</h1>
+                <div class="divisor-diploma" style="margin: 20px auto;"><div class="linea"></div><i class="ph-fill ph-cross"></i><div class="linea"></div></div>
+                <div class="hero-fecha">Sábado, 15 de Noviembre</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENSAJE, PILARES Y GALERÍA EDITORIAL -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            
+            <div class="fade-up" style="text-align: center;">
+                <i class="ph-fill ph-dove" style="font-size: 2.5rem; color: var(--color-oro); margin-bottom: 25px;"></i>
+                <div class="texto-certificado" style="display: flex; flex-direction: column; gap: 20px;">
+                    <p>"Hay momentos en nuestro caminar que definen quiénes somos y el rumbo que elegimos tomar. Hoy, con plena conciencia y el corazón abierto, decido confirmar mi fe y encender en mi interior la luz inextinguible del Espíritu Santo.</p>
+                    <p>Este sacramento representa mi compromiso personal y maduro con Dios, una promesa de guiar mis pasos con amor, esperanza y fortaleza ante los retos de la vida. Es un paso trascendental que deseo dar rodeado de las personas que han iluminado mi historia.</p>
+                    <p>Por ello, es un inmenso honor para mí y para mi familia invitarte a compartir esta celebración de fe. Tu presencia, tus consejos y tus sinceras oraciones serán el regalo más valioso en este día tan especial, acompañándome en el inicio de esta nueva etapa espiritual que marcará mi camino para siempre."</p>
+                </div>
+            </div>
+
+            <div class="divisor-diploma fade-up"><div class="linea"></div><i class="ph-fill ph-circle" style="font-size: 0.4rem;"></i><div class="linea"></div></div>
+
+            <!-- Bloque reubicado: Papás y Padrinos -->
+            <div class="fade-up" style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-texto-medio); margin-bottom: 10px;">Con el amor de mis padres</div>
+                <p style="font-family: var(--fuente-titulos); font-size: 1.6rem; color: var(--color-texto-oscuro); margin-bottom: 10px;">Roberto Garza & Elena Mendoza</p>
+                <p style="font-size: 0.95rem; color: var(--color-texto-medio); max-width: 500px; margin: 0 auto 35px; font-style: italic; font-weight: 300; line-height: 1.6;">Quienes me enseñaron a dar mis primeros pasos en la fe y me han acompañado con su amor incondicional en cada etapa de mi vida.</p>
+                
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-texto-medio); margin-bottom: 10px;">Y la guía de mis padrinos</div>
+                <p style="font-family: var(--fuente-titulos); font-size: 1.6rem; color: var(--color-texto-oscuro); margin-bottom: 10px;">Fernando Ruiz & Sofía Valdés</p>
+                <p style="font-size: 0.95rem; color: var(--color-texto-medio); max-width: 500px; margin: 0 auto; font-style: italic; font-weight: 300; line-height: 1.6;">Quienes han aceptado la hermosa misión de ser mi ejemplo, acompañándome como guías espirituales en este nuevo caminar.</p>
+            </div>
+
+            <!-- Galería Asimétrica de Lujo -->
+            <div class="galeria-grid">
+                <div class="foto-galeria fade-up delay-1"><img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=600&auto=format&fit=crop" alt="Sesión Confirmación 1"></div>
+                <div class="foto-galeria fade-up delay-2"><img src="https://images.unsplash.com/photo-1436564989038-18b9958df72b?q=80&w=400&auto=format&fit=crop" alt="Detalle Espiritual"></div>
+                <div class="foto-galeria fade-up delay-3"><img src="https://images.unsplash.com/photo-1544254050-a9cb00e409ec?q=80&w=400&auto=format&fit=crop" alt="Sesión Confirmación 2"></div>
+                <div class="foto-galeria fade-up delay-1"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Detalle Luz"></div>
+                <div class="foto-galeria fade-up delay-2"><img src="https://images.unsplash.com/photo-1602030028438-4cf153cbae9e?q=80&w=400&auto=format&fit=crop" alt="Sesión Confirmación 3"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DÓNDE Y CUÁNDO (ITINERARIO TIMELINE) -->
+    <section class="seccion-padding" style="background: var(--color-fondo-secundario);">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up">Itinerario del Día</h2>
+            
+            <div class="timeline" style="margin-top: 50px;">
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">12:00 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-church" style="color: var(--color-oro);"></i> Ceremonia Religiosa</div>
+                    <div class="timeline-desc">Catedral de Nuestra Señora. Av. Principal #123.<br><a href="#" style="color: var(--color-acento-vino); text-decoration: underline; font-weight: 500;">Abrir Mapa</a></div>
+                </div>
+                <div class="timeline-item fade-up delay-2">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">02:30 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-martini" style="color: var(--color-oro);"></i> Recepción y Coctel</div>
+                    <div class="timeline-desc">Hacienda Los Arcángeles. Bienvenida a invitados.<br><a href="#" style="color: var(--color-acento-vino); text-decoration: underline; font-weight: 500;">Abrir Mapa</a></div>
+                </div>
+                <div class="timeline-item fade-up delay-3">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">04:00 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-fork-knife" style="color: var(--color-oro);"></i> Banquete</div>
+                    <div class="timeline-desc">Comida en compañía de familiares y amigos.</div>
+                </div>
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">05:30 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-wine" style="color: var(--color-oro);"></i> Brindis</div>
+                    <div class="timeline-desc">Palabras de mis padrinos y corte de pastel.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE Y REGALOS -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            
+            <!-- Dress Code -->
+            <div class="fade-up">
+                <h2 class="titulo-seccion" style="margin-bottom: 20px;">Código de Vestimenta</h2>
+                <div class="dc-grid">
+                    <div class="dc-card">
+                        <i class="ph-fill ph-dress dc-icono"></i>
+                        <h3>Damas</h3>
+                        <p>Vestido largo o midi en tonos oscuros o joya. Blanco reservado.</p>
+                    </div>
+                    <div class="dc-card">
+                        <i class="ph-fill ph-user-focus dc-icono"></i>
+                        <h3>Caballeros</h3>
+                        <p>Traje formal oscuro con corbata. Estilo elegante y sobrio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regalos -->
+            <div class="caja-regalos fade-up" style="margin-top: 60px;">
+                <i class="ph-fill ph-envelope-simple" style="font-size: 3rem; color: var(--color-oro); margin-bottom: 15px;"></i>
+                <h3 style="font-family: var(--fuente-titulos); font-size: 1.5rem; margin-bottom: 15px;">Sugerencia de Regalo</h3>
+                <p style="font-size: 0.95rem; color: var(--color-texto-medio); margin-bottom: 25px;">Tu presencia en este día tan importante es mi mayor regalo, pero si deseas tener un detalle conmigo, en la recepción habrá un buzón para lluvia de sobres, o puedes hacerlo de forma digital.</p>
+                
+                <button onclick="document.getElementById('banco-info').style.display='block'" class="btn-outline-oro">
+                    <i class="ph-fill ph-bank"></i> Ver Datos Bancarios
+                </button>
+                
+                <div id="banco-info" style="display: none; background: var(--color-fondo-secundario); padding: 20px; border-radius: 10px; margin-top: 20px; border: 1px dashed var(--color-oro-oscuro); animation: fadeIn 0.5s;">
+                    <p style="font-size: 0.9rem; margin-bottom: 5px; color: var(--color-texto-oscuro);"><b>Banco Internacional</b></p>
+                    <p style="font-size: 0.9rem; margin-bottom: 5px;">Roberto Garza</p>
+                    <p style="font-size: 0.9rem; letter-spacing: 2px;">CLABE: 012 345 6789 0123 4567</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion" style="margin-bottom: 10px;">El Gran Día</h2>
+            <div class="contador-grid" id="contador">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP BÁSICO (WHATSAPP) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="seccion-rsvp">
+                <i class="ph-fill ph-envelope-open" style="font-size: 2.5rem; color: var(--color-acento-vino); margin-bottom: 15px; position: relative; z-index: 2;"></i>
+                <h2 style="color: var(--color-texto-oscuro); font-size: 2.2rem; position: relative; z-index: 2; font-style: italic;">Confirmar<br>Asistencia</h2>
+                
+                <div class="divisor-diploma" style="margin: 20px auto;">
+                    <div class="linea" style="width: 30px;"></div><i class="ph-fill ph-check-circle" style="font-size: 0.8rem;"></i><div class="linea" style="width: 30px;"></div>
+                </div>
+
+                <p style="color: var(--color-texto-medio); margin: 20px auto 35px; font-size: 0.95rem; max-width: 350px; position: relative; z-index: 2;">Por favor, confírmanos tu asistencia antes del 01 de Noviembre para considerarte en el banquete.</p>
+                
+                <a href="https://wa.me/520000000000?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20Confirmación%20de%20Mateo." target="_blank" class="btn-whatsapp-vino">
+                    <i class="ph-fill ph-whatsapp-logo"></i> Confirmar Asistencia
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="fade-up">
+        <div class="contenedor">
+            <h3 class="logo">ArteEn<span>Link</span></h3>
+            
+            <div class="redes">
+                <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            </div>
+
+            <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 300px; margin-left: auto; margin-right: auto;">
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 15px;">¿Te gustó esta invitación?</p>
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink..." target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: white; padding: 10px 25px; border-radius: 50px; font-weight: 500; font-family: var(--fuente-textos); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.4); transition: all 0.3s ease;">
+                    <i class="ph-fill ph-whatsapp-logo"></i> ¡Contáctanos!
+                </a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 ArteEnLink. Todos los derechos reservados.<br>Invitaciones Digitales de Alta Costura.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

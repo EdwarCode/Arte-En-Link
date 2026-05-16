@@ -1,0 +1,443 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (GALA / GRADUACIONES)
+           ========================================================================== */
+        :root {
+            /* Branding Original de ArteEnLink */
+            --color-fondo: #FAF6F0; 
+            --color-seccion-clara: #F0EBE1;
+            
+            /* Paleta de Graduaciones (Navy & Gold) */
+            --color-texto-principal: #0A192F; /* Navy profundo elegante */
+            --color-texto-secundario: #4A5568;
+            
+            /* Acentos en Oro / Éxito */
+            --color-acento-oro: #D4AF37; /* Oro clásico */
+            --color-oro-hover: #B5952F;
+            --color-acento-secundario: #E5C158;
+            --color-oro-claro: #FDF9EE;
+
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Poppins', sans-serif;
+
+            --sombra-suave: 0 10px 30px rgba(10, 25, 47, 0.05);
+            --sombra-fuerte: 0 20px 40px rgba(212, 175, 55, 0.15);
+            --borde-radio: 16px;
+        }
+
+        /* ==========================================================================
+           2. RESET Y ESTILOS GLOBALES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: var(--fuente-textos); 
+            background-color: var(--color-fondo); 
+            color: var(--color-texto-principal); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            /* Directriz cumplida: Renderizado nítido */
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--fuente-titulos); color: var(--color-texto-principal); }
+        p { color: var(--color-texto-secundario); font-size: 1rem; }
+        a { text-decoration: none; color: inherit; }
+
+        .contenedor { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .seccion-padding { padding: 80px 0; }
+
+        /* PRELOADER Y ANIMACIONES INICIALES */
+        #preloader { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: var(--color-fondo); z-index: 99999; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            transition: opacity 0.6s ease, visibility 0.6s ease; 
+        }
+        #preloader.oculto { opacity: 0; visibility: hidden; }
+
+        .loader-logo { 
+            font-family: var(--fuente-titulos); font-size: 2.5rem; font-weight: 700; 
+            color: var(--color-texto-principal); margin-bottom: 20px; 
+            /* Se evita usar transform: scale en el pulse para proteger el render */
+            animation: pulseOpacity 1.5s infinite ease-in-out; 
+        }
+        .loader-logo span { color: var(--color-acento-oro); font-style: italic; }
+
+        .loader-spinner { 
+            width: 40px; height: 40px; 
+            border: 3px solid var(--color-oro-claro); 
+            border-top: 3px solid var(--color-acento-oro); 
+            border-radius: 50%; 
+            animation: spin 1s linear infinite; 
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulseOpacity { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* Clases base para Intersection Observer */
+        .animar-oculto { 
+            opacity: 0; 
+            transform: translate3d(0, 40px, 0); 
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); 
+        }
+        .animar-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        .delay-1 { transition-delay: 100ms; } 
+        .delay-2 { transition-delay: 200ms; } 
+        .delay-3 { transition-delay: 300ms; }
+        .delay-4 { transition-delay: 400ms; }
+
+        /* ==========================================================================
+           3. BOTONES (ORO ELEGANCIA)
+           ========================================================================== */
+        .btn-principal { 
+            display: inline-block; background-color: var(--color-acento-oro); color: #FFFFFF; 
+            padding: 12px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; 
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); 
+            text-align: center; cursor: pointer; border: none; 
+        }
+        .btn-principal:hover { 
+            background-color: var(--color-oro-hover); 
+            transform: translate3d(0, -3px, 0); 
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); 
+        }
+
+        .btn-secundario { 
+            display: inline-block; background-color: transparent; color: var(--color-texto-principal); 
+            padding: 10px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; 
+            border: 2px solid var(--color-texto-principal); transition: all 0.3s ease; 
+            text-align: center; 
+        }
+        .btn-secundario:hover { 
+            background-color: var(--color-texto-principal); color: #FFFFFF; 
+            transform: translate3d(0, -3px, 0);
+        }
+
+        .btn-premium { 
+            display: inline-block; background-color: transparent; color: var(--color-acento-oro); 
+            padding: 12px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; 
+            border: 2px solid var(--color-acento-oro); transition: all 0.3s ease; text-align: center; 
+        }
+        .btn-premium:hover { 
+            background-color: var(--color-acento-oro); color: #FFFFFF; 
+            transform: translate3d(0, -3px, 0); 
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); 
+        }
+
+        .btn-whatsapp { 
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            background-color: #25D366; color: white; padding: 12px 24px; border-radius: 50px; 
+            font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); 
+        }
+        .btn-whatsapp:hover { 
+            background-color: #128C7E; 
+            transform: translate3d(0, -3px, 0); 
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); 
+        }
+
+        /* ==========================================================================
+           4. CABECERA
+           ========================================================================== */
+        header { 
+            position: fixed; top: 0; left: 0; width: 100%; 
+            background-color: rgba(250, 246, 240, 0.95); 
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.03); 
+            padding: 15px 0; transition: all 0.3s ease; 
+        }
+        .nav-container { 
+            display: flex; justify-content: space-between; align-items: center; 
+            max-width: 1200px; margin: 0 auto; padding: 0 5%; 
+        }
+        .logo { 
+            font-family: var(--fuente-titulos); font-size: 1.8rem; font-weight: 700; 
+            color: var(--color-texto-principal); letter-spacing: -0.5px; 
+        }
+        .logo span { color: var(--color-acento-oro); font-style: italic; }
+        
+        .volver-inicio { 
+            display: flex; align-items: center; gap: 8px; 
+            font-weight: 500; font-size: 0.95rem; transition: color 0.3s; 
+        }
+        .volver-inicio:hover { color: var(--color-acento-oro); }
+
+        /* ==========================================================================
+           5. HERO DE CATEGORÍA
+           ========================================================================== */
+        .hero-categoria { padding-top: 140px; padding-bottom: 40px; text-align: center; position: relative; }
+        .hero-categoria h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        .hero-categoria p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; margin-bottom: 30px; }
+
+        .alerta-personalizacion {
+            background-color: var(--color-seccion-clara);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-left: 4px solid var(--color-acento-oro);
+            padding: 20px 30px; border-radius: 0 12px 12px 0;
+            display: inline-flex; align-items: center; gap: 15px;
+            max-width: 800px; margin: 0 auto; text-align: left;
+            box-shadow: var(--sombra-suave);
+        }
+        .alerta-personalizacion i { font-size: 2rem; color: var(--color-acento-oro); }
+        .alerta-personalizacion p { margin: 0; font-size: 0.95rem; color: var(--color-texto-principal); }
+
+        /* ==========================================================================
+           6. ESCAPARATE VIP (LOS 3 CELULARES - ANIMACIONES OPTIMIZADAS)
+           ========================================================================== */
+        .escaparate-vip { padding: 60px 0; }
+        .grid-celulares { 
+            display: grid; grid-template-columns: repeat(3, 1fr); 
+            gap: 40px; justify-items: center; align-items: end; 
+        }
+        .columna-modelo { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 320px; }
+        
+        .etiqueta-nivel { 
+            font-family: var(--fuente-titulos); font-size: 1.5rem; margin-bottom: 20px; 
+            color: var(--color-texto-principal); font-weight: 600; 
+        }
+
+        /* Estructura Base del Celular (Hardware Acceleration) */
+        .celular-demo {
+            background: var(--color-fondo); border-radius: 40px; 
+            border: 10px solid var(--color-texto-principal);
+            overflow: hidden; box-shadow: var(--sombra-suave); position: relative; 
+            width: 100%; aspect-ratio: 9/19; margin-bottom: 25px; 
+            
+            /* Optimización obligatoria para evitar jittering */
+            will-change: transform; 
+            -webkit-backface-visibility: hidden; backface-visibility: hidden; 
+            transform-style: preserve-3d;
+        }
+
+        /* Notch (Cámara) */
+        .celular-demo::before { 
+            content: ''; position: absolute; top: 0; left: 50%; 
+            transform: translate3d(-50%, 0, 0); 
+            width: 120px; height: 25px; 
+            background-color: var(--color-texto-principal); 
+            border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; 
+            z-index: 10; 
+        }
+
+        /* Imagen del Demo */
+        .celular-demo img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.8s ease; 
+        }
+
+        /* 1. BÁSICO */
+        .celular-basico { 
+            animation: flotarBasico 5s ease-in-out infinite; 
+        }
+        @keyframes flotarBasico {
+            0%, 100% { transform: translate3d(0, 0, 0); } 
+            50% { transform: translate3d(0, -12px, 0); } 
+        }
+
+        /* 2. INTERMEDIO (Destacado en Oro) */
+        .celular-intermedio { 
+            border-color: var(--color-acento-oro); 
+            /* En lugar de hacer scale estático, usamos un translate sutil inicial y márgenes si fuera necesario, 
+               pero respetaremos el tamaño de la grilla sin destruir la resolución */
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15); 
+            animation: flotarInter 4.5s ease-in-out 0.5s infinite; 
+        }
+        .celular-intermedio::before { background-color: var(--color-acento-oro); }
+        
+        @keyframes flotarInter { 
+            0%, 100% { transform: translate3d(0, -5px, 0); } 
+            50% { transform: translate3d(0, -20px, 0); } 
+        }
+
+        /* 3. PREMIUM (Dark Mode y Halo Animado Vía Pseudo-elemento) */
+        .celular-premium { 
+            background: #0A192F; border-color: #0A192F; 
+            animation: flotarPremiumCel 4s ease-in-out 1s infinite; 
+        }
+        .celular-premium::before { background-color: #0A192F; z-index: 10; }
+        
+        /* El Halo dinámico: Animamos opacity, NO el box-shadow */
+        .celular-premium::after { 
+            content: ''; position: absolute; inset: 0; 
+            border-radius: 30px; 
+            box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3); 
+            pointer-events: none; z-index: 5; 
+            animation: respirarHalo 4s ease-in-out 1s infinite;
+        }
+
+        @keyframes flotarPremiumCel {
+            0%, 100% { transform: translate3d(0, -5px, 0); }
+            50% { transform: translate3d(0, -20px, 0); }
+        }
+        @keyframes respirarHalo {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .acciones-modelo { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+
+        /* ==========================================================================
+           6.5 PASOS DE COMPRA
+           ========================================================================== */
+        .pasos-compra { margin-top: 60px; padding-top: 60px; border-top: 1px solid rgba(0,0,0,0.05); }
+        .pasos-header { text-align: center; margin-bottom: 40px; }
+        .pasos-header h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .pasos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        
+        .paso-card { 
+            background: #FFFFFF; padding: 30px 25px; border-radius: var(--borde-radio); 
+            box-shadow: var(--sombra-suave); position: relative; 
+            transition: transform 0.3s ease; border-top: 3px solid transparent; 
+        }
+        .paso-card:hover { transform: translate3d(0, -8px, 0); border-top-color: var(--color-acento-oro); }
+        
+        .paso-numero { 
+            width: 45px; height: 45px; background: var(--color-oro-claro); 
+            color: var(--color-acento-oro); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; 
+        }
+        .paso-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--color-texto-principal); }
+        .paso-card p { font-size: 0.9rem; }
+
+        /* ==========================================================================
+           7. PAQUETES Y PRECIOS (Detalle GRADUACIONES)
+           ========================================================================== */
+        .precios { background-color: var(--color-seccion-clara); }
+        .precios-grid { 
+            display: grid; grid-template-columns: repeat(3, 1fr); 
+            align-items: stretch; gap: 30px; margin-top: 40px; 
+        }
+        
+        .precio-card { 
+            background: var(--color-fondo); border-radius: var(--borde-radio); 
+            padding: 40px 30px; width: 100%; text-align: center; 
+            box-shadow: var(--sombra-suave); position: relative; 
+            transition: transform 0.4s ease, box-shadow 0.4s ease; 
+        }
+        
+        .precio-card:hover { transform: translate3d(0, -10px, 0); box-shadow: var(--sombra-fuerte); }
+
+        /* Eliminamos el scale() perjudicial. Destacamos elevándolo estáticamente */
+        .precio-card.popular { 
+            transform: translate3d(0, -15px, 0); 
+            border: 2px solid var(--color-acento-oro); 
+            box-shadow: var(--sombra-fuerte); z-index: 2; 
+        }
+        .precio-card.popular:hover { transform: translate3d(0, -25px, 0); }
+
+        .etiqueta-popular { 
+            position: absolute; top: -15px; left: 50%; transform: translate3d(-50%, 0, 0); 
+            background: var(--color-acento-oro); color: #fff; padding: 5px 15px; 
+            border-radius: 20px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; 
+        }
+
+        /* Tarjeta Premium: Animación de Halo optimizada */
+        .precio-card.premium { 
+            background: linear-gradient(135deg, var(--color-texto-principal) 0%, #112240 100%); 
+            color: #FFFFFF; border: 1px solid rgba(212, 175, 55, 0.3); z-index: 1; 
+            will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; 
+            transform-style: preserve-3d;
+            position: relative;
+            /* Hacks Nivel Dios para erradicar el Text Jitter (Lag de letras) */
+            outline: 1px solid transparent;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        /* Animación de Respiro para la tarjeta completa (Cero lag en textos) */
+        .precio-card.premium.animar-visible {
+            animation: respirarCardPremium 4s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes respirarCardPremium {
+            /* La rotación microscópica y el 0.1px obligan al renderizado de subpíxeles en la GPU */
+            0%, 100% { transform: translate3d(0, 0, 0.1px) rotate(0.01deg); }
+            50% { transform: translate3d(0, -8px, 0.1px) rotate(0.01deg); }
+        }
+
+        /* Halo animado vía opacity en pseudo-elemento */
+        .precio-card.premium::after {
+            content: ''; position: absolute; inset: -2px; border-radius: var(--borde-radio);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.3);
+            z-index: -1; opacity: 0; pointer-events: none;
+        }
+
+        .precio-card.premium.animar-visible::after {
+            animation: respirarHaloPremium 4s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes respirarHaloPremium {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .precio-card.premium:hover { 
+            animation-play-state: paused;
+            transform: translate3d(0, -15px, 0.1px) rotate(0.01deg) !important; 
+        }
+
+        .etiqueta-estrella { 
+            position: absolute; top: -15px; left: 50%; transform: translate3d(-50%, 0, 0); 
+            background: linear-gradient(90deg, #D4AF37, #E5C158, #D4AF37); color: var(--color-texto-principal); 
+            padding: 6px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4); 
+            white-space: nowrap;
+        }
+
+        .precio-header h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .precio-card.premium .precio-header h3 { color: var(--color-acento-oro); }
+        
+        .precio-monto { 
+            font-family: var(--fuente-titulos); font-size: 3rem; color: var(--color-texto-principal); 
+            font-weight: 700; margin-bottom: 20px; 
+        }
+        .precio-card.premium .precio-monto { color: #FFFFFF; }
+        
+        .precio-monto span { 
+            font-size: 1rem; color: var(--color-texto-secundario); font-weight: 400; 
+            font-family: var(--fuente-textos); 
+        }
+        .precio-card.premium .precio-monto span { color: #A0AEC0; }
+
+        .lista-funciones { list-style: none; text-align: left; margin-bottom: 30px; }
+        .lista-funciones li { margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; }
+        .lista-funciones li i { color: var(--color-acento-oro); margin-top: 4px; }
+        .lista-funciones li.no-incluido { color: #A0AEC0; text-decoration: line-through; }
+        .lista-funciones li.no-incluido i { color: #A0AEC0; }
+        .precio-card.premium .lista-funciones li { color: #f1f5f9; }
+
+        /* ==========================================================================
+           8. FOOTER
+           ========================================================================== */
+        footer { background-color: var(--color-texto-principal); color: #FFFFFF; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { font-family: var(--fuente-titulos); color: var(--color-acento-oro); font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: #A0AEC0; font-size: 0.9rem; margin-bottom: 10px; display: block; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--color-acento-oro); }
+        .copyright { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; color: #A0AEC0; font-size: 0.85rem; }
+
+        /* ==========================================================================
+           9. RESPONSIVO
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .grid-celulares { grid-template-columns: 1fr; gap: 60px; }
+            .pasos-grid { grid-template-columns: repeat(2, 1fr); }
+            .precios-grid { grid-template-columns: 1fr; max-width: 450px; margin: 40px auto 0; }
+            
+            .precio-card.popular, .precio-card.premium { transform: translate3d(0, 0, 0); }
+            .precio-card.popular:hover, .precio-card.premium:hover { transform: translate3d(0, -10px, 0) !important; }
+            
+            .celular-intermedio { animation: flotarInterMovil 4s ease-in-out infinite; }
+            @keyframes flotarInterMovil { 
+                0%, 100% { transform: translate3d(0, 0, 0); } 
+                50% { transform: translate3d(0, -15px, 0); } 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pasos-grid { grid-template-columns: 1fr; }
+            .hero-categoria h1 { font-size: 2.8rem; }
+        }

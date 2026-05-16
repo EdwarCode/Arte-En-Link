@@ -1,0 +1,261 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (BODAS DE ORO: MARFIL & NAVY)
+           ========================================================================== */
+        :root {
+            /* Paleta Nostálgica y Elegante */
+            --color-fondo-marfil: #FAF8F2; /* Un crema un poco más cálido para el papel */
+            --color-tarjeta: #FFFFFF;
+            --color-navy: #1A2A3A;         /* Azul marino oscuro, altísimo contraste */
+            --color-oro: #D4AF37;          /* Oro clásico */
+            --color-oro-hover: #B5952F;
+            --color-texto-claro: #64748B;
+            
+            /* Tipografías Altamente Legibles */
+            --fuente-titulos: 'Cinzel', serif;
+            --fuente-textos: 'Montserrat', sans-serif;
+
+            /* Sombras Sutiles para el "Papel" */
+            --sombra-papel: 0 4px 15px rgba(26, 42, 58, 0.04);
+            --borde-radio: 2px; /* Reducido para dar sensación de tarjetas físicas/impresas */
+        }
+
+        /* ==========================================================================
+           2. RESET Y TEXTURA DE PERGAMINO (CERO JS)
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: var(--fuente-textos); 
+            background-color: var(--color-fondo-marfil);
+            /* EL MAGNÍFICO FILTRO DE RUIDO SVG (Efecto Papel Algodón/Pergamino) */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            color: var(--color-navy); 
+            line-height: 1.7; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 { font-family: var(--fuente-titulos); font-weight: 600; color: var(--color-navy); }
+        .contenedor { max-width: 800px; margin: 0 auto; padding: 0 6%; }
+        .seccion-padding { padding: 90px 0; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Divisor SVG Elegante Personalizado */
+        .divisor-elegante {
+            display: flex; align-items: center; justify-content: center; margin: 40px 0; opacity: 0.6;
+        }
+        .divisor-linea { height: 1px; width: 60px; background: var(--color-oro); }
+        .divisor-rombo { width: 10px; height: 10px; border: 1px solid var(--color-oro); transform: rotate(45deg); margin: 0 15px; }
+
+        /* Doble Borde Fino ("Costura" Oro) para Tarjetas Físicas */
+        .borde-costura {
+            background: var(--color-tarjeta);
+            border: 1px solid var(--color-oro);
+            position: relative;
+            box-shadow: var(--sombra-papel);
+            border-radius: var(--borde-radio);
+        }
+        .borde-costura::after {
+            content: ''; position: absolute; inset: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            pointer-events: none; border-radius: 1px;
+        }
+
+        /* Clases de Animación Scroll (Cero text-jitter) */
+        .fade-up { 
+            opacity: 0; 
+            transform: translate3d(0, 40px, 0.1px) rotate(0.01deg); 
+        }
+
+        /* ==========================================================================
+           3. BOTONES
+           ========================================================================== */
+        .btn-oro {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--color-oro); color: #FFF; 
+            padding: 16px 40px; border-radius: 50px; border: none; cursor: pointer;
+            font-family: var(--fuente-textos); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 1.5px;
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.2); transition: all 0.3s ease;
+        }
+        .btn-oro:hover { 
+            background: var(--color-oro-hover);
+            transform: translate3d(0, -3px, 0.1px) rotate(0.01deg); 
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); 
+        }
+
+        .btn-outline {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: transparent; color: var(--color-navy); 
+            border: 1px solid var(--color-navy); padding: 12px 25px; border-radius: 50px;
+            font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: all 0.3s ease; cursor: pointer;
+        }
+        .btn-outline:hover { 
+            background: var(--color-navy); color: #FFF; 
+            transform: translate3d(0, -2px, 0.1px) rotate(0.01deg);
+        }
+
+        /* ==========================================================================
+           4. PRELOADER LIMPIO Y ELEGANTE
+           ========================================================================== */
+        #preloader { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: var(--color-fondo-marfil); z-index: 99999; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            transition: opacity 0.8s ease; 
+        }
+        #preloader.oculto { opacity: 0; pointer-events: none; }
+        .loader-icon { 
+            font-size: 3.5rem; color: var(--color-oro); 
+            margin-bottom: 15px; animation: pulse 1.5s infinite; 
+        }
+        .loader-text {
+            font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-navy); letter-spacing: 4px; text-transform: uppercase;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.95); } }
+
+        /* ==========================================================================
+           5. PORTADA HERO (PASSEPARTOUT / MARÍA LUISA)
+           ========================================================================== */
+        .hero-clasico { 
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; 
+            padding: 40px 20px; text-align: center;
+        }
+        
+        .hero-grado { 
+            font-family: var(--fuente-textos); font-size: 1.1rem; letter-spacing: 6px; 
+            text-transform: uppercase; color: var(--color-oro); margin-bottom: 15px; font-weight: 500;
+        }
+        .hero-nombre { 
+            font-family: var(--fuente-titulos); font-size: 4rem; line-height: 1.1; 
+            color: var(--color-navy); margin-bottom: 30px; 
+        }
+
+        /* El Marco Físico de Alta Costura */
+        .marco-passepartout {
+            background: #FFFFFF;
+            padding: 18px; /* El cartón crema (María Luisa) */
+            border: 1px solid var(--color-oro); /* Marco exterior */
+            box-shadow: 2px 8px 25px rgba(0,0,0,0.06); 
+            max-width: 380px; margin: 0 auto 40px auto; position: relative;
+            border-radius: 2px;
+        }
+        .marco-passepartout::before {
+            content: ''; position: absolute; inset: 18px; 
+            border: 1px solid rgba(212, 175, 55, 0.5); /* Borde interior del passepartout */
+            pointer-events: none; z-index: 2;
+        }
+        .marco-passepartout img {
+            width: 100%; display: block; position: relative; z-index: 1;
+            filter: sepia(0.2) contrast(1.05); /* Toque muy sutil de nostalgia */
+        }
+
+        .hero-generacion { 
+            font-family: var(--fuente-textos); font-size: 1.2rem; color: var(--color-texto-claro); 
+            letter-spacing: 3px; font-weight: 300; 
+        }
+        .hero-fecha {
+            margin-top: 25px; font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-oro); 
+            border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); 
+            display: inline-block; padding: 10px 30px;
+        }
+
+        /* ==========================================================================
+           6. MENSAJE Y LETRA CAPITULAR
+           ========================================================================== */
+        .texto-emotivo {
+            font-size: 1.15rem; line-height: 2.1; color: var(--color-navy); margin: 0 auto; 
+            max-width: 700px; font-weight: 300; text-align: justify;
+        }
+        /* La Magia de la Letra Capitular */
+        .texto-emotivo::first-letter {
+            font-family: var(--fuente-titulos);
+            font-size: 5.5rem;
+            color: var(--color-oro);
+            float: left;
+            line-height: 0.7;
+            padding-right: 12px;
+            padding-top: 8px;
+            text-shadow: 1px 1px 0px rgba(212, 175, 55, 0.2);
+        }
+
+        .texto-invitacion {
+            font-size: 1.05rem; color: var(--color-navy); text-transform: uppercase; 
+            letter-spacing: 3px; font-weight: 500; margin-top: 20px; line-height: 1.8; text-align: center;
+        }
+
+        /* ==========================================================================
+           7. CUENTA REGRESIVA
+           ========================================================================== */
+        .titulo-seccion { font-size: 2.2rem; text-align: center; color: var(--color-navy); margin-bottom: 10px; }
+        .subtitulo-seccion { text-align: center; color: var(--color-texto-claro); margin-bottom: 40px; font-size: 1rem;}
+        
+        .contador-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .contador-box { 
+            background: var(--color-tarjeta); width: 90px; height: 95px; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            /* Borde doble invertido para cajitas pequeñas */
+            border: 1px solid var(--color-oro);
+            outline: 1px solid rgba(212, 175, 55, 0.3);
+            outline-offset: -4px;
+            box-shadow: var(--sombra-papel); border-radius: 2px;
+        }
+        .contador-numero { font-family: var(--fuente-titulos); font-size: 2.4rem; color: var(--color-oro); line-height: 1; font-weight: 600; }
+        .contador-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 8px; color: var(--color-navy); font-weight: 600;}
+
+        /* ==========================================================================
+           8. UBICACIONES (USANDO BORDE COSTURA)
+           ========================================================================== */
+        .ubicacion-card {
+            padding: 50px 30px; text-align: center; margin-bottom: 30px;
+        }
+        .ubicacion-icono { font-size: 2.8rem; color: var(--color-oro); margin-bottom: 20px; }
+        .ubicacion-titulo { font-size: 1.6rem; margin-bottom: 15px; color: var(--color-navy); }
+        .ubicacion-hora {
+            display: inline-block; border-bottom: 1px solid var(--color-oro); color: var(--color-navy);
+            padding: 5px 15px; font-size: 1rem; font-weight: 600; margin-bottom: 25px;
+        }
+        .ubicacion-direccion { font-size: 1rem; color: var(--color-texto-claro); margin-bottom: 30px; line-height: 1.8; }
+        .botones-mapa { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+        /* ==========================================================================
+           9. RSVP (CONFIRMACIÓN A WHATSAPP)
+           ========================================================================== */
+        .seccion-rsvp { 
+            margin: 0 20px; 
+            padding: 60px 20px; 
+            text-align: center; 
+        }
+        .seccion-rsvp h2 { color: var(--color-navy); margin-bottom: 20px; font-size: 2.2rem; }
+        .seccion-rsvp p { color: var(--color-texto-claro); margin-bottom: 40px; font-size: 1.05rem; line-height: 1.8; max-width: 500px; margin-left: auto; margin-right: auto;}
+        .rsvp-icono { font-size: 3.5rem; color: var(--color-oro); margin-bottom: 20px; display: inline-block;}
+
+        /* ==========================================================================
+           10. FOOTER COMERCIAL
+           ========================================================================== */
+        .footer-comercial { padding: 60px 20px 40px; text-align: center; color: var(--color-texto-claro); border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 40px;}
+        .footer-comercial h3 { font-family: var(--fuente-textos); font-size: 1rem; font-weight: 500; margin-bottom: 20px; color: var(--color-navy); }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
+        .social-link { font-size: 1.5rem; color: var(--color-oro); transition: transform 0.3s; }
+        .social-link:hover { transform: translate3d(0, -4px, 0.1px) rotate(0.01deg); color: var(--color-oro-hover); }
+        .creditos { font-size: 0.8rem; padding-top: 10px; max-width: 300px; margin: 0 auto; }
+        .creditos a { color: var(--color-oro); font-weight: 600; }
+
+        /* ==========================================================================
+           11. RESPONSIVO
+           ========================================================================== */
+        @media (max-width: 600px) {
+            .hero-nombre { font-size: 2.8rem; }
+            .hero-grado { font-size: 0.85rem; letter-spacing: 4px; }
+            .marco-passepartout { margin: 0 10px 30px 10px; padding: 12px; }
+            .texto-emotivo::first-letter { font-size: 4.5rem; padding-right: 8px; }
+            .contador-grid { gap: 10px; }
+            .contador-box { width: 75px; height: 85px; }
+            .contador-numero { font-size: 1.8rem; }
+            .contador-label { font-size: 0.55rem; }
+            .botones-mapa { flex-direction: column; }
+            .seccion-rsvp { margin: 0; }
+        }

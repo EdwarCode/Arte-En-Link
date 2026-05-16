@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila | Mi Primera Comunión (Intermedia)</title>
+
+    <!-- Fuentes de Google Fonts (Elegancia Pura + Logo ArteEnLink) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body class="no-scroll">
+
+    <!-- EFECTOS DE FONDO (TEXTURA Y ORBES) -->
+    <div class="textura-fondo"></div>
+    <div class="polvo-estrellas">
+        <div class="orbe orbe-1"></div>
+        <div class="orbe orbe-2"></div>
+    </div>
+
+    <!-- AUDIO INVISIBLE (MÚSICA INSTRUMENTAL) -->
+    <audio id="musica-fondo" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph ph-sparkle loader-icono"></i>
+        <div style="font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-texto-oscuro); letter-spacing: 3px; text-transform: uppercase;">Camila</div>
+    </div>
+
+    <!-- PANTALLA SOBRE INTERACTIVO (WOW FACTOR) -->
+    <div id="pantalla-sobre">
+        <div class="sobre-wrapper" id="sobre-interactivo">
+            <div class="sobre-cuerpo"></div>
+            <div class="sobre-tapa"></div>
+            <div class="sello-cera">C</div>
+        </div>
+        <div class="sobre-instruccion">Toca el sello para abrir</div>
+    </div>
+
+    <!-- REPRODUCTOR FLOTANTE -->
+    <div id="btn-musica" onclick="toggleMusica()">
+        <i class="ph-fill ph-music-note"></i>
+    </div>
+
+    <!-- 1. PORTADA HERO -->
+    <header class="hero">
+        <div class="hero-bg">
+            <!-- Foto de la festejada como fondo de la portada -->
+            <img src="https://images.unsplash.com/photo-1596707328904-8b0907e59f8c?q=80&w=800&auto=format&fit=crop" alt="Camila Primera Comunión">
+        </div>
+        <div class="hero-marco"></div>
+        <div class="hero-content reveal visible">
+            <div class="hero-etiqueta">Mi Primera Comunión</div>
+            <h1 class="hero-nombre">Camila</h1>
+            <div class="divisor-ornamental">
+                <div class="linea"></div>
+                <i class="ph-fill ph-star"></i>
+                <div class="linea"></div>
+            </div>
+            <div class="hero-fecha">Sábado, 24 de Mayo</div>
+        </div>
+    </header>
+
+    <!-- 2. TEXTO BÍBLICO Y NARRATIVA -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <p class="texto-biblico">
+                "El Señor es mi pastor, nada me falta; en verdes pastos me hace descansar. Junto a tranquilas aguas me conduce; me infunde nuevas fuerzas."
+                <span class="referencia-biblica">Salmo 23, 1-3</span>
+            </p>
+            
+            <div class="divisor-ornamental" style="margin: 50px auto;">
+                <div class="linea"></div><i class="ph-fill ph-star"></i><div class="linea"></div>
+            </div>
+
+            <div class="texto-largo-invitacion">
+                <p>Hay momentos en la vida que imaginamos durante mucho tiempo, y cuando por fin llegan, anhelamos compartirlos con las personas que más amamos.</p>
+                <p>Hoy, con el corazón lleno de alegría y gratitud hacia Dios, me preparo para recibir a Jesús por primera vez en el Sacramento de la Comunión. Es un día de luz y fe que marcará el inicio de un camino espiritual guiado por Su infinito amor.</p>
+                <p>Me encantaría que me acompañaras en este momento tan especial para mi familia y para mí. Tu presencia y tus oraciones serán el regalo más hermoso en este día inolvidable.</p>
+            </div>
+
+            <div class="bloque-pilares">
+                <div class="etiqueta-honor">Con la bendición de mis padres</div>
+                <p class="nombres-honor">Alejandro Torres & María José Silva</p>
+
+                <div class="etiqueta-honor">Y mis padrinos</div>
+                <p class="nombres-honor" style="margin-bottom: 0;">Carlos Ruiz & Ana Victoria Gómez</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. GALERÍA EDITORIAL -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Mis Recuerdos</h2>
+                <p style="color: var(--color-texto-claro);">Momentos llenos de luz antes del gran día.</p>
+            </div>
+            
+            <div class="galeria-grid">
+                <img src="https://images.unsplash.com/photo-1596707328904-8b0907e59f8c?q=80&w=800&auto=format&fit=crop" class="foto-galeria" alt="Sesión Comunión 1">
+                <img src="https://images.unsplash.com/photo-1544254050-a9cb00e409ec?q=80&w=400&auto=format&fit=crop" class="foto-galeria" alt="Sesión Comunión 2">
+                <img src="https://images.unsplash.com/photo-1548625361-ec2e31644781?q=80&w=400&auto=format&fit=crop" class="foto-galeria" alt="Sesión Comunión 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DÓNDE Y CUÁNDO (UBICACIONES) -->
+    <section class="seccion-padding" style="background: rgba(255,255,255,0.4);">
+        <div class="contenedor text-center">
+            <h2 style="font-size: 2.2rem; text-align: center; margin-bottom: 50px;">Dónde y Cuándo</h2>
+            
+            <div class="glass-card fade-up" style="text-align: center; margin-bottom: 30px;">
+                <i class="ph-fill ph-church" style="font-size: 3rem; color: var(--color-plata); margin-bottom: 15px;"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Ceremonia Religiosa</h3>
+                <div style="font-weight: 500; color: var(--color-texto-claro); margin-bottom: 15px;">12:00 PM</div>
+                <p style="font-size: 0.95rem; margin-bottom: 25px;">Parroquia de San Miguel Arcángel<br>Av. Principal #123, Centro.</p>
+                <a href="#" class="btn-principal"><i class="ph-fill ph-map-pin"></i> Ver Mapa</a>
+            </div>
+
+            <div class="glass-card fade-up delay-1" style="text-align: center;">
+                <i class="ph-fill ph-champagne" style="font-size: 3rem; color: var(--color-plata); margin-bottom: 15px;"></i>
+                <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Recepción</h3>
+                <div style="font-weight: 500; color: var(--color-texto-claro); margin-bottom: 15px;">02:30 PM</div>
+                <p style="font-size: 0.95rem; margin-bottom: 25px;">Salón de Eventos "Las Palmas"<br>Blvd. Las Palmas #456, Norte.</p>
+                <a href="#" class="btn-principal"><i class="ph-fill ph-map-pin"></i> Ver Mapa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ITINERARIO (7 PUNTOS) -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            <div style="text-align: center; margin-bottom: 40px;" class="fade-up">
+                <h2 style="font-size: 2.2rem;">Itinerario del Día</h2>
+                <p style="color: var(--color-texto-claro);">Nuestro programa para celebrar juntos.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item fade-up">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">11:30 AM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-users"></i> Recepción de Invitados</div>
+                    <div class="timeline-desc">Llegada a la parroquia y acomodo.</div>
+                </div>
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">12:00 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-church"></i> Ceremonia Religiosa</div>
+                    <div class="timeline-desc">Misa de Acción de Gracias y Sacramento.</div>
+                </div>
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">02:30 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-martini"></i> Llegada al Salón</div>
+                    <div class="timeline-desc">Coctel de bienvenida y música ambiental.</div>
+                </div>
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">03:30 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-fork-knife"></i> Banquete</div>
+                    <div class="timeline-desc">Comida en compañía de familiares y amigos.</div>
+                </div>
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">05:00 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-microphone-stage"></i> Brindis y Palabras</div>
+                    <div class="timeline-desc">Palabras de los padrinos y papás de Camila.</div>
+                </div>
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">05:30 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-cake"></i> Mesa de Postres</div>
+                    <div class="timeline-desc">Apertura de la mesa dulce y corte de pastel.</div>
+                </div>
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-punto"></div>
+                    <div class="timeline-hora">08:00 PM</div>
+                    <div class="timeline-titulo"><i class="ph-fill ph-hand-waving"></i> Despedida</div>
+                    <div class="timeline-desc">Agradecimientos y entrega de recuerdos.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CÓDIGO DE VESTIMENTA -->
+    <section class="seccion-padding" style="background: rgba(255,255,255,0.4);">
+        <div class="contenedor fade-up">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Código de Vestimenta</h2>
+                <p style="color: var(--color-texto-claro);">Formal / Elegante</p>
+            </div>
+
+            <div class="dresscode-grid">
+                <div class="dresscode-card">
+                    <!-- Icono de Vestido (SVG Nativo Alta Gama) -->
+                    <svg class="dresscode-icono" viewBox="0 0 512 512" fill="currentColor" style="display: block; width: 60px; height: 60px; margin: 0 auto 15px; color: var(--color-texto-oscuro);">
+                        <path d="M256 16c-35.3 0-64 28.7-64 64v16H168c-13.3 0-24 10.7-24 24s10.7 24 24 24h24v32c0 23.6 12.8 44.1 31.8 54.9l-83 237.2C133.3 490 150.8 512 175.4 512h161.1c24.6 0 42.1-22 34.6-43.9l-83-237.2c19-10.8 31.8-31.3 31.8-54.9v-32h24c13.3 0 24-10.7 24-24s-10.7-24-24-24h-24V80c0-35.3-28.7-64-64-64z"/>
+                    </svg>
+                    <h3 class="dresscode-titulo">Damas</h3>
+                    <p class="dresscode-desc">Sugerimos el uso de vestidos en tonos pastel o florales. Por respeto al Sacramento, <b>reservamos el color blanco exclusivamente para la festejada.</b></p>
+                    
+                    <!-- Paleta Visual Damas -->
+                    <div class="colores-visuales">
+                        <div class="color-swatch" style="background-color: #F8BBD0;" title="Rosa Pastel"></div>
+                        <div class="color-swatch" style="background-color: #BBDEFB;" title="Azul Cielo"></div>
+                        <div class="color-swatch" style="background-color: #C8E6C9;" title="Verde Menta"></div>
+                        <div class="color-swatch" style="background-color: #E1BEE7;" title="Lila"></div>
+                        <div class="color-swatch color-prohibido" style="background-color: #FFFFFF;" title="Blanco Reservado"></div>
+                    </div>
+                </div>
+                <div class="dresscode-card">
+                    <!-- Icono de Traje/Moño (SVG Nativo 100% Seguro) -->
+                    <svg class="dresscode-icono" viewBox="0 0 24 24" fill="currentColor" style="display: block; width: 60px; height: 60px; margin: 0 auto 15px; color: var(--color-texto-oscuro);">
+                        <path d="M5 7C4.44772 7 4 7.44772 4 8V16C4 16.5523 4.44772 17 5 17C5.64213 17 6.2758 16.8407 6.84033 16.5398L10 14.8553V9.14467L6.84033 7.46022C6.2758 7.15931 5.64213 7 5 7Z"/>
+                        <path d="M19 7C19.5523 7 20 7.44772 20 8V16C20 16.5523 19.5523 17 19 17C18.3579 17 17.7242 16.8407 17.1597 16.5398L14 14.8553V9.14467L17.1597 7.46022C17.7242 7.15931 18.3579 7 19 7Z"/>
+                        <circle cx="12" cy="12" r="3.5"/>
+                    </svg>
+                    <h3 class="dresscode-titulo">Caballeros</h3>
+                    <p class="dresscode-desc">Sugerimos el uso de <b>traje formal</b> (corbata opcional) en tonos clásicos. Mantengamos la elegancia y sobriedad acorde al recinto religioso.</p>
+                    
+                    <!-- Paleta Visual Caballeros -->
+                    <div class="colores-visuales">
+                        <div class="color-swatch" style="background-color: #1A237E;" title="Azul Marino"></div>
+                        <div class="color-swatch" style="background-color: #424242;" title="Gris Oscuro"></div>
+                        <div class="color-swatch" style="background-color: #BDBDBD;" title="Gris Claro"></div>
+                        <div class="color-swatch" style="background-color: #D7CCC8;" title="Beige / Arena"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. REGALOS Y RSVP -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up" style="text-align: center; margin-bottom: 60px;">
+            <i class="ph-fill ph-gift" style="font-size: 3rem; color: var(--color-plata); margin-bottom: 15px;"></i>
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Mesa de Regalos</h2>
+            <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto 30px;">El regalo más hermoso es tu presencia y tus oraciones, pero si deseas tener un detalle conmigo para mi futuro, hemos preparado estas opciones:</p>
+            
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <div style="background: white; padding: 15px 25px; border-radius: 10px; border: 1px solid var(--color-plata-claro); display: flex; align-items: center; gap: 10px; font-weight: 500;">
+                    <i class="ph-fill ph-envelope-simple" style="font-size: 1.5rem; color: var(--color-texto-oscuro);"></i> Lluvia de Sobres
+                </div>
+                <button onclick="toggleBanco()" class="btn-principal" style="background: white; color: var(--color-texto-oscuro); border: 1px solid var(--color-texto-oscuro); box-shadow: none;">
+                    <i class="ph-fill ph-bank"></i> Datos Bancarios
+                </button>
+            </div>
+
+            <div id="info-bancaria" class="info-bancaria">
+                <h4 style="font-family: var(--fuente-titulos); font-size: 1.2rem; margin-bottom: 10px;">Cuenta de Ahorro</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 5px;"><b>Banco:</b> BBVA Bancomer</p>
+                <p style="font-size: 0.9rem; margin-bottom: 5px;"><b>Titular:</b> Alejandro Torres</p>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;"><b>CLABE:</b> 012 345 6789 0123 4567</p>
+                <p style="font-size: 0.8rem; color: var(--color-texto-claro);">¡Muchísimas gracias por tu detalle!</p>
+            </div>
+        </div>
+
+        <div class="contenedor fade-up">
+            <div class="seccion-rsvp">
+                <!-- Destellos Angelicales en RSVP -->
+                <i class="ph-fill ph-sparkle destello destello-1" style="color: var(--color-plata); opacity: 0.5;"></i>
+                <i class="ph-fill ph-sparkle destello destello-3" style="color: var(--color-plata); opacity: 0.5;"></i>
+
+                <i class="ph-fill ph-envelope-open icono-rsvp"></i>
+                <h2>Confirmar<br>Asistencia</h2>
+                
+                <!-- Divisor Ornamental Elegante -->
+                <div class="divisor-ornamental" style="margin-top: 20px; margin-bottom: 0;">
+                    <div class="linea" style="width: 30px;"></div>
+                    <i class="ph-fill ph-heart" style="font-size: 0.8rem;"></i>
+                    <div class="linea" style="width: 30px;"></div>
+                </div>
+
+                <p>Tu presencia es muy importante para nosotros. Por favor, confírmanos tu asistencia antes del 10 de Mayo.</p>
+                
+                <a href="https://wa.me/520000000000?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20Primera%20Comunión%20de%20Camila." target="_blank" class="btn-whatsapp">
+                    <i class="ph-fill ph-whatsapp-logo"></i> Confirmar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER DE LA AGENCIA -->
+    <footer class="fade-up">
+        <div class="contenedor">
+            <div class="footer-grid" style="text-align: center;">
+                <div class="footer-col">
+                    <h3 class="logo" style="color: white; margin-bottom: 10px;">ArteEn<span style="color: var(--color-plata-claro);">Link</span></h3>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Invitaciones digitales interactivas de alta gama.</p>
+                    
+                    <!-- Redes Sociales -->
+                    <div class="redes-sociales">
+                        <a href="#" target="_blank"><i class="ph-fill ph-facebook-logo"></i></a>
+                        <a href="#" target="_blank"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="#" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                    </div>
+
+                    <!-- Call To Action (Ventas de ArteEnLink) -->
+                    <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 300px; margin-left: auto; margin-right: auto;">
+                        <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 15px;">¿Te gustó esta invitación?</p>
+                        <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20una%20invitación%20de%20Primera%20Comunión%20y%20me%20gustaría%20información%20para%20mi%20evento." target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--color-texto-oscuro); padding: 10px 25px; border-radius: 50px; font-weight: 600; font-family: var(--fuente-textos); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.3s ease;">
+                            <i class="ph-fill ph-sparkle"></i> ¡Contáctanos!
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 ArteEnLink. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

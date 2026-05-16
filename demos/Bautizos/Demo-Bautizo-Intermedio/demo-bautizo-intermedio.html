@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Bautizo | Mateo (Intermedio)</title>
+    
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Amatic SC (Clásica y tierna), Playfair Display (Títulos), Poppins (Lectura) -->
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- AUDIO DE FONDO (CANCIÓN DE CUNA ELEGANTE / INSTRUMENTAL) -->
+    <audio id="musica-fondo" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_febc508520.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PANTALLA DE BIENVENIDA (SOBRE VIRTUAL) -->
+    <div id="pantalla-bienvenida">
+        <i class="ph-fill ph-dove" style="font-size: 2.5rem; color: var(--color-acento-salvia); margin-bottom: 15px;"></i>
+        <div class="sello-inicial">Mateo</div>
+        <div class="bienvenida-texto">Mi Bautizo</div>
+        <button id="btn-abrir" class="btn-abrir">Abrir Invitación</button>
+    </div>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE -->
+    <div id="btn-musica" title="Reproducir / Pausar Música">
+        <i class="ph-fill ph-music-notes girar"></i>
+    </div>
+
+    <!-- PORTADA PRINCIPAL -->
+    <header class="portada">
+        <div class="marco-arco fade-up visible">
+            <div class="imagen-arco">
+                <img src="https://images.unsplash.com/photo-1519340333755-56e9c1d04579?q=80&w=600&auto=format&fit=crop" alt="Foto Bebé Mateo">
+            </div>
+        </div>
+        
+        <div class="portada-titulos fade-up delay-1 visible">
+            <div class="texto-evento">Mi Bautizo</div>
+            <h1 class="nombre-bebe">Mateo</h1>
+            <div class="fecha-hero">Sábado 12 de Septiembre</div>
+        </div>
+    </header>
+
+    <!-- MENSAJE, PADRES Y PADRINOS -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="divisor-icono"><i class="ph-fill ph-hands-praying"></i></div>
+            
+            <p class="texto-invitacion">
+                "Un niño es el tesoro más grande del mundo. Hoy recibe la luz de la fe, y me llena de alegría compartir esta gran bendición con las personas que más amo."
+            </p>
+            
+            <div class="bloque-nombres">
+                <h3>Mis Padres</h3>
+                <p>Alejandro Silva & Fernanda Ríos</p>
+            </div>
+            
+            <div class="bloque-nombres" style="margin-bottom: 30px;">
+                <h3>Mis Padrinos</h3>
+                <p>David Gómez & Sofía Herrera</p>
+            </div>
+
+            <!-- Nueva línea separadora y texto de invitación ampliado -->
+            <div style="width: 50px; height: 2px; background: var(--color-acento-salvia); margin: 0 auto 30px; opacity: 0.5;"></div>
+            
+            <p style="font-family: var(--fuente-textos); font-size: 0.95rem; color: var(--color-titulos); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 15px;">
+                Tenemos la inmensa alegría de invitarte a celebrar mi Bautizo
+            </p>
+            <p style="font-size: 0.95rem; color: var(--color-texto); max-width: 550px; margin: 0 auto;">
+                Deseamos compartir este momento de luz y bendición con las personas que guiarán mis pasos. Tu presencia, amor y buenos deseos serán el mejor regalo en este día tan especial para nuestra familia.
+            </p>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion" style="font-size: 1.8rem; margin-bottom: 20px;">El Gran Día</h2>
+            <div class="contador-grid" id="contador-bautizo">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIONES (DÓNDE Y CUÁNDO) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Ubicaciones</h2>
+            <div class="divisor-icono" style="margin-bottom: 40px;"><i class="ph-fill ph-map-pin-line"></i></div>
+            
+            <!-- Tarjeta Ceremonia -->
+            <div class="ubicacion-card fade-up">
+                <div class="ubicacion-icon"><i class="ph ph-church"></i></div>
+                <h3>Ceremonia Religiosa</h3>
+                <div class="ubicacion-hora">11:00 a.m.</div>
+                <p class="ubicacion-direccion">Parroquia de San Juan Bautista.<br>Plaza Central #12, Centro Histórico.</p>
+                <a href="#" class="btn-outline">Ver en Google Maps</a>
+            </div>
+
+            <!-- Tarjeta Recepción -->
+            <div class="ubicacion-card fade-up delay-1">
+                <div class="ubicacion-icon"><i class="ph ph-fork-knife"></i></div>
+                <h3>Comida Familiar</h3>
+                <div class="ubicacion-hora">1:30 p.m.</div>
+                <p class="ubicacion-direccion">Jardín de Eventos "Los Olivos".<br>Av. Las Arboledas 450, Zona Norte.</p>
+                <a href="#" class="btn-outline">Ver en Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARIO (TIMELINE) -->
+    <section class="seccion-itinerario seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Nuestro Día</h2>
+            <p style="margin-bottom: 40px; color: var(--color-texto);">Sigue paso a paso los momentos más especiales.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-up">
+                    <div class="timeline-icon"><i class="ph-fill ph-church"></i></div>
+                    <div class="timeline-titulo">La Ceremonia</div>
+                    <div class="timeline-hora">11:00 a.m.</div>
+                    <div class="timeline-desc">El momento de recibir el sacramento y la luz de la fe.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-icon"><i class="ph-fill ph-camera"></i></div>
+                    <div class="timeline-titulo">Fotos Familiares</div>
+                    <div class="timeline-hora">12:30 p.m.</div>
+                    <div class="timeline-desc">Aprovecharemos para capturar los mejores recuerdos en la iglesia.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-2">
+                    <div class="timeline-icon"><i class="ph-fill ph-fork-knife"></i></div>
+                    <div class="timeline-titulo">La Recepción</div>
+                    <div class="timeline-hora">1:30 p.m.</div>
+                    <div class="timeline-desc">Llegada al jardín para compartir el pan y la sal.</div>
+                </div>
+                
+                <div class="timeline-item fade-up delay-1">
+                    <div class="timeline-icon"><i class="ph-fill ph-cake"></i></div>
+                    <div class="timeline-titulo">Bolo y Pastel</div>
+                    <div class="timeline-hora">4:00 p.m.</div>
+                    <div class="timeline-desc">El tradicional bolo por parte de mis padrinos y corte de pastel.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA FOTOGRÁFICA (BABY PHOTO SHOOT) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="divisor-icono"><i class="ph-fill ph-camera-plus"></i></div>
+            <h2 class="titulo-seccion" style="margin-bottom: 10px;">Mis Primeros Días</h2>
+            <p style="margin-bottom: 30px; color: var(--color-texto);">Desliza para ver lo mucho que he crecido</p>
+            
+            <div class="galeria-container">
+                <button class="carrusel-btn carrusel-prev" id="btn-prev" aria-label="Anterior"><i class="ph ph-caret-left"></i></button>
+                <div class="galeria-wrapper">
+                    <div class="galeria-scroll" id="carrusel">
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=600&auto=format&fit=crop" alt="Foto Bebé 1"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1522771730849-f25c4e142e05?q=80&w=600&auto=format&fit=crop" alt="Foto Bebé 2"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1519340333755-56e9c1d04579?q=80&w=600&auto=format&fit=crop" alt="Foto Bebé 3"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?q=80&w=600&auto=format&fit=crop" alt="Foto Bebé 4"></div>
+                        <div class="foto-item"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop" alt="Foto Bebé 5"></div>
+                    </div>
+                </div>
+                <button class="carrusel-btn carrusel-next" id="btn-next" aria-label="Siguiente"><i class="ph ph-caret-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MESA DE REGALOS / SOBRE -->
+    <section class="seccion-regalos seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="icono-regalo"><i class="ph-fill ph-gift"></i></div>
+            <h2 class="titulo-seccion" style="margin-bottom: 15px; font-size: 2rem;">Sugerencia de Regalos</h2>
+            <p style="max-width: 500px; margin: 0 auto 30px;">
+                El mejor regalo que puedo recibir es contar con tu presencia. Pero si deseas tener un detalle conmigo para mi futuro, hemos preparado estas opciones.
+            </p>
+            
+            <button class="btn-outline" id="btn-regalos" style="background: white; border-color: var(--color-acento-salvia);">Ver Datos Bancarios</button>
+            
+            <div class="datos-bancarios" id="datos-regalos">
+                <p style="color: var(--color-titulos); font-weight: 600; margin-bottom: 10px;">Cuenta de Ahorro para Mateo</p>
+                <p><b>Banco:</b> BBVA Bancomer</p>
+                <p><b>Titular:</b> Alejandro Silva (Papá)</p>
+                <p><b>CLABE:</b> 012 345 6789 0123 4567</p>
+                <p style="margin-top: 15px; font-style: italic; color: var(--color-texto); font-size: 0.85rem;">(También contaremos con un buzón para sobres en la entrada del jardín).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP (CONFIRMACIÓN) -->
+    <section class="seccion-rsvp seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion" style="margin-bottom: 15px;">Confirmación</h2>
+            <p style="margin-bottom: 30px;">Por favor, confirma tu asistencia antes del 1 de Septiembre para considerarte en la mesa.</p>
+            
+            <a href="https://wa.me/520000000000?text=¡Hola!%20He%20recibido%20la%20invitación.%20Confirmo%20mi%20asistencia%20al%20Bautizo%20de%20Mateo.%20🕊️" target="_blank" class="btn-rsvp">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar Asistencia
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER COMERCIAL ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20intermedia%20de%20Bautizo%20y%20me%20gustaría%20información." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+
+            <div class="creditos">
+                Diseño exclusivo creado por <a href="index.html" target="_blank">ArteEnLink</a>. <br>Ternura y tecnología para tus eventos.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

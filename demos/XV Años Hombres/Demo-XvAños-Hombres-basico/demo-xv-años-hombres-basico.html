@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander | Mis XV Años</title>
+    
+    <!-- Fuentes: Rajdhani (Tech/Números) y Inter (Lectura limpia) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Cargando</div>
+    </div>
+
+    <!-- PORTADA -->
+    <header class="hero">
+        <div class="hero-bg">
+            <!-- Imagen de Portada -->
+            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" alt="Fondo XV Hombres">
+        </div>
+        
+        <div class="hero-content fade-up visible">
+            <div class="hero-etiqueta">ACCESO VIP</div>
+            <h1 class="hero-nombre">ALEXANDER</h1>
+            <div class="hero-fecha">SÁBADO, 24 DE OCTUBRE</div>
+            
+            <!-- CUENTA REGRESIVA DIGITAL -->
+            <div class="contador-grid" id="contador-xv">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN FOTO Y MENSAJE FORMAL -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="tech-card" style="text-align: center;">
+                
+                <!-- Marco Neón de la Foto -->
+                <div class="foto-marco">
+                    <!-- Foto de estudio del quinceañero -->
+                    <img src="https://images.unsplash.com/photo-1610041321421-2f76db3612b7?q=80&w=400&auto=format&fit=crop" alt="Foto XV Años">
+                </div>
+                
+                <h2 style="font-size: 1.5rem; margin-bottom: 20px;">EL INICIO DE UNA NUEVA ETAPA</h2>
+                <p class="texto-formal">
+                    Hay momentos en la vida que merecen ser compartidos con las personas que hacen mi mundo especial. Con gran emoción, alegría y gratitud, los invito a celebrar conmigo esta fecha tan inolvidable.
+                </p>
+                
+                <!-- Línea separadora neón -->
+                <div style="width: 50px; height: 1px; background: var(--color-neon); margin: 0 auto 20px;"></div>
+                
+                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-texto-muted); margin-bottom: 8px;">Con la bendición de mis padres</div>
+                <div class="padres-nombres">Roberto Gómez & María Silva</div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">COORDENADAS</h2>
+            
+            <div class="tech-card" style="text-align: center; margin-bottom: 25px;">
+                <div class="ubicacion-icono"><i class="ph-fill ph-map-pin"></i></div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 5px;">El Gran Evento</h3>
+                <p style="font-size: 1rem; color: var(--color-texto-muted); margin-bottom: 5px; font-weight: 300;">Salón "Onyx Premium"<br>Av. Principal #123, Ciudad</p>
+                <div style="font-size: 0.9rem; color: var(--color-neon); font-family: var(--font-display); letter-spacing: 1px; margin-bottom: 25px;">Acceso: 20:00 HRS</div>
+                
+                <div style="display: flex; gap: 10px; flex-direction: column;">
+                    <a href="#" class="btn-maps"><i class="ph-fill ph-google-logo"></i> Ver en Google Maps</a>
+                    <a href="#" class="btn-maps"><i class="ph-fill ph-navigation-arrow"></i> Ver en Waze</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIRMACIÓN (RSVP) -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="tech-card" style="text-align: center; border-color: rgba(0, 229, 255, 0.3);">
+                <h2 style="margin-bottom: 10px; font-size: 1.5rem;">CONFIRMA TU ASISTENCIA</h2>
+                <p style="font-size: 0.95rem; color: var(--color-texto-muted); margin-bottom: 25px;">Confirma tu asistencia antes del 10 de Octubre para asegurar tu acceso al evento.</p>
+                
+                <a href="https://wa.me/520000000000?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Alexander." target="_blank" class="btn-neon">
+                    <i class="ph-fill ph-whatsapp-logo"></i> CONFIRMAR POR WHATSAPP
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; font-size: 0.8rem; color: #52525B; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px;">
+        <p>Diseño exclusivo por ArteEnLink</p>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>

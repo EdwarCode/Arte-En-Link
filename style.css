@@ -1,0 +1,1035 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (VARIABLES)
+           ========================================================================== */
+        :root {
+            /* Regla 60-30-10 (60% Fondo, 30% Acentos, 10% Detalles) */
+            --color-fondo: #FAF6F0; /* Cambiado de blanco a un beige cálido y elegante */
+            --color-seccion-clara: #F0EBE1; /* Ligeramente más oscuro para contrastar con el nuevo beige */
+            
+            --color-texto-principal: #0A192F; /* Azul medianoche (Elegancia/Modernidad) */
+            --color-texto-secundario: #4A5568; /* Gris azulado */
+            
+            --color-acento-dorado: #D4AF37; /* Botones y precios VIP */
+            --color-dorado-hover: #B8962E;
+            
+            --color-acento-romantico: #D9A0A8; /* Detalles emotivos y hovers */
+            --color-romantico-claro: #F5E6E8; /* Fondos muy sutiles */
+
+            /* Tipografías */
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Poppins', sans-serif;
+
+            /* Sombras y Radios */
+            --sombra-suave: 0 10px 30px rgba(10, 25, 47, 0.05);
+            --sombra-fuerte: 0 20px 40px rgba(212, 175, 55, 0.15);
+            --borde-radio: 16px;
+        }
+
+        /* ==========================================================================
+           2. RESET Y ESTILOS GLOBALES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el menú */
+        }
+
+        body {
+            font-family: var(--fuente-textos);
+            background-color: var(--color-fondo);
+            color: var(--color-texto-principal);
+            line-height: 1.6;
+            overflow-x: hidden; /* Evita scroll horizontal */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--fuente-titulos);
+            color: var(--color-texto-principal);
+        }
+
+        p {
+            color: var(--color-texto-secundario);
+            font-size: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Utilidad para alinear secciones */
+        .seccion-padding {
+            padding: 80px 0;
+        }
+
+        /* --- PRELOADER Y ANIMACIONES --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--color-fondo);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.oculto {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-logo {
+            font-family: var(--fuente-titulos);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-texto-principal);
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .loader-logo span { color: var(--color-acento-dorado); font-style: italic; }
+        .loader-spinner {
+            width: 40px; height: 40px;
+            border: 3px solid var(--color-romantico-claro);
+            border-top: 3px solid var(--color-acento-dorado);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 
+            0%, 100% { opacity: 1; transform: scale(1); } 
+            50% { opacity: 0.7; transform: scale(1.05); } 
+        }
+
+        .animar-oculto {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .animar-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 100ms; }
+        .delay-2 { transition-delay: 200ms; }
+        .delay-3 { transition-delay: 300ms; }
+        .delay-4 { transition-delay: 400ms; }
+
+        /* ==========================================================================
+           3. COMPONENTES REUTILIZABLES (BOTONES, TITULOS DE SECCION)
+           ========================================================================== */
+        .btn-principal {
+            display: inline-block;
+            background-color: var(--color-acento-dorado);
+            color: #FFFFFF;
+            padding: 14px 32px;
+            border-radius: 50px; /* Bordes redondeados modernos */
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            text-align: center;
+        }
+
+        .btn-principal:hover {
+            background-color: var(--color-dorado-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            color: #FFFFFF;
+        }
+
+        .btn-secundario {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--color-texto-principal);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 2px solid var(--color-texto-principal);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-secundario:hover {
+            background-color: var(--color-texto-principal);
+            color: #FFFFFF;
+        }
+
+        /* Botón exclusivo para paquete Premium */
+        .btn-premium {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--color-acento-dorado);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 2px solid var(--color-acento-dorado);
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-premium:hover, .btn-premium:active {
+            background-color: #FFFFFF;
+            color: var(--color-acento-dorado);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .titulo-seccion p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================================================
+           4. CABECERA (HEADER & NAVEGACIÓN)
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); /* Efecto vidrio (glassmorphism) */
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .logo {
+            font-family: var(--fuente-titulos);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-texto-principal);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--color-acento-dorado);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--color-acento-romantico);
+        }
+
+        /* Línea decorativa al pasar el mouse (hover) */
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-acento-romantico);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-texto-principal);
+        }
+
+        /* ==========================================================================
+           5. HERO SECTION (LA PRIMERA IMPRESIÓN)
+           ========================================================================== */
+        .hero {
+            padding-top: 120px; /* Compensa el header fijo */
+            padding-bottom: 80px; /* Espacio extra abajo para que no se corte el celular */
+            background-color: var(--color-seccion-clara);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Elementos decorativos de fondo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--color-romantico-claro) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            position: relative;
+            z-index: 1; /* Por encima del fondo decorativo */
+        }
+
+        .hero-texto {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-texto h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-texto h1 span {
+            color: var(--color-acento-dorado);
+        }
+
+        .hero-texto p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-botones {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        /* Mockup del celular en el Hero */
+        .hero-imagen {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            perspective: 1000px; /* Para efecto 3D */
+            padding: 40px 0; /* Margen interno para evitar que el borde 3D sea recortado */
+        }
+
+        .mockup-celular {
+            width: 300px;
+            height: 600px;
+            background-color: var(--color-fondo);
+            border-radius: 40px;
+            border: 10px solid var(--color-texto-principal);
+            box-shadow: var(--sombra-fuerte);
+            position: relative;
+            overflow: hidden;
+            transform: rotateY(-15deg) rotateX(5deg); /* Inclinación 3D elegante */
+            transition: transform 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--color-romantico-claro) 100%);
+        }
+
+        .mockup-celular:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        /* Notch (Ceja) del celular */
+        .mockup-celular::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background-color: var(--color-texto-principal);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        .mockup-contenido h3 {
+            font-size: 1.5rem;
+            color: var(--color-acento-dorado);
+            margin-bottom: 10px;
+        }
+
+        /* ==========================================================================
+           6. GARANTÍAS (POR QUÉ SOMOS LOS MEJORES)
+           ========================================================================== */
+        .garantias {
+            background-color: var(--color-fondo);
+        }
+
+        .garantias-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Obligamos a que siempre sean 3 columnas exactas */
+            gap: 30px;
+        }
+
+        .garantia-card {
+            background: var(--color-fondo);
+            padding: 40px 30px;
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra-suave);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .garantia-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--color-acento-dorado);
+        }
+
+        .icono-garantia {
+            font-size: 3rem;
+            color: var(--color-acento-dorado);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: var(--color-romantico-claro);
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .garantia-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .garantia-card p {
+            font-size: 0.95rem;
+            text-align: center; /* Cambiado a centrado para una lectura más limpia */
+            margin-bottom: 10px;
+            color: var(--color-texto-secundario);
+        }
+
+        /* ==========================================================================
+           7. CATÁLOGO DE EVENTOS (LAS 12 CATEGORÍAS - ESTILO MOCKUP CELULAR)
+           ========================================================================== */
+        .catalogo {
+            background-color: var(--color-seccion-clara);
+        }
+
+        .catalogo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            justify-items: center; /* Centra los celulares en su espacio */
+        }
+
+        .categoria-card {
+            background: var(--color-fondo);
+            border-radius: 35px; /* Curvatura del teléfono */
+            border: 8px solid var(--color-texto-principal); /* Marco del teléfono */
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            /* Quitamos el rebote brusco para usar transiciones suaves de color */
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 280px; /* Límite de ancho para que no se vea gordo */
+            aspect-ratio: 9/18; /* Proporción exacta de pantalla de celular */
+            position: relative;
+            /* Optimizaciones de GPU para una flotación 100% fluida (Cero tartamudeo) */
+            will-change: transform;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* --- MAGIA: LEVITACIÓN SUAVE (ENTRADA + CONTINUA) --- */
+        .categoria-card.animar-oculto {
+            transition: none; /* Apagamos la transición genérica para usar keyframes */
+            opacity: 0;
+        }
+
+        .categoria-card.animar-visible {
+            /* 1s de revelado, luego flotación infinita (con 1s de retraso para que empiece justo tras revelar) */
+            animation:
+                entradaLevitacion 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+                flotacionLevitacion 4s ease-in-out 1s infinite;
+        }
+
+        /* Desfasamos los tiempos para que cada celular flote a su propio ritmo (efecto orgánico) */
+        .categoria-card:nth-child(even).animar-visible {
+            animation:
+                entradaLevitacion 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+                flotacionLevitacion 5.5s ease-in-out 1s infinite;
+        }
+        .categoria-card:nth-child(3n).animar-visible {
+            animation:
+                entradaLevitacion 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+                flotacionLevitacion 4.8s ease-in-out 1s infinite;
+        }
+
+        @keyframes entradaLevitacion {
+            0% { opacity: 0; transform: translate3d(0, 60px, 0); }
+            100% { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        @keyframes flotacionLevitacion {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -12px, 0); } /* Flote sutil de 12px con GPU */
+        }
+
+        /* Notch (Ceja / Cámara) del teléfono */
+        .categoria-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background-color: var(--color-texto-principal);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+            transition: background-color 0.4s;
+        }
+
+        /* Efecto de cristal/reflejo en la pantalla del celular */
+        .categoria-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            pointer-events: none; /* Permite hacer clic a través del brillo */
+            z-index: 5;
+            transition: transform 0.6s ease;
+        }
+
+        /* Animaciones al pasar el cursor (Hover) */
+        .categoria-card:hover {
+            /* Permitimos que siga flotando pacíficamente y solo cambiamos colores y luces */
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.2); /* Sombra dorada más amplia */
+            border-color: var(--color-acento-dorado); /* El marco se vuelve dorado VIP */
+        }
+
+        .categoria-card:hover::before {
+            background-color: var(--color-acento-dorado); /* El notch también se vuelve dorado */
+        }
+
+        .categoria-card:hover::after {
+            transform: rotate(30deg) translate(20px, 20px); /* Mueve el reflejo de cristal */
+        }
+
+        .categoria-imagen {
+            flex: 1; /* Ocupa la parte superior de la pantalla */
+            position: relative;
+            background: linear-gradient(135deg, var(--color-romantico-claro) 0%, var(--color-seccion-clara) 100%);
+            overflow: hidden; /* Asegura que la imagen no se salga de los bordes curvos */
+        }
+
+        .categoria-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* La imagen llena el espacio sin deformarse */
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); /* Transición fotográfica muy suave */
+            z-index: 2;
+        }
+
+        .categoria-card:hover .categoria-imagen img {
+            transform: scale(1.15); /* Zoom sutil profundo a la imagen al hacer hover */
+        }
+
+        .categoria-info {
+            padding: 20px 15px;
+            background: var(--color-fondo);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            z-index: 6; /* Por encima del reflejo */
+            transition: background 0.4s, color 0.4s;
+        }
+
+        .categoria-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            transition: color 0.4s;
+        }
+
+        .categoria-info span {
+            color: var(--color-acento-romantico);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        /* Invierte los colores de la caja inferior al pasar el mouse */
+        .categoria-card:hover .categoria-info {
+            background: var(--color-texto-principal);
+        }
+
+        .categoria-card:hover .categoria-info h3 {
+            color: #FFFFFF;
+        }
+
+        .categoria-card:hover .categoria-info span {
+            color: var(--color-acento-dorado);
+            transform: translateX(5px); /* Pequeño empuje a la derecha indicando acción */
+        }
+
+        /* ==========================================================================
+           8. CÓMO FUNCIONA (LÍNEA DE TIEMPO)
+           ========================================================================== */
+        .proceso {
+            background-color: var(--color-fondo);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* La línea vertical del medio */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--color-romantico-claro);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .paso {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        /* Círculos de los pasos */
+        .paso::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--color-fondo);
+            border: 4px solid var(--color-acento-dorado);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .paso-izquierda {
+            left: 0;
+        }
+
+        .paso-derecha {
+            left: 50%;
+        }
+
+        .paso-derecha::after {
+            left: -10px;
+        }
+
+        .paso-contenido {
+            padding: 25px;
+            background-color: var(--color-fondo);
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra-suave);
+            border: 1px solid var(--color-seccion-clara);
+        }
+
+        .paso-contenido h3 {
+            color: var(--color-acento-dorado);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* ==========================================================================
+           9. PAQUETES Y PRECIOS ($349, $549, $799)
+           ========================================================================== */
+        .precios {
+            background-color: var(--color-seccion-clara);
+        }
+
+        .precios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Obligamos a que siempre sean 3 columnas exactas */
+            align-items: center;
+            gap: 30px;
+        }
+
+        .precio-card {
+            background: var(--color-fondo);
+            border-radius: var(--borde-radio);
+            padding: 40px 30px;
+            width: 100%; /* Cambiado a 100% para que se adapte al grid sin desbordarse */
+            text-align: center;
+            box-shadow: var(--sombra-suave);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .precio-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Estilo para el paquete "Intermedio" (El Best-Seller) */
+        .precio-card.popular {
+            transform: scale(1.05);
+            border: 2px solid var(--color-acento-dorado);
+            box-shadow: var(--sombra-fuerte);
+            z-index: 2;
+        }
+
+        .precio-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .etiqueta-popular {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-acento-dorado);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Estilo para el paquete "Premium" (El Producto Estrella VIP) */
+        .precio-card.premium {
+            background: linear-gradient(135deg, var(--color-texto-principal) 0%, #112240 100%);
+            color: #FFFFFF;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 35px rgba(10, 25, 47, 0.2), 0 0 20px rgba(212, 175, 55, 0.15);
+            transform: scale3d(1.02, 1.02, 1); /* Usamos scale3d para forzar renderizado por GPU */
+            z-index: 1;
+            will-change: transform, box-shadow; /* Optimización de hardware */
+            -webkit-backface-visibility: hidden; /* Previene parpadeos en bordes */
+            backface-visibility: hidden;
+            transform-style: preserve-3d; /* Mantiene la suavidad del renderizado sub-pixel */
+        }
+
+        /* --- MAGIA: Animación de "Respiración" para el Premium --- */
+        .precio-card.premium.animar-visible {
+            /* Inicia a latir 1.5s después de aparecer en pantalla para que no choque con la entrada */
+            animation: respirarPremium 4s ease-in-out 1.5s infinite;
+        }
+
+        @keyframes respirarPremium {
+            0%, 100% {
+                transform: scale3d(1.02, 1.02, 1);
+                box-shadow: 0 15px 35px rgba(10, 25, 47, 0.2), 0 0 20px rgba(212, 175, 55, 0.15);
+            }
+            50% {
+                transform: scale3d(1.05, 1.05, 1); /* Zoom fluido acelerado por hardware */
+                box-shadow: 0 20px 45px rgba(10, 25, 47, 0.3), 0 0 45px rgba(212, 175, 55, 0.4); /* El resplandor crece */
+            }
+        }
+
+        .precio-card.premium:hover {
+            animation-play-state: paused; /* Se detiene pacíficamente cuando el usuario pone el mouse */
+            transform: scale3d(1.06, 1.06, 1) translate3d(0, -10px, 0) !important; /* Mantenemos el entorno 3D en el hover */
+            box-shadow: 0 25px 50px rgba(10, 25, 47, 0.4), 0 0 35px rgba(212, 175, 55, 0.3) !important;
+        }
+
+        .etiqueta-estrella {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #D4AF37, #F3E5AB, #D4AF37); /* Degradado dorado brillante */
+            color: var(--color-texto-principal);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .precio-card.premium .precio-header h3 {
+            color: var(--color-acento-dorado);
+        }
+
+        .precio-card.premium .precio-monto {
+            color: #FFFFFF;
+        }
+
+        .precio-card.premium .precio-monto span {
+            color: #A0AEC0;
+        }
+
+        .precio-card.premium p {
+            color: #cbd5e1;
+        }
+
+        .precio-card.premium .lista-funciones li {
+            color: #f1f5f9;
+        }
+
+        .precio-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .precio-monto {
+            font-family: var(--fuente-titulos);
+            font-size: 3rem;
+            color: var(--color-texto-principal);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .precio-monto span {
+            font-size: 1rem;
+            color: var(--color-texto-secundario);
+            font-weight: 400;
+            font-family: var(--fuente-textos);
+        }
+
+        .lista-funciones {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .lista-funciones li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .lista-funciones li i {
+            color: var(--color-acento-dorado);
+            margin-top: 4px;
+        }
+
+        .lista-funciones li.no-incluido {
+            color: #A0AEC0;
+            text-decoration: line-through;
+        }
+
+        .lista-funciones li.no-incluido i {
+            color: #A0AEC0;
+        }
+
+        /* ==========================================================================
+           10. PIE DE PÁGINA (FOOTER)
+           ========================================================================== */
+        footer {
+            background-color: var(--color-texto-principal);
+            color: #FFFFFF;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-family: var(--fuente-titulos);
+            color: var(--color-acento-dorado);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #A0AEC0;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--color-acento-dorado);
+        }
+
+        .redes-sociales {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .redes-sociales a {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+        }
+
+        .redes-sociales a:hover {
+            color: var(--color-acento-dorado);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: #A0AEC0;
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           11. DISEÑO RESPONSIVO (MÓVILES Y TABLETS)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .garantias-grid, .precios-grid {
+                grid-template-columns: 1fr; /* En tablets o móviles pasará a 1 sola columna */
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-texto {
+                margin: 0 auto;
+            }
+            .hero-botones {
+                justify-content: center;
+            }
+            .precio-card.popular, .precio-card.premium {
+                transform: scale(1); /* Quitamos el aumento de tamaño en móviles */
+            }
+            .precio-card.popular:hover, .precio-card.premium:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                /* Quitamos el display: none para poder animarlo */
+                display: flex; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                gap: 20px;
+                text-align: center;
+                
+                /* Magia de la animación: Oculto, un poco arriba y con transición suave */
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .nav-links.active {
+                /* Estado final: Visible y en su posición original */
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            .menu-toggle {
+                display: block;
+                transition: transform 0.3s ease; /* Animación sutil también para el icono */
+            }
+            .menu-toggle:active {
+                transform: scale(0.8); /* Efecto de "clic" en la hamburguesa */
+            }
+            .hero-texto h1 {
+                font-size: 2.8rem;
+            }
+            .timeline::after {
+                left: 31px; /* Mueve la línea a la izquierda */
+            }
+            .paso {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            .paso-izquierda::after, .paso-derecha::after {
+                left: 21px; /* Alinea los puntos a la nueva línea */
+            }
+            .paso-derecha {
+                left: 0;
+            }
+            .titulo-seccion h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsivo para celulares pequeños (Para los mockups del catálogo) */
+        @media (max-width: 500px) {
+            .catalogo-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 20px;
+            }
+            .categoria-card {
+                max-width: 200px; /* Se hacen un poco más pequeños para pantallas diminutas */
+                border-width: 6px;
+                border-radius: 25px;
+            }
+            .categoria-card::before {
+                width: 70px;
+                height: 15px;
+            }
+        }

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Carlos | 40 Años Premium VIP</title>
+
+    <!-- Fuentes de Alta Costura: Cinzel (Elegancia), Montserrat (Modernidad/Lectura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- NOTIFICACIONES TOAST -->
+    <div id="toast-notify" class="toast-notification">
+        <i class="ph-fill ph-info"></i> <span id="toast-msg">Mensaje</span>
+    </div>
+
+    <!-- MENÚ FLOTANTE DYNAMIC ISLAND -->
+    <nav class="dynamic-island" id="dynamic-island">
+        <a href="#inicio" title="Inicio"><i class="ph-fill ph-house"></i></a>
+        <a href="#detalles" title="Detalles"><i class="ph-fill ph-map-pin"></i></a>
+        <a href="#itinerario" title="Itinerario"><i class="ph-fill ph-clock"></i></a>
+        <a href="#galeria" title="Galería"><i class="ph-fill ph-images"></i></a>
+        <a href="#regalos" title="Regalos"><i class="ph-fill ph-gift"></i></a>
+        <a href="#rsvp" title="Confirmar"><i class="ph-fill ph-check-circle"></i></a>
+    </nav>
+
+    <!-- 1. ENTRADA VIP (TARJETA BLACK CARD) -->
+    <div id="vip-entry">
+        <div class="black-card-container" id="black-card">
+            <div class="black-card tilt-card">
+                <div class="card-vip">VIP</div>
+                <div class="card-chip"></div>
+                <div class="card-text-group">
+                    <div class="card-number">4000 1986 2026 0000</div>
+                    <div class="card-name">CARLOS R.</div>
+                </div>
+            </div>
+            <div class="swipe-hint">Toca la tarjeta para desbloquear</div>
+        </div>
+        <div id="flash-bang"></div>
+    </div>
+
+    <!-- REPRODUCTOR DE MÚSICA -->
+    <div id="music-player" class="premium-glass">
+        <i class="ph-thin ph-play-circle" id="music-icon"></i>
+        <audio id="bg-audio" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- 2. FONDO AURORA IRIDISCENTE -->
+    <div class="bg-aurora">
+        <div class="aura aura-1"></div>
+        <div class="aura aura-2"></div>
+        <div class="aura aura-3"></div>
+        <div class="bg-ruido"></div>
+    </div>
+
+    <!-- OBJETO 3D FONDO (SCROLLYTELLING) -->
+    <div class="scrolly-object-container">
+        <div id="scrolly-object" class="scrolly-object">40</div>
+    </div>
+
+    <!-- 3. HERO (PORTADA MARCO FOTOGRÁFICO) -->
+    <header class="hero" id="inicio">
+        <div class="hero-luces"></div>
+        <div class="hero-marco-container tilt-card">
+            <div class="hero-marco-inner">
+                <div class="hero-foto-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Festejado">
+                </div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-edad split-text">Capítulo 40</div>
+            <h1 class="hero-nombre gold-shimmer split-text">Carlos</h1>
+        </div>
+    </header>
+
+    <!-- CUENTA REGRESIVA Y BOTON DE CALENDARIO -->
+    <section class="seccion-padding" style="padding-top: 30px;">
+        <div class="contenedor fade-up">
+            <div class="countdown-grid">
+                <div class="premium-glass count-box tilt-card"><span class="count-num" id="dias">00</span><span class="count-label">Días</span></div>
+                <div class="premium-glass count-box tilt-card"><span class="count-num" id="horas">00</span><span class="count-label">Hrs</span></div>
+                <div class="premium-glass count-box tilt-card"><span class="count-num" id="minutos">00</span><span class="count-label">Min</span></div>
+                <div class="premium-glass count-box tilt-card"><span class="count-num" id="segundos">00</span><span class="count-label">Seg</span></div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cumplea%C3%B1os+Carlos+VIP&dates=20261028T020000Z/20261028T080000Z&details=Festejando+los+40+a%C3%B1os+de+Carlos&location=CDMX" target="_blank" class="btn-calendar">
+                    <i class="ph-fill ph-calendar-plus"></i> Agendar en Calendario
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. EL TÚNEL DEL TIEMPO (STICKY SCROLL) -->
+    <section class="tunel-tiempo-wrapper">
+        <div class="sticky-year-container">
+            <div class="sticky-year" id="bg-year">1986</div>
+        </div>
+        
+        <div class="contenedor era-list">
+            <div class="era-item slide-left" data-year="1986">
+                <div class="era-foto tilt-card"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=400" alt="Juventud"></div>
+                <div class="era-caption">Donde todo comenzó</div>
+            </div>
+            <div class="era-item slide-right" data-year="2000">
+                <div class="era-foto tilt-card"><img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f1?auto=format&fit=crop&q=80&w=400" alt="Adolescencia"></div>
+                <div class="era-caption">La rebeldía de los 2000s</div>
+            </div>
+            <div class="era-item slide-left" data-year="2015">
+                <div class="era-foto tilt-card"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=400" alt="Adulto"></div>
+                <div class="era-caption">Construyendo el camino</div>
+            </div>
+            <div class="era-item slide-right" data-year="2026">
+                <div class="era-foto tilt-card"><img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&q=80&w=400" alt="Actualidad"></div>
+                <div class="era-caption">El mejor momento es ahora</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO EVENTO & DETALLES -->
+    <section class="seccion-padding" id="detalles">
+        <div class="contenedor">
+            <h2 class="titulo-seccion split-text gold-shimmer fade-up">Detalles de la Noche</h2>
+            
+            <div class="info-grid" style="margin-bottom: 40px;">
+                <!-- Ubicación -->
+                <div class="premium-glass info-card tilt-card fade-up">
+                    <i class="ph-thin ph-map-pin"></i>
+                    <h3 style="margin-bottom: 10px;">Recepción</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-texto-suave); margin-bottom: 20px;">Salón "Luz de Perla"<br>Polanco, CDMX.<br>A partir de las 20:00 Hrs.</p>
+                    <a href="#" class="btn-action" style="font-size: 0.85rem; padding: 12px;"><i class="ph-fill ph-navigation-arrow"></i> Cómo llegar</a>
+                </div>
+                
+                <!-- Aviso Adultos -->
+                <div class="premium-glass info-card tilt-card fade-up delay-1" style="display: flex; flex-direction: column; justify-content: center;">
+                    <i class="ph-thin ph-moon-stars" style="color: var(--color-acento);"></i>
+                    <h3 style="margin-bottom: 10px;">Noche de Adultos</h3>
+                    <p style="font-size: 0.95rem; color: var(--color-texto-suave); line-height: 1.6; padding: 0 10px;">Hemos diseñado esta velada exclusivamente para adultos. Agradecemos mucho su comprensión.</p>
+                </div>
+            </div>
+
+            <!-- Código de Vestimenta Separado -->
+            <div class="fade-up" style="margin-bottom: 50px;">
+                <h3 class="split-text" style="text-align: center; font-family: var(--fuente-titulos); font-size: 1.8rem; margin-bottom: 20px; color: var(--color-texto);">Código de Vestimenta</h3>
+                <div class="info-grid">
+                    <!-- Para Ellas -->
+                    <div class="premium-glass info-card tilt-card">
+                        <i class="ph-thin ph-dress"></i>
+                        <h3 style="margin-bottom: 10px;">Para Ellas</h3>
+                        <p style="font-size: 0.9rem; color: var(--color-texto-suave); margin-bottom: 20px;">Vestido Largo o Midi<br>Evitar color blanco.</p>
+                        <div style="display: flex; justify-content: center; gap: 8px;">
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #111;" title="Negro"></div>
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #D4AF37;" title="Dorado"></div>
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #004B49;" title="Verde Esmeralda"></div>
+                        </div>
+                    </div>
+                    <!-- Para Ellos -->
+                    <div class="premium-glass info-card tilt-card delay-1">
+                        <i class="ph-thin ph-user-focus"></i>
+                        <h3 style="margin-bottom: 10px;">Para Ellos</h3>
+                        <p style="font-size: 0.9rem; color: var(--color-texto-suave); margin-bottom: 20px;">Traje Oscuro y Corbata<br>Gala Formal.</p>
+                        <div style="display: flex; justify-content: center; gap: 8px;">
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #111;" title="Negro"></div>
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #1A2421;" title="Gris Oscuro"></div>
+                            <div style="width: 20px; height: 20px; border-radius: 50%; background: #0F172A;" title="Azul Marino"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SERVICIO CONCIERGE -->
+            <div class="fade-up" style="margin-top: 50px;">
+                <h3 class="split-text" style="text-align: center; font-family: var(--fuente-titulos); font-size: 1.8rem; margin-bottom: 10px; color: var(--color-texto);">Servicio Concierge</h3>
+                <p style="text-align: center; color: var(--color-texto-suave); font-size: 0.9rem;">Para su máxima comodidad durante el evento.</p>
+                
+                <div class="concierge-grid">
+                    <div class="premium-glass concierge-card tilt-card">
+                        <i class="ph-thin ph-car-profile"></i>
+                        <h4>Valet Parking</h4>
+                        <p>Servicio disponible en la entrada principal del salón.</p>
+                    </div>
+                    <div class="premium-glass concierge-card tilt-card delay-1">
+                        <i class="ph-thin ph-taxi"></i>
+                        <h4>Código Uber</h4>
+                        <p>Usa el código <b>CARLOS40</b> para 20% de descuento en tu viaje.</p>
+                    </div>
+                    <div class="premium-glass concierge-card tilt-card delay-2">
+                        <i class="ph-thin ph-buildings"></i>
+                        <h4>Hospedaje</h4>
+                        <p>Tarifa especial en Hotel Presidente, a 5 mins del evento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARIO VIP -->
+    <section class="seccion-padding" id="itinerario">
+        <div class="contenedor">
+            <h2 class="titulo-seccion split-text gold-shimmer fade-up">La Historia de la Noche</h2>
+            <div class="itinerario-container">
+                <div class="itinerario-item slide-left">
+                    <div class="premium-glass itinerario-content tilt-card">
+                        <i class="ph-thin ph-martini itinerario-icon"></i>
+                        <div class="itinerario-hora">20:00</div>
+                        <div class="itinerario-texto">Recepción y Cóctel de Bienvenida</div>
+                    </div>
+                </div>
+                <div class="itinerario-item slide-right delay-1">
+                    <div class="premium-glass itinerario-content tilt-card">
+                        <i class="ph-thin ph-star itinerario-icon"></i>
+                        <div class="itinerario-hora">21:00</div>
+                        <div class="itinerario-texto">La Gran Entrada del Festejado</div>
+                    </div>
+                </div>
+                <div class="itinerario-item slide-left delay-1">
+                    <div class="premium-glass itinerario-content tilt-card">
+                        <i class="ph-thin ph-fork-knife itinerario-icon"></i>
+                        <div class="itinerario-hora">21:30</div>
+                        <div class="itinerario-texto">Cena de Gala a Tres Tiempos</div>
+                    </div>
+                </div>
+                <div class="itinerario-item slide-right delay-1">
+                    <div class="premium-glass itinerario-content tilt-card">
+                        <i class="ph-thin ph-speaker-hifi itinerario-icon"></i>
+                        <div class="itinerario-hora">23:00</div>
+                        <div class="itinerario-texto">DJ, Pista de Baile y Sorpresas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENSAJE PERSONAL -->
+    <section class="seccion-padding" id="mensaje-especial">
+        <div class="contenedor fade-up">
+            <div class="premium-glass tilt-card" style="padding: 70px 40px; text-align: center; position: relative; overflow: hidden;">
+                <i class="ph-fill ph-quotes" style="font-size: 8rem; color: rgba(212, 175, 55, 0.05); position: absolute; top: -10px; left: 50%; transform: translateX(-50%); z-index: 0;"></i>
+                <h2 style="font-family: var(--fuente-titulos); font-size: 2.2rem; color: var(--color-acento); margin-bottom: 25px; position: relative; z-index: 1;">Un mensaje para ti</h2>
+                <p style="font-size: 1.15rem; color: var(--color-texto-suave); line-height: 1.8; font-style: italic; position: relative; z-index: 1; max-width: 500px; margin: 0 auto;">
+                    "La vida es una magnífica colección de momentos, y los mejores son aquellos que compartimos con las personas que más valoramos. Tu presencia en esta noche es el verdadero lujo de esta celebración."
+                </p>
+                <div style="margin-top: 30px; font-family: var(--fuente-titulos); font-size: 1.6rem; color: var(--color-texto); position: relative; z-index: 1;">
+                    — Carlos R.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARJETA RASCA Y GANA -->
+    <section class="seccion-padding" id="sorpresa">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion split-text gold-shimmer">El Secreto</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--color-texto-suave);">Desliza tu dedo sobre la tarjeta para descubrir la sorpresa de la medianoche.</p>
+            
+            <div class="scratch-container tilt-card">
+                <div class="scratch-content">
+                    <h3>¡Mariachi Sorpresa! 🎺</h3>
+                    <p>No te vayas temprano, el mariachi llegará a las 12:00 AM para cantar las mañanitas.</p>
+                </div>
+                <canvas id="scratch-canvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. GALERÍA CILÍNDRICA 3D -->
+    <section class="seccion-padding" style="overflow: hidden;" id="galeria">
+        <h2 class="titulo-seccion split-text fade-up">Momentos Capturados</h2>
+        <div class="galeria-3d-section fade-up">
+            <div class="scene-3d">
+                <div class="carousel-3d" id="carousel">
+                    <!-- 6 Fotos = 6 caras del cilindro -->
+                    <div class="carousel-item" style="--index: 0;"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=400" alt="G"></div>
+                    <div class="carousel-item" style="--index: 1;"><img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80&w=400" alt="G"></div>
+                    <div class="carousel-item" style="--index: 2;"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?auto=format&fit=crop&q=80&w=400" alt="G"></div>
+                    <div class="carousel-item" style="--index: 3;"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=400" alt="G"></div>
+                    <div class="carousel-item" style="--index: 4;"><img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&q=80&w=400" alt="G"></div>
+                    <div class="carousel-item" style="--index: 5;"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" alt="G"></div>
+                </div>
+                <div class="espejo-piso"></div>
+            </div>
+            <div class="instruccion-3d"><i class="ph ph-hand-swipe-left"></i> Desliza para explorar <i class="ph ph-hand-swipe-right"></i></div>
+        </div>
+    </section>
+
+    <!-- CAJA DE REGALOS 3D -->
+    <section class="seccion-regalos" id="regalos">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion split-text gold-shimmer">Mesa de Regalos</h2>
+            <div class="gift-container" id="gift-container">
+                <div class="gift-box">
+                    <div class="gift-box-front"><i class="ph-fill ph-gift" style="font-size: 5rem; color: #333; opacity: 0.5;"></i></div>
+                    <div class="gift-lid"><i class="ph-fill ph-bowtie gift-bow"></i></div>
+                    
+                    <!-- Tarjeta interior que sube -->
+                    <div class="premium-glass gift-content-card">
+                        <h4 style="color: var(--color-acento); margin-bottom: 10px; font-family: var(--fuente-titulos); font-size: 1.2rem;">Datos Bancarios</h4>
+                        <p><b>Banco:</b> BBVA Bancomer</p>
+                        <p><b>Clabe:</b> 012345678901234567</p>
+                        <button class="btn-action" id="btn-copiar-clabe" style="padding: 8px 20px; font-size: 0.8rem; margin-top: 15px;">
+                            Copiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <p class="instruccion-regalo">Toca el regalo para abrirlo</p>
+        </div>
+    </section>
+
+    <!-- 6. CONSOLA DE INVITADO VIP (TODO EN 1) -->
+    <section class="seccion-padding" style="padding-top: 0; margin-bottom: 50px;" id="rsvp">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion split-text">Acceso a Lista VIP</h2>
+            <div class="premium-glass unified-form tilt-card">
+                
+                <div class="form-group">
+                    <label><i class="ph-thin ph-check-circle"></i> ¿Nos acompañas?</label>
+                    <select id="rsvp-asistencia" class="select-premium">
+                        <option value="Sí, asistiré">Sí, ahí estaré celebrando</option>
+                        <option value="No podré asistir">Lamentablemente no podré asistir</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="ph-thin ph-user"></i> Tu Nombre</label>
+                    <input type="text" id="rsvp-nombre" class="input-premium" placeholder="Nombre y Apellido">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="ph-thin ph-music-notes"></i> Sugiere a la Playlist</label>
+                    <input type="text" id="rsvp-cancion" class="input-premium" placeholder="¿Qué canción te hace bailar?">
+                </div>
+
+                <div class="form-group" style="margin-bottom: 35px;">
+                    <label><i class="ph-thin ph-book-open-text"></i> Libro de Anécdotas</label>
+                    <textarea id="rsvp-mensaje" class="textarea-premium" placeholder="Déjale a Carlos tus felicitaciones o una buena anécdota..."></textarea>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="button" class="btn-action" id="btn-enviar-todo" style="max-width: 320px; display: inline-flex; margin: 0 auto;">
+                        <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar y Enviar Todo
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CON REDES SOCIALES Y CONTACTO -->
+    <footer>
+        <h3>¿Te gustó esta invitación?</h3>
+        <p>Creamos experiencias digitales inolvidables. Contáctanos.</p>
+        
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="#" target="_blank"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i></a>
+        </div>
+        
+        <p class="agencia-credito">Diseñado con precisión por <br><b>ArteEnLink</b></p>
+    </footer>
+
+        <script src="script.js"></script>
+
+</body>
+</html>

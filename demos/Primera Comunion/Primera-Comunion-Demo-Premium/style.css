@@ -1,0 +1,348 @@
+
+        /* ==========================================================
+           1. SISTEMA DE DISEÑO PREMIUM (BOTANICAL & GOLD)
+           ========================================================== */
+        :root {
+            /* Paleta Botánica y Marfil */
+            --color-marfil: #FDFBF7;
+            --color-pergamino: #F3EFE6;
+            --color-verde-salvia: #8B9A86;
+            --color-verde-olivo: #5C6B57;
+            
+            /* Acentos Oro Blanco y Pan de Oro */
+            --color-oro: #CBA365;
+            --color-oro-claro: #E8D3A2;
+            --gradiente-oro: linear-gradient(135deg, #E8D3A2 0%, #CBA365 100%);
+            
+            /* Textos */
+            --color-texto-oscuro: #2A332B; /* Gris Carbón verdoso */
+            --color-texto-claro: #7A8476;
+
+            /* Tipografías */
+            --fuente-titulos: 'Cinzel', serif;
+            --fuente-nombres: 'Great Vibes', cursive;
+            --fuente-textos: 'Montserrat', sans-serif;
+
+            /* Efectos Materiales */
+            --bg-cristal: rgba(253, 251, 247, 0.7);
+            --borde-oro: 1px solid rgba(203, 163, 101, 0.4);
+            --sombra-premium: 0 25px 50px rgba(92, 107, 87, 0.08);
+            --blur-cristal: blur(15px);
+        }
+
+        /* ==========================================================
+           2. RESET Y UTILIDADES 60FPS
+           ========================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--fuente-textos); background-color: var(--color-marfil);
+            color: var(--color-texto-oscuro); line-height: 1.7; overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        }
+        body.bloqueado { overflow: hidden; height: 100vh; }
+
+        h1, h2, h3 { font-family: var(--fuente-titulos); font-weight: 500; }
+        .contenedor { max-width: 800px; margin: 0 auto; padding: 0 6%; position: relative; z-index: 5; }
+        .seccion-padding { padding: 100px 0; position: relative; z-index: 5; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Efecto Cristal Alta Gama */
+        .glass-card {
+            background: var(--bg-cristal); backdrop-filter: var(--blur-cristal);
+            -webkit-backdrop-filter: var(--blur-cristal); border: var(--borde-oro);
+            border-radius: 20px; box-shadow: var(--sombra-premium);
+            padding: 50px 40px; position: relative; overflow: hidden;
+        }
+
+        /* ==========================================================
+           3. ANIMACIONES SCROLL (STORYTELLING)
+           ========================================================== */
+        .anim { will-change: opacity, transform; opacity: 0; }
+        
+        /* Direcciones de entrada */
+        .fade-up { transform: translate3d(0, 50px, 0); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .fade-left { transform: translate3d(-50px, 0, 0); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .fade-right { transform: translate3d(50px, 0, 0); transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .scale-in { transform: scale(0.9); transition: opacity 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+        .anim.visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+        
+        .d-1 { transition-delay: 150ms; } .d-2 { transition-delay: 300ms; } .d-3 { transition-delay: 450ms; }
+
+        /* ==========================================================
+           4. EL "WOW FACTOR": APERTURA GATEFOLD 3D & TOCADISCOS
+           ========================================================== */
+        #gatefold {
+            position: fixed; inset: 0; z-index: 99999; perspective: 1500px;
+            display: flex; justify-content: center; align-items: center;
+            pointer-events: all; transition: visibility 2s;
+        }
+        #gatefold.abierto { pointer-events: none; visibility: hidden; }
+
+        /* Puertas */
+        .puerta {
+            position: absolute; top: 0; width: 50%; height: 100vh;
+            background: #EBE5D9; /* Papel lujoso */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E");
+            transition: transform 1.8s cubic-bezier(0.77, 0, 0.17, 1), filter 1.8s;
+            z-index: 10; display: flex; align-items: center;
+            box-shadow: 0 0 50px rgba(0,0,0,0.2);
+        }
+        .puerta-izq { left: 0; transform-origin: left; border-right: 2px solid var(--color-oro); justify-content: flex-end; }
+        .puerta-der { right: 0; transform-origin: right; border-left: 2px solid var(--color-oro); justify-content: flex-start; }
+
+        #gatefold.abierto .puerta-izq { transform: rotateY(-110deg); filter: brightness(0.5); }
+        #gatefold.abierto .puerta-der { transform: rotateY(110deg); filter: brightness(0.5); }
+
+        /* Sello de Cera y Tocadiscos */
+        .sello-wrapper {
+            position: absolute; z-index: 20; display: flex; flex-direction: column; align-items: center; gap: 30px;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        #gatefold.abierto .sello-wrapper { opacity: 0; transform: scale(1.5); }
+
+        .tocadiscos-hint {
+            color: var(--color-oro-claro); font-family: var(--fuente-titulos); font-size: 0.9rem;
+            letter-spacing: 4px; text-transform: uppercase; text-align: center;
+            animation: pulseHint 2s infinite; text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .sello-cera {
+            width: 90px; height: 90px; background: var(--gradiente-oro); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; cursor: pointer;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.3);
+            color: white; font-family: var(--fuente-nombres); font-size: 3rem;
+            position: relative; transition: transform 0.3s;
+        }
+        .sello-cera::after { content: ''; position: absolute; inset: 5px; border: 1px dashed rgba(255,255,255,0.4); border-radius: 50%; }
+        .sello-cera:hover { transform: scale(1.05); }
+
+        @keyframes pulseHint { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+        /* Reproductor Global */
+        #reproductor {
+            position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px;
+            background: var(--color-marfil); border: 1px solid var(--color-oro);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 80000; cursor: pointer;
+            color: var(--color-oro); font-size: 1.5rem; transition: all 0.3s ease;
+            opacity: 0; visibility: hidden; transform: translateY(20px);
+        }
+        #reproductor.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .girando i { animation: rotarVinyl 4s linear infinite; }
+        @keyframes rotarVinyl { 100% { transform: rotate(360deg); } }
+
+        /* ==========================================================
+           5. FONDOS, DECORACIÓN BOTÁNICA Y DESTELLOS
+           ========================================================== */
+        .textura-global {
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+        }
+
+        /* Partículas de Oro */
+        .particulas-oro { position: fixed; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+        .chispa {
+            position: absolute; width: 4px; height: 4px; background: var(--color-oro);
+            border-radius: 50%; filter: blur(1px); box-shadow: 0 0 10px var(--color-oro-claro);
+            animation: flotarChispa 15s infinite linear; opacity: 0;
+        }
+        @keyframes flotarChispa {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+        }
+
+        /* Ramas de Eucalipto (SVG Integrado) */
+        .rama-decorativa { position: absolute; width: 180px; z-index: 15; pointer-events: none; opacity: 0.8; color: var(--color-verde-salvia); }
+        .rama-top-left { top: -20px; left: -20px; transform: rotate(-15deg); }
+        .rama-bottom-right { bottom: -20px; right: -20px; transform: rotate(165deg); }
+
+        /* Palomas Flotantes Globales */
+        .paloma { position: absolute; width: 100px; color: var(--color-marfil); filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05)); z-index: 3; pointer-events: none; }
+        .paloma-1 { top: 15%; right: -120px; animation: vueloPaloma 25s infinite linear; }
+        .paloma-2 { top: 60%; left: -120px; animation: vueloPalomaInv 35s infinite linear; transform: scaleX(-1); }
+        @keyframes vueloPaloma { 0% { transform: translate3d(0, 0, 0) rotate(-10deg); } 100% { transform: translate3d(-120vw, -100px, 0) rotate(10deg); } }
+        @keyframes vueloPalomaInv { 0% { transform: translate3d(0, 0, 0) scaleX(-1) rotate(-10deg); } 100% { transform: translate3d(120vw, -150px, 0) scaleX(-1) rotate(10deg); } }
+
+        /* ==========================================================
+           6. BOTONES PREMIUM
+           ========================================================== */
+        .btn-oro {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--gradiente-oro); color: white; padding: 15px 35px;
+            font-family: var(--fuente-textos); font-weight: 500; font-size: 0.95rem; 
+            text-transform: uppercase; letter-spacing: 2px; border-radius: 50px; 
+            border: none; cursor: pointer; box-shadow: 0 10px 20px rgba(203, 163, 101, 0.3); 
+            transition: all 0.3s ease; position: relative; z-index: 10;
+        }
+        .btn-oro:hover { transform: translate3d(0, -3px, 0); box-shadow: 0 15px 25px rgba(203, 163, 101, 0.4); }
+        
+        .btn-outline { background: transparent; border: 1px solid var(--color-oro); color: var(--color-oro); box-shadow: none; }
+        .btn-outline:hover { background: var(--color-oro); color: white; }
+
+        .btn-wa { background: #25D366; color: white; }
+        .btn-wa:hover { background: #128C7E; box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3); }
+
+        /* ==========================================================
+           7. PORTADA CINEMATOGRÁFICA (HERO)
+           ========================================================== */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 20px; }
+        
+        .hero-bg { position: absolute; inset: 0; z-index: 1; }
+        .hero-bg img { width: 100%; height: 100vh; object-fit: cover; object-position: center 30%; filter: brightness(0.85); animation: zoomBg 20s infinite alternate; }
+        @keyframes zoomBg { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253, 251, 247, 0.1) 0%, rgba(253, 251, 247, 1) 95%); }
+
+        .hero-marco { position: absolute; inset: 25px; border: 1px solid rgba(203, 163, 101, 0.6); z-index: 3; pointer-events: none; }
+        .hero-marco::before, .hero-marco::after { content: ''; position: absolute; width: 40px; height: 40px; border: 1px solid var(--color-oro); }
+        .hero-marco::before { top: -6px; left: -6px; border-right: none; border-bottom: none; }
+        .hero-marco::after { bottom: -6px; right: -6px; border-left: none; border-top: none; }
+
+        .hero-content { position: relative; z-index: 10; width: 100%; max-width: 600px; text-align: center; }
+        .hero-etiqueta { font-size: 1rem; letter-spacing: 8px; text-transform: uppercase; color: var(--color-oro); margin-bottom: 25px; }
+        .hero-nombre { font-family: var(--fuente-nombres); font-size: 7rem; line-height: 1; color: var(--color-texto-oscuro); margin-bottom: 20px; text-shadow: 0 5px 15px rgba(255,255,255,0.5); }
+        .hero-fecha { font-family: var(--fuente-titulos); font-size: 1.3rem; color: var(--color-texto-oscuro); letter-spacing: 4px; text-transform: uppercase; }
+
+        .divisor-oro { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 30px auto; }
+        .divisor-oro .linea { height: 1px; width: 80px; background: var(--color-oro-claro); }
+        .divisor-oro i { font-size: 1.2rem; color: var(--color-oro); }
+
+        /* ==========================================================
+           8. MI ORACIÓN (MISAL ANTIGUO) & PILARES 3D
+           ========================================================== */
+        .seccion-oracion { text-align: center; max-width: 700px; margin: 0 auto; position: relative; }
+        .letra-capitular {
+            float: left; font-family: var(--fuente-nombres); font-size: 5.5rem; color: var(--color-oro);
+            line-height: 0.8; margin-right: 15px; margin-top: 10px; padding-bottom: 10px;
+            text-shadow: 2px 2px 0px rgba(203, 163, 101, 0.2);
+        }
+        .texto-misal { font-size: 1.2rem; line-height: 2; color: var(--color-texto-oscuro); text-align: left; }
+        .ref-biblica { display: block; text-align: right; font-family: var(--fuente-titulos); font-size: 1rem; color: var(--color-oro); margin-top: 20px; }
+
+        .texto-narrativa { font-size: 1.1rem; line-height: 1.9; color: var(--color-texto-oscuro); text-align: center; margin-top: 60px; font-weight: 300; }
+
+        /* Pilares 3D (Glassmorphism + Hover) */
+        .grid-pilares { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
+        .pilar-card {
+            background: rgba(255,255,255,0.6); border: 1px solid var(--color-oro-claro);
+            border-radius: 15px; padding: 30px 20px; text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .pilar-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(92, 107, 87, 0.1); border-color: var(--color-oro); }
+        .pilar-rol { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-verde-salvia); margin-bottom: 10px; }
+        .pilar-nombres { font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-texto-oscuro); }
+
+        /* ==========================================================
+           9. HISTORIA VISUAL "MI CRECIMIENTO"
+           ========================================================== */
+        .timeline-crecimiento { display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
+        .foto-historia {
+            width: 200px; text-align: center; position: relative;
+        }
+        .marco-oro {
+            width: 100%; aspect-ratio: 3/4; border-radius: 10px; overflow: hidden;
+            border: 3px solid white; box-shadow: 0 15px 30px rgba(0,0,0,0.1); position: relative;
+            margin-bottom: 20px;
+        }
+        .marco-oro::after { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(255,255,255,0.5); pointer-events: none; }
+        .marco-oro img { width: 100%; height: 100%; object-fit: cover; filter: sepia(30%); transition: filter 0.5s; }
+        .foto-historia:hover img { filter: sepia(0%); }
+        .etiqueta-historia { font-family: var(--fuente-nombres); font-size: 1.8rem; color: var(--color-oro); }
+
+        /* ==========================================================
+           10. CONTADOR & CALENDARIO
+           ========================================================== */
+        .contador-premium { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+        .box-time {
+            width: 90px; height: 100px; background: white; border: 1px solid var(--color-oro-claro);
+            border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            box-shadow: var(--sombra-premium); position: relative; overflow: hidden;
+        }
+        .box-time::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradiente-oro); }
+        .num-time { font-family: var(--fuente-titulos); font-size: 2.5rem; color: var(--color-texto-oscuro); line-height: 1; }
+        .label-time { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-texto-claro); margin-top: 5px; }
+
+        /* ==========================================================
+           11. ITINERARIO & MENÚ DEL BANQUETE
+           ========================================================== */
+        /* Itinerario Vertical Fino */
+        .timeline-itinerario { position: relative; max-width: 500px; margin: 0 auto; padding-left: 30px; }
+        .timeline-itinerario::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: var(--color-oro-claro); }
+        .item-iti { position: relative; margin-bottom: 40px; }
+        .punto-iti {
+            position: absolute; left: -34px; top: 5px; width: 9px; height: 9px; background: var(--color-oro);
+            border-radius: 50%; box-shadow: 0 0 0 4px var(--color-marfil);
+        }
+        .hora-iti { font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-texto-oscuro); margin-bottom: 5px; }
+        .tit-iti { font-size: 1.1rem; font-weight: 500; display: flex; align-items: center; gap: 8px; color: var(--color-verde-olivo); margin-bottom: 5px; }
+        .desc-iti { font-size: 0.95rem; color: var(--color-texto-claro); }
+
+        /* Menú Banquete */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .menu-col { text-align: center; }
+        .menu-icono { font-size: 2.5rem; color: var(--color-oro); margin-bottom: 15px; }
+        .menu-tipo { font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-texto-oscuro); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .platillo { margin-bottom: 15px; }
+        .platillo-nom { font-weight: 600; font-size: 1rem; color: var(--color-texto-oscuro); }
+        .platillo-desc { font-size: 0.85rem; color: var(--color-texto-claro); font-style: italic; }
+
+        /* ==========================================================
+           12. DRESS CODE & HOSPEDAJE
+           ========================================================== */
+        .dc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .dc-card { background: white; border: 1px solid var(--color-oro-claro); border-radius: 15px; padding: 40px 20px; text-align: center; }
+        .dc-svg { width: 60px; height: 60px; color: var(--color-verde-olivo); margin: 0 auto 20px; display: block; }
+        
+        .hospedaje-card { background: rgba(255,255,255,0.7); border-radius: 15px; padding: 25px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-left: 4px solid var(--color-oro); }
+        .hosp-info h4 { font-family: var(--fuente-titulos); font-size: 1.2rem; margin-bottom: 5px; }
+        .hosp-info p { font-size: 0.85rem; color: var(--color-texto-claro); }
+
+        /* ==========================================================
+           13. REGALOS & BUZÓN DE BENDICIONES
+           ========================================================== */
+        .guestbook-box {
+            background: white; border: 1px solid var(--color-oro-claro); border-radius: 20px;
+            padding: 40px; text-align: center; box-shadow: var(--sombra-premium); margin-top: 40px;
+        }
+        .input-lujo {
+            width: 100%; padding: 15px; border: 1px solid var(--color-oro-claro); border-radius: 10px;
+            font-family: var(--fuente-textos); font-size: 0.95rem; margin-bottom: 20px; background: var(--color-marfil);
+            color: var(--color-texto-oscuro); resize: none;
+        }
+        .input-lujo:focus { outline: none; border-color: var(--color-oro); box-shadow: 0 0 10px rgba(203, 163, 101, 0.2); }
+
+        /* ==========================================================
+           14. RSVP PAPELERÍA FINA & FOOTER
+           ========================================================== */
+        .rsvp-arco {
+            background: white; border-radius: 200px 200px 15px 15px; padding: 80px 40px 60px;
+            text-align: center; position: relative; box-shadow: var(--sombra-premium);
+            border: 3px solid var(--color-marfil); margin: 0 auto; max-width: 500px;
+        }
+        .rsvp-arco::before {
+            content: ''; position: absolute; inset: 15px; border: 1px dashed var(--color-oro);
+            border-radius: 185px 185px 10px 10px; pointer-events: none; opacity: 0.6;
+        }
+
+        footer { background-color: var(--color-texto-oscuro); color: #FFFFFF; padding: 60px 0 20px; text-align: center; margin-top: 60px; }
+        .logo-footer { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; }
+        .logo-footer span { font-style: italic; color: var(--color-oro); }
+        .redes a { color: var(--color-oro-claro); font-size: 1.5rem; margin: 0 10px; transition: color 0.3s; }
+        .redes a:hover { color: white; }
+
+        /* ==========================================================
+           15. RESPONSIVO
+           ========================================================== */
+        @media (max-width: 768px) {
+            .hero-nombre { font-size: 5rem; }
+            .grid-pilares, .menu-grid, .dc-grid { grid-template-columns: 1fr; gap: 20px; }
+            .hospedaje-card { flex-direction: column; text-align: center; gap: 15px; }
+            .letra-capitular { font-size: 4.5rem; }
+            .rsvp-arco { border-radius: 150px 150px 15px 15px; }
+            .rsvp-arco::before { border-radius: 140px 140px 10px 10px; }
+        }

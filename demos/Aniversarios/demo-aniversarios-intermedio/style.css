@@ -1,0 +1,349 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (ROMANCE A MEDIANOCHE)
+           ========================================================================== */
+        :root {
+            --color-fondo-base: #020611;   /* Navy Abisal para el fondo */
+            --color-glass: rgba(10, 25, 47, 0.45); /* Cristal esmerilado */
+            --color-glass-borde: rgba(212, 175, 55, 0.2);
+            --color-oro: #D4AF37;          /* Oro Clásico */
+            --color-oro-hover: #FCE181;
+            --color-borgoña: #4A0E17;      /* Acento Romántico */
+            --color-texto-blanco: #F8FAFC;
+            --color-texto-plata: #CBD5E1;
+            
+            --fuente-titulos: 'Cinzel', serif;
+            --fuente-textos: 'Montserrat', sans-serif;
+
+            --sombra-oro: 0 10px 30px rgba(212, 175, 55, 0.15);
+            --borde-radio: 16px;
+        }
+
+        /* ==========================================================================
+           2. RESET Y UTILIDADES GLOBALES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: var(--fuente-textos); 
+            background-color: var(--color-fondo-base); 
+            color: var(--color-texto-blanco); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Contenedor del WebGL (Vanta.js) */
+        #vanta-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+        h1, h2, h3 { font-family: var(--fuente-titulos); font-weight: 600; color: var(--color-oro); }
+        .contenedor { max-width: 850px; margin: 0 auto; padding: 0 6%; position: relative; z-index: 10; }
+        .seccion-padding { padding: 100px 0; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Clases de Glassmorphism Premium */
+        .glass-card {
+            background: var(--color-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--color-glass-borde);
+            border-radius: var(--borde-radio);
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        /* Clases Animación Scroll (Cero Jitter) */
+        .fade-up { 
+            opacity: 0; 
+            transform: translate3d(0, 40px, 0.1px); 
+        }
+
+        /* Divisor Elegante y Texto de Invitación */
+        .divisor-elegante {
+            display: flex; align-items: center; justify-content: center; margin: 35px 0; opacity: 0.8;
+        }
+        .divisor-linea { height: 1px; width: 60px; background: var(--color-oro); }
+        .divisor-rombo { width: 10px; height: 10px; border: 1px solid var(--color-oro); transform: rotate(45deg); margin: 0 15px; }
+
+        .texto-invitacion {
+            font-size: 1.05rem; color: var(--color-texto-blanco); text-transform: uppercase; 
+            letter-spacing: 3px; font-weight: 500; line-height: 1.8; text-align: center;
+        }
+
+        /* Botones Globales */
+        .btn-oro {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(135deg, var(--color-oro), #9A7B26); 
+            color: var(--color-fondo-base); 
+            padding: 16px 35px; border-radius: 50px; border: none; cursor: pointer;
+            font-family: var(--fuente-textos); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1.5px;
+            box-shadow: var(--sombra-oro); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-oro:hover { 
+            transform: translate3d(0, -4px, 0.1px); 
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: rgba(212, 175, 55, 0.05); color: var(--color-oro); 
+            border: 1px solid var(--color-oro); padding: 12px 25px; border-radius: 50px;
+            font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: all 0.3s ease; cursor: pointer; backdrop-filter: blur(4px);
+        }
+        .btn-outline:hover { 
+            background: var(--color-oro); color: var(--color-fondo-base); 
+            transform: translate3d(0, -3px, 0.1px);
+        }
+
+        /* Botón de Música Flotante */
+        #btn-musica { 
+            position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; 
+            background: rgba(2, 6, 17, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 50%; 
+            display: flex; justify-content: center; align-items: center; z-index: 9990; 
+            cursor: pointer; font-size: 1.4rem; color: var(--color-oro); box-shadow: var(--sombra-oro);
+        }
+        .girar { animation: girarDisco 4s linear infinite; }
+        @keyframes girarDisco { 100% { transform: rotate(360deg); } }
+
+        /* ==========================================================================
+           3. PRELOADER Y SOBRE 3D (EL PORTAL DE ENTRADA VIP)
+           ========================================================================== */
+        #preloader { 
+            position: fixed; inset: 0; background: var(--color-fondo-base); z-index: 99999; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            transition: opacity 0.8s ease; 
+        }
+        #preloader.oculto { opacity: 0; pointer-events: none; }
+        .loader-icon { font-size: 4rem; color: var(--color-oro); margin-bottom: 20px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.95); } }
+
+        /* Contenedor del Sobre 3D */
+        #pantalla-sobre {
+            position: fixed; inset: 0; background: rgba(2, 6, 17, 0.95); z-index: 99998;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            backdrop-filter: blur(15px); perspective: 1500px;
+        }
+        
+        .sobre-wrapper {
+            position: relative; width: 340px; height: 220px; cursor: pointer;
+            transform-style: preserve-3d;
+        }
+
+        /* Cuerpo Base del Sobre */
+        .sobre-back {
+            position: absolute; inset: 0; background: #0A1220; border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+        }
+
+        /* La Carta / Invitación adentro */
+        .sobre-carta {
+            position: absolute; left: 15px; right: 15px; top: 15px; bottom: 15px;
+            background: #FDF9EE; border-radius: 4px; padding: 25px 20px; text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.5); z-index: 2;
+            background-image: repeating-linear-gradient(transparent, transparent 2px, rgba(212, 175, 55, 0.05) 3px, rgba(212, 175, 55, 0.05) 4px);
+        }
+        .sobre-carta h2 { font-family: var(--fuente-titulos); font-size: 1.6rem; color: #0A192F; margin-bottom: 5px;}
+        .sobre-carta p { font-family: var(--fuente-textos); font-size: 0.75rem; color: #4A5568; letter-spacing: 2px; text-transform: uppercase;}
+
+        /* Solapas del Sobre (Geometría CSS Pura) */
+        .sobre-solapa-left { position: absolute; left: 0; top: 0; bottom: 0; width: 55%; background: #0D1A2E; clip-path: polygon(0 0, 100% 50%, 0 100%); z-index: 3; border-right: 1px solid rgba(212, 175, 55, 0.1);}
+        .sobre-solapa-right { position: absolute; right: 0; top: 0; bottom: 0; width: 55%; background: #0D1A2E; clip-path: polygon(100% 0, 0 50%, 100% 100%); z-index: 3; border-left: 1px solid rgba(212, 175, 55, 0.1);}
+        .sobre-solapa-bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 65%; background: #112036; clip-path: polygon(0 100%, 50% 0, 100% 100%); z-index: 4; border-top: 1px solid rgba(212, 175, 55, 0.15);}
+        
+        /* Solapa Superior (La que se abre en 3D) */
+        .sobre-solapa-top {
+            position: absolute; left: 0; right: 0; top: 0; height: 60%; background: #162640;
+            clip-path: polygon(0 0, 50% 100%, 100% 0); z-index: 5;
+            transform-origin: top; transform-style: preserve-3d;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Sello de Cera Dorado */
+        .sello-cera {
+            position: absolute; left: 50%; top: 100%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; border-radius: 50%;
+            background: radial-gradient(circle, var(--color-oro) 0%, #9A7B26 100%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.4);
+            display: flex; justify-content: center; align-items: center; z-index: 6;
+            font-family: var(--fuente-titulos); color: #FFF; font-weight: bold; font-size: 1.2rem;
+            border: 2px solid rgba(255,255,255,0.2); text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .instruccion-sobre { position: absolute; bottom: -50px; left: 0; right: 0; text-align: center; color: var(--color-oro); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; animation: pulse 2s infinite; }
+
+        /* ==========================================================================
+           4. PORTADA HERO
+           ========================================================================== */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center;}
+        
+        /* Marco Fotográfico Elegante */
+        .marco-foto-hero {
+            position: relative; max-width: 320px; margin: 0 auto 40px auto; border-radius: 200px 200px 0 0;
+            padding: 10px; background: linear-gradient(135deg, var(--color-oro), transparent, var(--color-oro));
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        .marco-foto-hero img {
+            width: 100%; border-radius: 190px 190px 0 0; display: block; filter: contrast(1.1) brightness(0.9);
+        }
+
+        .hero-grado { font-family: var(--fuente-textos); font-size: 1rem; letter-spacing: 6px; text-transform: uppercase; color: var(--color-oro); margin-bottom: 15px; font-weight: 500; }
+        .hero-nombre { font-family: var(--fuente-titulos); font-size: 4rem; line-height: 1.1; color: var(--color-texto-blanco); margin-bottom: 20px; text-shadow: 0 5px 20px rgba(0,0,0,0.9); }
+        .hero-generacion { font-family: var(--fuente-textos); font-size: 1.2rem; color: var(--color-texto-plata); letter-spacing: 4px; font-weight: 300; }
+        
+        .titulo-seccion { font-size: 2.4rem; text-align: center; margin-bottom: 15px; color: var(--color-oro); text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .subtitulo-seccion { text-align: center; font-size: 1.05rem; color: var(--color-texto-plata); margin-bottom: 40px; font-weight: 300; }
+
+        /* ==========================================================================
+           5. MENSAJE Y CUENTA REGRESIVA
+           ========================================================================== */
+        .texto-emotivo { font-size: 1.15rem; line-height: 2; color: var(--color-texto-plata); margin: 0 auto 30px; text-align: center; font-weight: 300; font-style: italic; }
+        
+        .contador-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px;}
+        .contador-box { 
+            background: rgba(2, 6, 17, 0.6); width: 90px; height: 100px; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            border-radius: 12px; border: 1px solid var(--color-glass-borde); box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .contador-numero { font-family: var(--fuente-titulos); font-size: 2.4rem; color: var(--color-oro); line-height: 1; font-weight: 600; text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);}
+        .contador-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 8px; color: var(--color-texto-plata); font-weight: 600; }
+
+        /* ==========================================================================
+           6. LÍNEA DE TIEMPO (NUESTRA HISTORIA - ANIME.JS DRAWING)
+           ========================================================================== */
+        .timeline-wrapper { position: relative; max-width: 650px; margin: 0 auto; padding: 40px 0; }
+        
+        .timeline-linea {
+            position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; 
+            background: rgba(212, 175, 55, 0.15); transform: translateX(-50%); z-index: 0;
+        }
+        .timeline-progreso {
+            position: absolute; left: 0; top: 0; width: 100%; height: 0%; 
+            background: var(--color-oro); box-shadow: 0 0 15px var(--color-oro);
+            transition: height 0.4s ease-out;
+        }
+
+        .hito-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; position: relative; width: 100%; z-index: 2; opacity: 0; }
+        .hito-item:nth-child(even) { flex-direction: row-reverse; }
+        
+        .hito-punto { 
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); 
+            width: 22px; height: 22px; background: var(--color-fondo-base); 
+            border: 4px solid var(--color-oro); border-radius: 50%; 
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hito-item.activado .hito-punto { transform: translate(-50%, -50%) scale(1); }
+        
+        .hito-content { width: 42%; text-align: right; background: var(--color-glass); padding: 25px; border-radius: 12px; border: 1px solid var(--color-glass-borde); backdrop-filter: blur(8px);}
+        .hito-item:nth-child(even) .hito-content { text-align: left; }
+        
+        .hito-ano { font-family: var(--fuente-titulos); font-size: 2.2rem; color: var(--color-oro); margin-bottom: 5px; line-height: 1; text-shadow: 0 2px 10px rgba(0,0,0,0.5);}
+        .hito-titulo { font-weight: 600; font-size: 1.1rem; color: var(--color-texto-blanco); margin-bottom: 8px; }
+        .hito-texto { font-size: 0.9rem; color: var(--color-texto-plata); }
+
+        /* ==========================================================================
+           7. GALERÍA SWIPER 3D COVERFLOW
+           ========================================================================== */
+        .seccion-galeria { padding: 100px 0; overflow: hidden; }
+        .swiper { width: 100%; padding-top: 50px; padding-bottom: 50px; }
+        .swiper-slide {
+            background-position: center; background-size: cover;
+            width: 280px; height: 380px; border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            /* Importante para no trabar el celular en el swipe */
+            -webkit-transform-style: preserve-3d; transform-style: preserve-3d;
+        }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+        
+        .instruccion-swipe { text-align: center; color: var(--color-oro); margin-top: 30px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; animation: pulse 2s infinite; }
+
+        /* ==========================================================================
+           8. UBICACIONES, DRESS CODE Y REGALOS
+           ========================================================================== */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .ubicacion-card { text-align: center; display: flex; flex-direction: column; }
+        .ubicacion-icono { font-size: 3rem; color: var(--color-oro); margin-bottom: 15px; }
+        .ubicacion-hora { display: inline-block; background: rgba(212, 175, 55, 0.1); color: var(--color-oro); padding: 6px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(212, 175, 55, 0.2);}
+        
+        /* Arte CSS para Dress Code */
+        .arte-vestimenta { display: flex; justify-content: center; align-items: center; height: 100px; margin-bottom: 20px; }
+        
+        .css-vestido {
+            width: 65px; height: 90px;
+            background: linear-gradient(to bottom, var(--color-oro), #9A7B26);
+            clip-path: polygon(30% 0%, 70% 0%, 80% 30%, 60% 40%, 100% 100%, 0% 100%, 40% 40%, 20% 30%);
+            position: relative;
+        }
+        .css-vestido::after {
+            content: ''; position: absolute; top: 38%; left: 35%; width: 30%; height: 3px;
+            background: #fff; box-shadow: 0 0 8px rgba(255,255,255,0.8);
+        }
+
+        .css-traje {
+            width: 60px; height: 90px;
+            background: #040914; position: relative; border-radius: 8px 8px 0 0;
+            border: 1px solid var(--color-oro); box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
+        .css-traje::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 35px; height: 55px; background: #fff;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+        .css-traje::after {
+            content: ''; position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+            width: 22px; height: 10px; background: var(--color-oro);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            border-left: 9px solid #040914; border-right: 9px solid #040914; background-color: transparent;
+            border-top: 5px solid var(--color-oro); border-bottom: 5px solid var(--color-oro);
+        }
+
+        .caja-regalo { border: 1px dashed var(--color-oro); background: rgba(0,0,0,0.3); padding: 25px; border-radius: 12px; font-family: monospace; font-size: 1.1rem; color: var(--color-oro); margin-top: 20px;}
+
+        /* ==========================================================================
+           9. RSVP ELEGANTE (LIQUID GOLD BG) Y FOOTER
+           ========================================================================== */
+        .seccion-rsvp { 
+            position: relative; background: #070d14; color: var(--color-texto-blanco); 
+            border-radius: 24px; margin: 0 20px; padding: 80px 20px; text-align: center; 
+            overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        /* Efecto Liquid Gold Background */
+        .seccion-rsvp::before, .seccion-rsvp::after {
+            content: ''; position: absolute; width: 500px; height: 500px;
+            background: linear-gradient(135deg, var(--color-oro) 0%, transparent 60%);
+            border-radius: 43% 57% 65% 35% / 45% 55% 45% 55%;
+            animation: liquidFlow 20s linear infinite; opacity: 0.08; z-index: 0; pointer-events: none;
+        }
+        .seccion-rsvp::before { top: -250px; left: -250px; }
+        .seccion-rsvp::after { bottom: -250px; right: -250px; background: linear-gradient(315deg, #FCE181 0%, transparent 60%); animation-direction: reverse; animation-duration: 25s; }
+        @keyframes liquidFlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .rsvp-content {
+            position: relative; z-index: 1; background: rgba(2, 6, 17, 0.8); backdrop-filter: blur(12px);
+            padding: 50px 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); max-width: 600px; margin: 0 auto;
+        }
+
+        .footer-comercial { padding: 60px 20px 40px; text-align: center; color: var(--color-texto-plata); position: relative; z-index: 10;}
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; }
+        .social-link { font-size: 1.8rem; color: var(--color-oro); transition: transform 0.3s; }
+        .social-link:hover { transform: translate3d(0, -5px, 0); color: var(--color-oro-hover); }
+
+        /* ==========================================================================
+           10. RESPONSIVO
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .hero-nombre { font-size: 3rem; }
+            .marco-foto-hero { max-width: 260px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .timeline-linea { left: 30px; }
+            .hito-item { flex-direction: column !important; align-items: flex-start; padding-left: 60px; }
+            .hito-punto { left: 30px; }
+            .hito-content { width: 100%; text-align: left !important; }
+            .swiper-slide { width: 230px; height: 320px; }
+            .seccion-rsvp { margin: 0; border-radius: 0; border-left: none; border-right: none;}
+        }

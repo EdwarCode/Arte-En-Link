@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos | Mis 40 Años VIP</title>
+
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- 1. LA DOBLE ENTRADA (PRELOADER -> SOBRE) -->
+    <div id="master-screen">
+        <div class="bg-ruido"></div>
+        
+        <!-- Fase 1: Preloader Minimalista -->
+        <div class="preloader-view" id="preloader-view">
+            <i class="ph-fill ph-wine loader-copas"></i>
+            <div class="loader-texto">Preparando una noche inolvidable...</div>
+        </div>
+
+        <!-- Fase 2: Sobre Masivo -->
+        <div class="envelope-view" id="envelope-view">
+            <div class="envelope-container">
+                <div class="envelope-flap"></div>
+                <div class="envelope-front"></div>
+                <div class="wax-seal" id="wax-seal">C</div>
+                <div class="tap-text">Toca para abrir</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR DE MÚSICA -->
+    <div id="music-player" class="glass-card">
+        <i class="ph-fill ph-play-circle" id="music-icon"></i>
+        <!-- Audio oculto (URL de ejemplo, jazz lounge) -->
+        <audio id="bg-audio" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- FONDO GLOBAL "BOTANICAL LUXURY" VIVO (ANIMADO) -->
+    <div class="bg-global">
+        <div class="bg-botanico"></div>
+        <div class="bg-overlay-ahumado"></div>
+        <div class="bg-ruido"></div>
+    </div>
+
+    <!-- POLVO DE ORO -->
+    <div class="particulas-container">
+        <div class="particula"></div><div class="particula"></div><div class="particula"></div><div class="particula"></div><div class="particula"></div>
+        <div class="particula"></div><div class="particula"></div><div class="particula"></div><div class="particula"></div><div class="particula"></div>
+    </div>
+
+    <!-- PORTADA (HERO) -->
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&q=80&w=1080" alt="Fondo Cumpleaños VIP">
+            <div class="hero-fade-bottom"></div>
+        </div>
+        <div class="hero-content fade-up visible">
+            <div class="hero-edad">Capítulo Cuarenta</div>
+            <h1 class="hero-nombre">Carlos</h1>
+            <div class="hero-fecha">Sábado, 28 de Octubre</div>
+        </div>
+    </header>
+
+    <!-- MENSAJE -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="glass-card mensaje-intro">
+                <i class="ph-fill ph-quotes"></i>
+                "Hay momentos en la vida que exigen ser celebrados por todo lo alto. Acompáñame a disfrutar de una noche excepcional llena de buenos amigos, excelente música y recuerdos invaluables."
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">El Gran Día</h2>
+            <div class="contador-grid">
+                <div class="glass-card contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="glass-card contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="glass-card contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="glass-card contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARIO EXTENDIDO -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up">La Historia de la Noche</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-left">
+                    <div class="glass-card timeline-content">
+                        <i class="ph-thin ph-martini timeline-icon"></i>
+                        <div class="timeline-hora">20:00</div>
+                        <div class="timeline-texto">Recepción y Coctel de Bienvenida</div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-right delay-1">
+                    <div class="glass-card timeline-content">
+                        <i class="ph-thin ph-star timeline-icon"></i>
+                        <div class="timeline-hora">21:00</div>
+                        <div class="timeline-texto">La Gran Entrada del Festejado</div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left delay-2">
+                    <div class="glass-card timeline-content">
+                        <i class="ph-thin ph-fork-knife timeline-icon"></i>
+                        <div class="timeline-hora">21:30</div>
+                        <div class="timeline-texto">Cena de Gala</div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-right delay-1">
+                    <div class="glass-card timeline-content">
+                        <i class="ph-thin ph-cake timeline-icon"></i>
+                        <div class="timeline-hora">23:00</div>
+                        <div class="timeline-texto">Brindis y Pastel</div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-left delay-2">
+                    <div class="glass-card timeline-content">
+                        <i class="ph-thin ph-speaker-hifi timeline-icon"></i>
+                        <div class="timeline-hora">23:30</div>
+                        <div class="timeline-texto">DJ, Pista de Baile y Fiesta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE ALTA COSTURA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up" style="margin-bottom: 20px;">Código de Vestimenta</h2>
+            <p class="fade-up" style="text-align: center; color: var(--color-texto-secundario); margin-bottom: 40px; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">Elegancia de Noche</p>
+            
+            <div class="dresscode-grid">
+                <!-- Para Ellas -->
+                <div class="glass-card dresscode-col fade-up">
+                    <i class="ph-thin ph-dress"></i>
+                    <h3>Para Ellas</h3>
+                    <p>Vestido Largo o Midi</p>
+                    <div class="paleta-colores">
+                        <div class="color-dot" style="background: #000000;" title="Negro"></div>
+                        <div class="color-dot" style="background: #D4AF37;" title="Dorado"></div>
+                        <div class="color-dot" style="background: #004B49;" title="Verde Esmeralda"></div>
+                    </div>
+                </div>
+                <!-- Para Ellos -->
+                <div class="glass-card dresscode-col fade-up delay-1">
+                    <i class="ph-thin ph-user-focus"></i>
+                    <h3>Para Ellos</h3>
+                    <p>Traje Oscuro y Corbata</p>
+                    <div class="paleta-colores">
+                        <div class="color-dot" style="background: #000000;" title="Negro"></div>
+                        <div class="color-dot" style="background: #1A2421;" title="Gris Oscuro"></div>
+                        <div class="color-dot" style="background: #0F172A;" title="Azul Marino"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aviso -->
+            <div class="glass-card aviso-card fade-up delay-2">
+                <i class="ph-thin ph-moon-stars" style="font-size: 2.5rem; color: var(--color-oro); margin-bottom: 15px; display: block;"></i>
+                <h3 style="font-family: var(--fuente-editorial); font-size: 1.5rem; color: #fff; margin-bottom: 5px;">Noche de Adultos</h3>
+                <p style="color: var(--color-texto-secundario); font-size: 0.95rem;">Hemos reservado este espacio para disfrutar sin interrupciones. Agradecemos su comprensión (No Kids).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA EDITORIAL -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up">Momentos</h2>
+            <div class="galeria-editorial">
+                <div class="galeria-item fade-up"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=800" alt="Editorial 1"></div>
+                <div class="galeria-item fade-left delay-1"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32b7?auto=format&fit=crop&q=80&w=400" alt="Editorial 2"></div>
+                <div class="galeria-item fade-right delay-2"><img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80&w=400" alt="Editorial 3"></div>
+                <div class="galeria-item fade-up delay-1"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800" alt="Editorial 4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGALOS -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="glass-card regalo-card">
+                <i class="ph-thin ph-gift" style="font-size: 3.5rem; color: var(--color-oro); margin-bottom: 20px; display: block;"></i>
+                <h3 style="font-family: var(--fuente-editorial); font-size: 2.2rem; margin-bottom: 15px;">Mesa de Regalos</h3>
+                <p style="font-size: 0.95rem; color: var(--color-texto-secundario); margin-bottom: 30px; max-width: 400px; margin-left: auto; margin-right: auto;">El mejor regalo es su grata presencia, pero si desean tener un detalle adicional, les dejo una sugerencia.</p>
+                
+                <button class="btn-outline" id="btn-regalo" style="width: 100%; max-width: 300px;"><i class="ph-fill ph-bank"></i> Ver Datos Bancarios</button>
+                
+                <div class="datos-bancarios" id="datos-bancarios">
+                    <p style="font-size: 0.95rem; margin-bottom: 8px;"><b>Banco:</b> BBVA Bancomer</p>
+                    <p style="font-size: 0.95rem; margin-bottom: 8px;"><b>Cuenta:</b> <span id="num-cuenta">0123 4567 89</span></p>
+                    <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--color-oro);"><b>Clabe:</b> <span id="num-clabe" style="letter-spacing: 1px;">012345678901234567</span></p>
+                    <button class="btn-outline" id="btn-copiar" style="padding: 8px 20px; font-size: 0.75rem;"><i class="ph ph-copy"></i> Copiar Clabe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN Y RSVP -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="glass-card ubicacion-card">
+                <div class="ubicacion-icono"><i class="ph-thin ph-map-pin"></i></div>
+                <h3 style="font-family: var(--fuente-editorial); font-size: 2rem; margin-bottom: 15px;">La Recepción</h3>
+                <p style="font-size: 1rem; color: var(--color-texto-secundario); margin-bottom: 30px;"><b>Salón "El Dorado VIP"</b><br>Av. Paseo de la Reforma 123, CDMX.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn-outline" style="min-width: 140px;"><i class="ph-fill ph-google-logo"></i> Maps</a>
+                    <a href="#" class="btn-outline" style="min-width: 140px;"><i class="ph-fill ph-navigation-arrow"></i> Waze</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="contenedor fade-up delay-1">
+        <section class="rsvp-section">
+            <h2 style="font-family: var(--fuente-editorial); font-size: 2.5rem; color: var(--color-oro); margin-bottom: 15px; font-style: italic;">RSVP</h2>
+            <p style="color: var(--color-texto-secundario); margin-bottom: 35px; letter-spacing: 1px;">Agradecemos confirmar antes del 15 de Octubre.</p>
+            <a href="https://wa.me/520000000000" target="_blank" class="btn-oro"><i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar Asistencia</a>
+        </section>
+    </div>
+
+    <footer>A celebration designed by <br><a href="#" target="_blank">ArteEnLink</a></footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

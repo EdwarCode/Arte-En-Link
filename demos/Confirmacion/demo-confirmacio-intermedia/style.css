@@ -1,0 +1,217 @@
+
+        /* ==========================================================
+           1. SISTEMA DE DISEÑO (FUEGO Y ORO)
+           ========================================================== */
+        :root {
+            --color-fondo-base: #FDFBF7;
+            --color-fondo-secundario: #F4EFE6;
+            --color-texto-oscuro: #1A1A1A; 
+            --color-texto-medio: #4A4A4A;
+            --color-acento-vino: #721C24; 
+            --color-oro: #CBA365;
+            --color-oro-oscuro: #A8854D;
+            --color-oro-claro: #E8D3A2;
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Montserrat', sans-serif;
+            --sombra-elegante: 0 15px 35px rgba(203, 163, 101, 0.08);
+            --borde-fino: 1px solid var(--color-oro);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--fuente-textos); background-color: var(--color-fondo-base);
+            color: var(--color-texto-oscuro); line-height: 1.7; overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; position: relative;
+        }
+        body.bloqueado { overflow: hidden; height: 100vh; }
+
+        h1, h2, h3 { font-family: var(--fuente-titulos); font-weight: 600; }
+        .contenedor { max-width: 700px; margin: 0 auto; padding: 0 6%; position: relative; z-index: 5; }
+        .seccion-padding { padding: 90px 0; position: relative; z-index: 5; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ==========================================================
+           2. EFECTOS VISUALES Y FONDOS
+           ========================================================== */
+        .textura-pergamino {
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+        }
+        .capa-sello {
+            position: fixed; bottom: -10%; right: -10%; z-index: 1; pointer-events: none;
+            width: 80vmin; height: 80vmin; color: var(--color-oro); opacity: 0.04; transform: rotate(-15deg);
+        }
+        .capa-luces {
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background: linear-gradient(135deg, rgba(253,251,247,0.4) 0%, rgba(203,163,101,0.05) 40%, transparent 60%);
+            mix-blend-mode: soft-light;
+        }
+        .contenedor-chispas { position: fixed; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+        .chispa {
+            position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--color-oro); 
+            box-shadow: 0 0 8px var(--color-acento-vino), 0 0 4px var(--color-oro);
+            animation: flotarChispa 15s infinite linear; opacity: 0;
+        }
+        @keyframes flotarChispa { 0% { transform: translateY(110vh) scale(0); opacity: 0; } 10%, 90% { opacity: 0.6; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+
+        .divisor-diploma { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 30px auto; position: relative; z-index: 15; }
+        .divisor-diploma .linea { height: 1px; width: 60px; background: var(--color-oro); opacity: 0.5; }
+        .divisor-diploma i { font-size: 1.2rem; color: var(--color-oro); }
+
+        /* Animaciones Scroll Optimizadas (Cascada) */
+        .fade-up { opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
+        .fade-up.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        .delay-1 { transition-delay: 150ms; } .delay-2 { transition-delay: 300ms; } .delay-3 { transition-delay: 450ms; }
+
+        /* ==========================================================
+           3. EL PERGAMINO SAGRADO (INTRO) & MÚSICA
+           ========================================================== */
+        #pergamino-intro {
+            position: fixed; inset: 0; z-index: 99999; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; perspective: 1000px; transition: visibility 2s;
+        }
+        /* Las dos mitades del pergamino que se desenrollan */
+        .pergamino-mitad {
+            position: absolute; left: 0; width: 100%; height: 50vh; background: #EBE5D9;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            box-shadow: 0 0 30px rgba(0,0,0,0.3); transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), filter 1.5s; z-index: 10;
+        }
+        .pergamino-top { top: 0; transform-origin: top; border-bottom: 3px solid var(--color-oro-oscuro); }
+        .pergamino-bottom { bottom: 0; transform-origin: bottom; border-top: 3px solid var(--color-oro-oscuro); }
+
+        #pergamino-intro.abierto .pergamino-top { transform: translateY(-100%); filter: brightness(0.5); }
+        #pergamino-intro.abierto .pergamino-bottom { transform: translateY(100%); filter: brightness(0.5); }
+        #pergamino-intro.abierto { visibility: hidden; pointer-events: none; }
+
+        .sello-wrapper { position: absolute; z-index: 20; display: flex; flex-direction: column; align-items: center; gap: 20px; transition: opacity 0.6s, transform 0.6s; }
+        #pergamino-intro.abierto .sello-wrapper { opacity: 0; transform: scale(1.5); }
+        
+        .sello-texto { color: var(--color-oro-oscuro); font-family: var(--fuente-titulos); letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; text-shadow: 0 2px 5px rgba(0,0,0,0.1); animation: pulseSello 2s infinite; }
+        @keyframes pulseSello { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+        .sello-cera {
+            width: 100px; height: 100px; background: var(--color-acento-vino); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; cursor: pointer;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.4);
+            color: var(--color-oro); font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic;
+            border: 2px solid var(--color-oro-oscuro); transition: transform 0.3s;
+        }
+        .sello-cera::before { content: ''; position: absolute; inset: 6px; border: 1px dashed rgba(203,163,101,0.5); border-radius: 50%; }
+        .sello-cera:hover { transform: scale(1.05); }
+
+        /* Reproductor de Música Flotante */
+        #btn-musica {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background: rgba(253,251,247,0.9); border: 1px solid var(--color-oro); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; box-shadow: var(--sombra-elegante);
+            z-index: 90000; cursor: pointer; color: var(--color-oro-oscuro); font-size: 1.2rem;
+            opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s ease; backdrop-filter: blur(5px);
+        }
+        #btn-musica.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .girando i { animation: rotarVinyl 4s linear infinite; }
+        @keyframes rotarVinyl { 100% { transform: rotate(360deg); } }
+
+        /* ==========================================================
+           4. PORTADA HERO
+           ========================================================== */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; z-index: 2; }
+        /* Efecto Parallax muy sutil en portada */
+        .hero-bg img { width: 100%; height: 110%; object-fit: cover; filter: brightness(0.6) sepia(20%); transform: translateY(0); transition: transform 0.1s ease-out; }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,251,247,0.3) 0%, rgba(253,251,247,1) 95%); }
+        .hero-marco-interno { position: absolute; inset: 25px; border: 1px solid rgba(203, 163, 101, 0.4); z-index: 4; pointer-events: none; }
+        .hero-content { position: relative; z-index: 10; width: 100%; max-width: 500px; text-align: center; }
+
+        .caja-hero { background: rgba(253, 251, 247, 0.95); padding: 60px 40px; border: var(--borde-fino); box-shadow: var(--sombra-elegante); position: relative; }
+        .caja-hero::after { content: ''; position: absolute; inset: 6px; border: 1px solid rgba(203, 163, 101, 0.3); pointer-events: none; }
+        .hero-etiqueta { font-size: 0.85rem; letter-spacing: 6px; text-transform: uppercase; color: var(--color-texto-medio); margin-bottom: 20px; }
+        .hero-nombre { font-family: var(--fuente-titulos); font-size: 4.5rem; line-height: 1; color: var(--color-texto-oscuro); margin-bottom: 20px; font-style: italic; }
+        .hero-fecha { font-size: 0.95rem; color: var(--color-acento-vino); letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
+
+        /* ==========================================================
+           5. MENSAJE Y GALERÍA EDITORIAL (NUEVO)
+           ========================================================== */
+        .texto-certificado { font-size: 1.1rem; line-height: 1.9; color: var(--color-texto-oscuro); margin: 0 auto; max-width: 600px; font-weight: 300; font-family: var(--fuente-titulos); font-style: italic; text-align: center; }
+        
+        .galeria-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 60px; }
+        .foto-galeria { border: 1px solid var(--color-oro); border-radius: 5px; overflow: hidden; position: relative; aspect-ratio: 1; box-shadow: var(--sombra-elegante); }
+        .foto-galeria img { width: 100%; height: 100%; object-fit: cover; filter: sepia(30%) contrast(1.1); transition: transform 0.6s ease, filter 0.6s ease; }
+        .foto-galeria:hover img { transform: scale(1.08); filter: sepia(0%) contrast(1); }
+        
+        /* Grid Asimétrico */
+        .foto-galeria:nth-child(1) { grid-column: span 2; aspect-ratio: 21/9; }
+        .foto-galeria:nth-child(4) { aspect-ratio: 3/4; }
+        .foto-galeria:nth-child(5) { aspect-ratio: 3/4; }
+
+        /* ==========================================================
+           6. ITINERARIO Y DRESS CODE (NUEVO)
+           ========================================================== */
+        .titulo-seccion { font-size: 2.2rem; text-align: center; color: var(--color-texto-oscuro); margin-bottom: 40px; font-style: italic; }
+        
+        .timeline { position: relative; max-width: 500px; margin: 0 auto; padding-left: 30px; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(203, 163, 101, 0.4); }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-punto { position: absolute; left: -34.5px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-acento-vino); border: 2px solid var(--color-oro); box-shadow: 0 0 0 4px var(--color-fondo-secundario); }
+        .timeline-hora { font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-oro-oscuro); margin-bottom: 5px; font-weight: 600; }
+        .timeline-titulo { font-size: 1.1rem; color: var(--color-texto-oscuro); font-weight: 500; margin-bottom: 5px; }
+        .timeline-desc { font-size: 0.9rem; color: var(--color-texto-medio); line-height: 1.5; }
+
+        /* Dress Code */
+        .dc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .dc-card { background: white; border: var(--borde-fino); padding: 30px 20px; text-align: center; border-radius: 10px; box-shadow: var(--sombra-elegante); }
+        .dc-icono { font-size: 3rem; color: var(--color-acento-vino); margin-bottom: 15px; }
+        .dc-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .dc-card p { font-size: 0.85rem; color: var(--color-texto-medio); }
+
+        /* ==========================================================
+           7. REGALOS Y CONTADOR
+           ========================================================== */
+        .caja-regalos { background: white; padding: 40px; text-align: center; border: var(--borde-fino); box-shadow: var(--sombra-elegante); position: relative; }
+        .caja-regalos::after { content: ''; position: absolute; inset: 5px; border: 1px dashed rgba(203, 163, 101, 0.4); pointer-events: none; }
+        
+        .contador-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .contador-box { background: white; width: 90px; height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: var(--borde-fino); position: relative; z-index: 10; box-shadow: var(--sombra-elegante); }
+        .contador-numero { font-family: var(--fuente-titulos); font-size: 2.5rem; color: var(--color-texto-oscuro); line-height: 1; }
+        .contador-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; color: var(--color-acento-vino); font-weight: 500; }
+
+        /* ==========================================================
+           8. BOTONES Y RSVP
+           ========================================================== */
+        .btn-outline-oro {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--color-oro-oscuro); padding: 12px 30px; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 50px; border: 1px solid var(--color-oro); cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 10;
+        }
+        .btn-outline-oro:hover { background: var(--color-oro); color: white; transform: translate3d(0, -3px, 0); box-shadow: 0 10px 20px rgba(203, 163, 101, 0.2); }
+
+        .btn-whatsapp-vino {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--color-acento-vino); color: white; padding: 15px 35px; font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 50px; border: none; cursor: pointer; box-shadow: 0 10px 20px rgba(114, 28, 36, 0.2); transition: all 0.3s ease; position: relative; z-index: 10;
+        }
+        .btn-whatsapp-vino:hover { background: #5a141b; transform: translate3d(0, -3px, 0); box-shadow: 0 15px 25px rgba(114, 28, 36, 0.3); }
+
+        .seccion-rsvp { background: var(--color-fondo-base); border-radius: 200px 200px 15px 15px; padding: 80px 30px 60px; text-align: center; position: relative; z-index: 10; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05); border: 1px solid var(--color-oro); max-width: 500px; margin: 0 auto; }
+        .seccion-rsvp::before { content: ''; position: absolute; inset: 10px; border: 1px dashed var(--color-oro-oscuro); border-radius: 190px 190px 10px 10px; pointer-events: none; opacity: 0.5; }
+
+        /* FOOTER */
+        footer { background-color: var(--color-texto-oscuro); color: #FFFFFF; padding: 60px 0 20px; position: relative; z-index: 10; margin-top: 60px; text-align: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; }
+        .logo span { font-style: italic; color: var(--color-oro); }
+        .redes { margin: 20px 0; }
+        .redes a { color: var(--color-oro-claro); font-size: 1.5rem; margin: 0 10px; transition: all 0.3s ease; display: inline-block; }
+        .redes a:hover { color: white; transform: translateY(-3px); }
+
+        /* ==========================================================
+           9. RESPONSIVO
+           ========================================================== */
+        @media (max-width: 600px) {
+            .hero-nombre { font-size: 3.5rem; }
+            .caja-hero { padding: 40px 20px; }
+            .galeria-grid { grid-template-columns: 1fr; }
+            .foto-galeria:nth-child(1) { grid-column: span 1; }
+            .dc-grid { grid-template-columns: 1fr; gap: 15px; }
+            .contador-grid { gap: 10px; flex-wrap: nowrap; }
+            .contador-box { flex: 1; max-width: 75px; height: 85px; }
+            .contador-numero { font-size: 1.8rem; }
+            .seccion-rsvp { border-radius: 150px 150px 15px 15px; padding: 60px 20px 40px; }
+            .seccion-rsvp::before { border-radius: 140px 140px 10px 10px; }
+        }

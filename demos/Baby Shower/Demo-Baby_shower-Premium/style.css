@@ -1,0 +1,444 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO VIP (MOBILE FIRST & TEDDY LUXURY)
+           ========================================================================== */
+        :root {
+            --color-fondo: #FAF6F0; 
+            --color-blanco: #FFFFFF;
+            --color-texto: #4A5568; 
+            --color-titulos: #0A192F; 
+            
+            --color-acento-teddy: #D4A373; 
+            --color-teddy-claro: #FEFAE0; 
+            --color-teddy-oscuro: #B58453;
+            --color-bg-seccion: #F3EBE1; 
+            --color-dorado: #D4AF37; /* Toque Luxury */
+            
+            --fuente-firma: 'Great Vibes', cursive;
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Poppins', sans-serif;
+
+            --espaciado-seccion: 80px 0;
+            --sombra-tierna: 0 15px 35px rgba(212, 163, 115, 0.15);
+            --radio-borde: 28px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--fuente-textos); 
+            background-color: var(--color-fondo); 
+            /* NUEVO: Textura Premium estilo lino/papel usando CSS puro (Cero impacto en rendimiento) */
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(212, 163, 115, 0.04) 0, rgba(212, 163, 115, 0.04) 1px, transparent 1px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(212, 163, 115, 0.04) 0, rgba(212, 163, 115, 0.04) 1px, transparent 1px, transparent 6px);
+            color: var(--color-texto); 
+            line-height: 1.7; font-weight: 300; 
+            overflow-x: hidden; text-align: center;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+        
+        h1, h2, h3, h4 { font-family: var(--fuente-titulos); font-weight: 500; color: var(--color-titulos); }
+        p { font-size: 1rem; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Contenedor centralizado para aspecto elegante en Desktop */
+        .app-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: transparent;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 50px rgba(0,0,0,0.02);
+            min-height: 100vh;
+        }
+
+        .contenedor { padding: 0 7%; }
+        .seccion-padding { padding: var(--espaciado-seccion); position: relative; }
+        .fondo-alterno { background-color: var(--color-bg-seccion); border-radius: 40px; margin: 0 15px; }
+
+        .divisor-icono { font-size: 2rem; color: var(--color-acento-teddy); margin: 0 auto 30px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .divisor-icono::before, .divisor-icono::after { content: ''; width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--color-acento-teddy), transparent); }
+        .titulo-seccion { font-size: 2.2rem; margin-bottom: 15px; color: var(--color-titulos); position: relative; display: inline-block;}
+
+        /* --- ANIMACIONES CORE (ANTI-BUGS) --- */
+        .fade-up { opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform, opacity; }
+        .fade-up.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        .delay-1 { transition-delay: 150ms; } .delay-2 { transition-delay: 300ms; } .delay-3 { transition-delay: 450ms; }
+
+        /* ==========================================================================
+           2. FONDOS VIVOS Y PARTÍCULAS
+           ========================================================================== */
+        .bg-luces {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 0; overflow: hidden;
+            display: flex; justify-content: center;
+        }
+        .bg-luces-inner { width: 100%; max-width: 650px; height: 100%; position: relative; }
+        
+        .luz {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            opacity: 0.4; animation: flotarLuz 15s infinite alternate ease-in-out;
+            will-change: transform;
+        }
+        .luz-1 { width: 300px; height: 300px; background: var(--color-teddy-claro); top: -50px; left: -100px; }
+        .luz-2 { width: 350px; height: 350px; background: rgba(212, 163, 115, 0.2); bottom: 10%; right: -100px; animation-delay: -5s; }
+        
+        @keyframes flotarLuz {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(30px, 80px, 0); }
+        }
+
+        .particulas-container { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+        .estrella-p { position: absolute; color: var(--color-acento-teddy); font-size: 0.8rem; opacity: 0; animation: subirEstrella linear infinite; }
+        
+        @keyframes subirEstrella {
+            0% { transform: translate3d(0, 50px, 0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { transform: translate3d(0, -150px, 0) rotate(360deg); opacity: 0; }
+        }
+
+        /* ==========================================================================
+           3. APERTURA MÁGICA VIP (CARTA / SOBRE)
+           ========================================================================== */
+        #preloader { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: var(--color-titulos); /* Fondo oscuro para contrastar la carta */
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 6px),
+                repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 6px);
+            z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            transition: opacity 1s ease 0.5s; /* El fade out tiene 0.5s de retraso para dejar que la carta se abra */
+        }
+        #preloader.abierto { opacity: 0; pointer-events: none; }
+        
+        .sobre-wrapper {
+            position: relative; width: 320px; height: 220px;
+            cursor: pointer; perspective: 1200px;
+            animation: flotarSobre 4s infinite ease-in-out;
+            will-change: transform;
+        }
+        @keyframes flotarSobre { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -15px, 0); } }
+
+        /* Cuerpo principal del sobre */
+        .sobre-cuerpo {
+            position: absolute; width: 100%; height: 100%;
+            background: var(--color-bg-seccion);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+        }
+        
+        /* Líneas de doblez simuladas del sobre */
+        .sobre-cuerpo::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            border-left: 160px solid rgba(0,0,0,0.06);
+            border-right: 160px solid rgba(0,0,0,0.06);
+            border-bottom: 110px solid transparent;
+            border-top: 110px solid transparent;
+            z-index: 1;
+        }
+        .sobre-cuerpo::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-bottom: 120px solid var(--color-teddy-claro);
+            z-index: 2;
+        }
+
+        /* Solapa superior que se abre en 3D */
+        .sobre-solapa {
+            position: absolute; top: 0; left: 0; width: 100%; height: 140px;
+            background: var(--color-fondo);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+            border-top-left-radius: 12px; border-top-right-radius: 12px;
+            box-shadow: inset 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        /* Sello de Cera Dorado */
+        .sobre-sello {
+            position: absolute; top: 110px; left: 50%; transform: translateX(-50%);
+            width: 65px; height: 65px;
+            background: linear-gradient(135deg, #E6C27A, #B58453, #D4AF37);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,255,255,0.4);
+            z-index: 5; transition: opacity 0.4s, transform 0.4s;
+        }
+        .sobre-sello-inner {
+            width: 52px; height: 52px; border-radius: 50%;
+            border: 1px dashed rgba(255,255,255,0.7);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .sobre-sello-letra {
+            font-family: var(--fuente-firma); font-size: 2.2rem; color: #FFF;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            transform: translateY(-2px); /* Centrado óptico de la fuente script */
+        }
+
+        /* Estados de animación al abrir la carta */
+        .sobre-wrapper.abriendo .sobre-solapa { transform: rotateX(180deg); }
+        .sobre-wrapper.abriendo .sobre-sello { opacity: 0; transform: translateX(-50%) translate3d(0, 10px, 0); pointer-events: none; }
+
+        .instruccion-abrir {
+            color: var(--color-dorado); font-family: var(--fuente-textos);
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 4px;
+            margin-top: 50px; animation: parpadeo 2s infinite;
+        }
+        @keyframes parpadeo { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* Botón de Música Flotante */
+        .btn-musica {
+            position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px;
+            background-color: var(--color-acento-teddy); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            z-index: 1000; cursor: pointer; border: none; box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
+            transition: background-color 0.3s;
+        }
+        .btn-musica.reproduciendo { animation: pulsoSombra 2s infinite; }
+        @keyframes pulsoSombra { 0%, 100% { box-shadow: 0 0 0 0 rgba(212, 163, 115, 0.6); } 50% { box-shadow: 0 0 0 15px rgba(212, 163, 115, 0); } }
+
+        /* ==========================================================================
+           4. PORTADA VIP
+           ========================================================================== */
+        .portada { position: relative; padding: 60px 20px 80px; background-color: var(--color-blanco); border-bottom-left-radius: 50px; border-bottom-right-radius: 50px; box-shadow: var(--sombra-tierna); margin-bottom: 30px; }
+        
+        /* Rediseño VIP: Arco Editorial en lugar de círculo */
+        .marco-foto { 
+            width: 260px; height: 350px; margin: 0 auto 30px; 
+            border-radius: 150px 150px 20px 20px; /* Forma de arco */
+            padding: 10px; border: 1px solid var(--color-dorado); 
+            position: relative; 
+            background: var(--color-fondo);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+        }
+        
+        .imagen-hero { 
+            width: 100%; height: 100%; 
+            border-radius: 140px 140px 12px 12px; /* Ajuste interno del arco */
+            overflow: hidden; background-color: var(--color-teddy-claro); 
+        }
+        
+        .imagen-hero img { width: 100%; height: 100%; object-fit: cover; }
+        .texto-evento { font-family: var(--fuente-titulos); font-size: 1.4rem; font-style: italic; margin-bottom: 5px; color: var(--color-dorado); }
+        .nombre-bebe { font-family: var(--fuente-firma); font-size: 6rem; line-height: 1; color: var(--color-titulos); margin-bottom: 10px; padding: 10px 0;}
+        .fecha-hero { font-family: var(--fuente-textos); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--color-acento-teddy); font-weight: 500; margin-top: 10px; }
+
+        .contador-grid { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+        .contador-box { background: var(--color-blanco); flex: 1; max-width: 80px; padding: 18px 0; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--radio-borde); box-shadow: var(--sombra-tierna); border: 1px solid var(--color-teddy-claro); }
+        .contador-numero { font-family: var(--fuente-titulos); font-size: 2rem; color: var(--color-acento-teddy); line-height: 1; }
+        .contador-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: var(--color-texto); font-weight: 500; }
+
+        /* ==========================================================================
+           5. ITINERARIO EN CASCADA
+           ========================================================================== */
+        .timeline { position: relative; margin-top: 40px; padding: 20px 0; }
+        /* Línea punteada elegante */
+        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 40px; width: 2px; background: repeating-linear-gradient(to bottom, var(--color-acento-teddy) 0, var(--color-acento-teddy) 6px, transparent 6px, transparent 12px); opacity: 0.6; }
+        
+        .timeline-item { position: relative; margin-bottom: 40px; width: 100%; display: flex; align-items: center; justify-content: flex-start; padding-left: 90px; }
+        
+        /* Icono con latido dorado VIP */
+        .timeline-icono { width: 50px; height: 50px; background: var(--color-blanco); color: var(--color-dorado); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; position: absolute; left: 15px; z-index: 2; box-shadow: 0 0 0 4px var(--color-fondo), 0 5px 15px rgba(212, 175, 55, 0.3); animation: latidoIcono 3s infinite ease-in-out; }
+        
+        @keyframes latidoIcono {
+            0%, 100% { box-shadow: 0 0 0 4px var(--color-fondo), 0 5px 15px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.15), 0 8px 25px rgba(212, 175, 55, 0.5); }
+        }
+
+        /* Tarjeta de contenido mejorada con animación de respiración/levitación */
+        .timeline-contenido { background: var(--color-blanco); padding: 25px; border-radius: 20px; box-shadow: var(--sombra-tierna); text-align: left; width: 100%; position: relative; border: 1px solid rgba(212, 163, 115, 0.15); transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; animation: respirarTarjeta 5s infinite ease-in-out; will-change: transform, box-shadow; }
+        
+        /* Desfase de animación para que luzcan orgánicas y no se muevan al mismo tiempo */
+        .timeline-item:nth-child(1) .timeline-contenido { animation-delay: 0s; }
+        .timeline-item:nth-child(2) .timeline-contenido { animation-delay: 1.2s; }
+        .timeline-item:nth-child(3) .timeline-contenido { animation-delay: 2.4s; }
+        .timeline-item:nth-child(4) .timeline-contenido { animation-delay: 3.6s; }
+
+        /* Regla de Oro: Solo translate3d para movimientos continuos fluidos */
+        @keyframes respirarTarjeta {
+            0%, 100% { transform: translate3d(0, 0, 0); box-shadow: 0 10px 25px rgba(212, 163, 115, 0.1); border-color: rgba(212, 163, 115, 0.15); }
+            50% { transform: translate3d(0, -6px, 0); box-shadow: 0 20px 40px rgba(212, 163, 115, 0.25); border-color: rgba(212, 163, 115, 0.4); }
+        }
+
+        /* Al pasar el mouse, detenemos la animación suavemente y la elevamos más */
+        .timeline-contenido:hover { animation-play-state: paused; transform: translate3d(0, -8px, 0) !important; box-shadow: 0 25px 45px rgba(212, 163, 115, 0.35) !important; border-color: var(--color-acento-teddy) !important; }
+
+        /* Etiqueta de hora estilo píldora */
+        .timeline-hora { display: inline-block; background: var(--color-teddy-claro); color: var(--color-acento-teddy); font-size: 0.8rem; font-weight: 600; padding: 5px 15px; border-radius: 50px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(212, 163, 115, 0.2); }
+        
+        .timeline-texto { font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-titulos); margin-bottom: 5px; }
+        .timeline-desc { font-size: 0.9rem; color: var(--color-texto); line-height: 1.5; }
+
+        /* ==========================================================================
+           6. GALERÍA COLLAGE EDITORIAL (PREMIUM)
+           ========================================================================== */
+        .galeria-collage {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Altura dinámica: se ve bien en móviles pequeños y crece suavemente en tablets */
+            grid-auto-rows: clamp(130px, 25vw, 180px);
+            gap: 15px;
+            margin-top: 35px;
+        }
+        
+        .foto-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra-tierna);
+            position: relative;
+            background-color: var(--color-teddy-claro);
+            /* NUEVO: Animación de respiración sutil y continua */
+            animation: respirarFoto 6s infinite ease-in-out;
+            will-change: transform, box-shadow;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        /* Desfases para que cada foto respire a su propio ritmo */
+        .foto-item.f-1 { animation-delay: 0s; }
+        .foto-item.f-2 { animation-delay: 1s; }
+        .foto-item.f-3 { animation-delay: 2.5s; }
+        .foto-item.f-4 { animation-delay: 1.5s; }
+        .foto-item.f-5 { animation-delay: 0.5s; }
+        .foto-item.f-6 { animation-delay: 2s; }
+
+        @keyframes respirarFoto {
+            0%, 100% { transform: translate3d(0, 0, 0); box-shadow: 0 10px 25px rgba(212, 163, 115, 0.1); }
+            50% { transform: translate3d(0, -6px, 0); box-shadow: 0 20px 35px rgba(212, 163, 115, 0.25); }
+        }
+        
+        .foto-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease;
+            will-change: transform;
+        }
+        
+        /* Sombra oscura inferior sutil para profundidad */
+        .foto-item::after {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(10, 25, 47, 0.4), transparent 50%);
+            opacity: 0; transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* NUEVO: Brillo de cristal transversal (Shine effect) */
+        .foto-item::before {
+            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            z-index: 2; pointer-events: none;
+        }
+        
+        /* Efectos Hover Premium */
+        .foto-item:hover {
+            animation-play-state: paused;
+            transform: translate3d(0, -10px, 0) !important;
+            box-shadow: 0 25px 45px rgba(212, 163, 115, 0.4) !important;
+            z-index: 10;
+        }
+        
+        .foto-item:hover img { 
+            transform: scale(1.12); 
+            filter: brightness(1.05);
+        }
+        
+        .foto-item:hover::after { opacity: 1; }
+        .foto-item:hover::before { animation: shineCristal 1s forwards; }
+
+        @keyframes shineCristal {
+            0% { left: -150%; }
+            100% { left: 200%; }
+        }
+
+        /* Asimetría Estilo Revista (Bento Box) */
+        .f-1 { grid-column: span 2; grid-row: span 2; } /* Hero principal horizontal */
+        .f-2 { grid-column: 1 / 2; grid-row: span 1; }  /* Cuadrada pequeña */
+        .f-3 { grid-column: 2 / 3; grid-row: span 2; }  /* Vertical alta */
+        .f-4 { grid-column: 1 / 2; grid-row: span 1; }  /* Cuadrada pequeña */
+        .f-5 { grid-column: 1 / 2; grid-row: span 1; }  /* Cuadrada base izq */
+        .f-6 { grid-column: 2 / 3; grid-row: span 1; }  /* Cuadrada base der */
+
+        /* ==========================================================================
+           7. ESTILOS DE FORMULARIO (RSVP)
+           ========================================================================== */
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-family: var(--fuente-textos); font-size: 0.85rem; color: var(--color-acento-teddy); margin-bottom: 8px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .input-group input, .input-group textarea { width: 100%; padding: 15px; border: 1px solid rgba(212, 163, 115, 0.3); border-radius: 12px; font-family: var(--fuente-textos); font-size: 1rem; color: var(--color-texto); background: var(--color-fondo); transition: border-color 0.3s; outline: none; }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--color-acento-teddy); background: var(--color-blanco); }
+        .input-group textarea { resize: none; height: 120px; }
+        
+        .btn-enviar { width: 100%; background: var(--color-acento-teddy); color: white; border: none; padding: 15px; border-radius: 50px; font-family: var(--fuente-textos); font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: transform 0.3s, background 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn-enviar:hover { transform: translate3d(0, -3px, 0); background: var(--color-teddy-oscuro); }
+
+        /* ==========================================================================
+           8. RSVP VIP (FORMULARIO WHATSAPP) Y CALENDARIO
+           ========================================================================== */
+        .rsvp-vip-card { background: var(--color-blanco); padding: 40px 25px; border-radius: var(--radio-borde); box-shadow: var(--sombra-tierna); text-align: left; margin-bottom: 30px; }
+        
+        .rsvp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .rsvp-grid .input-group { margin-bottom: 0; }
+        select { width: 100%; padding: 15px; border: 1px solid rgba(212, 163, 115, 0.3); border-radius: 12px; font-family: var(--fuente-textos); font-size: 1rem; color: var(--color-texto); background: var(--color-fondo); outline: none; -webkit-appearance: none; }
+
+        .btn-calendario { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: var(--color-titulos); padding: 12px 25px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.9rem; border-radius: 50px; border: 2px solid rgba(10, 25, 47, 0.1); transition: all 0.3s; margin-top: 15px; width: 100%; }
+        .btn-calendario:hover { border-color: var(--color-dorado); color: var(--color-dorado); }
+
+        /* ==========================================================================
+           9. DRESS CODE & REGALOS
+           ========================================================================== */
+        .colores-grid { display: flex; justify-content: center; gap: 20px; margin-top: 25px; }
+        .color-swatch { width: 55px; height: 55px; border-radius: 50%; box-shadow: inset 0 0 0 3px rgba(0,0,0,0.05), var(--sombra-tierna); position: relative; }
+        
+        .regalo-card { background: var(--color-blanco); padding: 30px 20px; border-radius: var(--radio-borde); box-shadow: var(--sombra-tierna); margin-bottom: 20px; transition: transform 0.3s; }
+        .regalo-icon { font-size: 3rem; color: var(--color-dorado); margin-bottom: 15px; }
+        
+        /* Efectivo / Sobre */
+        .cuenta-bancaria { background: var(--color-teddy-claro); padding: 20px; border-radius: 16px; margin-top: 20px; font-size: 0.95rem; text-align: left; border: 1px dashed var(--color-acento-teddy); display: none;}
+        .cuenta-bancaria.visible { display: block; animation: aparecer 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        @keyframes aparecer { from { opacity: 0; transform: translate3d(0,-10px,0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+
+        /* ==========================================================================
+           10. FOOTER VIP Y RESPONSIVE DESKTOP
+           ========================================================================== */
+        .footer-comercial { background-color: var(--color-titulos); color: #FFFFFF; padding: 60px 20px 40px; text-align: center; margin-top: 50px; position: relative; width: 100%; z-index: 10;}
+        .btn-agencia { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--color-dorado); padding: 12px 30px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.95rem; border-radius: 50px; border: 2px solid var(--color-dorado); transition: all 0.3s; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-agencia:hover { background: var(--color-dorado); color: var(--color-titulos); transform: translate3d(0,-3px,0); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); }
+
+        .social-link { width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--color-dorado); margin: 0 5px; display: inline-flex; transition: 0.3s;}
+        .social-link:hover { transform: translate3d(0,-3px,0); background: var(--color-dorado); color: var(--color-titulos);}
+
+        /* ==========================================================================
+           11. TOAST NOTIFICACIONES (REEMPLAZO DE ALERTAS)
+           ========================================================================== */
+        .toast-notificacion {
+            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translate3d(0, 20px, 0);
+            background-color: var(--color-titulos); color: #FFF; padding: 12px 24px; border-radius: 50px;
+            font-family: var(--fuente-textos); font-size: 0.95rem; font-weight: 500; z-index: 100000;
+            opacity: 0; pointer-events: none; box-shadow: 0 10px 25px rgba(10, 25, 47, 0.4);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); text-align: center; width: max-content; max-width: 90%;
+        }
+        .toast-notificacion.mostrar { opacity: 1; transform: translateX(-50%) translate3d(0, 0, 0); }
+
+        /* Quitar outline por defecto al hacer clic en botones */
+        button { outline: none; -webkit-tap-highlight-color: transparent; }
+
+        /* MEDIA QUERIES PARA ADAPTABILIDAD DESKTOP */
+        @media (min-width: 768px) {
+            .app-wrapper { margin: 40px auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+            .bg-luces { position: absolute; } /* Las luces se confinan al wrapper en desktop */
+            .nombre-bebe { font-size: 7rem; }
+            .foto-tarjeta { flex: 0 0 50%; }
+            .timeline::before { left: 50%; transform: translateX(-50%); }
+            .timeline-item { width: 50%; padding-left: 0; padding-right: 40px; justify-content: flex-end; text-align: right; }
+            .timeline-item:nth-child(even) { margin-left: 50%; padding-right: 0; padding-left: 40px; justify-content: flex-start; text-align: left;}
+            .timeline-icono { left: auto; right: -25px; }
+            .timeline-item:nth-child(even) .timeline-icono { right: auto; left: -25px; }
+            .timeline-contenido { text-align: inherit; }
+        }

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentina | Mis XV Años VIP</title>
+    
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cinzel (Elegancia clásica), Montserrat (Limpieza), Great Vibes (Firma) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Canvas Confetti (Librería para el efecto mágico) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- AUDIO DE FONDO -->
+    <audio id="musica-fondo" loop>
+        <!-- Canción mágica/Elegante -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_febc508520.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PRELOADER MÁGICO -->
+    <div id="preloader">
+        <i class="ph-fill ph-crown loader-corona"></i>
+        <div style="font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-texto-oscuro); letter-spacing: 3px;">Valentina</div>
+        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-texto-claro); margin-top: 5px;">Preparando la magia...</div>
+    </div>
+
+    <!-- SOBRE DIGITAL 3D (INTERACTIVO) -->
+    <div id="pantalla-sobre">
+        <div class="sobre-texto-top">Mis XV Años</div>
+        
+        <div class="sobre-wrapper" id="sobre-invitacion">
+            <div class="sobre-carta-interior">
+                <h2>Valentina</h2>
+            </div>
+            <div class="sobre-body-left"></div>
+            <div class="sobre-body-right"></div>
+            <div class="sobre-body-bottom"></div>
+            <div class="sobre-flap-top"></div>
+            
+            <!-- Botón texturizado del sello -->
+            <div class="sello-cera" id="sello-btn" title="Abrir Invitación">
+                <span class="sello-iniciales">V</span>
+            </div>
+        </div>
+
+        <div class="sobre-texto-bottom">Toca el sello para abrir</div>
+    </div>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE (GLASS) -->
+    <div id="btn-musica" class="glass-card" style="padding: 0;" title="Reproducir Música">
+        <i class="ph-fill ph-play-circle" id="icono-musica"></i>
+    </div>
+
+    <!-- PORTADA VIP (HERO CRISTAL) -->
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1549474757-047b85e05417?q=80&w=800&auto=format&fit=crop" alt="Fondo XV">
+        </div>
+        
+        <div class="hero-content fade-up visible">
+            <div class="glass-card hero-glass">
+                <div class="hero-mis-xv">Mis XV Años</div>
+                <h1 class="hero-nombre">Valentina</h1>
+                <div class="hero-fecha">Sábado, 15 Noviembre</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PASE VIP INTERACTIVO (Lee datos de la URL) -->
+    <div class="pase-vip fade-up delay-1 visible">
+        <div class="pase-card">
+            <div class="pase-titulo"><i class="ph-fill ph-star"></i> Pase VIP Exclusivo</div>
+            <div class="pase-invitado" id="nombre-invitado">Familia y Amigos</div>
+            <div class="pase-numero">Hemos reservado <b id="num-pases">2</b> lugares en nuestro honor.</div>
+        </div>
+    </div>
+
+    <!-- INVITACIÓN, PADRES Y PADRINOS (Nueva Sección) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="glass-card" style="text-align: center; padding: 50px 30px;">
+                <!-- Oración / Agradecimiento -->
+                <i class="ph-fill ph-hands-praying" style="font-size: 2.5rem; color: var(--color-rose-gold); margin-bottom: 20px;"></i>
+                <p style="font-family: var(--fuente-titulos); font-size: 1.3rem; font-style: italic; color: var(--color-texto-oscuro); margin-bottom: 40px; line-height: 1.6;">
+                    "A Dios por darme el don de la vida, y a mis padres por su amor incondicional, su paciencia y por hacer de este sueño una hermosa realidad."
+                </p>
+                
+                <!-- Padres -->
+                <h2 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-texto-claro); margin-bottom: 10px;">Con la bendición de mis padres</h2>
+                <p style="font-family: var(--fuente-titulos); font-size: 1.6rem; color: var(--color-texto-oscuro); font-weight: 600; margin-bottom: 30px;">
+                    Roberto Gómez & María Silva
+                </p>
+                
+                <!-- Padrinos -->
+                <h2 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-texto-claro); margin-bottom: 10px;">Y mis padrinos</h2>
+                <p style="font-family: var(--fuente-titulos); font-size: 1.6rem; color: var(--color-texto-oscuro); font-weight: 600; margin-bottom: 40px;">
+                    Carlos López & Ana Martínez
+                </p>
+                
+                <div style="width: 50px; height: 2px; background: var(--color-rose-gold); margin: 0 auto 30px;"></div>
+                
+                <!-- Texto de Invitación -->
+                <p style="font-size: 0.95rem; color: var(--color-texto-oscuro); text-transform: uppercase; letter-spacing: 2px; font-weight: 500;">
+                    Tengo el honor de invitarte a celebrar mis XV Años
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA Y CALENDARIO -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up" style="text-align: center;">
+            <h2 class="titulo-seccion">El Gran Día</h2>
+            <div class="contador-grid" id="contador-xv">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+            
+            <!-- Botón Agendar en Calendario -->
+            <div style="margin-top: 40px;">
+                <a href="#" class="btn-glass" style="background: rgba(255,255,255,0.9); box-shadow: 0 4px 15px rgba(212, 140, 154, 0.2);"><i class="ph ph-calendar-plus"></i> Agendar en mi Calendario</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MI CORTE DE HONOR -->
+    <section class="seccion-padding" style="background: rgba(255,255,255,0.5);">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Mi Corte de Honor</h2>
+            <p class="subtitulo-seccion">Las personas que hacen mi vida más especial y me acompañarán en mi primer vals.</p>
+            
+            <div class="glass-card">
+                <div class="corte-grid">
+                    <div class="corte-item">
+                        <div class="corte-rol">Chambelán Principal</div>
+                        <div class="corte-nombre">Alejandro Ruiz</div>
+                    </div>
+                    <div class="corte-item">
+                        <div class="corte-rol">Chambelán</div>
+                        <div class="corte-nombre">Daniel Gómez</div>
+                    </div>
+                    <div class="corte-item">
+                        <div class="corte-rol">Dama de Honor</div>
+                        <div class="corte-nombre">Sofía Martínez</div>
+                    </div>
+                    <div class="corte-item">
+                        <div class="corte-rol">Dama de Honor</div>
+                        <div class="corte-nombre">Camila Silva</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MI HISTORIA (LÍNEA DE TIEMPO 15 AÑOS) -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up">Mi Historia</h2>
+            <p class="subtitulo-seccion fade-up">15 años de magia, crecimiento y momentos inolvidables.</p>
+            
+            <div class="historia-timeline">
+                <!-- Año 1 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">1</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Año 1"></div>
+                        <div class="historia-anio">Año 1</div>
+                        <div class="historia-texto">Mi primer añito de vida, llenando de luz y alegría el hogar familiar.</div>
+                    </div>
+                </div>
+                <!-- Año 2 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-punto">2</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1519340333755-56e9c1d04579?q=80&w=400&auto=format&fit=crop" alt="Año 2"></div>
+                        <div class="historia-anio">Año 2</div>
+                        <div class="historia-texto">Mis primeros pasos, palabras mágicas y travesuras inolvidables.</div>
+                    </div>
+                </div>
+                <!-- Año 3 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">3</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1604467794349-0b74285de7e7?q=80&w=400&auto=format&fit=crop" alt="Año 3"></div>
+                        <div class="historia-anio">Año 3</div>
+                        <div class="historia-texto">El inicio de mi etapa escolar, donde hice mis primeros amiguitos.</div>
+                    </div>
+                </div>
+                <!-- Año 4 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-punto">4</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1518831959646-742c3e14ebf3?q=80&w=400&auto=format&fit=crop" alt="Año 4"></div>
+                        <div class="historia-anio">Año 4</div>
+                        <div class="historia-texto">Fiestas de princesas, disfraces y una imaginación sin límites.</div>
+                    </div>
+                </div>
+                <!-- Año 5 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">5</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?q=80&w=400&auto=format&fit=crop" alt="Año 5"></div>
+                        <div class="historia-anio">Año 5</div>
+                        <div class="historia-texto">Mi graduación del kínder, cerrando mi primera etapa con orgullo.</div>
+                    </div>
+                </div>
+                <!-- Año 6 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-punto">6</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=400&auto=format&fit=crop" alt="Año 6"></div>
+                        <div class="historia-anio">Año 6</div>
+                        <div class="historia-texto">El inicio de la primaria, estrenando mochila y sueños por cumplir.</div>
+                    </div>
+                </div>
+                <!-- Año 7 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">7</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=400&auto=format&fit=crop" alt="Año 7"></div>
+                        <div class="historia-anio">Año 7</div>
+                        <div class="historia-texto">Descubriendo mis pasatiempos, deportes y habilidades favoritas.</div>
+                    </div>
+                </div>
+                <!-- Año 8 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-punto">8</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=400&auto=format&fit=crop" alt="Año 8"></div>
+                        <div class="historia-anio">Año 8</div>
+                        <div class="historia-texto">Vacaciones familiares increíbles llenas de magia y aventuras.</div>
+                    </div>
+                </div>
+                <!-- Año 9 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">9</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1502085671122-2d218cd434e6?q=80&w=400&auto=format&fit=crop" alt="Año 9"></div>
+                        <div class="historia-anio">Año 9</div>
+                        <div class="historia-texto">Risas interminables, juegos en el parque y las mejores pijamadas.</div>
+                    </div>
+                </div>
+                <!-- Año 10 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-punto">10</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=400&auto=format&fit=crop" alt="Año 10"></div>
+                        <div class="historia-anio">Año 10</div>
+                        <div class="historia-texto">¡Mi primera década de vida! Celebrando rodeada de muchísimo amor.</div>
+                    </div>
+                </div>
+                <!-- Año 11 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">11</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?q=80&w=400&auto=format&fit=crop" alt="Año 11"></div>
+                        <div class="historia-anio">Año 11</div>
+                        <div class="historia-texto">Empezando a definir mi propia personalidad, gustos y estilo.</div>
+                    </div>
+                </div>
+                <!-- Año 12 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-punto">12</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1517677129300-07b130802f46?q=80&w=400&auto=format&fit=crop" alt="Año 12"></div>
+                        <div class="historia-anio">Año 12</div>
+                        <div class="historia-texto">Dejando la niñez atrás y preparándome para nuevos horizontes.</div>
+                    </div>
+                </div>
+                <!-- Año 13 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">13</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=400&auto=format&fit=crop" alt="Año 13"></div>
+                        <div class="historia-anio">Año 13</div>
+                        <div class="historia-texto">Mi entrada a la secundaria, una etapa de aprendizajes increíbles.</div>
+                    </div>
+                </div>
+                <!-- Año 14 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-punto">14</div>
+                    <div class="glass-card historia-contenido">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1516522973472-f009f23bba59?q=80&w=400&auto=format&fit=crop" alt="Año 14"></div>
+                        <div class="historia-anio">Año 14</div>
+                        <div class="historia-texto">Coleccionando momentos únicos y soñando con este gran día.</div>
+                    </div>
+                </div>
+                <!-- Año 15 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-punto">15</div>
+                    <div class="glass-card historia-contenido" style="border-color: var(--color-rose-gold); background: rgba(255,255,255,0.85);">
+                        <div class="historia-foto"><img src="https://images.unsplash.com/photo-1588665796262-ecb7b43f9a94?q=80&w=400&auto=format&fit=crop" alt="Año 15"></div>
+                        <div class="historia-anio">Año 15</div>
+                        <div class="historia-texto">El comienzo de mi juventud. ¡Lista para brillar en mi gran noche!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA 3D EDITORIAL -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Mis Momentos</h2>
+            <p class="subtitulo-seccion">Un vistazo a mi sesión fotográfica especial.</p>
+            
+            <div class="galeria-3d-wrapper">
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1522856339183-5a97c2fe12cc?q=80&w=600&auto=format&fit=crop" alt="XV Foto 1"></div>
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1588665796262-ecb7b43f9a94?q=80&w=400&auto=format&fit=crop" alt="XV Foto 2"></div>
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1621258957812-788dbd1451dc?q=80&w=400&auto=format&fit=crop" alt="XV Foto 3"></div>
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1549474757-047b85e05417?q=80&w=400&auto=format&fit=crop" alt="XV Foto 4"></div>
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=400&auto=format&fit=crop" alt="XV Foto 5"></div>
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=400&auto=format&fit=crop" alt="XV Foto 6"></div>
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?q=80&w=600&auto=format&fit=crop" alt="XV Foto 7"></div>
+                <div class="foto-3d"><img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=400&auto=format&fit=crop" alt="XV Foto 8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EL MURO DE LOS DESEOS (GUESTBOOK DIGITAL) -->
+    <section class="seccion-padding" style="background: rgba(255,255,255,0.5);">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Muro de los Deseos</h2>
+            <p class="subtitulo-seccion">Deja tu huella en mi gran día. Escribe un mensaje que leeré por siempre.</p>
+            
+            <!-- Grid de Mensajes (Simulación) -->
+            <div class="muro-container">
+                <div class="muro-grid" id="muro-mensajes">
+                    <div class="nota-deseo">
+                        <div class="nota-texto">"¡Felicidades hermosa! Que disfrutes tu día al máximo, te queremos muchísimo."</div>
+                        <div class="nota-autor">- Familia López</div>
+                    </div>
+                    <div class="nota-deseo">
+                        <div class="nota-texto">"No puedo creer lo rápido que creciste. ¡Lista para brillar en la pista!"</div>
+                        <div class="nota-autor">- Tu amiga Sofi</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario para agregar deseo -->
+            <div class="form-muro fade-up delay-1">
+                <h3 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--color-rose-gold-oscuro);"><i class="ph-fill ph-pencil-simple"></i> Escribe un Deseo</h3>
+                <input type="text" id="deseo-nombre" class="input-muro" placeholder="Tu Nombre o Familia">
+                <textarea id="deseo-texto" class="input-muro" placeholder="Escribe tu mensaje o consejo para Valentina..."></textarea>
+                <button class="btn-rose" id="btn-enviar-deseo" style="width: 100%;">Publicar Deseo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- EL DJ: PIDE TU ROLA -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="glass-card dj-box">
+                <i class="ph-fill ph-headphones"></i>
+                <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: var(--color-texto-oscuro);">Pide tu Rola</h2>
+                <p style="margin-bottom: 25px; color: var(--color-texto-claro);">¿Qué canción no puede faltar para que no te sientes en toda la noche?</p>
+                
+                <input type="text" id="cancion-input" class="input-muro" placeholder="Ej. Tití Me Preguntó - Bad Bunny">
+                <button class="btn-glass" id="btn-pedir-cancion"><i class="ph-fill ph-music-note-add"></i> Enviar al DJ</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP VIP (CONFIRMACIÓN A WHATSAPP) -->
+    <section class="seccion-rsvp fade-up">
+        <h2>Confirmar Asistencia</h2>
+        <p class="subtitulo-seccion" style="margin-bottom: 40px;">Por favor, confirma tu asistencia antes del 1 de Noviembre.</p>
+        
+        <div class="form-rsvp">
+            <label>¿Nos acompañarás?</label>
+            <select class="select-vip" id="rsvp-respuesta">
+                <option value="Sí, ahí estaremos celebrando">Sí, confirmo mi asistencia</option>
+                <option value="Tristemente no podré asistir">No podré asistir</option>
+            </select>
+            
+            <label>De tus pases asignados, ¿Cuántos asistirán?</label>
+            <select class="select-vip" id="rsvp-asistentes">
+                <option value="Todos los pases">Todos los asignados</option>
+                <option value="Solo 1 persona">1 persona</option>
+                <option value="Solo 2 personas">2 personas</option>
+                <option value="Solo 3 personas">3 personas</option>
+            </select>
+        </div>
+
+        <button class="btn-rose" id="btn-confirmar-whatsapp" style="width: 100%; max-width: 400px;"><i class="ph-fill ph-whatsapp-logo"></i> Enviar Confirmación VIP</button>
+    </section>
+
+    <!-- FOOTER COMERCIAL ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20VIP%20de%20XV%20Años%20y%20me%20encantó." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+            <div class="creditos">
+                Diseño exclusivo de Alta Costura por <a href="index.html" target="_blank">ArteEnLink</a>.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

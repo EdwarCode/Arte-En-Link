@@ -1,0 +1,156 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (TEDDY BEAR / TONOS CÁLIDOS)
+           ========================================================================== */
+        :root {
+            /* Paleta Baby Shower ArteEnLink */
+            --color-fondo: #FAF6F0; /* Beige cálido */
+            --color-blanco: #FFFFFF;
+            --color-texto: #4A5568; 
+            --color-titulos: #0A192F; 
+            
+            --color-acento-teddy: #D4A373; /* Tono Teddy Bear principal */
+            --color-teddy-claro: #FEFAE0; /* Crema muy claro */
+            --color-teddy-oscuro: #B58453;
+            
+            --fuente-firma: 'Great Vibes', cursive;
+            --fuente-titulos: 'Playfair Display', serif;
+            --fuente-textos: 'Poppins', sans-serif;
+
+            --espaciado-seccion: 70px 0;
+            --sombra-tierna: 0 10px 25px rgba(212, 163, 115, 0.15);
+            --radio-borde: 24px;
+        }
+
+        /* ==========================================================================
+           2. RESET Y ESTILOS GLOBALES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--fuente-textos); 
+            background-color: var(--color-fondo); 
+            color: var(--color-texto); 
+            line-height: 1.7; 
+            font-weight: 300; 
+            overflow-x: hidden; 
+            text-align: center;
+            /* REGLA: Textos perfectos */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4 { font-family: var(--fuente-titulos); font-weight: 500; color: var(--color-titulos); }
+        p { font-size: 0.95rem; }
+        a { text-decoration: none; color: inherit; }
+        
+        .contenedor { max-width: 600px; margin: 0 auto; padding: 0 7%; }
+        .seccion-padding { padding: var(--espaciado-seccion); }
+
+        /* Divisor Tierno */
+        .divisor-icono { font-size: 1.8rem; color: var(--color-acento-teddy); margin: 0 auto 25px; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .divisor-icono::before, .divisor-icono::after { content: ''; width: 40px; height: 1px; background-color: var(--color-acento-teddy); opacity: 0.4; }
+
+        /* Animaciones Scroll Optimizadas (Regla Anti-Bugs: translate3d) */
+        .fade-up { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform, opacity; }
+        .fade-up.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        .delay-1 { transition-delay: 200ms; }
+
+        /* ==========================================================================
+           3. PRELOADER
+           ========================================================================== */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-fondo); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
+        #preloader.oculto { opacity: 0; visibility: hidden; }
+        .preloader-icono { font-size: 3.5rem; color: var(--color-acento-teddy); animation: latido 2s infinite ease-in-out; margin-bottom: 15px; }
+        .preloader-texto { font-family: var(--fuente-titulos); font-size: 1.2rem; color: var(--color-titulos); font-style: italic; }
+        
+        /* FIX ANTI-BUGS: Cero Scale, pura flotación y opacidad */
+        @keyframes latido { 
+            0%, 100% { transform: translate3d(0, 0, 0); opacity: 1; } 
+            50% { transform: translate3d(0, -6px, 0); opacity: 0.7; } 
+        }
+
+        /* ==========================================================================
+           4. PORTADA PRINCIPAL (HERO)
+           ========================================================================== */
+        .portada { position: relative; padding: 50px 20px 70px; background-color: var(--color-blanco); border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; box-shadow: var(--sombra-tierna); margin-bottom: 30px; }
+        
+        .marco-foto {
+            width: 180px; height: 180px; margin: 0 auto 30px;
+            border-radius: 50%; padding: 8px;
+            border: 2px dashed var(--color-acento-teddy);
+            position: relative;
+        }
+        
+        .imagen-hero {
+            width: 100%; height: 100%; border-radius: 50%;
+            overflow: hidden; background-color: var(--color-teddy-claro);
+        }
+        .imagen-hero img { width: 100%; height: 100%; object-fit: cover; }
+
+        .portada-titulos { position: relative; z-index: 5; }
+        .texto-evento { font-family: var(--fuente-titulos); font-size: 1.3rem; font-style: italic; color: var(--color-texto); margin-bottom: 5px; }
+        .nombre-bebe { font-family: var(--fuente-firma); font-size: 5.5rem; line-height: 1; color: var(--color-titulos); margin-bottom: 10px; padding: 10px 0;}
+        .fecha-hero { font-family: var(--fuente-textos); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: var(--color-acento-teddy); font-weight: 500; margin-top: 10px; }
+
+        /* ==========================================================================
+           5. MENSAJE Y PADRES
+           ========================================================================== */
+        .texto-invitacion { font-size: 1.05rem; line-height: 1.8; color: var(--color-texto); margin-bottom: 40px; }
+        
+        .bloque-nombres { margin-bottom: 25px; }
+        .bloque-nombres h3 { font-family: var(--fuente-textos); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-acento-teddy); margin-bottom: 5px; font-weight: 600; }
+        .bloque-nombres p { font-family: var(--fuente-titulos); font-size: 1.3rem; color: var(--color-titulos); }
+
+        /* ==========================================================================
+           6. CUENTA REGRESIVA
+           ========================================================================== */
+        .contador-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: nowrap; margin-top: 20px; }
+        .contador-box { background: var(--color-blanco); flex: 1; max-width: 75px; padding: 15px 0; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--radio-borde); box-shadow: var(--sombra-tierna); }
+        .contador-numero { font-family: var(--fuente-titulos); font-size: 1.8rem; color: var(--color-acento-teddy); line-height: 1; }
+        .contador-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; color: var(--color-texto); font-weight: 500; }
+
+        /* ==========================================================================
+           7. UBICACIONES (DÓNDE Y CUÁNDO)
+           ========================================================================== */
+        .titulo-seccion { font-size: 2.2rem; margin-bottom: 10px; color: var(--color-titulos); }
+        
+        .ubicacion-card { background: var(--color-blanco); padding: 35px 20px; border-radius: var(--radio-borde); margin-bottom: 25px; box-shadow: var(--sombra-tierna); position: relative; overflow: hidden; }
+        /* Detalle color top */
+        .ubicacion-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--color-teddy-claro); }
+        
+        .ubicacion-icon { font-size: 2.2rem; color: var(--color-acento-teddy); margin-bottom: 15px; }
+        .ubicacion-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
+        .ubicacion-hora { font-family: var(--fuente-textos); font-weight: 500; color: var(--color-texto); font-size: 0.95rem; margin-bottom: 15px; }
+        .ubicacion-direccion { margin-bottom: 25px; color: var(--color-texto); font-size: 0.9rem; padding: 0 5%; }
+        
+        .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--color-acento-teddy); padding: 12px 25px; font-family: var(--fuente-textos); font-weight: 500; font-size: 0.85rem; border-radius: 50px; border: 2px solid var(--color-teddy-claro); transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-outline:hover { background: var(--color-acento-teddy); color: var(--color-blanco); border-color: var(--color-acento-teddy); transform: translate3d(0,-2px,0); }
+
+        /* ==========================================================================
+           8. RSVP (CONFIRMACIÓN) Y FOOTER
+           ========================================================================== */
+        .seccion-rsvp { background-color: var(--color-teddy-claro); border-top-left-radius: 40px; border-top-right-radius: 40px; padding-bottom: 60px; }
+        
+        .btn-rsvp { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--color-acento-teddy); color: white; padding: 16px 35px; border-radius: 50px; font-weight: 500; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 8px 20px rgba(212, 163, 115, 0.4); border: none; cursor: pointer; width: 100%; max-width: 300px; margin-top: 10px; }
+        .btn-rsvp:hover { transform: translate3d(0,-3px,0); box-shadow: 0 12px 25px rgba(212, 163, 115, 0.5); background-color: var(--color-teddy-oscuro); }
+
+        .footer-comercial { background-color: var(--color-titulos); color: #FFFFFF; padding: 40px 20px; text-align: center; }
+        .footer-comercial h3 { font-family: var(--fuente-textos); font-size: 1rem; font-weight: 400; margin-bottom: 20px; letter-spacing: 1px; color: #FFFFFF;}
+        
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .social-link { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--color-acento-teddy); transition: all 0.3s ease; }
+        .social-link:hover { background: var(--color-acento-teddy); color: var(--color-blanco); transform: translate3d(0,-3px,0); }
+        
+        .creditos { font-size: 0.75rem; color: #999; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; max-width: 300px; margin: 0 auto; }
+        .creditos a { color: var(--color-acento-teddy); font-weight: 600; }
+
+        /* ==========================================================================
+           9. RESPONSIVO
+           ========================================================================== */
+        @media (max-width: 480px) {
+            .nombre-bebe { font-size: 4.8rem; }
+            .marco-foto { width: 150px; height: 150px; }
+            .contador-box { padding: 12px 0; }
+            .contador-numero { font-size: 1.5rem; }
+        }

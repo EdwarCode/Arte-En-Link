@@ -1,0 +1,337 @@
+
+        /* =========================================
+           1. SISTEMA DE DISEÑO: PERLA IRIDISCENTE
+           ========================================= */
+        :root {
+            /* Colores Base */
+            --color-fondo: #F8F9FA; 
+            --color-texto: #1A1C20; 
+            --color-texto-suave: #64748B;
+            
+            /* Tonos Iridiscentes (Auras) */
+            --aura-rosegold: rgba(234, 192, 193, 0.6);
+            --aura-platino: rgba(226, 232, 240, 0.8);
+            --aura-iceblue: rgba(186, 230, 253, 0.5);
+            
+            /* Acentos */
+            --color-acento: #D4AF37; 
+            
+            /* Frosted Glass (Cristal Blanco) */
+            --bg-glass: rgba(255, 255, 255, 0.6);
+            --blur-glass: blur(24px);
+            --borde-glass: 1px solid rgba(255, 255, 255, 0.8);
+            --sombra-glass: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            
+            /* Tipografías */
+            --fuente-titulos: 'Cinzel', serif;
+            --fuente-textos: 'Montserrat', sans-serif;
+        }
+
+        /* =========================================
+           2. RESET Y ESTILOS GLOBALES
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        html, body {
+            font-family: var(--fuente-textos); background-color: var(--color-fondo);
+            color: var(--color-texto); line-height: 1.6; overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 { font-family: var(--fuente-titulos); font-weight: 600; letter-spacing: 1px; }
+        .contenedor { max-width: 680px; margin: 0 auto; padding: 0 6%; position: relative; z-index: 10; }
+        .seccion-padding { padding: 100px 0; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Glassmorphism Premium */
+        .premium-glass {
+            background: var(--bg-glass); backdrop-filter: var(--blur-glass); -webkit-backdrop-filter: var(--blur-glass);
+            border: var(--borde-glass); border-radius: 24px; box-shadow: var(--sombra-glass);
+        }
+
+        .titulo-seccion { font-size: 2.2rem; text-align: center; color: var(--color-texto); margin-bottom: 50px; font-weight: 500; }
+
+        /* Efecto Lámina de Oro Animado (Gold Foil) */
+        .gold-shimmer {
+            background: linear-gradient(-45deg, #A67C00 20%, #F3E5AB 40%, #D4AF37 50%, #F3E5AB 60%, #A67C00 80%);
+            background-size: 200% auto;
+            color: #000;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* Revelación de Textos de Cine (Split-Text) */
+        .split-char { display: inline-block; opacity: 0; transform: translateY(30px) scale(0.9); filter: blur(4px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform, opacity, filter; }
+        .split-char.visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+
+        /* Animaciones base aceleradas por GPU */
+        .fade-up { opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
+        .fade-up.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        
+        .fold-up { opacity: 0; transform: perspective(1000px) rotateX(15deg) translate3d(0, 60px, 0); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
+        .fold-up.visible { opacity: 1; transform: perspective(1000px) rotateX(0deg) translate3d(0, 0, 0); }
+
+        .slide-left { opacity: 0; transform: translate3d(-50px, 0, 0); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
+        .slide-left.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+        .slide-right { opacity: 0; transform: translate3d(50px, 0, 0); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
+        .slide-right.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        
+        .delay-1 { transition-delay: 150ms; }
+        .delay-2 { transition-delay: 300ms; }
+
+        /* =========================================
+           3. PRELOADER Y EL ACCESO VIP (TARJETA BLACK CARD)
+           ========================================= */
+        #preloader-master { position: fixed; inset: 0; background: #050505; z-index: 100000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease; color: var(--color-acento); }
+        #preloader-master.oculto { opacity: 0; pointer-events: none; }
+        
+        .loader-ring { width: 50px; height: 50px; border: 2px solid rgba(212, 175, 55, 0.2); border-top-color: var(--color-acento); border-radius: 50%; animation: girarLoader 1s linear infinite; margin-bottom: 20px;}
+        .loader-text { font-family: var(--fuente-titulos); letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; animation: latidoTexto 2s infinite alternate;}
+        @keyframes girarLoader { to { transform: rotate(360deg); } }
+
+        #vip-entry { position: fixed; inset: 0; background: #050505; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; perspective: 1500px; transition: opacity 1.5s ease, visibility 1.5s ease; }
+        #flash-bang { position: absolute; inset: 0; background: #FFF; z-index: 10; opacity: 0; pointer-events: none; transition: opacity 0.8s ease-out; }
+
+        .black-card-container { width: 85vw; max-width: 380px; aspect-ratio: 1.586/1; position: relative; transform-style: preserve-3d; animation: flotarTarjeta 4s ease-in-out infinite alternate; cursor: pointer; }
+        .black-card { position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(135deg, #1A1A1A 0%, #0a0a0a 50%, #222 100%); box-shadow: 0 30px 60px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: space-between; padding: clamp(15px, 4vw, 25px); transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); -webkit-backface-visibility: hidden; backface-visibility: hidden; border: 1px solid #333; }
+        .black-card::after { content: ''; position: absolute; inset: 0; border-radius: 20px; background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.1) 25%, transparent 30%); z-index: 2; pointer-events: none; animation: reflejoMetal 6s infinite; }
+
+        .card-chip { width: clamp(35px, 8vw, 45px); height: clamp(25px, 6vw, 35px); background: linear-gradient(135deg, #D4AF37, #F3E5AB, #997A00); border-radius: 6px; position: relative; z-index: 3;}
+        .card-chip::after { content:''; position:absolute; inset: 2px; border: 1px solid rgba(0,0,0,0.3); border-radius: 4px;}
+        
+        .card-text-group { position: relative; z-index: 3; transform: translateZ(20px); width: 100%; display: flex; flex-direction: column; gap: 2px; text-align: left;}
+        .card-number { font-family: 'Courier New', monospace; color: #D4AF37; font-size: clamp(0.85rem, 4.5vw, 1.2rem); letter-spacing: 2px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); white-space: nowrap; overflow: hidden;}
+        .card-name { font-family: var(--fuente-titulos); color: #FFF; font-size: clamp(1rem, 5vw, 1.3rem); letter-spacing: 2px; text-transform: uppercase;}
+        .card-vip { position: absolute; top: clamp(15px, 4vw, 25px); right: clamp(15px, 4vw, 25px); color: #D4AF37; font-family: var(--fuente-titulos); font-size: clamp(0.9rem, 4vw, 1.2rem); letter-spacing: 3px; font-weight: bold;}
+
+        .swipe-hint { position: absolute; bottom: -40px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; animation: latidoTexto 2s infinite alternate; }
+
+        @keyframes flotarTarjeta { 0% { transform: translate3d(0, -10px, 0) rotateY(-5deg) rotateX(5deg); } 100% { transform: translate3d(0, 10px, 0) rotateY(5deg) rotateX(-5deg); } }
+        @keyframes reflejoMetal { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes latidoTexto { 0% { opacity: 0.3; transform: translate3d(0,0,0); } 100% { opacity: 1; transform: translate3d(0,-5px,0); } }
+
+        .card-unlocking { transform: translate3d(0, -50px, 200px) rotateY(180deg) !important; opacity: 0; pointer-events: none; }
+        #vip-entry.oculto { opacity: 0; visibility: hidden; }
+
+        /* =========================================
+           4. FONDO AURORA IRIDISCENTE Y TOAST
+           ========================================= */
+        .bg-aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-color: var(--color-fondo); overflow: hidden;}
+        .aura { position: absolute; border-radius: 50%; filter: blur(120px); will-change: transform; opacity: 0.7;}
+        .aura-1 { width: 90vw; height: 90vw; background: var(--aura-rosegold); top: -20%; left: -20%; animation: moverAura1 20s infinite alternate ease-in-out; }
+        .aura-2 { width: 80vw; height: 80vw; background: var(--aura-iceblue); bottom: -20%; right: -20%; animation: moverAura2 25s infinite alternate-reverse ease-in-out; }
+        .aura-3 { width: 60vw; height: 60vw; background: var(--aura-platino); top: 30%; left: 30%; animation: moverAura3 22s infinite alternate ease-in-out; }
+
+        @keyframes moverAura1 { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(20vw, 15vh, 0); } }
+        @keyframes moverAura2 { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-15vw, -20vh, 0); } }
+        @keyframes moverAura3 { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(10vw, -15vh, 0); } }
+
+        .bg-ruido { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); mix-blend-mode: overlay; z-index: 1;}
+
+        .toast-notification { position: fixed; top: 20px; left: 50%; transform: translate(-50%, -100px); background: var(--color-texto); color: #FFF; padding: 16px 32px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; box-shadow: 0 15px 30px rgba(0,0,0,0.2); z-index: 100000; opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; align-items: center; gap: 10px; }
+        .toast-notification.mostrar { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
+
+        /* SCROLLYTELLING (OBJETO 3D FONDO) */
+        .scrolly-object-container {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 0; pointer-events: none; perspective: 1000px;
+        }
+        .scrolly-object {
+            font-family: var(--fuente-titulos); font-size: 60vw; font-weight: 700; line-height: 1;
+            background: linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(212,175,55,0.05) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            will-change: transform; transform-style: preserve-3d;
+        }
+
+        /* =========================================
+           5. REPRODUCTOR Y MENÚ "DYNAMIC ISLAND"
+           ========================================= */
+        #music-player { position: fixed; top: 30px; right: 30px; z-index: 999; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--color-texto); font-size: 1.5rem; transition: transform 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer;}
+        #music-player::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s ease; }
+        #music-player.playing::before { animation: radarMusicLight 2.5s cubic-bezier(0.1, 0.8, 0.3, 1) infinite; }
+        @keyframes radarMusicLight { 0% { inset: 0; opacity: 1; } 100% { inset: -20px; opacity: 0; } }
+        #music-player.playing i { animation: girarDisco 4s linear infinite; }
+        
+        /* Menú Flotante Inferior */
+        .dynamic-island {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.8); border-radius: 50px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            display: flex; gap: 20px; padding: 10px 25px; z-index: 998;
+            opacity: 0; visibility: hidden; transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .dynamic-island.visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dynamic-island a { color: var(--color-texto-suave); font-size: 1.5rem; padding: 8px; border-radius: 50%; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; cursor: pointer;}
+        .dynamic-island a:hover { color: var(--color-acento); background: rgba(212,175,55,0.1); transform: translateY(-3px); }
+
+        @media (max-width: 480px) {
+            #music-player { top: 20px; right: 20px; width: 45px; height: 45px; }
+            .dynamic-island { bottom: 20px; gap: 10px; padding: 8px 15px; }
+        }
+
+        /* =========================================
+           6. HERO (PORTADA PÓDIUM)
+           ========================================= */
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 50px; padding-bottom: 50px; z-index: 10; text-align: center; }
+        
+        .hero-marco-container { width: 85%; max-width: 420px; aspect-ratio: 3/4; margin-bottom: 45px; position: relative; z-index: 1; padding: 22px; background-color: #2b1910; background-image: linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 75%, transparent 75%, transparent), linear-gradient(135deg, #422716 0%, #1a0e07 100%); background-size: 4px 4px, 100% 100%; box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.5), inset 2px 2px 4px rgba(255, 255, 255, 0.15), inset -2px -2px 6px rgba(0, 0, 0, 0.8); border-radius: 4px; animation: aparecerMarco 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; transform: translateY(30px); }
+        .hero-marco-inner { width: 100%; height: 100%; position: relative; padding: 16px; background-color: #F8F9FA; box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.8), inset -2px -2px 5px rgba(255, 255, 255, 0.2); display: flex; justify-content: center; align-items: center; }
+        .hero-foto-wrapper { width: 100%; height: 100%; position: relative; overflow: hidden; background-color: #E5E5E5; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
+        .hero-foto-wrapper::before { content: ''; position: absolute; inset: 0; border: 2px solid var(--color-acento); opacity: 0.7; z-index: 2; pointer-events: none; }
+        @keyframes aparecerMarco { to { opacity: 1; transform: translateY(0); } }
+        .hero-foto-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.05) saturate(1.1) brightness(0.95); transition: transform 10s ease; }
+        .hero-marco-container:hover .hero-foto-wrapper img { transform: scale(1.05); }
+        .hero-luces { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%); filter: blur(50px); z-index: -1; animation: pulsarLuz 4s infinite alternate; }
+        @keyframes pulsarLuz { 0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); } }
+
+        .hero-content { position: relative; z-index: 10; width: 100%; }
+        .hero-edad { font-family: var(--fuente-titulos); font-size: clamp(0.9rem, 4vw, 1.2rem); letter-spacing: 8px; text-transform: uppercase; color: var(--color-texto-suave); margin-bottom: 5px; }
+        .hero-nombre { font-family: var(--fuente-titulos); font-size: clamp(3rem, 12vw, 5rem); line-height: 1; margin-bottom: 0; color: var(--color-texto); text-shadow: 0 10px 30px rgba(255,255,255,0.8); }
+        
+        .btn-calendar, .btn-action, .btn-outline { display: flex; align-items: center; justify-content: center; text-align: center; gap: 10px; background: var(--color-texto); color: #FFF; padding: clamp(12px, 3vw, 16px) clamp(15px, 4vw, 35px); border-radius: 50px; font-size: clamp(0.8rem, 3.5vw, 0.95rem); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 15px 30px rgba(0,0,0,0.15); transition: transform 0.4s; -webkit-backface-visibility: hidden; backface-visibility: hidden; will-change: transform; cursor: pointer; border: none; width: 100%; max-width: 320px; margin: 0 auto; }
+        .btn-calendar:hover, .btn-action:hover, .btn-outline:hover { transform: translate3d(0, -4px, 0); }
+        .btn-outline { background: transparent; color: var(--color-texto); border: 1px solid var(--color-texto); }
+
+        /* =========================================
+           7. TARJETAS 3D (TILT) & CUENTA REGRESIVA
+           ========================================= */
+        .tilt-card {
+            position: relative; overflow: hidden;
+            transition: transform 0.1s; will-change: transform;
+            transform-style: preserve-3d;
+        }
+        .tilt-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 200%; height: 200%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.4) 0%, transparent 40%);
+            transform: translate(-25%, -25%); pointer-events: none; z-index: 10; opacity: 0; transition: opacity 0.3s;
+        }
+        .tilt-card:hover::before { opacity: 1; }
+
+        .countdown-grid { display: flex; justify-content: center; gap: clamp(8px, 2vw, 15px); margin-bottom: 30px;}
+        .count-box { flex: 1; height: clamp(80px, 20vw, 100px); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .count-num { font-family: var(--fuente-titulos); font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1; margin-bottom: 5px; transform: translateZ(20px);} 
+        .count-label { font-size: clamp(0.55rem, 2vw, 0.65rem); text-transform: uppercase; letter-spacing: 2px; color: var(--color-texto-suave); transform: translateZ(10px);}
+
+        /* =========================================
+           8. EL TÚNEL DEL TIEMPO (STICKY SCROLL)
+           ========================================= */
+        .tunel-tiempo-wrapper { position: relative; padding: 50px 0; }
+        .sticky-year-container { position: sticky; top: 30vh; height: 0; width: 100%; display: flex; justify-content: center; align-items: center; z-index: 0; pointer-events: none; }
+        .sticky-year { font-family: var(--fuente-titulos); font-size: 35vw; font-weight: 700; color: rgba(0,0,0,0.03); line-height: 0; transition: opacity 0.5s ease; text-align: center; width: 100%; }
+
+        .era-list { position: relative; z-index: 2; padding: 10vh 0 30vh 0; }
+        .era-item { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 10vh; opacity: 0; transform: translate3d(0, 50px, 0); transition: all 0.8s ease; }
+        .era-item.activo { opacity: 1; transform: translate3d(0, 0, 0); }
+        .era-foto { width: 80%; max-width: 350px; aspect-ratio: 3/4; border-radius: 12px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.15); border: 8px solid #FFF; transform: rotate(-3deg); transition: transform 0.5s ease; will-change: transform; }
+        .era-item:nth-child(even) .era-foto { transform: rotate(3deg); }
+        .era-foto img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.3) contrast(1.1); }
+        .era-caption { margin-top: -20px; background: var(--bg-glass); backdrop-filter: var(--blur-glass); -webkit-backdrop-filter: var(--blur-glass); padding: 15px 30px; border-radius: 30px; border: var(--borde-glass); font-size: 0.9rem; color: var(--color-texto); box-shadow: 0 10px 20px rgba(0,0,0,0.05); transform: translateZ(20px); text-align: center;}
+
+        /* =========================================
+           9. INFO Y GALERÍA CILÍNDRICA 3D
+           ========================================= */
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .info-card { padding: 40px 20px; text-align: center; }
+        .info-card i, .info-card h3, .info-card p, .info-card .btn-action { transform: translateZ(20px); }
+        .info-card i { font-size: 3rem; color: var(--color-texto); margin-bottom: 15px; font-weight: 100; display: block;}
+
+        .concierge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        .concierge-card { padding: 25px 15px; text-align: center; }
+        .concierge-card i { font-size: 2.5rem; color: var(--color-acento); margin-bottom: 10px; display: block; transform: translateZ(20px);}
+        .concierge-card h4 { font-size: 1.1rem; margin-bottom: 5px; transform: translateZ(15px); color: var(--color-texto);}
+        .concierge-card p { font-size: 0.8rem; color: var(--color-texto-suave); transform: translateZ(10px);}
+
+        /* RASCA Y GANA */
+        .scratch-container { position: relative; width: 100%; max-width: 400px; height: 200px; margin: 0 auto; border-radius: 20px; overflow: hidden; background: var(--bg-glass); box-shadow: var(--sombra-glass); border: var(--borde-glass); display: flex; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .scratch-content h3 { color: var(--color-acento); margin-bottom: 10px; font-family: var(--fuente-titulos); font-size: 1.6rem;}
+        .scratch-content p { color: var(--color-texto); font-size: 0.95rem;}
+        #scratch-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; cursor: pointer; }
+
+        .galeria-3d-section { padding: 100px 0; perspective: 1200px; overflow: hidden; display: flex; flex-direction: column; align-items: center;}
+        .scene-3d { width: 280px; height: 380px; position: relative; margin-top: 50px; margin-bottom: 100px; }
+        .carousel-3d { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transform: rotateY(var(--rotacion-actual, 0deg)); transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); cursor: grab; }
+        .carousel-3d.dragging { transition: none; cursor: grabbing; }
+        .carousel-item { position: absolute; width: 260px; height: 360px; left: 10px; top: 10px; border-radius: 16px; overflow: hidden; border: 4px solid #FFF; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transform: rotateY(calc(var(--index) * 60deg)) translateZ(280px); -webkit-backface-visibility: hidden; backface-visibility: hidden; pointer-events: none; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+        .espejo-piso { position: absolute; bottom: -80px; width: 200%; height: 100px; left: -50%; background: radial-gradient(ellipse at top, rgba(255,255,255,0.8), transparent 70%); transform: rotateX(85deg); filter: blur(5px); z-index: -1; }
+        .instruccion-3d { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-texto-suave); animation: deslizarInstruccion 2s infinite alternate; margin-top: 40px; pointer-events: none; }
+        @keyframes deslizarInstruccion { 0% { transform: translateX(-10px); } 100% { transform: translateX(10px); } }
+
+        /* =========================================
+           10. REGALO 3D UNBOXING
+           ========================================= */
+        .seccion-regalos { text-align: center; padding: 60px 0; perspective: 1000px; }
+        .gift-container { position: relative; width: 180px; height: 180px; margin: 0 auto 30px; transform-style: preserve-3d; cursor: pointer; transition: transform 0.5s ease; }
+        .gift-container:hover { transform: scale(1.05) rotateY(10deg); }
+        
+        .gift-box { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); }
+        .gift-box-front { position: absolute; width: 180px; height: 140px; bottom: 0; background: linear-gradient(135deg, #1A1A1A, #222); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; display: flex; justify-content: center; align-items: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3); z-index: 5;}
+        .gift-box-front::after { content: ''; width: 30px; height: 100%; background: var(--color-acento); position: absolute; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        
+        .gift-lid { position: absolute; width: 190px; height: 50px; bottom: 130px; left: -5px; background: linear-gradient(135deg, #222, #333); border: 1px solid var(--color-acento); border-radius: 8px; transform-origin: bottom center; transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); z-index: 10; display: flex; justify-content: center; }
+        .gift-lid::after { content: ''; width: 30px; height: 100%; background: var(--color-acento); position: absolute; }
+        .gift-bow { position: absolute; top: -30px; font-size: 3rem; color: var(--color-acento); text-shadow: 0 5px 10px rgba(0,0,0,0.5); }
+
+        .gift-content-card { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%) translateZ(-10px); width: 280px; opacity: 0; transition: all 1s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; }
+        .gift-content-card p { margin-bottom: 5px; font-size: 0.9rem; }
+        
+        .gift-container.abierto .gift-lid { transform: rotateX(110deg) translateY(-20px); opacity: 0; }
+        .gift-container.abierto .gift-content-card { bottom: 150px; opacity: 1; pointer-events: all; transform: translateX(-50%) translateZ(20px); z-index: 20; }
+        .gift-container.abierto .gift-box-front { opacity: 0.8; filter: brightness(0.5); }
+        .instruccion-regalo { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-acento); animation: latidoTexto 2s infinite alternate;}
+
+        /* =========================================
+           11. ITINERARIO VIP
+           ========================================= */
+        .itinerario-container { position: relative; max-width: 100%; margin: 0 auto; padding: 40px 0; }
+        .itinerario-container::after { content: ''; position: absolute; width: 2px; background: linear-gradient(to bottom, transparent, var(--color-acento), transparent); top: 0; bottom: 0; left: 50%; margin-left: -1px; z-index: 0; }
+        .itinerario-item { padding: 20px 40px; position: relative; background: inherit; width: 50%; z-index: 1; }
+        .itinerario-item:nth-child(odd) { left: 0; text-align: right; }
+        .itinerario-item:nth-child(even) { left: 50%; text-align: left; }
+        .itinerario-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background: var(--color-fondo); border: 4px solid var(--color-acento); top: 50%; transform: translateY(-50%); border-radius: 50%; z-index: 2; box-shadow: 0 0 15px rgba(212, 175, 55, 0.8); }
+        .itinerario-item:nth-child(even)::after { left: -10px; }
+        .itinerario-content { padding: 30px; position: relative; transform-style: preserve-3d; }
+        .itinerario-content .itinerario-hora, .itinerario-content .itinerario-texto, .itinerario-content .itinerario-icon { transform: translateZ(20px); }
+        .itinerario-hora { font-family: var(--fuente-titulos); font-size: 2rem; color: var(--color-acento); margin-bottom: 5px; font-weight: 600; line-height: 1; }
+        .itinerario-texto { font-size: 1rem; color: var(--color-texto); }
+        .itinerario-icon { font-size: 2.5rem; color: var(--color-texto-suave); margin-bottom: 15px; display: block; }
+
+        /* =========================================
+           12. FORMULARIO UNIFICADO
+           ========================================= */
+        .unified-form { padding: clamp(20px, 5vw, 40px) clamp(15px, 4vw, 30px); text-align: left; }
+        .form-group { margin-bottom: 25px; transform: translateZ(10px); }
+        .form-group label { display: flex; align-items: center; gap: 8px; font-weight: 500; margin-bottom: 10px; color: var(--color-texto); font-size: 0.95rem;}
+        .form-group label i { font-size: 1.3rem; color: var(--color-acento); }
+        .input-premium, .textarea-premium, .select-premium { width: 100%; background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.1); padding: clamp(12px, 3vw, 16px) clamp(15px, 4vw, 20px); border-radius: 16px; font-family: var(--fuente-textos); font-size: 1rem; color: var(--color-texto); outline: none; transition: all 0.3s; }
+        .textarea-premium { resize: none; min-height: 100px; }
+        .input-premium:focus, .textarea-premium:focus, .select-premium:focus { background: #FFF; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--color-acento); }
+
+        footer { text-align: center; padding: 50px 30px 100px; font-size: 0.9rem; color: var(--color-texto-suave); position: relative; z-index: 10; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 40px;}
+        footer h3 { font-family: var(--fuente-titulos); font-size: 1.5rem; color: var(--color-texto); margin-bottom: 10px; }
+        footer p { margin-bottom: 20px; }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; }
+        .social-links a { color: var(--color-texto); font-size: 1.8rem; transition: transform 0.3s, color 0.3s; cursor: pointer;}
+        .social-links a:hover { transform: translateY(-5px); color: var(--color-acento); }
+
+        @media (max-width: 768px) {
+            .itinerario-container::after { left: 31px; }
+            .itinerario-item { width: 100%; padding-left: 70px; padding-right: 0; }
+            .itinerario-item:nth-child(odd), .itinerario-item:nth-child(even) { left: 0; text-align: left; }
+            .itinerario-item::after { left: 21px; right: auto; }
+            .itinerario-item:nth-child(even)::after { left: 21px; }
+            .concierge-grid { grid-template-columns: 1fr; }
+            .scrolly-object { font-size: 90vw; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-nombre { font-size: 3.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .sticky-year { font-size: 45vw; }
+            .scene-3d { width: 220px; height: 300px; } 
+            .carousel-item { width: 200px; height: 280px; transform: rotateY(calc(var(--index) * 60deg)) translateZ(220px); }
+        }

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>¿Niño o Niña? | Diego & Laura (Premium VIP)</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+<!-- Canvas Confetti para el polvo de colores -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+</head>
+<body>
+
+<!-- FONDO ANIMADO VIP (Parallax con Javascript) -->
+<div class="bg-animado" id="fondo-parallax">
+    <div class="orbe orbe-rosa"></div>
+    <div class="orbe orbe-azul"></div>
+    <div class="signo-flotante s-1">?</div>
+    <div class="signo-flotante s-2">?</div>
+    <div class="signo-flotante s-3">?</div>
+</div>
+
+<!-- AUDIO DE FONDO -->
+<audio id="musica-fondo" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PRELOADER VIP -->
+<div id="preloader">
+    <i class="ph-fill ph-question loader-icono"></i>
+    <div class="loader-texto">ArteEnLink</div>
+    <p style="color: var(--color-texto-claro); font-size: 0.85rem; margin-top: 10px; letter-spacing: 2px;">Cargando Experiencia VIP...</p>
+</div>
+
+<!-- BOTÓN DE MÚSICA -->
+<div id="btn-musica" title="Reproducir Música">
+    <i class="ph-fill ph-play-circle" id="icono-musica"></i>
+</div>
+
+<!-- PORTADA (HERO) -->
+<header class="hero">
+    <div class="hero-card zoom-in">
+        <div class="hero-tag">Revelación de Género VIP</div>
+        <h1 class="hero-title">¿Qué<br>Será?</h1>
+        <div class="divisor-vip">
+            <div class="linea-vip"></div>
+            <i class="ph-fill ph-baby icono-vip"></i>
+            <div class="linea-vip"></div>
+        </div>
+        <p class="hero-names">Diego & Laura</p>
+        <p class="hero-date">Sábado, 15 de Noviembre 2026</p>
+    </div>
+</header>
+
+<!-- SECCIÓN: MENSAJE DE INVITACIÓN -->
+<section class="seccion-padding">
+    <div class="contenedor zoom-in text-center">
+        <div class="glass-panel" style="max-width: 650px; margin: 0 auto; padding: 50px 30px;">
+            <i class="ph-fill ph-envelope-open info-icono"></i>
+            <h2 class="seccion-titulo" style="font-size: 2.2rem;">Nos encantaría verte</h2>
+            <p class="info-texto" style="font-size: 1.1rem; line-height: 1.8; margin-top: 20px;">
+                Nuestros corazones laten de emoción y alegría mientras esperamos la llegada de nuestro mayor tesoro.<br><br>
+                Compartir la magia de descubrir si nuestro bebé será un hermoso niño o una dulce niña no sería lo mismo sin las personas que más amamos. <b>¡Acompáñanos a revelar esta gran sorpresa!</b>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN: VOTACIÓN INTERACTIVA -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up text-center">
+        <h2 class="seccion-titulo">¿Cuál es tu equipo?</h2>
+        <p class="seccion-subtitulo">Toca tu favorito para votar. ¡Mamá y Papá recibirán tu predicción!</p>
+        
+        <div class="votacion-container">
+            <div class="btn-voto voto-nina slide-left" onclick="emitirVoto('niña', this)">
+                <i class="ph-fill ph-gender-female"></i>
+                <span style="color: var(--color-rosa);">Team Niña</span>
+                <p style="font-size: 0.8rem; color: var(--color-texto-claro);">Toca para votar 🎀</p>
+            </div>
+            
+            <div class="btn-voto voto-nino slide-right" onclick="emitirVoto('niño', this)">
+                <i class="ph-fill ph-gender-male"></i>
+                <span style="color: var(--color-azul);">Team Niño</span>
+                <p style="font-size: 0.8rem; color: var(--color-texto-claro);">Toca para votar 🧢</p>
+            </div>
+        </div>
+        
+        <!-- CARRUSEL DE NOMBRES VIP -->
+        <div class="nombres-container fade-up delay-2">
+            <div class="nombre-card nc-nina">
+                <div class="nc-titulo">Si es Niña</div>
+                <div class="nc-nombre">Sofía</div>
+            </div>
+            <div class="nombre-card nc-nino">
+                <div class="nc-titulo">Si es Niño</div>
+                <div class="nc-nombre">Mateo</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN: MITOS Y PISTAS -->
+<section class="seccion-padding">
+    <div class="contenedor">
+        <div class="zoom-in" style="margin-bottom: 40px; text-align: center;">
+            <h2 class="seccion-titulo">Mitos y Pistas</h2>
+            <p class="seccion-subtitulo" style="margin-bottom: 0;">Toca las tarjetas para descubrir los síntomas de mamá. ¿Adivinas qué será?</p>
+        </div>
+        
+        <div class="pistas-grid">
+            <div class="flip-card fade-up delay-1" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="ph-fill ph-hamburger"></i><h3>Los Antojos</h3><p>Toca para ver</p></div><div class="flip-card-back nino"><h3>Salados</h3><p>¡Punto para Niño! 🧢</p></div></div></div>
+            <div class="flip-card fade-up delay-2" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="ph-fill ph-calendar-heart"></i><h3>Calendario Chino</h3><p>Toca para ver</p></div><div class="flip-card-back nina"><h3>Es Niña</h3><p>¡Punto para Niña! 🎀</p></div></div></div>
+            <div class="flip-card fade-up delay-3" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="ph-fill ph-smiley"></i><h3>Piel de Mamá</h3><p>Toca para ver</p></div><div class="flip-card-back nina"><h3>Suave y Brillante</h3><p>¡Punto para Niña! 🎀</p></div></div></div>
+            <div class="flip-card fade-up delay-1" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="ph-fill ph-baby"></i><h3>Forma de la panza</h3><p>Toca para ver</p></div><div class="flip-card-back nino"><h3>Picuda</h3><p>¡Punto para Niño! 🧢</p></div></div></div>
+            <div class="flip-card fade-up delay-2" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="ph-fill ph-heartbeat"></i><h3>Latidos del bebé</h3><p>Toca para ver</p></div><div class="flip-card-back nino"><h3>Menos de 140 lpm</h3><p>¡Punto para Niño! 🧢</p></div></div></div>
+            <div class="flip-card fade-up delay-3" onclick="this.classList.toggle('flipped')"><div class="flip-card-inner"><div class="flip-card-front"><i class="ph-fill ph-thermometer"></i><h3>Náuseas</h3><p>Toca para ver</p></div><div class="flip-card-back nina"><h3>Muchas</h3><p>¡Punto para Niña! 🎀</p></div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ITINERARIO -->
+<section class="seccion-padding">
+    <div class="contenedor">
+        <div class="zoom-in text-center" style="margin-bottom: 40px;">
+            <h2 class="seccion-titulo">Nuestro Día</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item slide-left"><div class="timeline-punto"></div><div class="timeline-hora">4:00 PM</div><div class="timeline-desc">Llegada y Bienvenida</div></div>
+            <div class="timeline-item slide-right"><div class="timeline-punto"></div><div class="timeline-hora">5:00 PM</div><div class="timeline-desc">Juegos y Votaciones</div></div>
+            <div class="timeline-item slide-left"><div class="timeline-punto"></div><div class="timeline-hora">6:30 PM</div><div class="timeline-desc"><b>¡La Gran Revelación!</b></div></div>
+            <div class="timeline-item slide-right"><div class="timeline-punto"></div><div class="timeline-hora">7:00 PM</div><div class="timeline-desc">Cena y Celebración</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- GALERÍA 3D FIESTA MÁGICA -->
+<section class="seccion-padding" id="seccion-galeria">
+    <div class="contenedor">
+        <div class="zoom-in text-center" style="margin-bottom: 40px;">
+            <h2 class="seccion-titulo">Dulce Espera</h2>
+        </div>
+        <div class="galeria-masonry">
+            <div class="foto-masonry fm-1 zoom-in delay-1"><img src="https://images.unsplash.com/photo-1584100525282-386055d21a2c?q=80&w=400&auto=format&fit=crop" alt="Papás"></div>
+            <div class="foto-masonry fm-2 zoom-in delay-2"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Zapatitos"></div>
+            <div class="foto-masonry fm-3 zoom-in delay-3"><img src="https://images.unsplash.com/photo-1554188248-986adbb56375?q=80&w=400&auto=format&fit=crop" alt="Ultrasonido"></div>
+            <div class="foto-masonry fm-4 zoom-in delay-2"><img src="https://images.unsplash.com/photo-1518831959646-742c3e14ebf3?q=80&w=400&auto=format&fit=crop" alt="Globos"></div>
+            <div class="foto-masonry fm-5 zoom-in delay-1"><img src="https://images.unsplash.com/photo-1522856339183-5a97c2fe12cc?q=80&w=400&auto=format&fit=crop" alt="Ropita"></div>
+        </div>
+    </div>
+</section>
+
+<!-- DRESS CODE & REGALOS -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up">
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <i class="ph-fill ph-t-shirt info-icono"></i>
+            <h2 class="info-titulo">Código de Vestimenta</h2>
+            <p class="info-texto">Para hacer nuestras fotos increíbles, te invitamos a venir vestido con un toque del color del equipo que crees que ganará.</p>
+            <div class="btn-container">
+                <button class="btn btn-dorado" id="btn-lookbook"><i class="ph-fill ph-magic-wand"></i> Ver Inspiración de Outfits</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CUENTA REGRESIVA -->
+<section class="seccion-padding">
+    <div class="contenedor zoom-in">
+        <div class="glass-panel" style="padding: 50px 20px;">
+            <i class="ph-fill ph-hourglass-high info-icono"></i>
+            <h2 class="info-titulo" style="margin-bottom: 30px;">Faltan</h2>
+            <div class="countdown-grid" id="contador-reveal">
+                <div class="countdown-box"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+                <div class="countdown-box"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Hrs</span></div>
+                <div class="countdown-box"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+                <div class="countdown-box"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+            </div>
+            
+            <div style="margin-top: 30px; display: flex; justify-content: center;">
+                <a href="#" class="btn btn-calendario" style="max-width: 280px; box-shadow: var(--sombra-vip);"><i class="ph-fill ph-calendar-plus"></i> Agendar en Calendario</a>
+            </div>
+            
+            <div style="margin-top: 50px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 40px;">
+                <h3 style="font-family: var(--fuente-titulos); font-size: 1.5rem; margin-bottom: 10px;">Lluvia de Pañales</h3>
+                <p class="info-texto">Si deseas tener un detalle con nuestro bebé, te agradeceríamos regalarnos pañales (Etapa 1 o 2) o toallitas húmedas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section class="seccion-padding">
+    <div class="contenedor slide-up">
+        <div class="glass-panel zoom-in">
+            <i class="ph-fill ph-map-pin info-icono"></i>
+            <h2 class="info-titulo">Jardín Encantado</h2>
+            <p class="info-texto">Sábado 15 de Noviembre, 4:00 PM.<br>Av. de las Rosas #123, Col. Primavera.</p>
+            <div class="btn-container">
+                <a href="#" class="btn btn-maps"><i class="ph-fill ph-google-logo"></i> Google Maps</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EL GRAN PASE VIP (RSVP + BUZÓN + CANCIONES) -->
+<section class="seccion-padding">
+    <div class="contenedor fade-up text-center">
+        <div class="glass-panel" style="max-width: 550px; margin: 0 auto; border-top: 5px solid var(--color-dorado-vip);">
+            <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: var(--color-dorado-vip); color: white; padding: 5px 20px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px;">PASE VIP</div>
+            
+            <i class="ph-fill ph-ticket info-icono" style="color: var(--color-dorado-vip); margin-top: 15px;"></i>
+            <h2 class="seccion-titulo" style="font-size: 2rem;">Confirma tu Asistencia</h2>
+            <p class="seccion-subtitulo" style="margin-bottom: 20px;">Llena tu pase para enviarnos tu confirmación, dedicatoria y tu rola favorita en un solo mensaje. 💌</p>
+            
+            <form id="form-pase-vip" class="form-vip">
+                <input type="text" id="vip-nombre" placeholder="Tu Nombre o Familia (Ej. Familia Pérez)" required>
+                
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="asistencia" value="¡Sí, ahí estaremos!" required> Sí asistiré</label>
+                    <label class="radio-label"><input type="radio" name="asistencia" value="Tristemente no podré asistir"> No podré</label>
+                </div>
+                
+                <input type="text" id="vip-cancion" placeholder="🎵 ¿Qué canción no puede faltar?">
+                <textarea id="vip-deseo" placeholder="🍼 Déjale un mensajito o buen deseo al bebé..."></textarea>
+                
+                <button type="submit" class="btn btn-whatsapp" style="width: 100%; margin-top: 10px; padding: 18px; font-size: 1.1rem;">
+                    <i class="ph-fill ph-paper-plane-right"></i> Enviar Confirmación VIP
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER COMERCIAL -->
+<footer>
+    <div class="contenedor fade-up">
+        <h3 style="font-family: var(--fuente-titulos); font-size: 1.2rem; margin-bottom: 15px; font-weight: 500;">¿Te gustó esta invitación? ¡Contáctanos!</h3>
+        <div class="social-links">
+            <a href="#" target="_blank" class="social-link wa" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            <a href="#" target="_blank" class="social-link fb" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="#" target="_blank" class="social-link ig" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-top: 20px;">
+            <div class="footer-logo"><span class="color-azul">ArteEn</span><span class="color-rosa">Link</span></div>
+            <div class="footer-texto">Diseño Exclusivo | Invitaciones Interactivas VIP</div>
+        </div>
+    </div>
+</footer>
+
+<!-- MODAL LOOKBOOK DE OUTFITS -->
+<div class="modal" id="modal-lookbook">
+    <div class="modal-content">
+        <button class="modal-cerrar" id="cerrar-modal"><i class="ph ph-x"></i></button>
+        <h2 class="info-titulo" style="font-size: 1.5rem; color: var(--color-texto-oscuro);">Inspiración de Outfits</h2>
+        <p class="info-texto">Ideas para que vengas vestido del color de tu equipo.</p>
+        
+        <div class="lookbook-grid">
+            <img src="https://images.unsplash.com/photo-1617255132392-7f70b740523f?q=80&w=400&auto=format&fit=crop" alt="" class="lookbook-img" style="border-color: var(--color-rosa);">
+            <img src="https://images.unsplash.com/photo-1512413914583-16c802bc6f1a?q=80&w=400&auto=format&fit=crop" alt="" class="lookbook-img" style="border-color: var(--color-azul);">
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>

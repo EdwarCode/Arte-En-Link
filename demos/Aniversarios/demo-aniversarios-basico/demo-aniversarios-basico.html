@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carmen y Roberto | Bodas de Oro</title>
+
+    <!-- Fuentes de Google Fonts: Cinzel (Clásico/Elegante) y Montserrat (Legibilidad) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Librería 1: Phosphor Icons (Alta Costura Duotone) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Librería 2: Anime.js (Motor de Animación Físico para el Fade-Up) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-duotone ph-rings loader-icon"></i>
+        <div class="loader-text">Bodas de Oro</div>
+    </div>
+
+    <!-- PORTADA HERO (Estilo Retrato Clásico) -->
+    <header class="hero-clasico">
+        <div class="contenedor fade-up">
+            <div class="hero-grado">50 Aniversario</div>
+            <h1 class="hero-nombre">Carmen & Roberto</h1>
+            
+            <div class="marco-passepartout">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600&auto=format&fit=crop" alt="Retrato Aniversario">
+            </div>
+
+            <div class="hero-generacion">Medio siglo de amor</div>
+            <div class="hero-fecha">Sábado, 15 de Noviembre</div>
+        </div>
+    </header>
+
+    <!-- INVITACIÓN Y MENSAJE EMOTIVO (Letra Capitular) -->
+    <section class="seccion-padding" style="padding-top: 20px;">
+        <div class="contenedor fade-up">
+            <div style="text-align: center;">
+                <i class="ph-duotone ph-heart-straight" style="font-size: 3rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+                <h2 style="font-family: var(--fuente-titulos); font-size: 2.4rem; color: var(--color-navy); margin-bottom: 30px;">
+                    Nuestra Historia Continúa
+                </h2>
+            </div>
+            
+            <!-- La primera letra (P) tomará el estilo gigantesco automáticamente -->
+            <p class="texto-emotivo">
+                Parece que fue ayer cuando prometimos amarnos para toda la vida. Hoy, 50 años después, con el cabello blanco pero el corazón lleno de la misma ilusión, comprobamos que el amor verdadero no solo existe, sino que se fortalece con el tiempo, la paciencia y la familia que hemos formado juntos a lo largo de este hermoso viaje.
+            </p>
+            
+            <div class="divisor-elegante">
+                <div class="divisor-linea"></div>
+                <div class="divisor-rombo"></div>
+                <div class="divisor-linea"></div>
+            </div>
+            
+            <p class="texto-invitacion">
+                Acompañados de nuestros hijos y nietos,<br>tenemos el inmenso honor de invitarte a celebrar<br>nuestra Renovación de Votos.
+            </p>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up text-center">
+            <h2 class="titulo-seccion">El Gran Día</h2>
+            <p class="subtitulo-seccion">Falta muy poco para volver a decir "Sí, acepto".</p>
+            
+            <div class="contador-grid" id="contador-aniversario">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIONES (Borde de Costura Fina) -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor">
+            
+            <!-- TARJETA 1: CEREMONIA -->
+            <div class="ubicacion-card borde-costura fade-up">
+                <i class="ph-duotone ph-church ubicacion-icono"></i>
+                <h3 class="ubicacion-titulo">Ceremonia Religiosa</h3>
+                <div class="ubicacion-hora">17:00 Hrs</div>
+                <p class="ubicacion-direccion">
+                    <b>Parroquia del Sagrado Corazón</b><br>
+                    Av. de la Esperanza 123, Zona Centro.<br>
+                    Misa de Acción de Gracias.
+                </p>
+                <div class="botones-mapa">
+                    <a href="#" class="btn-outline"><i class="ph-fill ph-map-pin"></i> Ver en Google Maps</a>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: RECEPCIÓN -->
+            <div class="ubicacion-card borde-costura fade-up">
+                <i class="ph-duotone ph-wine ubicacion-icono"></i>
+                <h3 class="ubicacion-titulo">Recepción y Cena</h3>
+                <div class="ubicacion-hora">19:30 Hrs</div>
+                <p class="ubicacion-direccion">
+                    <b>Hacienda "Los Alcatraces"</b><br>
+                    Blvd. Los Pinos 456, Col. Las Palmas.<br>
+                    Cena, brindis y celebración en familia.
+                </p>
+                <div class="botones-mapa">
+                    <a href="#" class="btn-outline"><i class="ph-fill ph-map-pin"></i> Ver en Google Maps</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RSVP (Borde de Costura Fina) -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor">
+            <div class="seccion-rsvp borde-costura fade-up">
+                <i class="ph-duotone ph-envelope-open rsvp-icono"></i>
+                <h2>Confirma tu Asistencia</h2>
+                <p>Tu presencia es el regalo más grande. Por favor, confírmanos por WhatsApp si podrás acompañarnos antes del 01 de Noviembre.</p>
+                
+                <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20con%20mucha%20alegría%20mi%20asistencia%20a%20sus%20Bodas%20de%20Oro.%20¡Felicidades!" target="_blank" class="btn-oro" style="width: 100%; max-width: 400px; margin: 0 auto;">
+                    <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar Asistencia
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER COMERCIAL ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20Básica%20de%20Aniversarios%20y%20me%20encantó." target="_blank" class="social-link" title="WhatsApp">
+                    <i class="ph-fill ph-whatsapp-logo"></i>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Facebook">
+                    <i class="ph-fill ph-facebook-logo"></i>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Instagram">
+                    <i class="ph-fill ph-instagram-logo"></i>
+                </a>
+            </div>
+            <div class="creditos">
+                Diseño exclusivo de Alta Costura por <a href="index.html" target="_blank">ArteEnLink</a>.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

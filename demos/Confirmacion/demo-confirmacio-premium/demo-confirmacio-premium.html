@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo | Mi Confirmación (Premium VIP)</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body class="bloqueado">
+
+    <!-- TEXTURA GLOBAL Y CHISPAS -->
+    <div class="textura-pergamino"></div>
+    <div class="chispas" id="contenedor-chispas"></div>
+
+    <!-- MÚSICA CINEMATOGRÁFICA -->
+    <audio id="audio-fondo" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- FASE 1: PRELOADER (3 SEGUNDOS) -->
+    <div id="preloader">
+        <i class="ph-light ph-dove paloma-glow"></i>
+        <p style="margin-top: 30px; font-family: var(--fuente-titulo); font-size: 1.2rem; font-style: italic; color: var(--color-oro-oscuro); letter-spacing: 2px;">Preparando una experiencia sagrada...</p>
+    </div>
+
+    <!-- FASE 2: PUERTAS DE CATEDRAL (3D) -->
+    <div id="escena-puertas">
+        <div class="puerta puerta-izq"></div>
+        <div class="puerta puerta-der"></div>
+        <div class="sello-central" id="btn-abrir">
+            <i class="ph-fill ph-cross"></i>
+            <span style="color: white; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; text-shadow: none;">Tocar</span>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR FLOTANTE -->
+    <div id="btn-musica" onclick="toggleMusica()">
+        <i class="ph-fill ph-music-note"></i>
+    </div>
+
+    <!-- FASE 3: HERO PARALLAX -->
+    <header class="hero">
+        <div class="hero-bg">
+            <!-- Foto del festejado en tonos oscuros/elegantes -->
+            <img src="https://images.unsplash.com/photo-1544254050-a9cb00e409ec?q=80&w=1200&auto=format&fit=crop" alt="Mateo" id="hero-img">
+            <div class="god-rays"></div>
+        </div>
+        <div class="hero-content fade-up">
+            <h1 class="hero-nombre">Mateo</h1>
+            <div style="width: 50px; height: 2px; background: var(--color-oro); margin: 0 auto 20px;"></div>
+            <p class="hero-fecha">Mi Confirmación &nbsp;&bull;&nbsp; 15 . Nov . 26</p>
+        </div>
+    </header>
+
+    <!-- FASE 4: EL MISAL (TEXTOS LARGOS Y PILARES) -->
+    <section class="seccion-padding" style="background: var(--color-fondo);">
+        <div class="contenedor">
+            
+            <div class="fade-up">
+                <i class="ph-fill ph-dove" style="font-size: 2.5rem; color: var(--color-oro); display: block; text-align: center; margin-bottom: 30px;"></i>
+                <div class="misal-texto capitular">
+                    Hay instantes en nuestro peregrinar que definen para siempre la luz que guiará nuestros pasos. Hoy, con plena libertad, absoluta consciencia y el corazón abierto de par en par, decido postrarme ante el altar para confirmar mi fe y recibir el fuego inextinguible del Espíritu Santo. 
+                </div>
+                <div class="misal-texto">
+                    Este sacramento no es solo un rito; es mi promesa personal y madura con Dios, el compromiso de ser testimonio de Su amor infinito y de enfrentar los retos del mundo armado con Su sabiduría y fortaleza. 
+                </div>
+                <div class="misal-texto">
+                    Es un inmenso honor invitarte a compartir este renacer espiritual. Tu presencia, tus consejos y tus sinceras oraciones serán el regalo más valioso en este día tan especial, acompañándome en el inicio de esta nueva etapa espiritual que marcará mi camino para siempre.
+                </div>
+            </div>
+
+            <!-- Pilares (Glassmorphism 3D) -->
+            <div class="pilares-grid">
+                <!-- Papás -->
+                <div class="tilt-card fade-up delay-1">
+                    <h3>Con la bendición de mis padres</h3>
+                    <h2>Roberto & Elena</h2>
+                    <p>"Quienes fueron mi primer refugio y mi primera iglesia. Ustedes sembraron en mi corazón la semilla de la fe desde el día en que nací, me enseñaron a juntar las manos para orar y me han sostenido con su amor incondicional. Hoy, quiero honrar su sacrificio, su paciencia y su luz infinita."</p>
+                </div>
+                <!-- Padrinos -->
+                <div class="tilt-card fade-up delay-2">
+                    <h3>Bajo la mirada protectora de mis padrinos</h3>
+                    <h2>Fernando & Sofía</h2>
+                    <p>"A quienes hemos elegido por la profunda admiración hacia su calidad humana. Gracias por aceptar la sagrada misión de convertirse en mis guías y en mi faro cuando el camino se vuelva oscuro. Sé que, al caminar hacia el altar, contaré con su mano firme sobre mi hombro."</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FASE 5: LOS 7 DONES -->
+    <section class="seccion-padding" style="background: var(--color-secundario);">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up">El Fuego Santo</h2>
+            <p class="subtitulo-seccion fade-up">Los 7 Dones del Espíritu</p>
+
+            <div class="dones-grid">
+                <div class="don-card fade-up delay-1"><i class="ph-light ph-brain don-icono"></i><h4>Sabiduría</h4></div>
+                <div class="don-card fade-up delay-2"><i class="ph-light ph-lightbulb don-icono"></i><h4>Inteligencia</h4></div>
+                <div class="don-card fade-up delay-3"><i class="ph-light ph-users-three don-icono"></i><h4>Consejo</h4></div>
+                
+                <div class="don-card fade-up delay-1"><i class="ph-light ph-shield-check don-icono"></i><h4>Fortaleza</h4></div>
+                <div class="don-card central fade-up delay-2"><i class="ph-fill ph-book-open-text don-icono" style="font-size: 2.5rem;"></i><h4>Ciencia</h4></div>
+                <div class="don-card fade-up delay-3"><i class="ph-light ph-hands-praying don-icono"></i><h4>Piedad</h4></div>
+                
+                <div class="don-card fade-up delay-1" style="grid-column: 1 / 4; max-width: 300px; margin: 0 auto; width: 100%;"><i class="ph-light ph-star don-icono"></i><h4>Temor de Dios</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASE 6: MI CAMINO DE FE (TIMELINE 6 FOTOS) -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            <h2 class="titulo-seccion fade-up">Mi Camino de Fe</h2>
+            <p class="subtitulo-seccion fade-up">Un recorrido de gracia</p>
+
+            <div class="timeline-fotos">
+                <div class="tf-item fade-up">
+                    <div class="tf-foto"><img src="https://images.unsplash.com/photo-1510036688755-66795f70bb7e?q=80&w=400&auto=format&fit=crop" alt="Bautizo"></div>
+                    <div class="tf-punto"></div>
+                    <div class="tf-texto"><h3>La Semilla</h3><p>Mi Bautizo. El día que fui presentado ante Dios rodeado del amor de mi familia.</p></div>
+                </div>
+                <div class="tf-item fade-up">
+                    <div class="tf-foto"><img src="https://images.unsplash.com/photo-1436564989038-18b9958df72b?q=80&w=400&auto=format&fit=crop" alt="Primeros Pasos"></div>
+                    <div class="tf-punto"></div>
+                    <div class="tf-texto"><h3>Mis primeros pasos</h3><p>Creciendo y aprendiendo los valores que me guían hoy.</p></div>
+                </div>
+                <div class="tf-item fade-up">
+                    <div class="tf-foto"><img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=400&auto=format&fit=crop" alt="Comunión"></div>
+                    <div class="tf-punto"></div>
+                    <div class="tf-texto"><h3>El Encuentro</h3><p>Mi Primera Comunión. Recibiendo el cuerpo de Cristo por primera vez.</p></div>
+                </div>
+                <div class="tf-item fade-up">
+                    <div class="tf-foto"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Crecimiento"></div>
+                    <div class="tf-punto"></div>
+                    <div class="tf-texto"><h3>Mi Juventud</h3><p>Construyendo mi propia identidad y fortaleciendo mis creencias.</p></div>
+                </div>
+                <div class="tf-item fade-up">
+                    <div class="tf-foto"><img src="https://images.unsplash.com/photo-1544254050-a9cb00e409ec?q=80&w=400&auto=format&fit=crop" alt="Guias"></div>
+                    <div class="tf-punto"></div>
+                    <div class="tf-texto"><h3>Mis Guías</h3><p>Acompañado siempre de la mano de mis padres y padrinos.</p></div>
+                </div>
+                <div class="tf-item fade-up">
+                    <div class="tf-foto"><img src="https://images.unsplash.com/photo-1602030028438-4cf153cbae9e?q=80&w=400&auto=format&fit=crop" alt="Hoy"></div>
+                    <div class="tf-punto"></div>
+                    <div class="tf-texto"><h3>El Gran Día</h3><p>Listo para decir "Sí" por convicción propia. La Confirmación.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASE 7: LOGÍSTICA DE LUJO (MENÚ Y DRESS CODE) -->
+    <section class="seccion-padding" style="background: var(--color-secundario);">
+        <div class="contenedor">
+            
+            <!-- Banquete VIP -->
+            <div class="info-card fade-up" style="text-align: center;">
+                <i class="ph-fill ph-fork-knife" style="font-size: 3rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+                <h2 style="font-family: var(--fuente-titulo); font-size: 2rem; color: var(--color-oscuro); margin-bottom: 30px;">El Banquete</h2>
+                
+                <ul class="menu-lista">
+                    <li><h4>Primer Tiempo</h4><p>Crema de almendras tostadas al perfume de jerez.</p><div class="divisor-menu">&sim;</div></li>
+                    <li><h4>Plato Fuerte</h4><p>Medallones de res en salsa de vino tinto con puré rústico.</p><div class="divisor-menu">&sim;</div></li>
+                    <li><h4>Postre</h4><p>Volcán de chocolate oscuro y frutos rojos.</p></li>
+                </ul>
+            </div>
+
+            <!-- Moodboard Dress Code -->
+            <div class="fade-up" style="margin-top: 80px;">
+                <h2 class="titulo-seccion">Código de Vestimenta</h2>
+                <div class="moodboard">
+                    <div class="mood-text">
+                        <h3 style="color: var(--color-vino); margin-bottom: 15px;">Elegancia de Noche</h3>
+                        <p style="color: var(--color-texto-medio); font-size: 0.95rem; line-height: 1.8;">Para crear una atmósfera solemne y elegante, sugerimos <b>Formal de Noche</b> en tonos oscuros o joya (Vino, Esmeralda, Navy).<br><br><i>Nos reservamos el uso del color blanco y perla para la familia.</i></p>
+                    </div>
+                    <div class="mood-collage">
+                        <!-- Imágenes de estilo/texturas -->
+                        <img src="https://images.unsplash.com/photo-1594938298596-03bf0b5c1650?q=80&w=300&auto=format&fit=crop" class="mood-img img-1" alt="Traje">
+                        <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=300&auto=format&fit=crop" class="mood-img img-2" alt="Vestido">
+                        <img src="https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=300&auto=format&fit=crop" class="mood-img img-3" alt="Textura">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hospedaje -->
+            <div class="info-card fade-up" style="margin-top: 80px; text-align: center;">
+                <i class="ph-light ph-bed" style="font-size: 3rem; color: var(--color-oro); margin-bottom: 15px;"></i>
+                <h3 style="font-family: var(--fuente-titulo); font-size: 1.5rem; margin-bottom: 15px;">Hospedaje Sugerido</h3>
+                <p style="font-size: 0.95rem; color: var(--color-texto-medio); margin-bottom: 20px;">Para nuestros invitados que nos visitan de fuera, hemos conseguido una tarifa preferencial en:</p>
+                <h4 style="color: var(--color-vino); font-size: 1.2rem;">Hotel Grand Palace</h4>
+                <p style="font-size: 0.85rem; color: var(--color-texto-medio); margin-bottom: 20px;">Código: MATEO26</p>
+                <a href="#" class="btn-lujo" style="padding: 10px 25px; font-size: 0.8rem;"><i class="ph-fill ph-link"></i> Reservar Habitación</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FASE 8: REGALOS Y DRIVE -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            
+            <!-- Regalos Secretos -->
+            <div class="sobre-regalo fade-up" onclick="this.classList.toggle('abierto')">
+                <i class="ph-light ph-envelope-simple sobre-icono"></i>
+                <h3 style="font-family: var(--fuente-titulo); font-size: 1.8rem; margin-bottom: 15px; font-style: italic;">Un detalle para mi futuro</h3>
+                <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8); max-width: 400px; margin: 0 auto;">El mayor regalo es compartir este día contigo. Si deseas tener un detalle para apoyar mi futuro, <b>toca este sobre</b>.</p>
+                
+                <div class="datos-bancarios">
+                    <p style="font-size: 1rem; color: var(--color-oro); margin-bottom: 5px;"><b>Banco Internacional</b></p>
+                    <p style="font-size: 0.95rem; margin-bottom: 10px;">A nombre de: Roberto Garza</p>
+                    <p style="font-size: 1.1rem; letter-spacing: 2px; font-family: monospace;">CLABE: 012 345 6789 0123 4567</p>
+                </div>
+            </div>
+
+            <!-- Álbum Colaborativo (Drive) -->
+            <div class="fade-up" style="text-align: center; margin-top: 80px;">
+                <i class="ph-light ph-camera" style="font-size: 3rem; color: var(--color-oscuro); margin-bottom: 15px;"></i>
+                <h2 class="titulo-seccion" style="margin-bottom: 15px;">Inmortaliza este Día</h2>
+                <p style="color: var(--color-texto-medio); font-size: 0.95rem; max-width: 500px; margin: 0 auto 30px;">Este día no estaría completo sin tu mirada. Ayúdame a guardar cada sonrisa y cada abrazo subiendo las fotos y videos que tomes a nuestro álbum oficial.</p>
+                <a href="#" target="_blank" class="btn-lujo"><i class="ph-fill ph-google-drive-logo"></i> Subir mis fotos aquí</a>
+            </div>
+
+            <!-- Contador y Calendario -->
+            <div class="fade-up" style="margin-top: 80px; text-align: center;">
+                <div class="contador-grid" id="contador">
+                    <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                    <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                    <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                    <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+                </div>
+                <button class="btn-lujo" style="margin-top: 30px;"><i class="ph-fill ph-calendar-plus"></i> Agendar en Calendario</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FASE 9: RSVP Y LIBRO DE BENDICIONES UNIFICADO -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <div class="rsvp-arco">
+                <i class="ph-light ph-envelope-open" style="font-size: 3rem; color: var(--color-rojo-vivo); margin-bottom: 15px; position: relative; z-index: 5;"></i>
+                <h2 style="color: var(--color-oscuro); font-size: 2.2rem; font-style: italic; position: relative; z-index: 5;">Confirmación de<br>Asistencia</h2>
+                <p style="color: var(--color-texto-medio); margin-top: 15px; font-size: 0.95rem; position: relative; z-index: 5;">Déjame un mensaje de bendición y confirma tu asistencia para considerarte en el banquete.</p>
+                
+                <div class="formulario">
+                    <input type="text" id="wa-nombre" class="input-lujo" placeholder="Tu Nombre Completo (o Familia)" required>
+                    <textarea id="wa-mensaje" class="input-lujo" placeholder="Escribe aquí un consejo o bendición para Mateo..."></textarea>
+                    
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="asistencia" value="Sí asistiré con alegría" checked> Sí asistiré
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="asistencia" value="No podré asistir, pero les mando mis bendiciones"> No podré asistir
+                        </label>
+                    </div>
+
+                    <button onclick="enviarRSVP()" class="btn-whatsapp-lujo">
+                        <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Enviar Confirmación
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="fade-up">
+        <div class="contenedor">
+            <div class="logo-footer">ArteEn<span>Link</span></div>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px;">Diseñando experiencias inolvidables.</p>
+            
+            <div class="redes">
+                <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: rgba(255,255,255,0.4);">
+                &copy; 2026 ArteEnLink. Todos los derechos reservados.<br>Invitación Premium de Alta Costura.
+            </div>
+        </div>
+    </footer>
+
+        <script src="script.js"></script>
+
+</body>
+</html>

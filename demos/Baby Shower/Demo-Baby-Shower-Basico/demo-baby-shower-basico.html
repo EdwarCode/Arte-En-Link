@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Shower | Leonardo</title>
+    
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Great Vibes (Nombre), Playfair Display (Títulos), Poppins (Textos) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-fill ph-baby preloader-icono"></i>
+        <div class="preloader-texto">Preparando un día especial...</div>
+    </div>
+
+    <!-- PORTADA PRINCIPAL -->
+    <header class="portada">
+        <div class="marco-foto fade-up visible">
+            <div class="imagen-hero">
+                <!-- Imagen en tonos cálidos/neutros para Baby Shower -->
+                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=400&auto=format&fit=crop" alt="Baby Shower Leonardo">
+            </div>
+        </div>
+        
+        <div class="portada-titulos fade-up delay-1 visible">
+            <div class="texto-evento">Baby Shower de</div>
+            <h1 class="nombre-bebe">Leonardo</h1>
+            <div class="fecha-hero">Sábado 15 de Noviembre</div>
+        </div>
+    </header>
+
+    <!-- MENSAJE Y PADRES -->
+    <section class="seccion-padding" style="padding-top: 20px;">
+        <div class="contenedor fade-up">
+            <div class="divisor-icono"><i class="ph-fill ph-star"></i></div>
+            
+            <p class="texto-invitacion">
+                "Estamos inmensamente felices de compartir la dulce espera de nuestro pequeño con las personas que más queremos. ¡Tu presencia lo hará aún más especial!"
+            </p>
+            
+            <div class="bloque-nombres" style="margin-bottom: 0;">
+                <h3>Con amor, sus papás:</h3>
+                <p>Sofía Herrera & Alejandro Silva</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding" style="padding-top: 0;">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion" style="font-size: 1.8rem;">Faltan solo...</h2>
+            <div class="contador-grid" id="contador-baby">
+                <div class="contador-box">
+                    <span class="contador-numero" id="dias">00</span>
+                    <span class="contador-label">Días</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="horas">00</span>
+                    <span class="contador-label">Hrs</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="minutos">00</span>
+                    <span class="contador-label">Min</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="segundos">00</span>
+                    <span class="contador-label">Seg</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN (DÓNDE Y CUÁNDO) - En un Baby Shower Básico suele ser un solo lugar -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion">Dónde y Cuándo</h2>
+            <div class="divisor-icono" style="margin-bottom: 35px;"><i class="ph-fill ph-balloon"></i></div>
+            
+            <!-- Tarjeta Celebración -->
+            <div class="ubicacion-card fade-up">
+                <div class="ubicacion-icon"><i class="ph ph-map-pin-line"></i></div>
+                <h3>La Celebración</h3>
+                <div class="ubicacion-hora">4:00 p.m.</div>
+                <p class="ubicacion-direccion">Terraza de Eventos "Los Arcos".<br>Av. Primavera 123, Col. Centro.</p>
+                <a href="https://maps.google.com" target="_blank" class="btn-outline">Abrir en Mapa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP (CONFIRMACIÓN) -->
+    <section class="seccion-rsvp seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="titulo-seccion" style="margin-bottom: 15px;">¡Acompáñanos!</h2>
+            <p style="margin-bottom: 25px;">Por favor, confirma tu asistencia antes del 1 de Noviembre para considerarte en este hermoso día.</p>
+            
+            <a href="https://wa.me/520000000000?text=¡Hola!%20He%20recibido%20la%20invitación.%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Leonardo.%20🍼" target="_blank" class="btn-rsvp">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar Asistencia
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? Contáctanos</h3>
+            
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20básica%20de%20Baby%20Shower%20y%20me%20gustaría%20información." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+
+            <div class="creditos">
+                Diseño interactivo por <a href="#" target="_blank">ArteEnLink</a>. <br>Haciendo la espera mágica.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

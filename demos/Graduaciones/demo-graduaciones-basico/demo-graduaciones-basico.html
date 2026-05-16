@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandro Mendoza | Graduación 2026</title>
+
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cinzel (Elegancia Académica), Montserrat (Limpieza) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <i class="ph-fill ph-graduation-cap loader-icon"></i>
+        <div class="loader-text">A.M.</div>
+    </div>
+
+    <!-- PORTADA HERO -->
+    <header class="hero">
+        <div class="hero-bg">
+            <!-- Imagen genérica elegante de universidad/ceremonia -->
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" alt="Fondo Graduación">
+        </div>
+        <div class="hero-content fade-up visible">
+            <div class="hero-grado">Ingeniero en Software</div>
+            <h1 class="hero-nombre">Alejandro Mendoza</h1>
+            <div class="hero-linea"></div>
+            <div class="hero-generacion">Generación 2022 - 2026</div>
+        </div>
+    </header>
+
+    <!-- INVITACIÓN Y PALABRAS DEL GRADUADO -->
+    <section class="seccion-padding" style="background: var(--color-blanco);">
+        <div class="contenedor fade-up" style="text-align: center;">
+            <i class="ph-fill ph-quotes" style="font-size: 2.5rem; color: var(--color-oro); margin-bottom: 20px;"></i>
+            
+            <h2 style="font-family: var(--fuente-titulos); font-size: 2.2rem; color: var(--color-navy); margin-bottom: 30px;">
+                Un Nuevo Capítulo
+            </h2>
+            
+            <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-texto-secundario); margin: 0 auto 30px; max-width: 650px; font-weight: 300; font-style: italic;">
+                "Después de años de esfuerzo, desvelos y grandes aprendizajes, por fin ha llegado el momento de cerrar esta increíble etapa. Hoy miro hacia atrás y me doy cuenta de que este logro no es solo mío, sino de todos los que creyeron en mí. A mi familia por su apoyo incondicional, a mis maestros, y a mis amigos por hacer de este viaje una experiencia inolvidable: ¡Lo logramos!"
+            </p>
+            
+            <p style="font-size: 0.95rem; color: var(--color-navy); text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">
+                Es un honor invitarte a celebrar mi graduación.
+            </p>
+            
+            <div style="width: 50px; height: 2px; background: var(--color-oro); margin: 30px auto 0;"></div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up text-center">
+            <h2 class="titulo-seccion" style="margin-bottom: 10px;">La Gran Noche</h2>
+            <p style="text-align: center; color: var(--color-texto-claro); margin-bottom: 30px;">Falta muy poco para celebrar juntos este logro.</p>
+            
+            <div class="contador-grid" id="contador-graduacion">
+                <div class="contador-box"><span class="contador-numero" id="dias">00</span><span class="contador-label">Días</span></div>
+                <div class="contador-box"><span class="contador-numero" id="horas">00</span><span class="contador-label">Hrs</span></div>
+                <div class="contador-box"><span class="contador-numero" id="minutos">00</span><span class="contador-label">Min</span></div>
+                <div class="contador-box"><span class="contador-numero" id="segundos">00</span><span class="contador-label">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIONES (ACTO Y GALA) -->
+    <section class="seccion-padding" style="background: var(--color-fondo-base); padding-top: 0;">
+        <div class="contenedor">
+            
+            <!-- TARJETA 1: ACTO ACADÉMICO -->
+            <div class="ubicacion-card fade-up">
+                <i class="ph-fill ph-bank ubicacion-icono"></i>
+                <h3 class="ubicacion-titulo">Acto Académico</h3>
+                <div class="ubicacion-hora"><i class="ph ph-clock"></i> 17:00 Hrs</div>
+                <p class="ubicacion-direccion">
+                    <b>Auditorio Principal de la Universidad</b><br>
+                    Av. de la Sabiduría 123, Zona Centro.<br>
+                    Ciudad Universitaria.
+                </p>
+                <div class="botones-mapa">
+                    <a href="#" class="btn-outline"><i class="ph-fill ph-map-pin"></i> Ver en Google Maps</a>
+                    <a href="#" class="btn-outline"><i class="ph-fill ph-navigation-arrow"></i> Ir con Waze</a>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: CENA DE GALA -->
+            <div class="ubicacion-card fade-up delay-1">
+                <i class="ph-fill ph-martini ubicacion-icono"></i>
+                <h3 class="ubicacion-titulo">Cena de Gala</h3>
+                <div class="ubicacion-hora"><i class="ph ph-clock"></i> 21:00 Hrs</div>
+                <p class="ubicacion-direccion">
+                    <b>Salón de Eventos "El Dorado"</b><br>
+                    Blvd. de los Éxitos 456, Col. Las Palmas.<br>
+                    Recepción y Celebración.
+                </p>
+                <div class="botones-mapa">
+                    <a href="#" class="btn-outline"><i class="ph-fill ph-map-pin"></i> Ver en Google Maps</a>
+                    <a href="#" class="btn-outline"><i class="ph-fill ph-navigation-arrow"></i> Ir con Waze</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RSVP VIP (CONFIRMACIÓN LIQUID GOLD A WHATSAPP) -->
+    <section class="seccion-rsvp fade-up">
+        <div class="rsvp-content">
+            <i class="ph-fill ph-envelope-simple-open rsvp-icono"></i>
+            <h2>Confirma tu Asistencia</h2>
+            <p>Por favor, confírmame por WhatsApp si podrás acompañarme antes del 15 de Junio. ¡Tu presencia es el mejor regalo para celebrar mi logro!</p>
+            
+            <a href="https://wa.me/520000000000?text=¡Hola%20Alejandro!%20Confirmo%20con%20mucho%20gusto%20mi%20asistencia%20a%20tu%20graduación.%20¡Felicidades!" target="_blank" class="btn-oro" style="width: 100%; max-width: 400px; margin: 0 auto;">
+                <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER COMERCIAL ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20Básica%20de%20Graduaciones%20y%20me%20encantó." target="_blank" class="social-link" title="WhatsApp">
+                    <i class="ph-fill ph-whatsapp-logo"></i>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Facebook">
+                    <i class="ph-fill ph-facebook-logo"></i>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Instagram">
+                    <i class="ph-fill ph-instagram-logo"></i>
+                </a>
+            </div>
+            <div class="creditos">
+                Diseño exclusivo de Alta Costura por <a href="index.html" target="_blank">ArteEnLink</a>.
+            </div>
+        </div>
+    </footer>
+
+        <script src="script.js"></script>
+
+</body>
+</html>

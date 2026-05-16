@@ -1,0 +1,343 @@
+
+        /* ==========================================================================
+           1. SISTEMA DE DISEÑO (DARK MODE / LUXURY TECH)
+           ========================================================================== */
+        :root {
+            --color-bg-base: #030303; 
+            --color-bg-card: rgba(20, 20, 25, 0.4); 
+            --color-texto-main: #FFFFFF;
+            --color-texto-muted: #A1A1AA;
+            
+            --color-neon: #00E5FF; 
+            --color-neon-dim: rgba(0, 229, 255, 0.15);
+            --color-borde: rgba(0, 229, 255, 0.2); 
+            
+            --font-display: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --blur-card: blur(20px);
+            --borde-radio: 12px;
+        }
+
+        /* ==========================================================================
+           2. RESET Y REGLA DE ORO (ANTI-JITTER)
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--color-bg-base); 
+            color: var(--color-texto-main); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+            position: relative; 
+        }
+
+        /* --- FONDO ATMOSFÉRICO (MALLA TECH Y ORBES) --- */
+        .fondo-atmosfera {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden;
+            background-color: var(--color-bg-base);
+        }
+        
+        /* Malla / Fibra Tech CSS (Sin imágenes pesadas) */
+        .fondo-atmosfera::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+            opacity: 0.8;
+        }
+
+        /* Orbe Neón Superior Izquierdo */
+        .orbe-1 {
+            position: absolute; top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%; animation: flotarOrbe 15s ease-in-out infinite alternate;
+        }
+        
+        /* Orbe Azul Noche Inferior Derecho */
+        .orbe-2 {
+            position: absolute; bottom: -20%; right: -10%; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(30, 58, 138, 0.2) 0%, transparent 70%);
+            border-radius: 50%; animation: flotarOrbe2 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes flotarOrbe { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(10%, 10%, 0); } }
+        @keyframes flotarOrbe2 { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-10%, -10%, 0); } }
+
+        h1, h2, h3, h4 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 2px; }
+        a { text-decoration: none; color: inherit; }
+        
+        .contenedor { width: 100%; max-width: 600px; margin: 0 auto; padding: 0 6%; position: relative; z-index: 10; }
+        .seccion-padding { padding: 70px 0; }
+        .seccion-padding-bottom { padding-bottom: 70px; }
+
+        /* ==========================================================================
+           3. CLASES MAESTRAS: GLASSMORPHISM DARK Y ANIMACIONES SCROLL
+           ========================================================================== */
+        .tech-card {
+            background: var(--color-bg-card);
+            backdrop-filter: var(--blur-card);
+            -webkit-backdrop-filter: var(--blur-card);
+            border: 1px solid var(--color-borde);
+            border-radius: var(--borde-radio);
+            padding: 40px 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 229, 255, 0.05);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .tech-card:hover {
+            border-color: rgba(0, 229, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(0, 229, 255, 0.1);
+        }
+
+        .fade-up { opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .fade-up.visible { opacity: 1; transform: translate3d(0, 0, 0); }
+        .delay-1 { transition-delay: 150ms; }
+        .delay-2 { transition-delay: 300ms; }
+
+        /* ==========================================================================
+           4. BOTONES (SIN SCALE)
+           ========================================================================== */
+        .btn-neon {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 16px 24px;
+            background-color: transparent;
+            color: var(--color-neon);
+            border: 1px solid var(--color-neon);
+            border-radius: 8px;
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: 2px;
+            position: relative; cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            overflow: hidden;
+        }
+        .btn-neon::after {
+            content: ''; position: absolute; inset: 0;
+            box-shadow: 0 0 20px var(--color-neon);
+            opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+        }
+        .btn-neon:hover { transform: translate3d(0, -3px, 0); background-color: var(--color-neon); color: #000; }
+        .btn-neon:hover::after { opacity: 1; }
+
+        .btn-maps {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: rgba(255,255,255,0.05); color: var(--color-texto-main);
+            border: 1px solid rgba(255,255,255,0.1); padding: 12px 20px; border-radius: 8px;
+            font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease; cursor: pointer; width: 100%; margin-bottom: 10px;
+        }
+        .btn-maps:hover { background: rgba(255,255,255,0.1); transform: translate3d(0, -3px, 0); border-color: rgba(255,255,255,0.3); }
+
+        /* ==========================================================================
+           5. PRELOADER Y MÚSICA
+           ========================================================================== */
+        #preloader { position: fixed; inset: 0; background: var(--color-bg-base); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.6s ease; }
+        #preloader.oculto { opacity: 0; pointer-events: none; }
+        .loader-ring { width: 60px; height: 60px; border: 2px solid var(--color-borde); border-top: 2px solid var(--color-neon); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        .loader-text { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 4px; color: var(--color-texto-muted); text-transform: uppercase; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .btn-musica-flotante {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background: var(--color-neon); color: #000; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            cursor: pointer; z-index: 1000; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+            transition: transform 0.3s ease; border: none;
+        }
+        .btn-musica-flotante:hover { transform: translate3d(0, -5px, 0); }
+        .btn-musica-flotante.pausado { background: var(--color-bg-card); color: var(--color-texto-main); border: 1px solid var(--color-borde); box-shadow: none; }
+        .ecualizador-mini { display: flex; gap: 3px; align-items: flex-end; height: 15px; margin-left: 5px; }
+        .ecualizador-mini span { width: 3px; background: #000; animation: eq 1s infinite alternate; }
+        .btn-musica-flotante.pausado .ecualizador-mini span { background: var(--color-texto-muted); animation-play-state: paused; }
+        .ecualizador-mini span:nth-child(2) { animation-delay: 0.2s; }
+        .ecualizador-mini span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes eq { 0% { height: 4px; } 100% { height: 15px; } }
+
+        /* ==========================================================================
+           6. PORTADA (HERO & ARTE SVG)
+           ========================================================================== */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
+        
+        .hero-bg { position: absolute; inset: 0; z-index: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        
+        /* Marca de Agua Inicial (Gigante y Difuminada) */
+        .marca-agua-inicial {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            font-family: var(--font-display);
+            font-size: 80vh; /* Altura colosal */
+            font-weight: 700;
+            color: #FFFFFF;
+            opacity: 0.02; /* Extremadamente sutil */
+            pointer-events: none;
+            line-height: 1;
+            z-index: 1;
+        }
+
+        /* SVG Láser XV */
+        .laser-xv-container {
+            position: absolute;
+            top: 45%; left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            width: 80vw; max-width: 350px;
+            z-index: 2;
+            opacity: 0.35; /* Suave para no quitar protagonismo al texto real */
+        }
+        .laser-xv { width: 100%; height: auto; filter: drop-shadow(0 0 15px var(--color-neon)); }
+        
+        .path-laser {
+            fill: none;
+            stroke: var(--color-neon);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 100; /* Prepara el trazado */
+            stroke-dashoffset: 100; /* Oculta el trazado inicialmente */
+            /* Animación: 1. Dibuja, 2. Se queda pulsando */
+            animation: drawLaser 3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards,
+                       pulseLaser 3s ease-in-out 3.5s infinite alternate;
+        }
+        /* La "V" se dibuja un segundo después para efecto escalonado */
+        .path-laser:nth-child(2) { animation-delay: 1.5s, 4.5s; }
+
+        @keyframes drawLaser {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes pulseLaser {
+            0% { opacity: 1; filter: drop-shadow(0 0 10px var(--color-neon)); }
+            100% { opacity: 0.4; filter: drop-shadow(0 0 25px var(--color-neon)); }
+        }
+
+        /* Viñeta oscura inferior para mezclar */
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, var(--color-bg-base) 100%); z-index: 3; pointer-events: none;}
+        
+        /* Contenido Frontal */
+        .hero-content { position: relative; z-index: 10; width: 100%; text-align: center; }
+        .hero-etiqueta { display: inline-block; border: 1px solid var(--color-neon); color: var(--color-neon); padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 20px; font-family: var(--font-display); background: var(--color-neon-dim); box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
+        .hero-nombre { font-size: 4.5rem; line-height: 1; font-weight: 700; margin-bottom: 15px; text-shadow: 0 10px 40px rgba(0,0,0,0.9); }
+        .hero-fecha { font-size: 1.1rem; color: var(--color-texto-muted); letter-spacing: 2px; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
+
+        /* Cuenta Regresiva */
+        .contador-grid { display: flex; justify-content: center; gap: 12px; margin-top: 40px; }
+        .contador-box { background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border: 1px solid var(--color-borde); width: 75px; height: 85px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 8px; position: relative; }
+        .contador-box::before { content: ''; position: absolute; top: 0; left: 10%; width: 80%; height: 2px; background: var(--color-neon); opacity: 0.5; }
+        .contador-numero { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; line-height: 1; color: var(--color-texto-main); text-shadow: 0 0 10px rgba(255,255,255,0.2); }
+        .contador-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; color: var(--color-texto-muted); }
+
+        /* ==========================================================================
+           7. SECCIÓN FOTO Y MENSAJE FORMAL
+           ========================================================================== */
+        .foto-marco { 
+            position: relative; width: 100%; max-width: 250px; aspect-ratio: 3/4; margin: 0 auto 35px; 
+            border-radius: var(--borde-radio); padding: 4px; 
+            background: linear-gradient(135deg, var(--color-neon), transparent, rgba(255,255,255,0.2)); 
+            box-shadow: 0 10px 40px rgba(0, 229, 255, 0.15);
+        }
+        .foto-marco img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; filter: grayscale(10%) contrast(1.1); }
+        .texto-formal { font-size: 1.05rem; color: var(--color-texto-muted); margin-bottom: 30px; font-weight: 300; line-height: 1.8; }
+        .padres-nombres { font-family: var(--font-display); font-size: 1.5rem; color: var(--color-texto-main); letter-spacing: 1px; }
+
+        /* ==========================================================================
+           8. GALERÍA ESTÁNDAR
+           ========================================================================== */
+        .titulo-seccion { font-size: 2rem; text-align: center; margin-bottom: 30px; color: var(--color-texto-main); }
+        .titulo-seccion span { color: var(--color-neon); text-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+        
+        .galeria-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .galeria-item { border-radius: 8px; overflow: hidden; position: relative; aspect-ratio: 1/1; border: 1px solid var(--color-borde); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .galeria-item.destacado { grid-column: span 2; aspect-ratio: 2/1; }
+        .galeria-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: filter 0.4s ease, transform 0.5s ease; }
+        .galeria-item:hover img { filter: grayscale(0%); transform: scale(1.03); }
+
+        /* ==========================================================================
+           9. DRESS CODE & REGALOS
+           ========================================================================== */
+        .icono-seccion { width: 60px; height: 60px; background: var(--color-neon-dim); color: var(--color-neon); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px; border: 1px solid rgba(0, 229, 255, 0.4); box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); }
+        .etiqueta-tech { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--color-borde); padding: 8px 20px; border-radius: 20px; font-family: var(--font-display); font-size: 1.2rem; color: var(--color-texto-main); letter-spacing: 1px; margin-bottom: 15px; }
+        
+        /* Tarjeta Bancaria Tech */
+        .tarjeta-bancaria { background: linear-gradient(135deg, rgba(26,26,26,0.8), rgba(5,5,5,0.8)); border: 1px solid var(--color-borde); border-radius: 12px; padding: 20px; text-align: left; margin-top: 20px; position: relative; overflow: hidden; }
+        .tarjeta-bancaria::before { content: ''; position: absolute; top: -50px; right: -50px; width: 100px; height: 100px; background: var(--color-neon-dim); border-radius: 50%; filter: blur(30px); }
+        .tarjeta-label { font-size: 0.75rem; color: var(--color-texto-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .tarjeta-dato { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-copiar { background: transparent; border: 1px solid var(--color-neon); color: var(--color-neon); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s ease; }
+        .btn-copiar:hover { background: var(--color-neon); color: #000; box-shadow: 0 0 10px var(--color-neon); }
+
+        /* ==========================================================================
+           10. ITINERARIO (TIMELINE)
+           ========================================================================== */
+        .timeline { position: relative; max-width: 400px; margin: 0 auto; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px; background: linear-gradient(to bottom, transparent, var(--color-neon), transparent); opacity: 0.5;}
+        
+        .evento { position: relative; padding-left: 50px; margin-bottom: 35px; }
+        .evento:last-child { margin-bottom: 0; }
+        
+        .evento-punto { position: absolute; left: 11px; top: 5px; width: 20px; height: 20px; background: var(--color-bg-base); border: 2px solid var(--color-neon); border-radius: 50%; box-shadow: 0 0 15px var(--color-neon); z-index: 2; }
+        
+        .evento-hora { font-family: var(--font-display); font-size: 1.2rem; color: var(--color-neon); font-weight: 600; margin-bottom: 2px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
+        .evento-titulo { font-size: 1.1rem; color: var(--color-texto-main); margin-bottom: 5px; }
+        .evento-desc { font-size: 0.9rem; color: var(--color-texto-muted); }
+
+        /* ==========================================================================
+           11. UBICACIÓN Y RSVP
+           ========================================================================== */
+        .ubicacion-card { text-align: center; margin-bottom: 25px; }
+        .rsvp-box { text-align: center; border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 10px 40px rgba(0, 229, 255, 0.1); }
+
+        /* ==========================================================================
+           12. FOOTER AGENCIA (NUEVO)
+           ========================================================================== */
+        .footer-agencia {
+            background-color: transparent;
+            border-top: 1px solid var(--color-borde);
+            padding: 60px 20px 90px; /* Padding extra abajo para que no estorbe el botón de música */
+            text-align: center;
+            position: relative;
+        }
+        /* Línea de luz superior */
+        .footer-agencia::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 40%; height: 1px; background: linear-gradient(90deg, transparent, var(--color-neon), transparent);
+            opacity: 0.6;
+        }
+        .footer-pre { font-size: 0.85rem; color: var(--color-texto-muted); letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; }
+        .footer-logo { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--color-texto-main); margin-bottom: 10px; letter-spacing: 1px; }
+        .footer-logo span { color: var(--color-neon); text-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
+        .footer-desc { font-size: 0.9rem; color: var(--color-texto-muted); margin-bottom: 25px; max-width: 300px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+        
+        .btn-contacto-footer {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: rgba(0, 229, 255, 0.05); border: 1px solid var(--color-neon);
+            color: var(--color-neon); padding: 12px 28px; border-radius: 50px;
+            font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; letter-spacing: 1px;
+            transition: all 0.3s ease; text-transform: uppercase; cursor: pointer;
+        }
+        .btn-contacto-footer:hover { 
+            background: var(--color-neon); color: #000; 
+            transform: translate3d(0, -3px, 0); 
+            box-shadow: 0 5px 20px rgba(0, 229, 255, 0.4); 
+        }
+        
+        .footer-copy { margin-top: 40px; font-size: 0.75rem; color: #3f3f46; letter-spacing: 1px; }
+
+        /* ==========================================================================
+           13. MEDIA QUERIES
+           ========================================================================== */
+        @media (min-width: 768px) {
+            .hero-nombre { font-size: 6rem; }
+            .contador-box { width: 90px; height: 100px; }
+            .contador-numero { font-size: 2.8rem; }
+            .timeline::before { left: 50%; transform: translateX(-50%); }
+            .evento { width: 50%; padding-left: 0; padding-right: 40px; text-align: right; margin-left: 0; }
+            .evento:nth-child(even) { margin-left: 50%; padding-right: 0; padding-left: 40px; text-align: left; }
+            .evento-punto { left: auto; right: -10px; }
+            .evento:nth-child(even) .evento-punto { right: auto; left: -10px; }
+        }

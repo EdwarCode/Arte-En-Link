@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila | Mi Primera Comunión (Premium VIP)</title>
+
+    <!-- Fuentes de Alta Gama -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body class="bloqueado">
+
+    <!-- TEXTURA GLOBAL Y PARTÍCULAS -->
+    <div class="textura-global"></div>
+    <div class="particulas-oro" id="contenedor-chispas">
+        <!-- Generadas por JS para evitar saturar el HTML -->
+    </div>
+
+    <!-- PALOMAS ANIMADAS (PARALLAX CONTINUO) -->
+    <svg class="paloma paloma-1" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21.9,8.4c-2.3-1.6-6-1.5-8.8,1c-1.3,1.2-2.3,2.6-2.9,4.2c-0.6-1.7-1.8-3.1-3.2-4.3C4.1,6.8,0.5,6.6,0.5,6.6s1,1.5,2.1,3c1.7,2.2,3.3,5.1,3,8c0,0.1,0,0.2,0,0.3c0,1,0.8,1.7,1.7,1.7c0.8,0,1.5-0.5,1.7-1.3c0.3-1.6,1.4-3.5,2.9-4.8c1.5-1.3,3.3-2,5-2c1.9,0,3.8,0.7,5.5,1.9C23.9,14.6,24,10,21.9,8.4z"/>
+    </svg>
+    <svg class="paloma paloma-2" style="top: 80%;" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21.9,8.4c-2.3-1.6-6-1.5-8.8,1c-1.3,1.2-2.3,2.6-2.9,4.2c-0.6-1.7-1.8-3.1-3.2-4.3C4.1,6.8,0.5,6.6,0.5,6.6s1,1.5,2.1,3c1.7,2.2,3.3,5.1,3,8c0,0.1,0,0.2,0,0.3c0,1,0.8,1.7,1.7,1.7c0.8,0,1.5-0.5,1.7-1.3c0.3-1.6,1.4-3.5,2.9-4.8c1.5-1.3,3.3-2,5-2c1.9,0,3.8,0.7,5.5,1.9C23.9,14.6,24,10,21.9,8.4z"/>
+    </svg>
+
+    <!-- MÚSICA ÉPICA/ANGELICAL -->
+    <audio id="audio-premium" loop>
+        <!-- Pista de piano cinemático suave -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- EL WOW FACTOR: APERTURA GATEFOLD -->
+    <div id="gatefold">
+        <div class="puerta puerta-izq"></div>
+        <div class="puerta puerta-der"></div>
+        
+        <div class="sello-wrapper">
+            <div class="tocadiscos-hint">
+                <i class="ph-fill ph-vinyl-record" style="font-size: 1.5rem; margin-bottom: 5px; display: block;"></i>
+                Rompe el sello
+            </div>
+            <div class="sello-cera" id="btn-abrir">C</div>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR FLOTANTE -->
+    <div id="reproductor" onclick="togglePlay()">
+        <i class="ph-fill ph-music-note"></i>
+    </div>
+
+    <!-- 1. PORTADA CINEMATOGRÁFICA -->
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1596707328904-8b0907e59f8c?q=80&w=800&auto=format&fit=crop" alt="Festejada">
+        </div>
+        
+        <!-- Detalles Botánicos en Esquinas -->
+        <svg class="rama-decorativa rama-top-left" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M10,90 Q30,50 80,10 Q60,30 20,80 Z" opacity="0.6"/>
+            <path d="M40,70 C50,60 70,50 85,35 C70,45 50,60 30,80 Z"/>
+            <path d="M20,50 C40,40 60,30 75,15 C55,30 35,45 15,65 Z"/>
+        </svg>
+        <svg class="rama-decorativa rama-bottom-right" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M10,90 Q30,50 80,10 Q60,30 20,80 Z" opacity="0.6"/>
+            <path d="M40,70 C50,60 70,50 85,35 C70,45 50,60 30,80 Z"/>
+            <path d="M20,50 C40,40 60,30 75,15 C55,30 35,45 15,65 Z"/>
+        </svg>
+
+        <div class="hero-marco"></div>
+        <div class="hero-content anim scale-in">
+            <div class="hero-etiqueta">Mi Primera Comunión</div>
+            <h1 class="hero-nombre">Camila</h1>
+            <div class="divisor-oro">
+                <div class="linea"></div><i class="ph-fill ph-star"></i><div class="linea"></div>
+            </div>
+            <div class="hero-fecha">Sábado, 24 de Mayo</div>
+        </div>
+    </header>
+
+    <!-- 2. MI ORACIÓN Y PILARES -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            
+            <!-- Oración (Estilo Misal) -->
+            <div class="seccion-oracion anim fade-up">
+                <div class="texto-misal">
+                    <span class="letra-capitular">E</span>n este día de inmensa gracia, elevo mi espíritu hacia el cielo. El Señor es mi pastor, nada me falta; en verdes pastos me hace descansar. Junto a tranquilas aguas me conduce; me infunde nuevas fuerzas y me guía por el camino correcto, haciendo honor a su nombre. Aunque pase por el valle más oscuro, no temeré mal alguno, porque Tú estás a mi lado; tu vara y tu cayado me infunden aliento. Has preparado una mesa ante mí, y hoy me invitas a participar de tu banquete sagrado, llenando mi copa de tu amor eterno para habitar en tu casa por siempre.
+                </div>
+                <span class="ref-biblica">Salmo 23 y Oración de Fe</span>
+            </div>
+
+            <!-- Narrativa -->
+            <div class="texto-narrativa anim fade-up d-1">
+                <p>Hay momentos en nuestra existencia que se guardan para siempre en el alma, instantes donde la luz divina toca nuestras vidas de una manera inefable y nos transforma. Hoy, con el corazón rebosante de una alegría pura y una infinita gratitud hacia nuestro Creador, me preparo para dar uno de los pasos más trascendentales de mi vida: recibir a Jesús por primera vez en el sagrado Sacramento de la Comunión.</p>
+                
+                <p>Este no es solo un día de celebración terrenal, es un día de inmensa luz, fe y compromiso que marcará el inicio de un camino espiritual profundo, siempre guiado por Su inquebrantable amor. He esperado este momento con devoción, preparándome día a día para abrirle las puertas de mi corazón al Señor de manera definitiva.</p>
+                
+                <p>Saber que cuento con el apoyo de las personas que más quiero hace que esta bendición sea aún más perfecta. Me encantaría que me acompañaras a compartir el pan de la vida, a celebrar la pureza de este encuentro y a formar parte de mis recuerdos más invaluables. Tu presencia, tus sinceras oraciones y tu cariño serán, sin duda, el regalo más hermoso en este día inolvidable.</p>
+            </div>
+
+            <!-- Pilares 3D -->
+            <div class="grid-pilares">
+                <div class="pilar-card anim fade-left d-2">
+                    <div class="pilar-rol">Mis Padres</div>
+                    <div class="pilar-nombres">Alejandro Torres<br>& María José Silva</div>
+                </div>
+                <div class="pilar-card anim fade-right d-3">
+                    <div class="pilar-rol">Mis Padrinos</div>
+                    <div class="pilar-nombres">Carlos Ruiz<br>& Ana Victoria Gómez</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. HISTORIA "MI CRECIMIENTO" -->
+    <section class="seccion-padding" style="background: rgba(255,255,255,0.4);">
+        <div class="contenedor text-center">
+            <h2 class="anim fade-up" style="font-size: 2.5rem; color: var(--color-verde-olivo);">Mi Historia de Fe</h2>
+            <div class="divisor-oro anim fade-up"><div class="linea"></div><i class="ph-fill ph-leaf"></i><div class="linea"></div></div>
+
+            <div class="timeline-crecimiento">
+                <div class="foto-historia anim fade-up d-1">
+                    <div class="marco-oro">
+                        <!-- Foto Bebé Bautizo -->
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Bautizo">
+                    </div>
+                    <div class="etiqueta-historia">Mi Bautizo</div>
+                </div>
+                <div class="foto-historia anim fade-up d-2" style="margin-top: 40px;">
+                    <div class="marco-oro">
+                        <!-- Foto Niña pequeña -->
+                        <img src="https://images.unsplash.com/photo-1602030028438-4cf153cbae9e?q=80&w=400&auto=format&fit=crop" alt="Primeros Pasos">
+                    </div>
+                    <div class="etiqueta-historia">Mis Pasos</div>
+                </div>
+                <div class="foto-historia anim fade-up d-3">
+                    <div class="marco-oro">
+                        <!-- Foto Comunión Actual -->
+                        <img src="https://images.unsplash.com/photo-1544254050-a9cb00e409ec?q=80&w=400&auto=format&fit=crop" alt="Comunión">
+                    </div>
+                    <div class="etiqueta-historia">Hoy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. TIEMPO EXACTO (CONTADOR + CALENDARIO) -->
+    <section class="seccion-padding">
+        <div class="contenedor text-center">
+            <h2 class="anim fade-up" style="font-size: 2.2rem; margin-bottom: 30px;">Faltan</h2>
+            
+            <div class="contador-premium anim scale-in d-1" id="contador-comunion">
+                <div class="box-time"><span class="num-time" id="dias">00</span><span class="label-time">Días</span></div>
+                <div class="box-time"><span class="num-time" id="horas">00</span><span class="label-time">Hrs</span></div>
+                <div class="box-time"><span class="num-time" id="minutos">00</span><span class="label-time">Min</span></div>
+                <div class="box-time"><span class="num-time" id="segundos">00</span><span class="label-time">Seg</span></div>
+            </div>
+
+            <div class="anim fade-up d-2" style="margin-top: 40px;">
+                <!-- Link simulado a Google Calendar -->
+                <a href="#" class="btn-oro">
+                    <i class="ph-fill ph-calendar-plus"></i> Agendar en mi Calendario
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ITINERARIO Y LOGÍSTICA (MAPAS) -->
+    <section class="seccion-padding" style="background: rgba(255,255,255,0.4);">
+        <div class="contenedor">
+            <h2 class="text-center anim fade-up" style="font-size: 2.5rem; text-align: center;">Itinerario del Día</h2>
+            <div class="divisor-oro anim fade-up"><div class="linea"></div><i class="ph-fill ph-clock"></i><div class="linea"></div></div>
+
+            <div class="timeline-itinerario" style="margin-top: 50px;">
+                <div class="item-iti anim fade-left d-1">
+                    <div class="punto-iti"></div>
+                    <div class="hora-iti">12:00 PM</div>
+                    <div class="tit-iti"><i class="ph-fill ph-church"></i> Ceremonia Religiosa</div>
+                    <div class="desc-iti">Parroquia de San Miguel Arcángel.<br><a href="#" style="color: var(--color-oro); text-decoration: underline; font-size: 0.85rem;">Ver en Mapa</a></div>
+                </div>
+                <div class="item-iti anim fade-left d-2">
+                    <div class="punto-iti"></div>
+                    <div class="hora-iti">02:30 PM</div>
+                    <div class="tit-iti"><i class="ph-fill ph-martini"></i> Recepción y Coctel</div>
+                    <div class="desc-iti">Salón de Eventos "Las Palmas".<br><a href="#" style="color: var(--color-oro); text-decoration: underline; font-size: 0.85rem;">Ver en Mapa</a></div>
+                </div>
+                <div class="item-iti anim fade-left d-3">
+                    <div class="punto-iti"></div>
+                    <div class="hora-iti">03:30 PM</div>
+                    <div class="tit-iti"><i class="ph-fill ph-fork-knife"></i> Gran Banquete</div>
+                    <div class="desc-iti">Comida en compañía de familiares y amigos.</div>
+                </div>
+                <div class="item-iti anim fade-left d-1">
+                    <div class="punto-iti"></div>
+                    <div class="hora-iti">05:00 PM</div>
+                    <div class="tit-iti"><i class="ph-fill ph-microphone-stage"></i> Brindis</div>
+                    <div class="desc-iti">Palabras de mis padres y padrinos.</div>
+                </div>
+                <div class="item-iti anim fade-left d-2">
+                    <div class="punto-iti"></div>
+                    <div class="hora-iti">05:30 PM</div>
+                    <div class="tit-iti"><i class="ph-fill ph-cake"></i> Postres y Pastel</div>
+                    <div class="desc-iti">Apertura de la mesa de dulces.</div>
+                </div>
+                <div class="item-iti anim fade-left d-3">
+                    <div class="punto-iti"></div>
+                    <div class="hora-iti">08:00 PM</div>
+                    <div class="tit-iti"><i class="ph-fill ph-hand-waving"></i> Agradecimientos</div>
+                    <div class="desc-iti">Entrega de recuerdos y despedida.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. MENÚ DEL BANQUETE (NUEVO MÓDULO VIP) -->
+    <section class="seccion-padding">
+        <div class="contenedor">
+            <h2 class="text-center anim fade-up" style="font-size: 2.5rem; text-align: center;">El Banquete</h2>
+            <div class="divisor-oro anim fade-up"><div class="linea"></div><i class="ph-fill ph-wine"></i><div class="linea"></div></div>
+
+            <div class="glass-card anim scale-in d-1" style="margin-top: 40px; padding: 50px 30px;">
+                <div class="menu-grid">
+                    <div class="menu-col">
+                        <i class="ph-fill ph-brandy menu-icono"></i>
+                        <h3 class="menu-tipo">Adultos</h3>
+                        <div class="platillo">
+                            <div class="platillo-nom">Crema de Elote Asado</div>
+                            <div class="platillo-desc">Con crujiente de poro y aceite de trufa.</div>
+                        </div>
+                        <div class="platillo">
+                            <div class="platillo-nom">Medallones al Vino Tinto</div>
+                            <div class="platillo-desc">Acompañados de puré rústico y espárragos.</div>
+                        </div>
+                        <div class="platillo">
+                            <div class="platillo-nom">Tarta de Manzana Caliente</div>
+                            <div class="platillo-desc">Con helado de vainilla de Papantla.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-col" style="border-left: 1px dashed var(--color-oro-claro);">
+                        <i class="ph-fill ph-ice-cream menu-icono"></i>
+                        <h3 class="menu-tipo">Infantil</h3>
+                        <div class="platillo">
+                            <div class="platillo-nom">Macarrones con Queso</div>
+                            <div class="platillo-desc">Salsa suave de queso cheddar.</div>
+                        </div>
+                        <div class="platillo">
+                            <div class="platillo-nom">Nuggets de Pollo Caseros</div>
+                            <div class="platillo-desc">Con papas a la francesa y aderezos.</div>
+                        </div>
+                        <div class="platillo">
+                            <div class="platillo-nom">Mesa de Dulces</div>
+                            <div class="platillo-desc">Acceso ilimitado a la mesa de postres.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. DRESS CODE & HOSPEDAJE -->
+    <section class="seccion-padding" style="background: rgba(255,255,255,0.4);">
+        <div class="contenedor">
+            
+            <h2 class="text-center anim fade-up" style="font-size: 2.2rem; text-align: center; margin-bottom: 40px;">Código de Vestimenta</h2>
+            <div class="dc-grid">
+                <div class="dc-card anim fade-up d-1">
+                    <svg class="dc-svg" viewBox="0 0 512 512" fill="currentColor"><path d="M256 16c-35.3 0-64 28.7-64 64v16H168c-13.3 0-24 10.7-24 24s10.7 24 24 24h24v32c0 23.6 12.8 44.1 31.8 54.9l-83 237.2C133.3 490 150.8 512 175.4 512h161.1c24.6 0 42.1-22 34.6-43.9l-83-237.2c19-10.8 31.8-31.3 31.8-54.9v-32h24c13.3 0 24-10.7 24-24s-10.7-24-24-24h-24V80c0-35.3-28.7-64-64-64z"/></svg>
+                    <h3 style="font-family: var(--fuente-titulos); font-size: 1.3rem; margin-bottom: 10px;">Damas</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-texto-claro);">Vestido largo o midi en tonos pastel o florales. <br><b>Blanco reservado.</b></p>
+                </div>
+                <div class="dc-card anim fade-up d-2">
+                    <svg class="dc-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 7C4.4 7 4 7.4 4 8V16C4 16.5 4.4 17 5 17C5.6 17 6.2 16.8 6.8 16.5L10 14.8V9.1L6.8 7.4C6.2 7.1 5.6 7 5 7Z"/><path d="M19 7C19.5 7 20 7.4 20 8V16C20 16.5 19.5 17 19 17C18.3 17 17.7 16.8 17.1 16.5L14 14.8V9.1L17.1 7.4C17.7 7.1 18.3 7 19 7Z"/><circle cx="12" cy="12" r="3.5"/></svg>
+                    <h3 style="font-family: var(--fuente-titulos); font-size: 1.3rem; margin-bottom: 10px;">Caballeros</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-texto-claro);">Traje formal en tonos oscuros o claros. <br>Corbata opcional.</p>
+                </div>
+            </div>
+
+            <!-- Hospedaje -->
+            <div style="margin-top: 80px;">
+                <h2 class="text-center anim fade-up" style="font-size: 2.2rem; text-align: center; margin-bottom: 10px;">Hospedaje Sugerido</h2>
+                <p class="text-center anim fade-up" style="text-align: center; color: var(--color-texto-claro); margin-bottom: 40px; font-size: 0.95rem;">Para nuestros invitados que nos visitan de fuera.</p>
+                
+                <div class="hospedaje-card anim fade-left d-1">
+                    <div class="hosp-info">
+                        <h4>Grand Hotel Boutique</h4>
+                        <p>Tarifa especial mencionando el evento "Comunión Camila".</p>
+                    </div>
+                    <a href="#" class="btn-outline btn-oro" style="padding: 10px 20px; font-size: 0.8rem;">Reservar</a>
+                </div>
+                <div class="hospedaje-card anim fade-left d-2">
+                    <div class="hosp-info">
+                        <h4>Hotel Suites Ejecutivas</h4>
+                        <p>A 5 minutos del salón de eventos.</p>
+                    </div>
+                    <a href="#" class="btn-outline btn-oro" style="padding: 10px 20px; font-size: 0.8rem;">Reservar</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 8. MESA DE REGALOS & BUZÓN DE BENDICIONES -->
+    <section class="seccion-padding">
+        <div class="contenedor text-center">
+            
+            <!-- Regalos -->
+            <div class="anim fade-up">
+                <i class="ph-fill ph-envelope-simple" style="font-size: 3rem; color: var(--color-oro); margin-bottom: 15px;"></i>
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Mesa de Regalos</h2>
+                <p style="font-size: 0.95rem; max-width: 500px; margin: 0 auto 30px;">Tu presencia es mi mayor regalo, pero si deseas tener un detalle para mi futuro, en la recepción habrá un buzón para lluvia de sobres, o puedes hacerlo digitalmente:</p>
+                
+                <button onclick="document.getElementById('banco-info').style.display='block'" class="btn-outline btn-oro">
+                    <i class="ph-fill ph-bank"></i> Ver Datos Bancarios
+                </button>
+                
+                <div id="banco-info" style="display: none; background: white; padding: 25px; border-radius: 15px; margin-top: 20px; border: 1px dashed var(--color-oro); animation: fade 0.5s;">
+                    <p style="font-size: 0.9rem; margin-bottom: 5px;"><b>BBVA Bancomer</b></p>
+                    <p style="font-size: 0.9rem; margin-bottom: 5px;">Alejandro Torres</p>
+                    <p style="font-size: 0.9rem; letter-spacing: 2px;">CLABE: 012 345 6789 0123 4567</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 9. RSVP & LIBRO DE BENDICIONES UNIFICADO -->
+    <section class="seccion-padding" style="padding-top: 40px; background: rgba(255,255,255,0.4);">
+        <div class="contenedor anim fade-up">
+            <div class="rsvp-arco">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-texto-oscuro);">Confirmar<br>Asistencia</h2>
+                
+                <div class="divisor-oro" style="margin-bottom: 20px;">
+                    <div class="linea" style="width: 30px;"></div><i class="ph-fill ph-heart"></i><div class="linea" style="width: 30px;"></div>
+                </div>
+
+                <p style="margin-bottom: 30px; color: var(--color-texto-claro);">Por favor confírmanos antes del 10 de Mayo. Aprovecha para dejarme un mensaje o bendición que guardaré en mi corazón.</p>
+                
+                <!-- Campos unificados -->
+                <input type="text" id="nombre-invitado" class="input-lujo" placeholder="Tu Nombre o Familia" style="text-align: center;">
+                <textarea id="mensaje-bendicion" class="input-lujo" rows="3" placeholder="Escribe tu hermoso mensaje aquí..." style="text-align: center;"></textarea>
+
+                <!-- Botón maestro único -->
+                <a href="#" onclick="enviarMensajeWhatsApp(); return false;" class="btn-wa btn-oro" style="box-shadow: 0 10px 20px rgba(37,211,102,0.3); width: 100%; margin-top: 10px;">
+                    <i class="ph-fill ph-whatsapp-logo"></i> Confirmar y Enviar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer>
+        <div class="contenedor">
+            <h3 class="logo-footer">ArteEn<span>Link</span></h3>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Experiencias digitales de alta gama para eventos inolvidables.</p>
+            
+            <div class="redes">
+                <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            </div>
+
+            <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 300px; margin-left: auto; margin-right: auto;">
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin-bottom: 15px;">¿Te gustó esta invitación?</p>
+                <a href="#" class="btn-outline btn-oro" style="padding: 8px 20px; font-size: 0.8rem; background: white; color: var(--color-texto-oscuro); border-color: white;"><i class="ph-fill ph-sparkle"></i> Cotizar Evento</a>
+            </div>
+        </div>
+    </footer>
+
+        <script src="script.js"></script>
+
+</body>
+</html>

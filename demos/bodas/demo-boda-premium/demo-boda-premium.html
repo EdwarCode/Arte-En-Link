@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan & Ana | Invitación VIP</title>
+    
+    <!-- Fuentes de Google Fonts (Alta Costura y Lujo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cormorant Garamond (Elegancia clásica) y Montserrat (Modernidad limpia) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+<body>
+
+    <!-- AUDIO VIP (Cuerdas Románticas / Elegante) -->
+    <audio id="musica-fondo" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_febc508520.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- SOBRE DIGITAL 3D (EFECTO WOW) -->
+    <div id="pantalla-sobre">
+        <div class="sobre-texto-top">Estás invitado a nuestra boda</div>
+        
+        <div class="sello-cera" id="sello-btn">
+            <span class="sello-iniciales">J&A</span>
+        </div>
+        
+        <div class="sobre-texto-bottom">Toca el sello para abrir</div>
+    </div>
+
+    <!-- REPRODUCTOR FLOTANTE -->
+    <div id="btn-musica" title="Reproducir / Pausar Música">
+        <i class="ph-fill ph-music-notes girar"></i>
+    </div>
+
+    <!-- PORTADA PRINCIPAL -->
+    <header class="portada">
+        <div class="portada-bg">
+            <img src="https://images.unsplash.com/photo-1543881512-42173167b5e4?q=80&w=1000&auto=format&fit=crop" alt="Boda Elegante">
+        </div>
+        
+        <div class="portada-contenido">
+            <div class="fecha-top fade-up visible">Sábado 24 de Octubre</div>
+            
+            <h1 class="nombres-hero fade-up delay-1 visible">
+                Juan <span>&</span> Ana
+            </h1>
+            
+            <p class="verso-hero fade-up delay-2 visible">
+                "Hay un momento en la vida en el que sabes que has encontrado a tu compañero de viaje. Hoy celebramos ese momento."
+            </p>
+        </div>
+
+        <div class="scroll-down fade-up delay-2 visible">
+            <span>Desliza para descubrir</span>
+            <i class="ph ph-caret-down"></i>
+        </div>
+    </header>
+
+    <!-- PADRES Y PADRINOS -->
+    <section class="seccion-padrinos seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="texto-dorado" style="font-size: 2.5rem; margin-bottom: 50px;">Con la bendición de Dios y nuestros padres</h2>
+            
+            <div class="padres-grid">
+                <div class="padres-col">
+                    <h3>Padres de la Novia</h3>
+                    <p>Roberto Gómez<br>Margarita Ruiz</p>
+                </div>
+                <div class="padres-col">
+                    <h3>Padres del Novio</h3>
+                    <p>Carlos Pérez<br>Elena Hernández</p>
+                </div>
+            </div>
+
+            <div class="divisor-dorado" style="max-width: 100px; margin: 40px auto;"></div>
+            
+            <h2 class="texto-dorado fade-up" style="font-size: 2.2rem; margin-bottom: 40px;">Nuestros Padrinos</h2>
+            
+            <div class="padres-grid fade-up delay-1" style="margin-bottom: 0;">
+                <div class="padres-col">
+                    <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-dorado); margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                        <i class="ph-fill ph-heart" style="font-size: 1.2rem;"></i> Velación
+                    </h3>
+                    <p style="font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-texto); line-height: 1.4;">Juan Martínez<br>María Soto</p>
+                </div>
+                <div class="padres-col">
+                    <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-dorado); margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                        <i class="ph-fill ph-diamond" style="font-size: 1.2rem;"></i> Anillos
+                    </h3>
+                    <p style="font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-texto); line-height: 1.4;">Carlos López<br>Ana Silva</p>
+                </div>
+                <div class="padres-col">
+                    <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-dorado); margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                        <i class="ph-fill ph-coins" style="font-size: 1.2rem;"></i> Arras
+                    </h3>
+                    <p style="font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-texto); line-height: 1.4;">Luis Gómez<br>Laura Díaz</p>
+                </div>
+                <div class="padres-col">
+                    <h3 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-dorado); margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                        <i class="ph-bold ph-infinity" style="font-size: 1.2rem;"></i> Lazo
+                    </h3>
+                    <p style="font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--color-texto); line-height: 1.4;">Miguel Ángel<br>Patricia Cruz</p>
+                </div>
+            </div>
+
+            <!-- Oración / Mensaje Especial -->
+            <div class="oracion-box fade-up">
+                <i class="ph-fill ph-quotes"></i>
+                <p>"Señor, te damos infinitas gracias por habernos guiado el uno hacia el otro. Bendice nuestro amor y nuestra futura vida juntos. Que nuestro hogar sea siempre un refugio de paz, comprensión y alegría. Enséñanos a perdonarnos, a ser pacientes y a crecer unidos cada día bajo tu manto de protección y amor incondicional." <br><span style="font-size: 0.9rem; font-family: var(--fuente-textos); color: var(--color-texto-suave); font-style: normal; display: block; margin-top: 15px;">- Oración de los Novios</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUENTA REGRESIVA Y CALENDARIO -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="texto-dorado" style="font-size: 2.5rem; margin-bottom: 40px;">El Gran Día</h2>
+            
+            <div class="contador-grid" id="contador-boda">
+                <div class="contador-box">
+                    <span class="contador-numero" id="dias">00</span>
+                    <span class="contador-label">Días</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="horas">00</span>
+                    <span class="contador-label">Horas</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="minutos">00</span>
+                    <span class="contador-label">Min</span>
+                </div>
+                <div class="contador-box">
+                    <span class="contador-numero" id="segundos">00</span>
+                    <span class="contador-label">Seg</span>
+                </div>
+            </div>
+
+            <a href="#" class="btn-dorado-outline"><i class="ph ph-calendar-plus"></i> Agendar en mi Calendario</a>
+        </div>
+    </section>
+
+    <!-- NUESTRA HISTORIA -->
+    <section class="seccion-padding" style="background-color: var(--color-fondo-alt);">
+        <div class="contenedor fade-up">
+            <div class="divisor-dorado"></div>
+            <h2 style="font-size: 2.8rem; margin-bottom: 60px; text-align: center;">Nuestra Historia</h2>
+            
+            <div class="historia-timeline">
+                
+                <!-- Año 2020 -->
+                <div class="historia-item fade-up">
+                    <div class="historia-icon"><i class="ph-fill ph-coffee"></i></div>
+                    <div class="historia-img">
+                        <img src="https://images.unsplash.com/photo-1517436073-3b1b11a8fb12?q=80&w=600&auto=format&fit=crop" alt="Primer encuentro">
+                    </div>
+                    <div class="historia-fecha">Otoño · 2020</div>
+                    <div class="historia-titulo">El primer café</div>
+                    <p>Una plática que debía durar una hora se convirtió en toda una tarde. Desde ese día, supimos que había algo mágico entre los dos.</p>
+                </div>
+                
+                <!-- Año 2022 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-icon"><i class="ph-fill ph-airplane-tilt"></i></div>
+                    <div class="historia-img">
+                        <img src="https://images.unsplash.com/photo-1476900164809-fc186e2468bb?q=80&w=600&auto=format&fit=crop" alt="Primer viaje">
+                    </div>
+                    <div class="historia-fecha">Verano · 2022</div>
+                    <div class="historia-titulo">Nuestro primer viaje</div>
+                    <p>Explorando nuevos lugares juntos nos dimos cuenta de que hacíamos el mejor equipo. Las risas y las aventuras se volvieron nuestro pan de cada día.</p>
+                </div>
+
+                <!-- Año 2024 -->
+                <div class="historia-item fade-up delay-2">
+                    <div class="historia-icon"><i class="ph-fill ph-house-line"></i></div>
+                    <div class="historia-img">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600&auto=format&fit=crop" alt="Viviendo juntos">
+                    </div>
+                    <div class="historia-fecha">Primavera · 2024</div>
+                    <div class="historia-titulo">Construyendo un hogar</div>
+                    <p>Dimos un gran paso y comenzamos a vivir bajo el mismo techo. Aprendimos a amarnos en la rutina y en las cosas pequeñas de la vida.</p>
+                </div>
+                
+                <!-- Año 2025 -->
+                <div class="historia-item fade-up delay-1">
+                    <div class="historia-icon"><i class="ph-fill ph-diamond"></i></div>
+                    <div class="historia-img">
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600&auto=format&fit=crop" alt="El anillo">
+                    </div>
+                    <div class="historia-fecha">Invierno · 2025</div>
+                    <div class="historia-titulo">¡Un rotundo Sí!</div>
+                    <p>Con lágrimas de felicidad y el corazón a mil por hora, decidimos que queríamos pasar el resto de nuestros días juntos.</p>
+                </div>
+
+                <!-- Año 2026 -->
+                <div class="historia-item fade-up delay-2">
+                    <div class="historia-icon"><i class="ph-fill ph-infinity"></i></div>
+                    <div class="historia-img">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=600&auto=format&fit=crop" alt="Para siempre">
+                    </div>
+                    <div class="historia-fecha">Octubre · 2026</div>
+                    <div class="historia-titulo">Para toda la vida</div>
+                    <p>Y aquí estamos, listos para celebrar nuestro amor frente a las personas que más queremos. ¡Nuestra mejor aventura apenas comienza!</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN Y HOSPEDAJE -->
+    <section class="seccion-ubicacion seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="texto-dorado" style="font-size: 2.5rem; margin-bottom: 50px;">Cuándo & Dónde</h2>
+            
+            <div class="ubicacion-card fade-up">
+                <p style="text-transform: uppercase; letter-spacing: 3px; color: var(--color-dorado); font-size: 0.8rem; margin-bottom: 10px;">Ceremonia Religiosa - 16:00 Hrs</p>
+                <h3>Catedral Basílica</h3>
+                <p style="margin-bottom: 25px;">Av. Fray Antonio de San Miguel 123, Centro Histórico.</p>
+                <a href="#" class="btn-dorado"><i class="ph-fill ph-map-pin"></i> Ver Ubicación GPS</a>
+            </div>
+
+            <div class="ubicacion-card fade-up delay-1">
+                <p style="text-transform: uppercase; letter-spacing: 3px; color: var(--color-dorado); font-size: 0.8rem; margin-bottom: 10px;">Recepción y Fiesta - 19:00 Hrs</p>
+                <h3>Hacienda Los Arcángeles</h3>
+                <p style="margin-bottom: 25px;">Carretera Norte Km 5.5, Valle Dorado.</p>
+                <a href="#" class="btn-dorado"><i class="ph-fill ph-map-pin"></i> Ver Ubicación GPS</a>
+            </div>
+            
+            <!-- Sugerencias de Hospedaje VIP -->
+            <div class="fade-up delay-2" style="margin-top: 60px;">
+                <h3 style="font-family: var(--fuente-textos); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 10px; display: inline-block;">Sugerencias de Hospedaje</h3>
+                <div class="hoteles-grid">
+                    <div class="hotel-card">
+                        <h4>Grand Hotel Centro</h4>
+                        <p>Tarifa preferencial código: BODA_JA26<br>A 5 min de la Catedral.</p>
+                        <a href="#" style="color: var(--color-dorado); font-size: 0.8rem; text-decoration: underline;">Reservar Aquí</a>
+                    </div>
+                    <div class="hotel-card">
+                        <h4>Boutique Luna</h4>
+                        <p>Alojamiento exclusivo.<br>A 15 min de la Hacienda.</p>
+                        <a href="#" style="color: var(--color-dorado); font-size: 0.8rem; text-decoration: underline;">Reservar Aquí</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA VIP MOSAICO EDITORIAL -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 class="texto-dorado" style="font-size: 2.5rem; margin-bottom: 10px;">Nuestros Momentos</h2>
+            <p style="margin-bottom: 50px;">Una historia contada en imágenes</p>
+            
+            <div class="galeria-mosaico">
+                
+                <!-- Foto 1 (Principal Arriba) -->
+                <div class="mosaico-hero fade-up">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Foto Novios">
+                    <div class="mosaico-overlay">
+                        <span class="mosaico-texto-flotante">Amor</span>
+                    </div>
+                </div>
+                
+                <!-- Fotos 2 y 3 (Par superpuesto) -->
+                <div class="mosaico-duo">
+                    <div class="mosaico-item fade-up delay-1">
+                        <img src="https://images.unsplash.com/photo-1543881512-42173167b5e4?q=80&w=500&auto=format&fit=crop" alt="Detalle Boda">
+                    </div>
+                    <div class="mosaico-item offset fade-up delay-2">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=500&auto=format&fit=crop" alt="Beso Novios">
+                    </div>
+                </div>
+
+                <!-- Foto 4 (Intermedia) -->
+                <div class="mosaico-hero fade-up" style="margin-top: 100px; height: 40vh; min-height: 300px;">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800&auto=format&fit=crop" alt="Celebración">
+                </div>
+
+                <!-- Fotos 5 y 6 (Par superpuesto) -->
+                <div class="mosaico-duo">
+                    <div class="mosaico-item fade-up delay-1">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=500&auto=format&fit=crop" alt="Detalle Elegante">
+                    </div>
+                    <div class="mosaico-item offset fade-up delay-2">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=500&auto=format&fit=crop" alt="Pareja">
+                    </div>
+                </div>
+
+                <!-- Foto 7 (Intermedia Panorámica) -->
+                <div class="mosaico-hero fade-up" style="margin-top: 100px; height: 50vh; min-height: 350px;">
+                    <img src="https://images.unsplash.com/photo-1532712938730-4e36c5579a42?q=80&w=800&auto=format&fit=crop" alt="Cena y decoración">
+                    <div class="mosaico-overlay">
+                        <span class="mosaico-texto-flotante" style="font-size: 3.5rem;">Para Siempre</span>
+                    </div>
+                </div>
+
+                <!-- Fotos 8 y 9 (Par superpuesto) -->
+                <div class="mosaico-duo">
+                    <div class="mosaico-item fade-up delay-1">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=500&auto=format&fit=crop" alt="Ramo de novia">
+                    </div>
+                    <div class="mosaico-item offset fade-up delay-2">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=500&auto=format&fit=crop" alt="Baile">
+                    </div>
+                </div>
+
+                <!-- Foto 10 (Cierre con marco dorado) -->
+                <div class="mosaico-hero fade-up" style="margin-top: 100px; height: 40vh; min-height: 300px;">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop" alt="Anillos">
+                    <div class="mosaico-marco-dorado"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DRESS CODE Y REGALOS -->
+    <section class="seccion-padding" style="background-color: var(--color-fondo-alt);">
+        <div class="contenedor fade-up">
+            
+            <div class="info-card fade-up">
+                <i class="ph ph-coat-hanger info-icon"></i>
+                <h3 class="texto-dorado">Dress Code</h3>
+                <p style="text-transform: uppercase; font-weight: 500; color: #fff; letter-spacing: 2px;">Etiqueta Rigurosa</p>
+                <p style="margin-top: 15px;">Mujeres: Vestido largo de noche.<br>Hombres: Smoking o Traje Oscuro.</p>
+                <p style="color: var(--color-dorado); font-size: 0.8rem; margin-top: 10px;">Respetuosamente solicitamos reservar el color blanco.</p>
+            </div>
+
+            <div class="info-card fade-up delay-1">
+                <i class="ph ph-gift info-icon"></i>
+                <h3 class="texto-dorado">Mesa de Regalos</h3>
+                <p>Su presencia es nuestro mayor regalo, pero si desean tener un detalle adicional con nosotros:</p>
+                <button class="btn-dorado-outline" id="btn-regalos" style="margin-top: 20px;">Ver Detalles Bancarios</button>
+                
+                <div class="datos-bancarios" id="datos-regalos">
+                    <p style="color: #fff;"><b>Banco:</b> BBVA Bancomer</p>
+                    <p style="color: #fff;"><b>Titular:</b> Juan Pérez</p>
+                    <p style="color: #fff;"><b>Cuenta:</b> 0123 4567 89</p>
+                    <p style="margin-top: 15px;">Mesa de Regalos Liverpool: <b>#123456</b></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUZÓN Y ÁLBUM COMPARTIDO -->
+    <section class="seccion-interactiva seccion-padding">
+        <div class="contenedor fade-up">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">¿Qué canción no puede faltar?</h2>
+            <p style="margin-bottom: 30px;">Ayúdanos a armar la mejor playlist para la fiesta.</p>
+            
+            <input type="text" class="input-vip" id="input-cancion" placeholder="Ej. Danza Kuduro - Don Omar">
+            <br>
+            <button class="btn-dorado-outline" onclick="sugerirCancion()"><i class="ph ph-music-note"></i> Sugerir Canción</button>
+
+            <div class="divisor-dorado" style="margin: 60px auto;"></div>
+
+            <h2 style="font-size: 1.8rem; margin-bottom: 20px;">Captura y Comparte</h2>
+            <p style="margin-bottom: 20px;">Etiquétanos en tus fotos usando nuestro hashtag oficial para no perdernos ningún detalle.</p>
+            
+            <div style="font-family: var(--fuente-textos); font-size: 2.2rem; color: var(--color-dorado); font-weight: 600; letter-spacing: 1px; margin-bottom: 30px;">
+                #JuanYAna2026
+            </div>
+            
+            <p style="margin-bottom: 30px; font-size: 0.9rem;">O sube tus mejores tomas a nuestro álbum colaborativo.</p>
+            <a href="#" class="btn-dorado"><i class="ph-fill ph-camera"></i> Ir al Álbum Compartido</a>
+        </div>
+    </section>
+
+    <!-- RSVP VIP (CONTROL DE ACCESO INTELIGENTE) -->
+    <section class="seccion-padding">
+        <div class="contenedor fade-up">
+            <div class="rsvp-vip-card">
+                <h2 style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 4px; color: var(--color-texto-suave); margin-bottom: 10px;">Confirmación de Asistencia</h2>
+                
+                <h1 class="saludo-invitado">Bienvenido/a,<br><span id="nombre-invitado" style="color: white;">Invitado Especial</span></h1>
+                
+                <p class="pases-info">Hemos reservado <span id="num-pases">2</span> pases en nuestro honor.</p>
+                
+                <div class="form-rsvp">
+                    <div>
+                        <label>¿Asistirán al evento?</label>
+                        <select class="select-vip" id="rsvp-respuesta">
+                            <option value="Sí, ahí estaremos celebrando">Sí, confirmo mi asistencia</option>
+                            <option value="Tristemente no podré asistir">No podré asistir</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Preferencia de Bebida</label>
+                        <select class="select-vip" id="rsvp-bebida">
+                            <option value="Tequila">Tequila</option>
+                            <option value="Whisky">Whisky</option>
+                            <option value="Ron">Ron</option>
+                            <option value="Vodka">Vodka</option>
+                            <option value="Sin alcohol">Sin alcohol</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Déjanos un mensaje de cariño</label>
+                        <input type="text" class="select-vip" id="rsvp-mensaje" placeholder="Un consejo, felicitación o buen deseo">
+                    </div>
+                </div>
+
+                <button class="btn-dorado" id="btn-confirmar-whatsapp" style="width: 100%;"><i class="ph-fill ph-whatsapp-logo"></i> Enviar Confirmación</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ARTEENLINK -->
+    <footer class="footer-comercial">
+        <div class="contenedor fade-up">
+            <h3>¿Te gustó esta invitación? ¡Contáctanos!</h3>
+            <div class="social-links">
+                <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20VIP%20y%20me%20encantó." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+            <div class="creditos">
+                Diseño exclusivo creado por <a href="index.html" target="_blank" style="color: var(--color-dorado); text-decoration: underline;">ArteEnLink</a>.<br>Eleva el nivel de tu evento con tecnología de alta gama.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>
