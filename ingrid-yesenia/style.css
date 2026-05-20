@@ -1,0 +1,76 @@
+
+        :root {
+            --glass-bg: rgba(15, 5, 10, 0.5); /* Cristal más oscuro para contrastar con las luces */
+            --glass-border: rgba(212, 175, 55, 0.15); /* Borde sutilmente dorado */
+        }
+
+        body { 
+            background-color: #050203; 
+            color: #FAFAFA; 
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #050203; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+
+        .no-scroll { overflow: hidden; height: 100vh; }
+
+        /* Contenedor del Canvas Three.js */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: auto;
+        }
+
+        /* Glassmorphism Refinado */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .glass-btn {
+            background: rgba(114, 47, 55, 0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        .glass-btn:active { transform: scale(0.98); opacity: 0.8; }
+
+        /* Preloader Vectorial */
+        #preloader {
+            position: fixed; inset: 0; background-color: #050203; z-index: 50;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        .svg-monogram { width: 200px; height: 100px; stroke: #D4AF37; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 8px rgba(212,175,55,0.3)); }
+        #enter-btn { opacity: 0; transform: translateY(20px); cursor: pointer; }
+
+        /* Reproductor Flotante */
+        #music-player {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 40;
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 50%; cursor: pointer;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Lookbook UI */
+        .narrative-mask { background: linear-gradient(to top, rgba(5,2,3,0.95) 0%, rgba(5,2,3,0) 100%); }
+        .lookbook-item { width: 100%; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .lookbook-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Utility */
+        .reveal-item { opacity: 0; }
+        .swiper-slide { width: 280px !important; }
+        .swiper-pagination-bullet { background: #D4AF37 !important; }
