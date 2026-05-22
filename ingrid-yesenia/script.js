@@ -7,8 +7,19 @@
             
             new Swiper(".mySwiper", { 
                 spaceBetween: 20, 
-                slidesPerView: "auto", 
-                pagination: { el: ".swiper-pagination", clickable: true } 
+                pagination: { el: ".swiper-pagination", clickable: true },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0
+                    },
+                    768: {
+                        slidesPerView: "auto",
+                        slidesOffsetBefore: 24,
+                        slidesOffsetAfter: 24
+                    }
+                }
             });
         });
 
