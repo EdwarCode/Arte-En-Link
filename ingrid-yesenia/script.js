@@ -6,8 +6,7 @@
             initCountdown();
             
             new Swiper(".mySwiper", { 
-                spaceBetween: 20, 
-                centerInsufficientSlides: true,
+                spaceBetween: 20,
                 pagination: { el: ".swiper-pagination", clickable: true },
                 breakpoints: {
                     0: {
