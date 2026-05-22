@@ -4,24 +4,55 @@
             initThreeJSCaustics(); // Nuevo Motor Gráfico
             initPreloaderAnimations();
             initCountdown();
-            
-            new Swiper(".mySwiper", { 
-                spaceBetween: 20,
-                pagination: { el: ".swiper-pagination", clickable: true },
+
+
+                        new Swiper(".mySwiper", { 
+                slidesPerView: 1,
+                centeredSlides: false,
+                spaceBetween: 0,
+                grabCursor: true,
+                speed: 600,
+                resistanceRadtio: 0.85,
+
+                pagination: { 
+                    el: ".swiper-pagination",
+                     clickable: true,
+                     },
+
+
                 breakpoints: {
                     0: {
                         slidesPerView: 1,
-                        slidesOffsetBefore: 0,
-                        slidesOffsetAfter: 0
+                        spaceBetween: 0,
+                        centeredSlides: false,
                     },
+
                     768: {
                         slidesPerView: "auto",
-                        slidesOffsetBefore: 24,
-                        slidesOffsetAfter: 24
+                        centeredSlides: false,
+                        spaceBetween: 20,
                     }
                 }
             });
         });
+            
+        //     new Swiper(".mySwiper", { 
+        //         spaceBetween: 20,
+        //         pagination: { el: ".swiper-pagination", clickable: true },
+        //         breakpoints: {
+        //             0: {
+        //                 slidesPerView: 1,
+        //                 slidesOffsetBefore: 0,
+        //                 slidesOffsetAfter: 0
+        //             },
+        //             768: {
+        //                 slidesPerView: "auto",
+        //                 slidesOffsetBefore: 24,
+        //                 slidesOffsetAfter: 24
+        //             }
+        //         }
+        //     });
+        // });
 
         /* =========================================
            1. THREE.JS: CAUSTICS (Luz a través de cristal)

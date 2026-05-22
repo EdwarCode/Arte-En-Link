@@ -38,6 +38,10 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         }
 
+        .swiper-slide {
+    height: auto !important;
+}
+
         .glass-btn {
             background: rgba(114, 47, 55, 0.2);
             backdrop-filter: blur(12px);
@@ -73,13 +77,52 @@
         /* Utility y Swiper Móvil */
         .reveal-item { opacity: 0; }
         
-        @media (min-width: 768px) {
+        /* @media (min-width: 768px) {
             .swiper-slide { width: 260px !important; }
         }
          @media (max-width: 767px) {
             .swiper-slide { width: 100% !important; } /* Un elemento a la vez en móviles */
-        }
-       
+        
+        /* ================================
+   SWIPER DESKTOP
+================================ */
+
+@media (min-width: 768px) {
+
+    .mySwiper .swiper-slide {
+        width: 260px !important;
+    }
+
+}
+
+/* ================================
+   SWIPER MOBILE FULLSCREEN
+================================ */
+
+@media (max-width: 767px) {
+
+    .mySwiper {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .mySwiper .swiper-wrapper {
+        align-items: stretch;
+    }
+
+    .mySwiper .swiper-slide {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+
+        padding-left: 24px;
+        padding-right: 24px;
+
+        box-sizing: border-box;
+    }
+
+}
+            
         .swiper-pagination-bullet { background: #D4AF37 !important; }
 
         /* @media (min-width: 768px) {
