@@ -7,6 +7,7 @@
             
             new Swiper(".mySwiper", { 
                 spaceBetween: 20, 
+                centerInsufficientSlides: true,
                 pagination: { el: ".swiper-pagination", clickable: true },
                 breakpoints: {
                     0: {
