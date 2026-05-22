@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>XV Años | Ingrid Yesenia</title>
+    
+    <!-- Fuentes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vino: '#722F37',
+                        dorado: '#D4AF37',
+                        oscuro: '#050203', /* Más profundo para que resalte la luz */
+                        texto: '#FAFAFA'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --glass-bg: rgba(15, 5, 10, 0.5); /* Cristal más oscuro para contrastar con las luces */
+            --glass-border: rgba(212, 175, 55, 0.15); /* Borde sutilmente dorado */
+        }
+
+        body { 
+            background-color: #050203; 
+            color: #FAFAFA; 
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #050203; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+
+        .no-scroll { overflow: hidden; height: 100vh; }
+
+        /* Contenedor del Canvas Three.js */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: auto;
+        }
+
+        /* Glassmorphism Refinado */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .glass-btn {
+            background: rgba(114, 47, 55, 0.2);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        .glass-btn:active { transform: scale(0.98); opacity: 0.8; }
+
+        /* Preloader Vectorial */
+        #preloader {
+            position: fixed; inset: 0; background-color: #050203; z-index: 50;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        .svg-monogram { width: 200px; height: 100px; stroke: #D4AF37; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 8px rgba(212,175,55,0.3)); }
+        #enter-btn { opacity: 0; transform: translateY(20px); cursor: pointer; }
+
+        /* Reproductor Flotante */
+        #music-player {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 40;
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 50%; cursor: pointer;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Lookbook UI */
+        .narrative-mask { background: linear-gradient(to top, rgba(5,2,3,0.95) 0%, rgba(5,2,3,0) 100%); }
+        .lookbook-item { width: 100%; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .lookbook-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Utility y Swiper Móvil */
+        .reveal-item { opacity: 0; }
+        
+        @media (min-width: 768px) {
+            .swiper-slide { width: 260px !important; }
+        }
+        @media (max-width: 767px) {
+            .swiper-slide { width: 100% !important; } /* Un elemento a la vez en móviles */
+        }
+        .swiper-pagination-bullet { background: #D4AF37 !important; }
+    </style>
+</head>
+<body class="no-scroll font-sans antialiased">
+
+    <!-- AUDIO -->
+    <audio id="bg-audio" preload="auto" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- WEBGL THREE.JS CONTAINER (EFECTO CAUSTICS) -->
+    <div id="canvas-container"></div>
+
+    <!-- REPRODUCTOR -->
+    <div id="music-player" class="glass-panel" onclick="toggleAudio()">
+        <i data-lucide="music" class="w-5 h-5 text-dorado" id="audio-icon"></i>
+    </div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <svg class="svg-monogram mb-12" viewBox="0 0 200 100">
+            <!-- I -->
+            <path class="draw-path" d="M30,20 L30,80 M20,20 L40,20 M20,80 L40,80" />
+            <!-- Y -->
+            <path class="draw-path" d="M60,20 L80,50 L80,80 M100,20 L80,50" />
+            <!-- G -->
+            <path class="draw-path" d="M140,30 C135,20 120,20 120,50 C120,80 145,80 145,50 L130,50" />
+            <!-- M -->
+            <path class="draw-path" d="M160,80 L160,20 L175,50 L190,20 L190,80" />
+        </svg>
+        <button id="enter-btn" class="glass-btn px-10 py-4 text-xs uppercase tracking-[0.3em] text-dorado flex items-center gap-3" onclick="enterInvitation()">
+            <i data-lucide="fingerprint" class="w-4 h-4"></i> Revelar Invitación
+        </button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main id="content" class="relative z-10 hidden pb-24">
+        
+        <!-- HERO -->
+        <section class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative">
+            <div class="reveal-item flex flex-col items-center mb-6">
+                <span class="font-sans text-xs tracking-[0.5em] text-dorado uppercase opacity-80 mb-2 ml-2">Mis</span>
+                <span class="font-serif text-6xl md:text-7xl text-dorado drop-shadow-[0_0_15px_rgba(212,175,55,0.5)] leading-none">XV</span>
+            </div>
+            <h1 class="reveal-item font-serif text-6xl md:text-8xl font-bold text-texto mb-8 leading-tight drop-shadow-2xl">Ingrid<br>Yesenia</h1>
+            <p class="reveal-item font-sans text-lg tracking-[0.3em] text-gray-300 mb-16">06 • JUNIO • 2026</p>
+            
+            <div class="reveal-item flex gap-3 md:gap-6 text-center mb-12 glass-panel px-4 md:px-8 py-5">
+                <div class="flex flex-col"><span id="days" class="text-3xl md:text-4xl font-serif text-dorado">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest mt-1 text-gray-400">Días</span></div>
+                <div class="text-gray-600 text-2xl md:text-3xl font-light mt-1">:</div>
+                <div class="flex flex-col"><span id="hours" class="text-3xl md:text-4xl font-serif text-dorado">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest mt-1 text-gray-400">Hrs</span></div>
+                <div class="text-gray-600 text-2xl md:text-3xl font-light mt-1">:</div>
+                <div class="flex flex-col"><span id="minutes" class="text-3xl md:text-4xl font-serif text-dorado">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest mt-1 text-gray-400">Min</span></div>
+                <div class="text-gray-600 text-2xl md:text-3xl font-light mt-1">:</div>
+                <div class="flex flex-col"><span id="seconds" class="text-3xl md:text-4xl font-serif text-dorado">00</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest mt-1 text-gray-400">Seg</span></div>
+            </div>
+
+            <div class="reveal-item relative">
+                <button onclick="toggleCalendarMenu()" class="glass-btn px-8 py-4 flex items-center gap-3 text-xs uppercase tracking-widest">
+                    <i data-lucide="calendar-plus" class="w-4 h-4 text-dorado"></i> Agendar
+                </button>
+                <div id="calendar-menu" class="hidden absolute top-full mt-4 left-1/2 -translate-x-1/2 glass-panel w-64 p-2 flex flex-col gap-2 transition-all">
+                    <a href="#" onclick="addToGoogleCalendar(event)" class="text-xs uppercase tracking-wider py-4 px-4 hover:bg-white/5 rounded-lg flex items-center gap-3 text-gray-300"><i data-lucide="chrome" class="w-4 h-4 text-dorado"></i> Google Calendar</a>
+                    <a href="#" onclick="downloadICS(event)" class="text-xs uppercase tracking-wider py-4 px-4 hover:bg-white/5 rounded-lg flex items-center gap-3 text-gray-300"><i data-lucide="apple" class="w-4 h-4 text-dorado"></i> Apple / Outlook</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEXTO DE INVITACIÓN -->
+        <section class="max-w-2xl mx-auto px-6 py-20">
+            <div class="glass-panel p-10 md:p-14 text-center reveal-item">
+                <i data-lucide="mail-open" class="w-8 h-8 mx-auto text-dorado mb-6 opacity-80"></i>
+                <h2 class="font-sans text-xs tracking-[0.3em] text-dorado uppercase mb-6">¡Estás cordialmente invitado!</h2>
+                <p class="font-serif text-lg md:text-xl leading-loose text-gray-200">"Hay momentos en la vida que imaginamos desde la infancia, y que solo cobran verdadero sentido cuando los compartimos con las personas que han iluminado nuestro camino. Con la bendición de Dios y el amor de mi familia, tengo el inmenso honor de invitarte a celebrar la magia, la juventud y el inicio de una nueva etapa en mi vida. Acompáñame a escribir un capítulo inolvidable en esta noche espectacular."</p>
+            </div>
+        </section>
+
+        <!-- DEDICATORIAS -->
+        <section class="max-w-3xl mx-auto px-6 py-12 flex flex-col gap-16">
+            <div class="glass-panel p-10 md:p-12 text-center reveal-item relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-dorado to-transparent opacity-50"></div>
+                <h3 class="font-sans text-xs tracking-[0.3em] text-dorado uppercase mb-6">Mi Oración</h3>
+                <p class="font-serif text-lg leading-loose text-gray-300">Señor, hoy me presento ante ti con el corazón lleno de gratitud. Gracias por el don de la vida, por mi familia que me ha guiado con amor y paciencia, y por permitirme llegar a esta edad llena de ilusiones. Te pido que bendigas mis pasos, que me des sabiduría para elegir siempre el bien, y que la luz de tu amor nunca deje de brillar en mi camino. Amén.</p>
+            </div>
+            
+            <div class="glass-panel p-10 md:p-12 text-center reveal-item">
+                <h3 class="font-sans text-xs tracking-[0.3em] text-dorado uppercase mb-4 opacity-70">Con Amor, Mis Padres</h3>
+                <h4 class="font-serif text-3xl text-texto mb-6">Leticia Mendes Lopez<br><span class="text-xl text-dorado italic">&</span> Javier Gomez</h4>
+                <p class="font-sans font-light text-sm md:text-base leading-relaxed text-gray-300">Hija amada, parece que fue ayer cuando te sostuvimos en nuestros brazos por primera vez. Hoy te vemos convertida en una señorita hermosa, fuerte y llena de sueños. Estos quince años han sido la aventura más maravillosa de nuestras vidas. Celebramos tu existencia y te prometemos que siempre estaremos a tu lado para aplaudir tus triunfos y sostenerte en cada paso. ¡Te amamos con toda el alma!</p>
+            </div>
+            
+            <div class="glass-panel p-10 md:p-12 text-center reveal-item border-dorado/20">
+                <i data-lucide="star" class="w-5 h-5 mx-auto text-dorado mb-6 opacity-60"></i>
+                <h3 class="font-sans text-xs tracking-[0.3em] text-dorado uppercase mb-4 opacity-70">Mis Padrinos</h3>
+                <h4 class="font-serif text-2xl text-texto mb-6">Vicente Diaz Jimenez<br><span class="text-lg text-dorado italic">&</span> Petrona Mendez Lopez</h4>
+                <p class="font-sans font-light text-sm md:text-base leading-relaxed text-gray-300">Agradezco profundamente el honor de que hayan aceptado ser mis guías espirituales y de vida en esta etapa tan importante. Su ejemplo, cariño y consejos son un tesoro invaluable para mí. Gracias por estar siempre presentes y por ser parte fundamental de mi historia.</p>
+            </div>
+        </section>
+
+        <!-- ========================================================
+           LOOKBOOK NARRATIVO - 15 FOTOGRAFÍAS
+        ========================================================= -->
+        <section class="w-full py-24 flex flex-col gap-16 md:gap-20">
+            <div class="text-center reveal-item mb-4 px-6">
+                <h2 class="font-serif text-4xl md:text-5xl text-dorado">El Camino a mis XV</h2>
+                <p class="font-sans text-xs uppercase tracking-[0.2em] text-gray-400 mt-4">Un recorrido por mi historia</p>
+                <div class="w-12 h-[1px] bg-dorado mx-auto mt-8 opacity-30"></div>
+            </div>
+
+            <!-- FOTO 1 - Vertical + Frase 1 -->
+            <div class="relative w-full h-[80vh] reveal-item overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1549420790-21a41285223c?auto=format&fit=crop&w=1200&q=80" alt="Ingrid Foto 1" class="w-full h-full object-cover">
+                <div class="absolute inset-0 narrative-mask flex items-end justify-center pb-20 px-6 text-center">
+                    <p class="font-serif text-2xl text-white">"Hay días que soñamos despiertos, y hoy es uno de ellos."</p>
+                </div>
+            </div>
+
+            <!-- FOTOS 2, 3 - Verticales (1 col móvil, 2 cols PC) -->
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-10">
+                <div class="reveal-item flex flex-col gap-6">
+                    <div class="lookbook-item h-[75vh] md:h-[85vh]"><img src="https://images.unsplash.com/photo-1621508219504-20b17849e6aa?auto=format&fit=crop&w=800&q=80" alt="Ingrid Foto 2"></div>
+                    <p class="font-sans text-xs uppercase tracking-widest text-gray-400 px-4 leading-relaxed text-center md:text-left">"Quince años de alegrías, sueños y una historia que apenas comienza."</p>
+                </div>
+                <div class="reveal-item flex flex-col gap-6 md:pt-24">
+                    <div class="lookbook-item h-[75vh] md:h-[85vh]"><img src="https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?auto=format&fit=crop&w=800&q=80" alt="Ingrid Foto 3"></div>
+                    <p class="font-sans text-xs uppercase tracking-widest text-gray-400 px-4 leading-relaxed text-center md:text-right">"El momento más mágico de esta noche es poder compartirlo con las personas que más quiero."</p>
+                </div>
+            </div>
+
+            <!-- FOTOS 4, 5, 6 - Verticales (1 col móvil, 3 cols PC) -->
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 reveal-item">
+                <div class="lookbook-item h-[75vh] md:h-[70vh]"><img src="https://images.unsplash.com/photo-1510255140880-94f4756b1078?auto=format&fit=crop&w=600&q=80" alt="Ingrid Foto 4"></div>
+                <div class="lookbook-item h-[75vh] md:h-[80vh] md:-translate-y-12"><img src="https://images.unsplash.com/photo-1588636171542-a7d03f0d061c?auto=format&fit=crop&w=600&q=80" alt="Ingrid Foto 5"></div>
+                <div class="lookbook-item h-[75vh] md:h-[70vh]"><img src="https://images.unsplash.com/photo-1510255140880-94f4756b1078?auto=format&fit=crop&w=600&q=80" alt="Ingrid Foto 6"></div>
+            </div>
+
+            <!-- FOTO 7 - Vertical + Frases 4 y 5 -->
+            <div class="relative w-full h-[80vh] reveal-item overflow-hidden mt-4 md:mt-8">
+                <img src="https://images.unsplash.com/photo-1549420790-21a41285223c?auto=format&fit=crop&w=1200&q=80" alt="Ingrid Foto 7" class="w-full h-full object-cover">
+                <div class="absolute inset-0 narrative-mask flex flex-col items-center justify-end pb-20 px-6 text-center">
+                    <p class="font-serif text-2xl text-dorado mb-4">"Un instante que guardaré en mi corazón para siempre."</p>
+                    <p class="font-sans text-xs tracking-widest uppercase text-gray-300">"Detrás de esta sonrisa hay quince años de amor, familia y recuerdos inolvidables."</p>
+                </div>
+            </div>
+
+            <!-- FOTO 8 (HORIZONTAL) y FOTO 9 (VERTICAL) + Textos -->
+            <div class="max-w-6xl mx-auto px-6 flex flex-col gap-16 py-8">
+                <div class="text-center reveal-item px-4">
+                    <p class="font-serif text-3xl md:text-4xl text-texto mb-6 leading-snug">"Hoy dejo atrás mi niñez para abrazar el futuro con el corazón lleno de ilusión."</p>
+                    <p class="font-sans text-xs tracking-widest text-dorado uppercase">"Cada paso que he dado me ha traído a esta noche espectacular."</p>
+                </div>
+                
+                <!-- ÚNICA FOTO HORIZONTAL -->
+                <div class="lookbook-item w-full aspect-video md:h-[70vh] reveal-item border-dorado/30">
+                    <img src="https://images.unsplash.com/photo-1510255140880-94f4756b1078?auto=format&fit=crop&w=1200&q=80" alt="Ingrid Foto 8 Horizontal" class="w-full h-full object-cover">
+                </div>
+
+                <!-- FOTO 9 VERTICAL -->
+                <div class="lookbook-item w-full md:w-2/3 mx-auto h-[80vh] reveal-item">
+                    <img src="https://images.unsplash.com/photo-1588636171542-a7d03f0d061c?auto=format&fit=crop&w=800&q=80" alt="Ingrid Foto 9 Vertical" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- FOTOS 10, 11 - Verticales (1 col móvil, 2 cols PC) -->
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-10 reveal-item">
+                <div class="lookbook-item h-[75vh] md:h-[85vh]"><img src="https://images.unsplash.com/photo-1549420790-21a41285223c?auto=format&fit=crop&w=800&q=80" alt="Ingrid Foto 10"></div>
+                <div class="lookbook-item h-[75vh] md:h-[85vh] md:pt-20"><img src="https://images.unsplash.com/photo-1621508219504-20b17849e6aa?auto=format&fit=crop&w=800&q=80" alt="Ingrid Foto 11"></div>
+            </div>
+
+            <!-- FOTO 12 - Vertical Editorial -->
+            <div class="relative w-full h-[85vh] reveal-item overflow-hidden mt-4">
+                <img src="https://images.unsplash.com/photo-1510255140880-94f4756b1078?auto=format&fit=crop&w=1200&q=80" alt="Ingrid Foto 12" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center p-6 bg-black/40">
+                    <div class="glass-panel p-8 md:p-14 max-w-2xl border-none bg-black/30 w-full text-center">
+                        <p class="font-serif text-2xl md:text-4xl text-white leading-snug">"Las estrellas brillan más cuando estamos rodeados de quienes nos inspiran."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOTOS 13, 14 - Verticales (1 col móvil, 2 cols PC) -->
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-10 pt-8">
+                <div class="reveal-item flex flex-col gap-6 md:pt-12 order-2 md:order-1">
+                    <div class="lookbook-item h-[75vh] md:h-[85vh]"><img src="https://images.unsplash.com/photo-1588636171542-a7d03f0d061c?auto=format&fit=crop&w=800&q=80" alt="Ingrid Foto 13"></div>
+                    <p class="font-sans text-xs uppercase tracking-widest text-gray-400 px-4 leading-relaxed text-center md:text-left">"Celebrando la vida, la juventud y la magia de los nuevos comienzos."</p>
+                </div>
+                <div class="reveal-item flex flex-col gap-6 order-1 md:order-2">
+                    <div class="lookbook-item h-[75vh] md:h-[85vh]"><img src="https://images.unsplash.com/photo-1549420790-21a41285223c?auto=format&fit=crop&w=800&q=80" alt="Ingrid Foto 14"></div>
+                </div>
+            </div>
+
+            <!-- FOTO 15 - Vertical Final -->
+            <div class="relative w-full h-[90vh] reveal-item overflow-hidden mt-8">
+                <img src="https://images.unsplash.com/photo-1510255140880-94f4756b1078?auto=format&fit=crop&w=1200&q=80" alt="Ingrid Foto 15" class="w-full h-full object-cover opacity-50">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-t from-oscuro via-transparent to-transparent">
+                    <p class="font-serif text-3xl md:text-5xl text-dorado reveal-item mb-12 leading-tight px-4">"Que esta noche sea tan infinita y hermosa como los sueños que me faltan por cumplir."</p>
+                    <div class="w-20 h-20 rounded-full border border-dorado/50 flex items-center justify-center reveal-item bg-black/20 backdrop-blur-md">
+                        <i data-lucide="sparkles" class="w-8 h-8 text-dorado opacity-80"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ITINERARIO -->
+        <section class="max-w-3xl mx-auto px-6 py-20">
+            <h2 class="reveal-item font-serif text-4xl text-center text-dorado mb-16">Itinerario</h2>
+            <div class="relative border-l border-dorado/20 ml-6 flex flex-col gap-16">
+                
+                <div class="relative pl-10 reveal-item">
+                    <div class="absolute left-0 -translate-x-[5px] top-2 w-3 h-3 rounded-full bg-dorado shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                    <h3 class="font-serif text-3xl text-texto mb-2">Ceremonia Religiosa</h3>
+                    <p class="font-sans text-xs tracking-[0.3em] text-dorado uppercase mb-4">5:00 PM</p>
+                    <p class="text-sm text-gray-400 font-light leading-relaxed">Iglesia de San Francisco<br>Av. Insurgentes esq. Pedro Moreno<br>Barrio de Santa Lucia</p>
+                    <a href="https://maps.google.com/?q=Iglesia+de+San+Francisco+San+Cristobal+de+las+Casas" target="_blank" class="glass-btn px-6 py-3 text-xs uppercase tracking-widest flex items-center gap-3 w-max mt-6 text-gray-200"><i data-lucide="map-pin" class="w-4 h-4 text-dorado"></i> Ver en Maps</a>
+                </div>
+                
+                <div class="relative pl-10 reveal-item">
+                    <div class="absolute left-0 -translate-x-[5px] top-2 w-3 h-3 rounded-full bg-dorado shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                    <h3 class="font-serif text-3xl text-texto mb-2">La Gran Recepción</h3>
+                    <p class="font-sans text-xs tracking-[0.3em] text-dorado uppercase mb-4">A CONTINUACIÓN</p>
+                    <p class="text-sm text-gray-400 font-light leading-relaxed">Salón "Tiale"<br>Calle Oceano Pacifico #5<br>Col. Sector Salud</p>
+                    <a href="https://maps.google.com/?q=Calle+Oceano+Pacifico+5+Sector+Salud" target="_blank" class="glass-btn px-6 py-3 text-xs uppercase tracking-widest flex items-center gap-3 w-max mt-6 text-gray-200"><i data-lucide="map-pin" class="w-4 h-4 text-dorado"></i> Ver en Maps</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORTE DE HONOR -->
+        <section class="w-full py-20 overflow-hidden">
+            <h2 class="reveal-item font-serif text-4xl text-center text-dorado mb-8">Mi Corte de Honor</h2>
+            
+            <div class="reveal-item flex justify-center items-center gap-3 text-dorado mb-10 opacity-70 animate-pulse">
+                <i data-lucide="hand" class="w-5 h-5"></i>
+                <span class="font-sans text-[10px] uppercase tracking-[0.2em]">Desliza para ver</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </div>
+
+            <div class="swiper mySwiper reveal-item px-6 md:px-0 md:pl-6 pb-16 w-full">
+                <div class="swiper-wrapper">
+                    <!-- Damas -->
+                    <div class="swiper-slide glass-panel h-56 flex flex-col items-center justify-center text-center p-6">
+                        <i data-lucide="heart" class="w-6 h-6 text-dorado mb-4 opacity-50"></i>
+                        <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Dama</p>
+                        <p class="font-serif text-xl text-gray-200 leading-snug">Ana Erika<br>Diaz Santiz</p>
+                    </div>
+                    <div class="swiper-slide glass-panel h-56 flex flex-col items-center justify-center text-center p-6">
+                        <i data-lucide="heart" class="w-6 h-6 text-dorado mb-4 opacity-50"></i>
+                        <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Dama</p>
+                        <p class="font-serif text-xl text-gray-200 leading-snug">Sandra Noemi<br>Diaz Santiz</p>
+                    </div>
+                    <div class="swiper-slide glass-panel h-56 flex flex-col items-center justify-center text-center p-6">
+                        <i data-lucide="heart" class="w-6 h-6 text-dorado mb-4 opacity-50"></i>
+                        <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Dama</p>
+                        <p class="font-serif text-xl text-gray-200 leading-snug">Josefa del C.<br>Diaz Santiz</p>
+                    </div>
+                    <div class="swiper-slide glass-panel h-56 flex flex-col items-center justify-center text-center p-6">
+                        <i data-lucide="heart" class="w-6 h-6 text-dorado mb-4 opacity-50"></i>
+                        <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Dama</p>
+                        <p class="font-serif text-xl text-gray-200 leading-snug">Jessica<br>Giron Gomez</p>
+                    </div>
+                    <div class="swiper-slide glass-panel h-56 flex flex-col items-center justify-center text-center p-6">
+                        <i data-lucide="heart" class="w-6 h-6 text-dorado mb-4 opacity-50"></i>
+                        <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Dama</p>
+                        <p class="font-serif text-xl text-gray-200 leading-snug">Diana Eliz.<br>Gomez Mendez</p>
+                    </div>
+                    <!-- Chambelanes -->
+                    <div class="swiper-slide glass-panel h-56 flex flex-col items-center justify-center text-center p-6 border-dorado/20">
+                        <i data-lucide="shield" class="w-6 h-6 text-dorado mb-4 opacity-50"></i>
+                        <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Chambelán</p>
+                        <p class="font-serif text-xl text-gray-200 leading-snug">Vicente Leonel<br>Diaz Mendez</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!-- PROTOCOLO -->
+        <section class="max-w-4xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="glass-panel p-10 text-center reveal-item flex flex-col items-center justify-center">
+                <i data-lucide="shirt" class="w-8 h-8 text-dorado mb-6 opacity-80"></i>
+                <h3 class="font-serif text-2xl mb-4 text-texto">Código de Vestimenta</h3>
+                <p class="text-sm font-light text-gray-400 leading-relaxed">Estilo Libre. El único detalle especial es que el <strong class="text-vino">color vino</strong> está reservado exclusivamente para la quinceañera.</p>
+            </div>
+            <div class="glass-panel p-10 text-center reveal-item flex flex-col items-center justify-center">
+                <i data-lucide="gift" class="w-8 h-8 text-dorado mb-6 opacity-80"></i>
+                <h3 class="font-serif text-2xl mb-4 text-texto">Mesa de Regalos</h3>
+                <p class="text-sm font-light text-gray-400 leading-relaxed">Tu presencia en mi fiesta es el mejor regalo, pero si deseas tener un detalle especial conmigo, habrá una mesa designada en el salón para recibirlo con mucho cariño.</p>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section class="max-w-lg mx-auto px-6 py-20">
+            <div class="glass-panel p-10 reveal-item border-dorado/20">
+                <div class="text-center mb-10">
+                    <h2 class="font-serif text-4xl text-dorado mb-2 drop-shadow-lg">RSVP</h2>
+                    <p class="text-xs uppercase tracking-widest text-gray-400">Confirma tu asistencia</p>
+                </div>
+                
+                <form id="rsvp-form" class="flex flex-col gap-8">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-3">Nombre / Familia</label>
+                        <input type="text" id="nombre" required class="w-full bg-transparent border-b border-gray-600 focus:border-dorado outline-none py-2 text-texto placeholder-gray-700 transition-colors" placeholder="Ej. Familia Pérez">
+                        <span id="error-nombre" class="text-xs text-red-400 mt-2 hidden">Por favor, ingresa tu nombre.</span>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-4">¿Asistirás?</label>
+                        <div class="flex gap-6">
+                            <label class="flex items-center gap-3 text-sm cursor-pointer text-gray-300"><input type="radio" name="asistencia" value="Sí, ahí estaré" checked class="accent-vino w-4 h-4"> Sí, ahí estaré</label>
+                            <label class="flex items-center gap-3 text-sm cursor-pointer text-gray-300"><input type="radio" name="asistencia" value="No podré asistir" class="accent-vino w-4 h-4"> No asistiré</label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-3">Pases a Confirmar</label>
+                        <div class="flex items-center gap-6 bg-white/5 border border-white/10 rounded-full w-max px-6 py-2">
+                            <button type="button" onclick="cambiarPases(-1)" class="text-dorado text-2xl focus:outline-none opacity-70 hover:opacity-100">-</button>
+                            <span id="contador-pases" class="text-xl font-serif min-w-[20px] text-center text-texto">1</span>
+                            <button type="button" onclick="cambiarPases(1)" class="text-dorado text-2xl focus:outline-none opacity-70 hover:opacity-100">+</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-3">Mensaje de Felicitación (Opcional)</label>
+                        <textarea id="mensaje" rows="3" class="w-full bg-black/30 border border-gray-700 rounded-xl focus:border-dorado outline-none p-4 text-texto text-sm resize-none transition-colors" placeholder="Escríbele algo bonito a Ingrid..."></textarea>
+                    </div>
+                    
+                    <button type="button" onclick="enviarWhatsApp()" class="glass-btn w-full py-5 mt-2 font-serif text-xl tracking-wider text-white hover:bg-vino/50 transition-all flex justify-center items-center gap-4">
+                        <i data-lucide="send" class="w-5 h-5 opacity-80"></i> Enviar Confirmación
+                    </button>
+                </form>
+            </div>
+        </section>
+        
+        <footer class="text-center py-12 pb-32 text-xs uppercase tracking-widest text-gray-600">
+            <p>Diseñado con <i data-lucide="heart" class="w-3 h-3 inline text-vino border-none mx-1"></i> por <strong class="text-gray-400 font-serif tracking-normal text-sm ml-1">ArteEnLink</strong></p>
+        </footer>
+
+    </main>
+
+    <!-- LIBRERÍAS EXTERNAS -->
+    <!-- Iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Animaciones UX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Confeti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Carrusel -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- THREE.JS (EL MOTOR DE CAUSTICS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- LÓGICA PRINCIPAL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initThreeJSCaustics(); // Nuevo Motor Gráfico
+            initPreloaderAnimations();
+            initCountdown();
+            
+            new Swiper(".mySwiper", { 
+                spaceBetween: 20, 
+                pagination: { el: ".swiper-pagination", clickable: true },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        slidesOffsetBefore: 0,
+                        slidesOffsetAfter: 0
+                    },
+                    768: {
+                        slidesPerView: "auto",
+                        slidesOffsetBefore: 24,
+                        slidesOffsetAfter: 24
+                    }
+                }
+            });
+        });
+
+        /* =========================================
+           1. THREE.JS: CAUSTICS (Luz a través de cristal)
+        ========================================= */
+        function initThreeJSCaustics() {
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            
+            // Cámara
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 2;
+
+            // Renderizador
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Optimización móvil
+            container.appendChild(renderer.domElement);
+
+            // Shader Material para calcular los reflejos (Caustics)
+            const causticsMaterial = new THREE.ShaderMaterial({
+                uniforms: {
+                    time: { value: 0 },
+                    mouse: { value: new THREE.Vector2(0.5, 0.5) },
+                    resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
+                },
+                vertexShader: `
+                    varying vec2 vUv;
+                    void main() {
+                        vUv = uv;
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    uniform float time;
+                    uniform vec2 mouse;
+                    varying vec2 vUv;
+
+                    // Función para generar los patrones de luz facetados
+                    float getCaustics(vec2 p) {
+                        float t = time * 0.15;
+                        vec2 q = p - vec2(0.5);
+                        q.x += (mouse.x - 0.5) * 0.2; // Sutil interacción
+                        q.y += (mouse.y - 0.5) * 0.2;
+                        
+                        float a = atan(q.y, q.x);
+                        float r = length(q);
+                        
+                        // Matemáticas para simular el tallado del cristal
+                        float v = sin(r * 10.0 - t * 2.0) + cos(a * 5.0 + t);
+                        v += sin(r * 20.0 + a * 3.0 - t * 3.0);
+                        v *= smoothstep(0.8, 0.0, r); // Fade out en los bordes
+                        
+                        return smoothstep(0.5, 2.0, v); // Contraste duro para efecto cristal
+                    }
+
+                    void main() {
+                        vec2 uv = vUv;
+                        
+                        // Cálculo de luces
+                        float caustic1 = getCaustics(uv);
+                        float caustic2 = getCaustics(uv * 1.5 + vec2(0.2));
+                        float caustic3 = getCaustics(uv * 0.8 - vec2(0.1));
+                        
+                        float totalCaustics = caustic1 * 0.5 + caustic2 * 0.3 + caustic3 * 0.2;
+                        
+                        // Paleta Nivel Dios
+                        vec3 bg = vec3(0.02, 0.008, 0.012); // #050203 Oscuro
+                        vec3 colorVino = vec3(0.447, 0.184, 0.216); // #722F37
+                        vec3 colorDorado = vec3(0.831, 0.686, 0.216); // #D4AF37
+                        
+                        // Mezcla: Fondo oscuro + Luces coloreadas proyectadas
+                        vec3 finalColor = mix(bg, colorVino, totalCaustics * 0.8);
+                        finalColor += colorDorado * pow(totalCaustics, 3.0) * 0.5; // Destellos intensos en el núcleo
+                        
+                        gl_FragColor = vec4(finalColor, 1.0);
+                    }
+                `
+            });
+
+            // Plano que ocupa toda la pantalla
+            const geometry = new THREE.PlaneGeometry(10, 10);
+            const plane = new THREE.Mesh(geometry, causticsMaterial);
+            scene.add(plane);
+
+            // Interacción táctil/mouse
+            let mouseX = 0.5;
+            let mouseY = 0.5;
+            const updateMouse = (x, y) => {
+                mouseX = x / window.innerWidth;
+                mouseY = 1.0 - (y / window.innerHeight);
+                // Inercia suave hacia el mouse
+                causticsMaterial.uniforms.mouse.value.x += (mouseX - causticsMaterial.uniforms.mouse.value.x) * 0.05;
+                causticsMaterial.uniforms.mouse.value.y += (mouseY - causticsMaterial.uniforms.mouse.value.y) * 0.05;
+            };
+
+            window.addEventListener('mousemove', (e) => updateMouse(e.clientX, e.clientY));
+            window.addEventListener('touchmove', (e) => updateMouse(e.touches[0].clientX, e.touches[0].clientY));
+
+            // Bucle de animación (60fps)
+            const clock = new THREE.Clock();
+            function animate() {
+                requestAnimationFrame(animate);
+                causticsMaterial.uniforms.time.value = clock.getElapsedTime();
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Responsividad
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                causticsMaterial.uniforms.resolution.value.set(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        /* =========================================
+           2. ANIMACIONES ANIME.JS Y PRELOADER
+        ========================================= */
+        function initPreloaderAnimations() {
+            anime({ 
+                targets: '.draw-path', 
+                strokeDashoffset: [anime.setDashoffset, 0], 
+                easing: 'easeInOutSine', 
+                duration: 2500, 
+                delay: (el, i) => i * 250, 
+                direction: 'forwards', 
+                complete: () => {
+                    anime({ targets: '#enter-btn', opacity: 1, translateY: [20, 0], duration: 1000 });
+                } 
+            });
+        }
+
+        function enterInvitation() { 
+            const audio = document.getElementById('bg-audio'); 
+            audio.volume = 0.4; 
+            safePlayAudio();
+            
+            document.getElementById('preloader').style.opacity = '0'; 
+            
+            setTimeout(() => { 
+                document.getElementById('preloader').style.display = 'none'; 
+                document.body.classList.remove('no-scroll'); 
+                document.getElementById('content').classList.remove('hidden'); 
+                shootConfetti(); 
+                initScrollAnimations(); 
+            }, 1000); 
+        }
+
+        function shootConfetti() { 
+            const end = Date.now() + 5000; 
+            (function frame() { 
+                confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#722F37', '#D4AF37', '#FFFFFF'], zIndex: 60 }); 
+                confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#722F37', '#D4AF37', '#FFFFFF'], zIndex: 60 }); 
+                if (Date.now() < end) requestAnimationFrame(frame); 
+            })(); 
+        }
+
+        function initScrollAnimations() { 
+            const observer = new IntersectionObserver((entries) => { 
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) { 
+                        anime({ 
+                            targets: entry.target, 
+                            translateY: [40, 0], 
+                            opacity: [0, 1], 
+                            easing: 'easeOutCubic', 
+                            duration: 1200, 
+                            delay: 50 
+                        }); 
+                        observer.unobserve(entry.target); 
+                    } 
+                }); 
+            }, { threshold: 0.1 }); 
+            
+            document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el)); 
+        }
+
+        /* =========================================
+           3. UI UTILITIES (Audio & Countdown)
+        ========================================= */
+        let isPlaying = false;
+        let playPromise;
+
+        function safePlayAudio() {
+            const audio = document.getElementById('bg-audio');
+            const icon = document.getElementById('audio-icon');
+            playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    icon.setAttribute('data-lucide', 'music');
+                    lucide.createIcons();
+                }).catch(e => {
+                    console.log("Autoplay bloqueado:", e);
+                });
+            }
+        }
+
+        function safePauseAudio() {
+            const audio = document.getElementById('bg-audio');
+            const icon = document.getElementById('audio-icon');
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    audio.pause();
+                    isPlaying = false;
+                    icon.setAttribute('data-lucide', 'volume-x');
+                    lucide.createIcons();
+                }).catch(e => console.log(e));
+            } else {
+                audio.pause();
+                isPlaying = false;
+                icon.setAttribute('data-lucide', 'volume-x');
+                lucide.createIcons();
+            }
+        }
+
+        function toggleAudio() {
+            if (isPlaying) {
+                safePauseAudio();
+            } else {
+                safePlayAudio();
+            }
+        }
+
+        function initCountdown() {
+            const targetDate = new Date("June 6, 2026 17:00:00").getTime(); 
+            setInterval(() => { 
+                const now = new Date().getTime(); 
+                const distance = targetDate - now; 
+                if (distance < 0) return; 
+                
+                document.getElementById("days").innerText = Math.floor(distance / (1000*60*60*24)).toString().padStart(2, '0'); 
+                document.getElementById("hours").innerText = Math.floor((distance % (1000*60*60*24)) / (1000*60*60)).toString().padStart(2, '0'); 
+                document.getElementById("minutes").innerText = Math.floor((distance % (1000*60*60)) / (1000*60)).toString().padStart(2, '0'); 
+                document.getElementById("seconds").innerText = Math.floor((distance % (1000*60)) / 1000).toString().padStart(2, '0'); 
+            }, 1000);
+        }
+
+        /* =========================================
+           4. RSVP & CALENDARIO
+        ========================================= */
+        let pases = 1; 
+        function cambiarPases(val) { 
+            pases += val; 
+            if(pases < 1) pases = 1;
+            if(pases > 10) pases = 10;
+            document.getElementById('contador-pases').innerText = pases; 
+        }
+
+        function enviarWhatsApp() { 
+            const inputNombre = document.getElementById('nombre');
+            const errorNombre = document.getElementById('error-nombre');
+            const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            if(!inputNombre.value.trim()) {
+                inputNombre.classList.add('border-red-400');
+                errorNombre.classList.remove('hidden');
+                return;
+            }
+            
+            inputNombre.classList.remove('border-red-400');
+            errorNombre.classList.add('hidden');
+
+            const numero = "5219671361956"; 
+            const numPases = asistencia.includes('Sí') ? pases : 0;
+            const texto = `¡Hola! 🥂 Te contacto para confirmar asistencia a los espectaculares XV Años de Ingrid Yesenia.\n\n👤 *Nombre/Familia:* ${inputNombre.value}\n✅ *Estatus:* ${asistencia}\n🎟️ *Pases:* ${numPases}\n💌 *Mensaje:* ${mensaje ? mensaje : '¡Felicidades!'}`; 
+            
+            if(asistencia.includes('Sí')) shootConfetti();
+
+            setTimeout(() => window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, '_blank'), 800);
+        }
+
+        function toggleCalendarMenu() { document.getElementById('calendar-menu').classList.toggle('hidden'); }
+        function addToGoogleCalendar(e) { 
+            e.preventDefault(); 
+            window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV%20A%C3%B1os%20de%20Ingrid%20Yesenia&dates=20260606T230000Z/20260607T050000Z&details=%C2%A1Acomp%C3%A1%C3%B1anos%20a%20celebrar!&location=Sal%C3%B3n%20Tiale,%20Sector%20Salud`, '_blank'); 
+            toggleCalendarMenu(); 
+        }
+        function downloadICS(e) { 
+            e.preventDefault(); 
+            const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:XV Años Ingrid Yesenia\nDTSTART:20260606T230000Z\nDTEND:20260607T050000Z\nLOCATION:Salón Tiale\nDESCRIPTION:¡Acompáñanos a celebrar la magia de los XV Años!\nEND:VEVENT\nEND:VCALENDAR`;
+            const link = document.createElement('a'); 
+            link.href = window.URL.createObjectURL(new Blob([icsContent], { type: 'text/calendar;charset=utf-8' })); 
+            link.setAttribute('download', 'XV_Ingrid.ics'); 
+            document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            toggleCalendarMenu(); 
+        }
+    </script>
+</body>
+</html>
