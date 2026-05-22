@@ -80,3 +80,12 @@
             .swiper-slide { width: 100% !important; } /* Un elemento a la vez en móviles */
         }
         .swiper-pagination-bullet { background: #D4AF37 !important; }
+
+        @media (min-width: 768px) {
+            .mySwiper .swiper-wrapper {
+                display: flex !important;
+                justify-content: center !important;
+            }
+        }
+
+
