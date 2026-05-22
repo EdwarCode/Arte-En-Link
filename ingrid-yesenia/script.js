@@ -17,8 +17,7 @@
                     },
                     768: {
                         slidesPerView: "auto",
-                        slidesOffsetBefore: 24,
-                        slidesOffsetAfter: 24
+                        
                     }
                 }
             });
