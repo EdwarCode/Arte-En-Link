@@ -4,6 +4,7 @@
             initThreeJSCaustics(); // Nuevo Motor Gráfico
             initPreloaderAnimations();
             initCountdown();
+            initDynamicIsland(); // Inicializa el sensor de la Isla
 
 
                         new Swiper(".mySwiper", { 
@@ -53,6 +54,29 @@
         //         }
         //     });
         // });
+
+
+
+
+                /* =========================================
+           SENSOR DE LA ISLA DINÁMICA
+        ========================================= */
+        function initDynamicIsland() {
+            let lastScrollY = window.scrollY;
+            const island = document.getElementById('dynamic-island');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > lastScrollY && window.scrollY > 50) {
+                    // Scroll hacia abajo: Ocultar isla
+                    island.classList.add('island-hidden');
+                } else {
+                    // Scroll hacia arriba: Mostrar isla
+                    island.classList.remove('island-hidden');
+                }
+                lastScrollY = window.scrollY;
+            });
+        }
+        
 
         /* =========================================
            1. THREE.JS: CAUSTICS (Luz a través de cristal)
