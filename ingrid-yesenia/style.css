@@ -38,9 +38,6 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         }
 
-        .swiper-slide {
-    height: auto !important;
-}
 
         .glass-btn {
             background: rgba(114, 47, 55, 0.2);
