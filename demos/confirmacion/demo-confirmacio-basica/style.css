@@ -168,7 +168,7 @@
         }
         .hero-bg { position: absolute; inset: 0; z-index: 2; }
         .hero-bg img { 
-            width: 100%; height: 100%; object-fit: cover; 
+            width: 100%; height: 75%; object-fit: cover; 
             filter: brightness(0.6) sepia(20%); /* Tono oscuro y cálido */
         }
         /* Degradado para fundir con la página */
