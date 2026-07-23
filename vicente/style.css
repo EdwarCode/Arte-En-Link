@@ -1,0 +1,150 @@
+
+        body {
+            background-color: #0B0C10;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+
+        /* Utilidades para ocultar scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B0C10; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+
+        /* Efecto Ken Burns en Portada */
+        .ken-burns {
+            animation: kenburns 20s ease-out infinite alternate;
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        /* Gradientes dorados premium */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #FDE08B, #D4AF37, #AA8C2C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .border-gradient-gold {
+            border-image: linear-gradient(to right, #D4AF37, #AA8C2C) 1;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background-color: #0B0C10;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-out;
+        }
+        .spinner-eye {
+            font-size: 3rem;
+            color: #D4AF37;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        /* Puertas del Templo / Pirámide (Mejoradas) */
+        .pyramid-gate {
+            position: fixed;
+            top: 0;
+            width: 50vw;
+            height: 100vh;
+            background-color: #050505;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            overflow: hidden;
+        }
+        
+        /* La figura de la pirámide iluminada */
+        .pyramid-shape {
+            position: absolute;
+            bottom: -5vh;
+            width: 100vw;
+            height: 75vh;
+            background: linear-gradient(to top, rgba(212,175,55,0.5) 0%, rgba(212,175,55,0.05) 80%, transparent 100%);
+            clip-path: polygon(50% 0%, 5% 100%, 95% 100%);
+            border-bottom: 5vh solid #D4AF37;
+        }
+        
+        #gate-left { 
+            left: 0; 
+            border-right: 3px solid #D4AF37;
+            box-shadow: inset -20px 0 50px rgba(0,0,0,0.9), 10px 0 30px rgba(0,0,0,0.9);
+            justify-content: flex-end;
+        }
+        #gate-left .pyramid-shape { left: 0; }
+        
+        #gate-right { 
+            right: 0; 
+            border-left: 3px solid #D4AF37;
+            box-shadow: inset 20px 0 50px rgba(0,0,0,0.9), -10px 0 30px rgba(0,0,0,0.9);
+            justify-content: flex-start;
+        }
+        #gate-right .pyramid-shape { left: -50vw; }
+
+        /* Botón Emblema VDJ */
+        .emblem-btn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, #15171E 0%, #0B0C10 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 50%;
+            z-index: 60;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+            animation: pulseGlow 3s infinite alternate;
+        }
+        
+        .emblem-btn:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.7), inset 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            100% { box-shadow: 0 0 45px rgba(212, 175, 55, 0.8); }
+        }
+
+        /* Gran número de fondo (Parallax) */
+        #bg-46 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40vw;
+            font-family: 'Cinzel', serif;
+            color: rgba(212, 175, 55, 0.05);
+            z-index: -1;
+            pointer-events: none;
+            white-space: nowrap;
+            filter: blur(5px);
+        }
+
+        /* Estilo Polaroid Galería */
+        .polaroid {
+            background: #fff;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.4s ease;
+        }
+        .polaroid img { width: 100%; height: 250px; object-fit: cover; filter: sepia(0.3) brightness(0.9); transition: filter 0.3s ease; }
+        .polaroid:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; }
+        .polaroid:hover img { filter: sepia(0) brightness(1.1); }
+
