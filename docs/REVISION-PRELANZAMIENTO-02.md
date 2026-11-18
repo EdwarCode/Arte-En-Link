@@ -34,3 +34,9 @@ Requisitos: Node.js, Python 3 y Chromium/Google Chrome. El script abre un servid
 - [ ] Teléfono, email, plazos, vigencia, precio, revisiones y condiciones contractuales confirmados por la persona responsable
 
 **NO-GO** hasta completar los checks. No realizar PR, merge, despliegue, DNS, publicación ni promoción sin autorización del propietario.
+
+## Revisión adicional de contenido y seguridad (rama, sin publicación)
+- **Oferta comercial armonizada** en las 12 colecciones: se retiraron las promesas rígidas de «24 horas», «cambios ilimitados» y anticipo obligatorio de 50% hasta que se confirmen formalmente. Se mantienen intactos los precios de $349, $549 y $799 MXN. El verificador estático ahora protege esta coherencia.
+- **Tres demos reforzadas**: los muros de mensajes de Bautizos Premium y XV Premium ya representan nombres y textos con `textContent`, no con plantillas `innerHTML`. La galería de Graduaciones Premium crea elementos `img` mediante DOM. Se agregó recuperación segura ante `localStorage` defectuoso.
+- **Bloqueo vigente**: no hay reporte visual de capturas ni pruebas de comportamiento real en Chrome, Firefox o Safari. Los comandos se incluyeron para el equipo autorizado; la aprobación de interfaz debe basarse en sus resultados.
+- **Sin permisos para lanzar**: ni el número de WhatsApp, ni las licencias multimedia, ni la vigencia/duración, ni el proceso de pago, ni los datos personales se consideran auditados externamente por estas pruebas de código.

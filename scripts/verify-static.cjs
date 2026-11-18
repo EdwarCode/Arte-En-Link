@@ -68,6 +68,16 @@ for (const p of demos) {
   if (!html.includes('src="/demo-base.js"')) failures.push('Demo sin controlador de enlaces de ejemplo: ' + p);
 }
 
+for (const p of categories) {
+  const content = fs.readFileSync(path.join(root, p), 'utf8');
+  for (const price of ['349', '549', '799']) {
+    if (!content.includes('$' + price)) failures.push('Paquete de precio ausente en ' + p + ': $' + price);
+  }
+  if (/24\s*(?:horas|hrs)|cambios ilimitados|anticipo del 50%/i.test(content)) {
+    failures.push('Condición comercial no verificada en ' + p);
+  }
+}
+
 let checkedJs = 0;
 for (const p of files.filter(p => p.endsWith('.js'))) {
   const content = fs.readFileSync(path.join(root, p), 'utf8');
