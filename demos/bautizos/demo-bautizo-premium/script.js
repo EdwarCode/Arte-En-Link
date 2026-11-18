@@ -21,10 +21,10 @@
 
             document.getElementById('btn-confirmar-wa').addEventListener('click', () => {
                 const respuesta = document.getElementById('rsvp-respuesta').value;
-                const numeroWhatsApp = "520000000000"; 
+                // Demo: sin número de anfitrión.
                 const mensaje = `¡Hola! Soy *${nombreFinal}*.\n\nHe revisado la invitación de Mateo.\n*Respuesta:* ${respuesta}.\n*Pases asignados:* ${pasesFinal}\n\n¡Muchas gracias! 🕊️`;
-                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-                window.open(urlWhatsApp, '_blank');
+                // Demo: envío a WhatsApp deshabilitado.
+                window.ArteEnLinkDemo.showNotice();
             });
 
 

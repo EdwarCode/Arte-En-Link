@@ -146,6 +146,6 @@
             
             // Construir mensaje VIP para WhatsApp
             let msj = `✨ *Confirmación VIP* ✨\n\nHola, soy *${nombre}*.\nQuiero confirmar que *${estado}* al Baby Shower de Leonardo.\nDetalle: ${pases}.\n\n¡Gracias!`;
-            let url = `https://wa.me/520000000000?text=${encodeURIComponent(msj)}`;
-            window.open(url, '_blank');
+            // Demo: envío a WhatsApp deshabilitado.
+            window.ArteEnLinkDemo.showNotice();
         }

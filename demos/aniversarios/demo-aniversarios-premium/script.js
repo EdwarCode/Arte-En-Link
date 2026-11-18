@@ -202,7 +202,7 @@
                 anime({ targets: '#btn-enviar-rsvp', scale: [1, 0.95, 1], duration: 300, easing: 'easeInOutQuad', 
                     complete: () => {
                         const textoWp = `¡Hola! ✨\n\nSoy *${nombre}* y es un inmenso honor confirmar mi asistencia a sus Bodas de Oro.\n\n*💌 Mi mensaje para ustedes:*\n"${mensaje}"\n\n*🎵 Canción que pido para el DJ:*\n"${cancion}"\n\n¡Nos vemos en la fiesta! 🥂`;
-                        window.open(`https://wa.me/520000000000?text=${encodeURIComponent(textoWp)}`, '_blank');
+                        window.ArteEnLinkDemo.showNotice();
                     }
                 });
             });
