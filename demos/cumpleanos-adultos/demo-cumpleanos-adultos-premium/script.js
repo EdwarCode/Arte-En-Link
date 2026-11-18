@@ -1,6 +1,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
-            const numeroWhatsApp = "520000000000"; // Tu número aquí
+            // Demo: sin número de anfitrión.
 
             // --- REVELACIÓN DE TEXTO DE CINE (Split Text) ---
             const splitTexts = document.querySelectorAll('.split-text');
@@ -289,7 +289,7 @@
                     if(cancion.trim() !== "") textoWA += `*Canción para el DJ:* ${cancion}\n`;
                     if(mensaje.trim() !== "") textoWA += `\n*Anécdota / Mensaje:*\n"${mensaje}"\n`;
 
-                    window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoWA)}`, '_blank');
+                    window.ArteEnLinkDemo.showNotice();
                 });
             }
 

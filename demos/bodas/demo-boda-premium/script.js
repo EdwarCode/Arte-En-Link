@@ -16,11 +16,11 @@
                 const bebida = document.getElementById('rsvp-bebida').value;
                 const mensajeCariño = document.getElementById('rsvp-mensaje').value || '¡Felicidades por esta nueva etapa!';
                 
-                const numeroWhatsApp = "520000000000"; 
+                // Demo: sin número de anfitrión.
                 const mensaje = `¡Hola Juan y Ana! Soy *${nombreFinal}*.\n\n*Respuesta:* ${respuesta} con los *${pasesFinal} pases* que nos asignaron.\n*Bebida de preferencia:* ${bebida}\n*Mensaje:* "${mensajeCariño}"\n\n¡Gracias por invitarnos!`;
                 
-                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-                window.open(urlWhatsApp, '_blank');
+                // Demo: envío a WhatsApp deshabilitado.
+                window.ArteEnLinkDemo.showNotice();
             });
 
             // 2. LÓGICA DEL SOBRE DIGITAL Y MÚSICA REFACTORIZADA
@@ -136,8 +136,8 @@
                 alert("Por favor escribe una canción.");
                 return;
             }
-            const numeroWhatsApp = "520000000000"; 
+            // Demo: sin número de anfitrión.
             const mensaje = `¡Hola! Para la playlist de la boda sugiero la canción: *${cancion}* 🎶`;
-            window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, '_blank');
+            window.ArteEnLinkDemo.showNotice();
         }
     

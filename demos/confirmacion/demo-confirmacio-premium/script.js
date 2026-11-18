@@ -129,7 +129,7 @@
 
         // Lógica RSVP (WhatsApp)
         function enviarRSVP() {
-            const numeroTel = "520000000000"; // Reemplazar con el número de ArteEnLink o cliente
+            // Demo: sin número de anfitrión.
             const nombre = document.getElementById('wa-nombre').value;
             const mensaje = document.getElementById('wa-mensaje').value;
             const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
@@ -144,6 +144,6 @@
                 textoWa += `\nMi mensaje para Mateo: "${mensaje}"`;
             }
 
-            const url = `https://wa.me/${numeroTel}?text=${encodeURIComponent(textoWa)}`;
-            window.open(url, '_blank');
+            // Demo: envío a WhatsApp deshabilitado.
+            window.ArteEnLinkDemo.showNotice();
         }
