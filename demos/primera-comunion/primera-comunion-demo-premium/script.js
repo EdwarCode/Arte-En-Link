@@ -89,6 +89,6 @@
             if (nombre) textoWA += ` Soy *${nombre}*.`;
             if (mensaje) textoWA += `\n\nAdemás, te dejo este mensaje con mucho cariño: "${mensaje}"`;
 
-            const url = `https://wa.me/520000000000?text=${encodeURIComponent(textoWA)}`;
-            window.open(url, '_blank');
+            // Demo: envío a WhatsApp deshabilitado.
+            window.ArteEnLinkDemo.showNotice();
         }

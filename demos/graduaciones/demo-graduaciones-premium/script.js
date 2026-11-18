@@ -252,7 +252,7 @@
                 anime({ targets: '#btn-enviar-rsvp', scale: [1, 0.95, 1], duration: 300, easing: 'easeInOutQuad', 
                     complete: () => {
                         const mensaje = `¡Hola Alejandro! ✨\n\nSoy *${nombre}* y confirmo con mucho orgullo mi asistencia a tu cena de gala. ¡Felicidades Ingeniero!\n\n*🎓 Mi Consejo para tu futuro:*\n"${consejo}"\n\n*🎵 Para la fiesta, dile al DJ que ponga:*\n"${cancion}"\n\n¡Nos vemos en la celebración!`;
-                        window.open(`https://wa.me/520000000000?text=${encodeURIComponent(mensaje)}`, '_blank');
+                        window.ArteEnLinkDemo.showNotice();
                     }
                 });
             });

@@ -153,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const mensaje = `*¡Hola! Ya tengo mi Pase VIP para la Revelación de Género.* 🎉\n\n👤 *Invitado:* ${nombre}\n✔️ *Asistencia:* ${asistencia}\n💌 *Deseo para el bebé:* ${deseo}\n🎵 *Mi canción sugerida:* ${cancion}`;
         
         // Redirigir a WhatsApp
-        const numeroWhatsApp = "520000000000"; // Cambiar por el tuyo en producción
-        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-        window.open(urlWhatsApp, '_blank');
+        // Demo: sin número de anfitrión.
+        // Demo: envío a WhatsApp deshabilitado.
+        window.ArteEnLinkDemo.showNotice();
     });
 
     // 7. LÓGICA MODAL LOOKBOOK
@@ -174,9 +174,9 @@ function emitirVoto(equipo, botonElement) {
     confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: [colorConfetti, '#ffffff', '#D4AF37'], disableForReducedMotion: true });
     
     const icono = equipo === 'niña' ? '🎀' : '🧢';
-    const numeroWhatsApp = "520000000000"; 
+    // Demo: sin número de anfitrión.
     const mensaje = `¡Ya estoy listo! Mi voto es para Team ${equipo.charAt(0).toUpperCase() + equipo.slice(1)} ${icono}`;
-    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    // Demo: envío a WhatsApp deshabilitado.
     
-    setTimeout(() => { window.open(urlWhatsApp, '_blank'); botonElement.classList.remove('votado'); }, 1500);
+    setTimeout(() => { window.ArteEnLinkDemo.showNotice(); botonElement.classList.remove('votado'); }, 1500);
 }
