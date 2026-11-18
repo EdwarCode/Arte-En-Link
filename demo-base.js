@@ -1,11 +1,34 @@
-/* Demo RSVP: nunca se envían respuestas a números ficticios. */
-(() => {"use strict";
- function showNotice(){
-   let node=document.getElementById("demo-rsvp-notice");
-   if(!node){node=document.createElement("aside");node.id="demo-rsvp-notice";node.className="demo-rsvp-notice";node.setAttribute("role","note");node.setAttribute("tabindex","-1");
-     const heading=document.createElement("strong");heading.textContent="Esta función es una demostración";
-     const p=document.createElement("p");p.textContent="La confirmación y las sugerencias se conectan al anfitrión cuando personalizamos tu invitación. No enviamos datos desde esta demo.";
-     const a=document.createElement("a");a.href="/";a.textContent="Conocer ArteEnLink ↗";node.append(heading,p,a);document.body.append(node)}
-   node.scrollIntoView({behavior:"auto",block:"center"});node.focus({preventScroll:true});return false;
- }window.ArteEnLinkDemo=Object.freeze({showNotice});
+/* ArteEnLink: controles seguros para demos, sin enviar RSVPs ficticios. */
+(() => {
+  "use strict";
+  function showNotice() {
+    let notice = document.getElementById("demo-rsvp-notice");
+    if (!notice) {
+      notice = document.createElement("aside");
+      notice.id = "demo-rsvp-notice";
+      notice.className = "demo-rsvp-notice";
+      notice.setAttribute("role", "note");
+      notice.setAttribute("tabindex", "-1");
+      const title = document.createElement("strong");
+      title.textContent = "Función de demostración";
+      const description = document.createElement("p");
+      description.textContent = "Esta muestra es ilustrativa: mapas, alojamientos, álbumes, calendarios, regalos y confirmaciones se configuran con los datos reales de cada celebración. Aquí no se envía ningún dato del invitado.";
+      const link = document.createElement("a");
+      link.href = "/";
+      link.textContent = "Explorar ArteEnLink ↗";
+      notice.append(title, description, link);
+      document.body.append(notice);
+    }
+    notice.scrollIntoView({ behavior: "auto", block: "center" });
+    notice.focus({ preventScroll: true });
+    return false;
+  }
+  window.ArteEnLinkDemo = Object.freeze({ showNotice });
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    const anchor = target instanceof Element ? target.closest('a[href="#"]') : null;
+    if (!anchor || event.defaultPrevented || anchor.hasAttribute("onclick")) return;
+    event.preventDefault();
+    showNotice();
+  });
 })();
