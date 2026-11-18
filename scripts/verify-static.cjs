@@ -46,6 +46,28 @@ for (const p of htmlPages) {
     }
   }
 }
+let checkedCssRefs = 0;
+for (const p of files.filter(p => p.endsWith('.css'))) {
+  const css = fs.readFileSync(path.join(root, p), 'utf8');
+  const urls = css.matchAll(/url\(\s*(?:"([^"]*)"|'([^']*)'|([^)]*))\s*\)/g);
+  for (const match of urls) {
+    const ref = (match[1] || match[2] || match[3] || '').trim();
+    if (!ref || /^(?:data:|https?:|\/\/|about:|#)/i.test(ref)) continue;
+    let clean;
+    try { clean = decodeURIComponent(ref.replace(/\\([ ()])/g, '$1').split(/[?#]/)[0]); }
+    catch { failures.push('URL CSS mal codificada en ' + p + ': ' + ref); continue; }
+    const expected = clean.startsWith('/')
+      ? posix.normalize(clean.slice(1))
+      : posix.normalize(posix.join(posix.dirname(p), clean));
+    checkedCssRefs++;
+    if (!allFiles.has(expected)) failures.push('Recurso CSS ausente: ' + p + ' -> ' + ref);
+  }
+}
+for (const p of demos) {
+  const html = fs.readFileSync(path.join(root, p), 'utf8');
+  if (!html.includes('src="/demo-base.js"')) failures.push('Demo sin controlador de enlaces de ejemplo: ' + p);
+}
+
 let checkedJs = 0;
 for (const p of files.filter(p => p.endsWith('.js'))) {
   const content = fs.readFileSync(path.join(root, p), 'utf8');
@@ -57,7 +79,7 @@ for (const p of files.filter(p => p.endsWith('.js'))) {
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 if ((sitemap.match(/<loc>/g) || []).length !== 13) failures.push('El sitemap no contiene 13 páginas comerciales');
 console.log('ArteEnLink static gate:', htmlPages.length + ' páginas, ' + checkedRefs +
-  ' referencias locales y ' + checkedJs + ' archivos JS');
+  ' referencias HTML, ' + checkedCssRefs + ' recursos CSS y ' + checkedJs + ' archivos JS');
 if (failures.length) {
   failures.forEach(x => console.error('FAIL:', x));
   process.exitCode = 1;
