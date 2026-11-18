@@ -26,6 +26,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
@@ -33,7 +35,7 @@
     <div id="vanta-bg"></div>
 
     <!-- RUTA LOCAL DE AUDIO ESTRICTA -->
-    <audio id="musica-fondo" preload="auto" loop playsinline>
+    <audio id="musica-fondo" loop playsinline>
         <source src="/assets/audio/Ed Sheeran - Perfect (2).mp3" type="audio/mpeg">
     </audio>
 
@@ -70,7 +72,7 @@
     <header class="hero">
         <div class="contenedor">
             <div class="marco-foto-hero fade-up">
-                <img src="/assets/img/aniversarios/aniversarios (2).webp" alt="Retrato Aniversario">
+                <img src="/assets/img/aniversarios/aniversarios (2).webp" alt="Retrato Aniversario" decoding="async">
             </div>
             <div class="hero-grado fade-up delay-1">50 Aniversario</div>
             <h1 class="hero-nombre fade-up delay-1">Carmen & Roberto</h1>
@@ -170,12 +172,12 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <!-- Se usan imágenes vintage/doradas genéricas como placeholders -->
-                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (3).webp" alt="Foto 1"></div>
-                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (4).webp" alt="Foto 2"></div>
-                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (5).webp" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (6).webp" alt="Foto 4"></div>
-                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (7).webp" alt="Foto 5"></div>
-                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (4).webp" alt="Foto 6"></div>
+                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (3).webp" alt="Foto 1" decoding="async" loading="lazy"></div>
+                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (4).webp" alt="Foto 2" decoding="async" loading="lazy"></div>
+                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (5).webp" alt="Foto 3" decoding="async" loading="lazy"></div>
+                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (6).webp" alt="Foto 4" decoding="async" loading="lazy"></div>
+                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (7).webp" alt="Foto 5" decoding="async" loading="lazy"></div>
+                <div class="swiper-slide"><img src="/assets/img/aniversarios/aniversarios (4).webp" alt="Foto 6" decoding="async" loading="lazy"></div>
             </div>
             <!-- Paginación opcional de Swiper -->
             <div class="swiper-pagination"></div>
@@ -260,7 +262,7 @@
                     <h2>Celebra con Nosotros</h2>
                     <p>Por motivos de organización, les suplicamos confirmar su amable asistencia a más tardar el 01 de Noviembre. ¡Los esperamos con mucha ilusión!</p>
                     
-                    <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20con%20mucha%20emoción%20mi%20asistencia%20a%20sus%20Bodas%20de%20Oro.%20¡Felicidades!" target="_blank" class="btn-oro" style="width: 100%; max-width: 400px; margin: 0 auto;">
+                    <a href="#demo-rsvp-notice" class="btn-oro" style="width: 100%; max-width: 400px; margin: 0 auto;">
                         <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar Asistencia
                     </a>
                 </div>
@@ -277,11 +279,12 @@
             <a href="https://www.instagram.com/arteenlink?igsh=c2QxbjU1aDBueW1i&utm_source=qr" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
         </div>
         <div class="creditos">
-            Diseño e Ingeniería Inmersiva por <a href="index.html" target="_blank" style="color: var(--color-oro); font-weight: bold;">ArteEnLink</a>.
+            Diseño e Ingeniería Inmersiva por <a href="/" target="_blank" style="color: var(--color-oro); font-weight: bold;">ArteEnLink</a>.
         </div>
     </footer>
 
         <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación de invitados se habilita con los datos reales al personalizar tu invitación. Puedes explorar el diseño sin enviar una respuesta.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>

@@ -16,6 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
@@ -31,7 +33,7 @@
     </div>
 
     <!-- AUDIO INVISIBLE -->
-    <audio id="musicaFondo" loop>
+    <audio id="musicaFondo" loop preload="none">
         <source src="/assets/audio/Carlos-Rivera-Te Esperaba-baby-shower.mp3" type="audio/mpeg">
     </audio>
 
@@ -61,7 +63,7 @@
         <header class="portada">
             <div class="marco-foto fade-up visible">
                 <div class="imagen-hero">
-                    <img src="/assets/img/baby-shower/baby-shower (1).webp" alt="Baby Shower Leonardo">
+                    <img src="/assets/img/baby-shower/baby-shower (1).webp" alt="Baby Shower Leonardo" decoding="async">
                 </div>
             </div>
             <div class="portada-titulos fade-up delay-1 visible">
@@ -173,12 +175,12 @@
                 
                 <div class="galeria-collage">
                     <!-- Agregado fade-up y delays individuales para entrada en cascada -->
-                    <div class="foto-item f-1 fade-up delay-1"><img src="/assets/img/baby-shower/baby-shower (5).webp" alt="Sesión 1"></div>
-                    <div class="foto-item f-2 fade-up delay-2"><img src="/assets/img/baby-shower/baby-shower (3).webp" alt="Sesión 2"></div>
-                    <div class="foto-item f-3 fade-up delay-3"><img src="/assets/img/baby-shower/baby-shower (2).webp" alt="Sesión 3"></div>
-                    <div class="foto-item f-4 fade-up delay-1"><img src="/assets/img/baby-shower/baby-shower (4).webp" alt="Sesión 4"></div>
-                    <div class="foto-item f-5 fade-up delay-2"><img src="/assets/img/baby-shower/baby-shower (6).webp" alt="Sesión 5"></div>
-                    <div class="foto-item f-6 fade-up delay-3"><img src="/assets/img/baby-shower/baby-shower (7).webp" alt="Sesión 6"></div>
+                    <div class="foto-item f-1 fade-up delay-1"><img src="/assets/img/baby-shower/baby-shower (5).webp" alt="Sesión 1" decoding="async" loading="lazy"></div>
+                    <div class="foto-item f-2 fade-up delay-2"><img src="/assets/img/baby-shower/baby-shower (3).webp" alt="Sesión 2" decoding="async" loading="lazy"></div>
+                    <div class="foto-item f-3 fade-up delay-3"><img src="/assets/img/baby-shower/baby-shower (2).webp" alt="Sesión 3" decoding="async" loading="lazy"></div>
+                    <div class="foto-item f-4 fade-up delay-1"><img src="/assets/img/baby-shower/baby-shower (4).webp" alt="Sesión 4" decoding="async" loading="lazy"></div>
+                    <div class="foto-item f-5 fade-up delay-2"><img src="/assets/img/baby-shower/baby-shower (6).webp" alt="Sesión 5" decoding="async" loading="lazy"></div>
+                    <div class="foto-item f-6 fade-up delay-3"><img src="/assets/img/baby-shower/baby-shower (7).webp" alt="Sesión 6" decoding="async" loading="lazy"></div>
                 </div>
             </div>
         </section>

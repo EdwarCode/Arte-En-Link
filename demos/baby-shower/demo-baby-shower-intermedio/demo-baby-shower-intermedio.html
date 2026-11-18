@@ -15,11 +15,13 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
     <!-- AUDIO INVISIBLE -->
-    <audio id="musicaFondo" loop>
+    <audio id="musicaFondo" loop preload="none">
         <!-- Canción de cuna libre de derechos de ejemplo -->
         <source src="/assets/audio/Carlos-Rivera-Te Esperaba-baby-shower.mp3" type="audio/mpeg">
     </audio>
@@ -40,7 +42,7 @@
     <header class="portada">
         <div class="marco-foto fade-up visible">
             <div class="imagen-hero">
-                <img src="/assets/img/baby-shower/baby-shower (1).webp" alt="Baby Shower Leonardo">
+                <img src="/assets/img/baby-shower/baby-shower (1).webp" alt="Baby Shower Leonardo" decoding="async">
             </div>
         </div>
         <div class="portada-titulos fade-up delay-1 visible">
@@ -116,13 +118,13 @@
             
             <div class="galeria-grid">
                 <div class="foto-item destacada fade-up">
-                    <img src="/assets/img/baby-shower/baby-shower (5).webp" alt="Maternidad 1">
+                    <img src="/assets/img/baby-shower/baby-shower (5).webp" alt="Maternidad 1" decoding="async" loading="lazy">
                 </div>
                 <div class="foto-item fade-up delay-1">
-                    <img src="/assets/img/baby-shower/baby-shower (6).webp" alt="Maternidad 2">
+                    <img src="/assets/img/baby-shower/baby-shower (6).webp" alt="Maternidad 2" decoding="async" loading="lazy">
                 </div>
                 <div class="foto-item fade-up delay-2">
-                    <img src="/assets/img/baby-shower/baby-shower (7).webp" alt="Maternidad 3">
+                    <img src="/assets/img/baby-shower/baby-shower (7).webp" alt="Maternidad 3" decoding="async" loading="lazy">
                 </div>
             </div>
         </div>
@@ -197,7 +199,7 @@
             <p style="margin-bottom: 25px; line-height: 1.8; font-size: 1rem;">
                 <strong>Por favor, confirma tu asistencia antes del 1 de Noviembre</strong> para poder considerarte en todos nuestros preparativos. ¡No faltes, te esperamos con los brazos abiertos!
             </p>
-            <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Leonardo.%20🍼" target="_blank" class="btn-rsvp">
+            <a href="#demo-rsvp-notice" class="btn-rsvp">
                 <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar Asistencia
             </a>
         </div>
@@ -223,5 +225,6 @@
 
     <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación de invitados se habilita con los datos reales al personalizar tu invitación. Puedes explorar el diseño sin enviar una respuesta.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>
