@@ -24,7 +24,7 @@ Estado: **CANDIDATO PARA REVISIÓN — NO APROBADO PARA PRODUCCIÓN**
 
 ## Validaciones efectuadas
 - Lectura de árbol GitHub + comprobación estática de rutas `src`, `href`, `poster` en la portada, 12 colecciones y 36 demos: **0 referencias a archivos locales inexistentes**, después de excluir anchors/URLs externas.
-- Prueba de sintaxis JavaScript (compilación sin ejecución) de los 12 scripts de demos intervenidos: **12/12 PASS**.
+- Prueba de sintaxis JavaScript (compilación sin ejecución) de todos los scripts del repositorio en la rama: **52/52 PASS**.
 - En esos 12 scripts y en el HTML de demos, sin apariciones del número ficticio `520000000000` para las rutas inspeccionadas.
 - **NO EJECUTADO:** navegador real, Lighthouse, pruebas de audio reproducido, RSVP E2E, conexión WhatsApp, contraste automatizado, imágenes obtenidas por red, cumplimiento legal o deploy.
 
@@ -35,7 +35,7 @@ cd Arte-En-Link
 git switch feat/premium-redesign-macro01-20261117
 python3 -m http.server 8000
 ```
-Abrir `http://localhost:8000/` en navegador. Revisar los 36 enlaces a demos desde las 12 categorías en Chrome, Firefox y Safari móvil. No abrir los HTML con `file://`: varias rutas absolutas requieren un servidor web con raíz en el repositorio.
+Ejecutar antes `node scripts/verify-static.cjs` (sin dependencias externas). Abrir `http://localhost:8000/` en navegador. Revisar los 36 enlaces a demos desde las 12 categorías en Chrome, Firefox y Safari móvil. No abrir los HTML con `file://`: varias rutas absolutas requieren un servidor web con raíz en el repositorio.
 
 ## Checklist previo a aprobación
 - [ ] QA manual visual y navegación desktop/móvil, incluido menú, elementos interactivos y demos
