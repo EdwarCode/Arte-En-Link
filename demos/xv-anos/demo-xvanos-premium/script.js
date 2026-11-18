@@ -123,16 +123,23 @@
             ];
 
             // Revisamos si ya hay mensajes guardados en la memoria del celular/PC
-            let mensajesGuardados = JSON.parse(localStorage.getItem('deseosXV_DemoVIP')) || mensajesPorDefecto;
+            let mensajesGuardados = mensajesPorDefecto;
+            try {
+                const guardados = JSON.parse(localStorage.getItem('deseosXV_DemoVIP'));
+                if (Array.isArray(guardados)) mensajesGuardados = guardados.filter(v => v && typeof v.nombre === 'string' && typeof v.texto === 'string').slice(0, 50);
+            } catch (_) { /* Fallback local seguro. */ }
 
             // Función para dibujar una notita en el muro
             function renderizarMensaje(nombre, texto, alPrincipio = false) {
                 const nuevaNota = document.createElement('div');
                 nuevaNota.className = 'nota-deseo';
-                nuevaNota.innerHTML = `
-                    <div class="nota-texto">"${texto}"</div>
-                    <div class="nota-autor">- ${nombre}</div>
-                `;
+                const textoEl = document.createElement('div');
+                textoEl.className = 'nota-texto';
+                textoEl.textContent = '"' + String(texto).slice(0, 500) + '"';
+                const autorEl = document.createElement('div');
+                autorEl.className = 'nota-autor';
+                autorEl.textContent = '- ' + String(nombre).slice(0, 80);
+                nuevaNota.append(textoEl, autorEl);
                 
                 if (alPrincipio) {
                     muroMensajes.prepend(nuevaNota);
@@ -142,7 +149,7 @@
             }
 
             // Limpiamos el HTML quemado y dibujamos los mensajes de la memoria
-            muroMensajes.innerHTML = '';
+            muroMensajes.replaceChildren();
             mensajesGuardados.forEach(msg => renderizarMensaje(msg.nombre, msg.texto));
 
             // Qué pasa al darle clic a "Publicar Deseo"
@@ -159,7 +166,9 @@
                 mensajesGuardados.unshift({ nombre, texto });
                 
                 // 2. Guardamos la lista actualizada en el LocalStorage
-                localStorage.setItem('deseosXV_DemoVIP', JSON.stringify(mensajesGuardados));
+                mensajesGuardados = mensajesGuardados.slice(0, 50);
+                try { localStorage.setItem('deseosXV_DemoVIP', JSON.stringify(mensajesGuardados)); }
+                catch (_) { /* La demostración no requiere almacenamiento para seguir. */ }
                 
                 // 3. Dibujamos la nueva nota en la pantalla
                 renderizarMensaje(nombre, texto, true);

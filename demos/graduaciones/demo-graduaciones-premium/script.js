@@ -196,7 +196,12 @@
                 div.className = 'foto-3d';
                 if(i===0) div.classList.add('activa');
                 div.style.transform = `rotateY(${i * theta}deg) translateZ(${radius}px)`;
-                div.innerHTML = `<img src="${url}" alt="Graduacion ${i}">`;
+                const imagen = document.createElement('img');
+                imagen.src = url;
+                imagen.alt = 'Graduación ' + (i + 1);
+                imagen.loading = 'lazy';
+                imagen.decoding = 'async';
+                div.appendChild(imagen);
                 track.appendChild(div);
             });
 

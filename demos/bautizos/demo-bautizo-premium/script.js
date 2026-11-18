@@ -148,20 +148,27 @@
                 { nombre: "Tía Caro", texto: "¡Qué emoción verte recibir este sacramento! Eres una bendición para toda la familia." }
             ];
 
-            let firmasGuardadas = JSON.parse(localStorage.getItem('firmasBautizo_DemoVIP')) || firmasPorDefecto;
+            let firmasGuardadas = firmasPorDefecto;
+            try {
+                const guardadas = JSON.parse(localStorage.getItem('firmasBautizo_DemoVIP'));
+                if (Array.isArray(guardadas)) firmasGuardadas = guardadas.filter(v => v && typeof v.nombre === 'string' && typeof v.texto === 'string').slice(0, 50);
+            } catch (_) { /* Almacenamiento deshabilitado o datos dañados: usar ejemplos. */ }
 
             function renderizarFirma(nombre, texto, alPrincipio = false) {
                 const nuevaNota = document.createElement('div');
                 nuevaNota.className = 'nota-deseo';
-                nuevaNota.innerHTML = `
-                    <div class="nota-texto">"${texto}"</div>
-                    <div class="nota-autor">- ${nombre}</div>
-                `;
+                const textoEl = document.createElement('div');
+                textoEl.className = 'nota-texto';
+                textoEl.textContent = '"' + String(texto).slice(0, 500) + '"';
+                const autorEl = document.createElement('div');
+                autorEl.className = 'nota-autor';
+                autorEl.textContent = '- ' + String(nombre).slice(0, 80);
+                nuevaNota.append(textoEl, autorEl);
                 if (alPrincipio) { muroFirmas.prepend(nuevaNota); } 
                 else { muroFirmas.appendChild(nuevaNota); }
             }
 
-            muroFirmas.innerHTML = '';
+            muroFirmas.replaceChildren();
             firmasGuardadas.forEach(msg => renderizarFirma(msg.nombre, msg.texto));
 
             btnEnviarFirma.addEventListener('click', () => {
@@ -171,7 +178,9 @@
                 if(nombre === "" || texto === "") { alert("Por favor, escribe tu nombre y un mensaje."); return; }
                 
                 firmasGuardadas.unshift({ nombre, texto });
-                localStorage.setItem('firmasBautizo_DemoVIP', JSON.stringify(firmasGuardadas));
+                firmasGuardadas = firmasGuardadas.slice(0, 50);
+                try { localStorage.setItem('firmasBautizo_DemoVIP', JSON.stringify(firmasGuardadas)); }
+                catch (_) { /* La demo sigue funcionando aunque el navegador bloquee almacenamiento. */ }
                 
                 renderizarFirma(nombre, texto, true);
                 
