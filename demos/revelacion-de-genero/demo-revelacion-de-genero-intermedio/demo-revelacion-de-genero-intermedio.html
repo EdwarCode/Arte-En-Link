@@ -16,6 +16,8 @@
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
@@ -64,7 +66,7 @@
 </div>
 
 <!-- AUDIO DE FONDO -->
-<audio id="musica-fondo" loop>
+<audio id="musica-fondo" loop preload="none">
     <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" type="audio/mpeg">
 </audio>
 
@@ -135,22 +137,22 @@
         
         <div class="galeria-grid">
             <div class="fade-up">
-                <div class="foto-item marco-rosa t-1"><img src="https://images.unsplash.com/photo-1584100525282-386055d21a2c?q=80&w=400&auto=format&fit=crop" alt=""></div>
+                <div class="foto-item marco-rosa t-1"><img src="https://images.unsplash.com/photo-1584100525282-386055d21a2c?q=80&w=400&auto=format&fit=crop" alt="" decoding="async"></div>
             </div>
             <div class="fade-up delay-1">
-                <div class="foto-item marco-azul t-2"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt=""></div>
+                <div class="foto-item marco-azul t-2"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="" decoding="async" loading="lazy"></div>
             </div>
             <div class="fade-up delay-2">
-                <div class="foto-item marco-rosa t-3"><img src="https://images.unsplash.com/photo-1554188248-986adbb56375?q=80&w=400&auto=format&fit=crop" alt=""></div>
+                <div class="foto-item marco-rosa t-3"><img src="https://images.unsplash.com/photo-1554188248-986adbb56375?q=80&w=400&auto=format&fit=crop" alt="" decoding="async" loading="lazy"></div>
             </div>
             <div class="fade-up">
-                <div class="foto-item marco-azul t-4"><img src="https://images.unsplash.com/photo-1518831959646-742c3e14ebf3?q=80&w=400&auto=format&fit=crop" alt=""></div>
+                <div class="foto-item marco-azul t-4"><img src="https://images.unsplash.com/photo-1518831959646-742c3e14ebf3?q=80&w=400&auto=format&fit=crop" alt="" decoding="async" loading="lazy"></div>
             </div>
             <div class="fade-up delay-1">
-                <div class="foto-item marco-rosa t-5"><img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?q=80&w=400&auto=format&fit=crop" alt=""></div>
+                <div class="foto-item marco-rosa t-5"><img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?q=80&w=400&auto=format&fit=crop" alt="" decoding="async" loading="lazy"></div>
             </div>
             <div class="fade-up delay-2">
-                <div class="foto-item marco-azul t-6"><img src="https://images.unsplash.com/photo-1522856339183-5a97c2fe12cc?q=80&w=400&auto=format&fit=crop" alt=""></div>
+                <div class="foto-item marco-azul t-6"><img src="https://images.unsplash.com/photo-1522856339183-5a97c2fe12cc?q=80&w=400&auto=format&fit=crop" alt="" decoding="async" loading="lazy"></div>
             </div>
         </div>
     </div>
@@ -220,7 +222,7 @@
         <div class="rsvp-wrapper glass-panel">
             <h2 class="seccion-titulo">Confirmar Asistencia</h2>
             <p class="seccion-subtitulo" style="margin-bottom: 25px;">Por favor, confírmanos tu asistencia antes del 1 de Noviembre para contemplarte en esta gran celebración.</p>
-            <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20Revelación%20de%20Género%20de%20Diego%20y%20Laura." target="_blank" class="btn btn-whatsapp" style="max-width: 300px; margin: 0 auto; display: flex;">
+            <a href="#demo-rsvp-notice" class="btn btn-whatsapp" style="max-width: 300px; margin: 0 auto; display: flex;">
                 <i class="ph-fill ph-whatsapp-logo"></i> Confirmar por WhatsApp
             </a>
         </div>
@@ -245,5 +247,6 @@
 
     <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación se habilita con los datos reales al personalizar la invitación. Puedes explorar el diseño sin enviar respuestas.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>

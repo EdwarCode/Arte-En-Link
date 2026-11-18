@@ -15,6 +15,8 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
@@ -43,7 +45,7 @@
 
         <div class="hero-bg">
             <!-- Fondo elegante: Detalles blancos, luz, pureza -->
-            <img src="https://images.unsplash.com/photo-1544254050-a9cb00e409ec?q=80&w=800&auto=format&fit=crop" alt="Fondo Comunión">
+            <img src="https://images.unsplash.com/photo-1544254050-a9cb00e409ec?q=80&w=800&auto=format&fit=crop" alt="Fondo Comunión" decoding="async">
         </div>
         <!-- Forzamos la visibilidad inicial de la portada para evitar pantallas en blanco -->
         <div class="hero-content fade-up visible">
@@ -82,7 +84,7 @@
                 <i class="ph-fill ph-sparkle destello destello-3"></i>
                 
                 <div class="foto-festejada" style="margin-bottom: 0;">
-                    <img src="https://images.unsplash.com/photo-1596707328904-8b0907e59f8c?q=80&w=600&auto=format&fit=crop" alt="Foto Festejada Comunión">
+                    <img src="https://images.unsplash.com/photo-1596707328904-8b0907e59f8c?q=80&w=600&auto=format&fit=crop" alt="Foto Festejada Comunión" decoding="async" loading="lazy">
                 </div>
             </div>
             
@@ -181,7 +183,7 @@
                 <p>Tu presencia es muy importante. Por favor, confírmanos tu asistencia antes del 10 de Mayo.</p>
                 
                 <!-- Enlace simulado a WhatsApp -->
-                <a href="https://wa.me/520000000000?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20Primera%20Comunión%20de%20Camila." target="_blank" class="btn-whatsapp">
+                <a href="#demo-rsvp-notice" class="btn-whatsapp">
                     <i class="ph-fill ph-whatsapp-logo"></i> Confirmar por WhatsApp
                 </a>
             </div>
@@ -198,7 +200,7 @@
                     <!-- Call To Action (Ventas de ArteEnLink) -->
                     <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 300px; margin-left: auto; margin-right: auto;">
                         <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 15px;">¿Te gustó esta invitación?</p>
-                        <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20una%20invitación%20de%20Primera%20Comunión%20y%20me%20gustaría%20información%20para%20mi%20evento." target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: var(--color-plata-claro); color: var(--color-texto-oscuro); padding: 10px 25px; border-radius: 50px; font-weight: 600; font-family: var(--fuente-textos); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.3s ease;">
+                        <a href="https://wa.me/525623721854?text=Hola%20ArteEnLink%2C%20vi%20una%20demostraci%C3%B3n%20de%20su%20cat%C3%A1logo%20y%20quiero%20informaci%C3%B3n%20de%20una%20invitaci%C3%B3n%20personalizada." target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: var(--color-plata-claro); color: var(--color-texto-oscuro); padding: 10px 25px; border-radius: 50px; font-weight: 600; font-family: var(--fuente-textos); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.3s ease;">
                             <i class="ph-fill ph-whatsapp-logo"></i> ¡Contáctanos!
                         </a>
                     </div>
@@ -212,5 +214,6 @@
 
     <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación se habilita con los datos reales al personalizar la invitación. Puedes explorar el diseño sin enviar respuestas.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>
