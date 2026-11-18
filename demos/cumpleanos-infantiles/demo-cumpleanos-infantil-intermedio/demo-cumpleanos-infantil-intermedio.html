@@ -16,11 +16,13 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
     <!-- MÚSICA MÁGICA (Instrumental tipo cajita de música) -->
-    <audio id="musica-fondo" loop>
+    <audio id="musica-fondo" loop preload="none">
         <source src="/assets/audio/Dubidubidu (Chipi Chipi Chapa Chapa).mp3" type="audio/mpeg">
     </audio>
 
@@ -40,7 +42,7 @@
         <div class="marco-espejo fade-up visible">
             <div class="imagen-hero">
                 <!-- Foto sugerida: Niña con vestido de princesa -->
-                <img src="/assets/img/cumple-infantil/cumple-infantil-nina (1).webp" alt="Princesa Isabella">
+                <img src="/assets/img/cumple-infantil/cumple-infantil-nina (1).webp" alt="Princesa Isabella" decoding="async">
             </div>
         </div>
         
@@ -160,10 +162,10 @@
                 <div class="galeria-wrapper">
                     <div class="galeria-scroll" id="carrusel">
                         <!-- Fotos con estilo editorial / mágico -->
-                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (2).webp" alt="Princesa 1"></div>
-                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (3).webp" alt="Princesa 2"></div>
-                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (4).webp" alt="Princesa 3"></div>
-                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (5).webp" alt="Princesa 4"></div>
+                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (2).webp" alt="Princesa 1" decoding="async" loading="lazy"></div>
+                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (3).webp" alt="Princesa 2" decoding="async" loading="lazy"></div>
+                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (4).webp" alt="Princesa 3" decoding="async" loading="lazy"></div>
+                        <div class="foto-item"><img src="/assets/img/cumple-infantil/cumple-infantil-nina (5).webp" alt="Princesa 4" decoding="async" loading="lazy"></div>
                     </div>
                 </div>
                 <button class="carrusel-btn carrusel-next" id="btn-next"><i class="ph ph-caret-right"></i></button>
@@ -208,7 +210,7 @@
             <h2 class="titulo-seccion">¡Confirma tu asistencia!</h2>
             <p style="margin-bottom: 40px; font-size: 1.1rem;">Dile a mi mami si nos acompañarán para reservar su lugar en la mesa real.</p>
             
-            <a href="https://wa.me/520000000000?text=¡Hola!%20Confirmo%20nuestra%20asistencia%20al%20Gran%20Baile%20de%20Isabella.%20¡Ahí%20nos%20vemos!%20👑" target="_blank" class="btn-rsvp-wa">
+            <a href="#demo-rsvp-notice" class="btn-rsvp-wa">
                 <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar por WhatsApp
             </a>
         </div>
@@ -231,5 +233,6 @@
 
     <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación se habilita con los datos reales al personalizar la invitación. Puedes explorar el diseño sin enviar respuestas.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>

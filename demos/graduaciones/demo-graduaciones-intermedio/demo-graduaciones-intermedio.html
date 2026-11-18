@@ -13,10 +13,12 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
-    <audio id="musica-fondo" loop>
+    <audio id="musica-fondo" loop preload="none">
         <source src="https://cdn.pixabay.com/download/audio/2022/11/22/audio_febc508520.mp3" type="audio/mpeg">
     </audio>
 
@@ -54,7 +56,7 @@
 
     <header class="hero">
         <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" alt="Fondo Graduación">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" alt="Fondo Graduación" decoding="async">
         </div>
         <div class="hero-content fade-up visible">
             <div class="hero-grado">Ingeniero en Software</div>
@@ -215,12 +217,12 @@
             <p class="subtitulo-seccion fade-up">Recuerdos inolvidables en el campus.</p>
             
             <div class="galeria-grid">
-                <div class="foto-estandar fade-up"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400&auto=format&fit=crop" alt="Foto 1" loading="lazy"></div>
-                <div class="foto-estandar fade-up delay-1"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=400&auto=format&fit=crop" alt="Foto 2" loading="lazy"></div>
-                <div class="foto-estandar fade-up delay-2"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=400&auto=format&fit=crop" alt="Foto 3" loading="lazy"></div>
-                <div class="foto-estandar fade-up"><img src="https://images.unsplash.com/photo-1546410531-bea5aadcb6ce?q=80&w=400&auto=format&fit=crop" alt="Foto 4" loading="lazy"></div>
-                <div class="foto-estandar fade-up delay-1"><img src="https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?q=80&w=400&auto=format&fit=crop" alt="Foto 5" loading="lazy"></div>
-                <div class="foto-estandar fade-up delay-2"><img src="https://images.unsplash.com/photo-1590402494587-44b71d7772f6?q=80&w=400&auto=format&fit=crop" alt="Foto 6" loading="lazy"></div>
+                <div class="foto-estandar fade-up"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400&auto=format&fit=crop" alt="Foto 1" loading="lazy" decoding="async"></div>
+                <div class="foto-estandar fade-up delay-1"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=400&auto=format&fit=crop" alt="Foto 2" loading="lazy" decoding="async"></div>
+                <div class="foto-estandar fade-up delay-2"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=400&auto=format&fit=crop" alt="Foto 3" loading="lazy" decoding="async"></div>
+                <div class="foto-estandar fade-up"><img src="https://images.unsplash.com/photo-1546410531-bea5aadcb6ce?q=80&w=400&auto=format&fit=crop" alt="Foto 4" loading="lazy" decoding="async"></div>
+                <div class="foto-estandar fade-up delay-1"><img src="https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?q=80&w=400&auto=format&fit=crop" alt="Foto 5" loading="lazy" decoding="async"></div>
+                <div class="foto-estandar fade-up delay-2"><img src="https://images.unsplash.com/photo-1590402494587-44b71d7772f6?q=80&w=400&auto=format&fit=crop" alt="Foto 6" loading="lazy" decoding="async"></div>
             </div>
         </div>
     </section>
@@ -231,7 +233,7 @@
             <h2>Confirma tu Asistencia</h2>
             <p>Por favor, confírmame por WhatsApp si podrás acompañarme antes del 15 de Junio. ¡Tu presencia es vital para mí!</p>
             
-            <a href="https://wa.me/520000000000?text=¡Hola%20Alejandro!%20Confirmo%20mi%20asistencia%20a%20tu%20cena%20de%20gala.%20¡Felicidades!" target="_blank" class="btn-oro" style="width: 100%; max-width: 400px; margin: 0 auto;">
+            <a href="#demo-rsvp-notice" class="btn-oro" style="width: 100%; max-width: 400px; margin: 0 auto;">
                 <i class="ph-fill ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Confirmar por WhatsApp
             </a>
         </div>
@@ -240,16 +242,17 @@
     <footer class="footer-comercial fade-up">
         <h3 style="color: var(--color-texto-principal); font-family: var(--fuente-textos); font-weight: 500; font-size: 1rem; margin-bottom: 20px;">¿Te gustó esta invitación? ¡Contáctanos!</h3>
         <div class="social-links">
-            <a href="https://wa.me/520000000000?text=Hola%20ArteEnLink,%20vi%20la%20demo%20Intermedia%20de%20Graduaciones%20y%20me%20encantó." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            <a href="https://wa.me/525623721854?text=Hola%20ArteEnLink%2C%20vi%20una%20demostraci%C3%B3n%20de%20su%20cat%C3%A1logo%20y%20quiero%20informaci%C3%B3n%20de%20una%20invitaci%C3%B3n%20personalizada." target="_blank" class="social-link" title="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
             <a href="#" target="_blank" class="social-link" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
             <a href="#" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
         </div>
         <div class="creditos">
-            Diseño exclusivo de Alta Costura por <a href="index.html" target="_blank" style="color: var(--color-oro); font-weight: bold;">ArteEnLink</a>.
+            Diseño exclusivo de Alta Costura por <a href="/" target="_blank" style="color: var(--color-oro); font-weight: bold;">ArteEnLink</a>.
         </div>
     </footer>
 
     <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación se habilita con los datos reales al personalizar la invitación. Puedes explorar el diseño sin enviar respuestas.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>
