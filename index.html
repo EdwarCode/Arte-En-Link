@@ -1,413 +1,115 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-MX">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArteEnLink | Invitaciones Digitales Interactivas</title>
-    
-    <!-- Fuentes de Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Phosphor Icons (Para iconos minimalistas y elegantes) -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101719">
+  <meta name="description" content="Invitaciones digitales interactivas para bodas, XV años, cumpleaños y celebraciones. Explora diseños exclusivos, música, galerías y confirmaciones en ArteEnLink.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://arteenlink.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="ArteEnLink">
+  <meta property="og:title" content="ArteEnLink | Invitaciones que se convierten en experiencias">
+  <meta property="og:description" content="Diseños exclusivos para celebrar de una manera inolvidable. Descubre y prueba nuestras invitaciones digitales interactivas.">
+  <meta property="og:url" content="https://arteenlink.com/">
+  <meta property="og:image" content="https://arteenlink.com/assets/img/bodas/BODA%20(1).webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>ArteEnLink | Invitaciones digitales exclusivas e interactivas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="premium.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ArteEnLink","url":"https://arteenlink.com/","sameAs":["https://www.instagram.com/arteenlink"]}</script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- PANTALLA DE CARGA (PRELOADER) -->
-    <div id="preloader">
-        <div class="loader-logo">ArteEn<span>Link</span></div>
-        <div class="loader-spinner"></div>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header" id="inicio">
+    <div class="shell site-header__inner">
+      <a class="wordmark" href="#inicio" aria-label="ArteEnLink, inicio"><span class="wordmark__symbol">A<span>·</span>E</span><span>ARTE<em>EN</em>LINK<small>INVITACIONES DIGITALES</small></span></a>
+      <button class="menu-button" type="button" id="menu-button" aria-controls="site-navigation" aria-expanded="false" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="site-navigation" aria-label="Navegación principal">
+        <a href="#experiencia">La experiencia</a><a href="#catalogo">Colecciones</a><a href="#planes">Paquetes</a><a href="#como-funciona">Cómo funciona</a>
+        <a href="https://wa.me/525623721854?text=Hola%2C%20vi%20las%20invitaciones%20de%20ArteEnLink%20y%20me%20gustar%C3%ADa%20cotizar%20una%20invitaci%C3%B3n%20digital%20personalizada." class="nav-contact" target="_blank" rel="noopener noreferrer">Hablemos de tu evento <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-
-    <!-- =========================================================
-         CABECERA
-         ========================================================= -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">ArteEn<span>Link</span></a>
-            
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#garantias">Por qué elegirnos</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#como-comprar">Cómo Comprar</a></li>
-                <li><a href="#precios">Precios</a></li>
-            </ul>
-
-            <a href="#precios" class="btn-principal">Pedir Ahora</a>
-            <i class="ph ph-list menu-toggle"></i>
+  </header>
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="shell hero__layout">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="eyebrow__line"></span> DISEÑO DIGITAL PARA MOMENTOS ÚNICOS</p>
+          <h1 id="hero-title">Hay momentos que merecen una <em>primera impresión</em> inolvidable.</h1>
+          <p class="hero__description">No enviamos simplemente una invitación. Creamos una experiencia digital que abre la emoción de tu celebración: diseño editorial, música, recuerdos y cada detalle en un solo enlace.</p>
+          <div class="hero__actions">
+            <a href="#catalogo" class="button button--gold">Explorar colecciones <span aria-hidden="true">↗</span></a>
+            <a href="demos/bodas/demo-boda-premium/demo-boda-premium.html" class="button button--ghost">Vivir una demostración <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero__proof"><span class="hero__proof-rule"></span><span>DISEÑO PERSONALIZADO</span><span>·</span><span>COMPARTIBLE POR WHATSAPP</span></div>
         </div>
-    </header>
-
-    <!-- =========================================================
-         HERO SECTION (INICIO)
-         ========================================================= -->
-    <section id="inicio" class="hero">
-        <div class="contenedor hero-container">
-            <div class="hero-texto">
-                <h1>Más que una invitación, <span>la primera gran experiencia</span> de tu evento.</h1>
-                <p>Olvídate de las aburridas imágenes estáticas. En ArteEnLink fusionamos diseño de alta gama con tecnología web interactiva para crear invitaciones que emocionan desde el primer clic.</p>
-                
-                <div class="hero-botones">
-                    <a href="#catalogo" class="btn-principal">Ver Diseños</a>
-                    <a href="#garantias" class="btn-secundario">Conoce Nuestras Garantías</a>
-                </div>
-            </div>
-            
-            <div class="hero-imagen">
-                <div class="mockup-celular">
-                    <div class="mockup-contenido">
-                        <i class="ph ph-envelope-simple-open" style="font-size: 4rem; color: var(--color-acento-dorado); margin-bottom: 20px;"></i>
-                        <h3>Tu Evento Aquí</h3>
-                        <p style="font-size: 0.9rem; margin-bottom: 20px;">Diseño interactivo,<br>música y galería 3D.</p>
-                        <div style="background: var(--color-texto-principal); color: white; padding: 10px 20px; border-radius: 20px; font-size: 0.8rem; display: inline-block;">Ver Demo Interactiva</div>
-                    </div>
-                </div>
-            </div>
+        <div class="hero__visual">
+          <div class="hero__arch">
+            <img src="assets/img/bodas/BODA%20(1).webp" alt="Fotografía de inspiración para una invitación de boda exclusiva" width="640" height="870" fetchpriority="high">
+            <div class="hero__visual-shade"></div>
+            <div class="hero__visual-text"><small>EL COMIENZO DE ALGO MEMORABLE</small><span>Una historia que merece contarse.</span></div>
+          </div>
+          <a class="hero__sticker" href="demos/bodas/demo-boda-premium/demo-boda-premium.html" aria-label="Abrir demostración Premium de boda"><span>EXPERIENCIA</span><strong>01</strong><span>PREVIEW <span aria-hidden="true">↗</span></span></a>
+          <p class="hero__visual-caption">INVITACIONES INTERACTIVAS · HECHAS PARA EMOCIONAR</p>
         </div>
+      </div>
+      <div class="hero__scroll"><span>DESCUBRE MÁS</span><span aria-hidden="true">↓</span></div>
     </section>
-
-    <!-- =========================================================
-         GARANTÍAS (PROPUESTA DE VALOR)
-         ========================================================= -->
-    <section id="garantias" class="garantias seccion-padding">
-        <div class="contenedor">
-            <div class="titulo-seccion">
-                <h2 style="font-size: 2.2rem;">Más que una invitación, la primera gran experiencia de tu evento.</h2>
-                <p>Olvídate de los PDFs aburridos. Fusionamos diseño de alta gama con tecnología web interactiva para crear invitaciones que emocionan desde el primer clic.</p>
-                <p style="margin-top: 15px;">Con música, animaciones, galerías 3D y conexión directa a WhatsApp, hacemos que confirmar asistencia sea tan emocionante como tu propia fiesta.</p>
-            </div>
-
-            <div class="garantias-grid">
-                <!-- Garantía 1 -->
-                <div class="garantia-card">
-                    <div class="icono-garantia"><i class="ph ph-timer"></i></div>
-                    <h3>Tu invitación lista en 24 Horas. Garantizado. ⏱️</h3>
-                    <p>Sabemos que el tiempo vale oro. Por eso, al recibir tus datos y fotos, te entregamos tu enlace oficial en un <b>máximo de 24 horas</b>.</p>
-                    <p>Sin excusas ni retrasos, tu invitación estará lista para compartirse al instante con todos tus seres queridos.</p>
-                </div>
-                <!-- Garantía 2 -->
-                <div class="garantia-card">
-                    <div class="icono-garantia"><i class="ph ph-magic-wand"></i></div>
-                    <h3>Tu invitación perfecta. Sin límite de cambios. ✨</h3>
-                    <p>Mientras otros te limitan a un par de correcciones, nosotros te ofrecemos <b>rondas de cambios ilimitadas</b> en todos nuestros paquetes.</p>
-                    <p>Ajusta horarios, fotos o textos sin estrés. Trabajaremos en tu diseño las veces que sean necesarias hasta que quede exactamente como lo soñaste.</p>
-                </div>
-                <!-- Garantía 3 -->
-                <div class="garantia-card">
-                    <div class="icono-garantia"><i class="ph ph-leaf"></i></div>
-                    <h3>Celebra en grande, dejando una huella verde. 🌿</h3>
-                    <p>Al elegirnos, reduces el uso de papel a cero y eliminas por completo la huella de carbono del envío físico tradicional.</p>
-                    <p>Invita a todas las personas que quieras con un solo enlace, sin generar desperdicios. Innovación y conciencia ecológica a un clic.</p>
-                </div>
-            </div>
-        </div>
+    <div class="marquee" aria-label="Características de nuestras invitaciones"><div class="shell marquee__inner"><span>PERSONALIZACIÓN</span><b>✧</b><span>MÚSICA Y RECUERDOS</span><b>✧</b><span>CONFIRMACIÓN DE ASISTENCIA</span><b>✧</b><span>UNA EXPERIENCIA PARA COMPARTIR</span></div></div>
+    <section class="intro-section section" id="experiencia" aria-labelledby="experience-title">
+      <div class="shell intro-grid">
+        <div><p class="eyebrow eyebrow--dark">LA EXPERIENCIA ARTEENLINK</p><h2 class="heading-xl" id="experience-title">Antes de la celebración, <em>comienza la emoción.</em></h2></div>
+        <div class="intro-description"><p>Tu invitación es el primer contacto que tus invitados tienen con tu evento. La diseñamos como una pequeña historia: elegante, personal y tan especial como aquello que estás por celebrar.</p><a class="text-link" href="demos/bodas/demo-boda-premium/demo-boda-premium.html">Descubrir una invitación Premium <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="shell feature-grid">
+        <article class="feature"><span class="feature__index">01</span><div class="feature__icon" aria-hidden="true">✧</div><h3>Diseño que emociona</h3><p>Composiciones exclusivas, fotografía, tipografía y detalles que cuentan tu historia.</p></article>
+        <article class="feature"><span class="feature__index">02</span><div class="feature__icon" aria-hidden="true">♫</div><h3>Detalles interactivos</h3><p>Según el paquete: música, galerías, animaciones, mapas y cuenta regresiva.</p></article>
+        <article class="feature"><span class="feature__index">03</span><div class="feature__icon" aria-hidden="true">♡</div><h3>Hecha para compartir</h3><p>Un enlace que tus invitados pueden abrir fácilmente desde su teléfono.</p></article>
+      </div>
     </section>
-
-    <!-- =========================================================
-         CATÁLOGO DE EVENTOS (LAS 12 CATEGORÍAS)
-         ========================================================= -->
-    <section id="catalogo" class="catalogo seccion-padding">
-        <div class="contenedor">
-            <div class="titulo-seccion">
-                <h2>Elige tu Celebración</h2>
-                <p>Selecciona la categoría de tu evento para descubrir los diseños exclusivos y la experiencia interactiva que hemos preparado para ti.</p>
-            </div>
-
-            <div class="catalogo-grid">
-                <!-- Tarjeta 1: Bodas -->
-                <a href="categorias/bodas/bodas.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="assets/img/bodas.png" alt="Diseños de Bodas">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Bodas y Enlaces</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 2: XV Años -->
-                <a href="categorias/xv-anos/xvanos.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1522856339183-5a97c2fe12cc?q=80&w=400&auto=format&fit=crop" alt="Diseños de XV Años">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>XV Años (Tradicional)</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 3: XV Años Hombres -->
-                <a href="categorias/xv-anos-hombres/xv-anos-hombres.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=400&auto=format&fit=crop" alt="Diseños de XV Años Hombres">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>XV Años (Hombres)</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 4: Bautizos -->
-                <a href="categorias/bautizos/bautizos.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Diseños de Bautizos">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Bautizos</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 5: Cumple Infantiles -->
-                <a href="categorias/cumpleanos-infantiles/cumpleanos-infantil.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=400&auto=format&fit=crop" alt="Diseños de Cumpleaños Infantiles">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Cumpleaños Infantiles</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 6: Baby Shower -->
-                <a href="categorias/baby-shower/baby-shower.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1555252834-023c02d6451e?q=80&w=400&auto=format&fit=crop" alt="Diseños de Baby Shower">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Baby Shower</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 7: Revelación de Género -->
-                <a href="categorias/revelacion-de-genero/revelacion-de-genero.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=400&auto=format&fit=crop" alt="Diseños de Revelación de Género">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Revelación de Género</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 8: Cumple Adultos -->
-                <a href="categorias/cumpleanos-adultos/cumpleanos-adultos.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1533147670608-2a2f9776d3ac?q=80&w=400&auto=format&fit=crop" alt="Diseños de Cumpleaños Adultos">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Cumpleaños (Adultos)</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 9: Comunión -->
-                <a href="categorias/primera-comunion/primera-comunion.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1514322442436-1e0e843bb3bb?q=80&w=400&auto=format&fit=crop" alt="Diseños de Primera Comunión">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Primera Comunión</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 10: Confirmación -->
-                <a href="categorias/confirmacion/confirmacion.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=400&auto=format&fit=crop" alt="Diseños de Confirmación">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Confirmación</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 11: Graduaciones -->
-                <a href="categorias/graduaciones/graduaciones.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400&auto=format&fit=crop" alt="Diseños de Graduaciones">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Graduaciones</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-
-                <!-- Tarjeta 12: Aniversarios -->
-                <a href="categorias/aniversarios/aniversarios.html" class="categoria-card">
-                    <div class="categoria-imagen">
-                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=400&auto=format&fit=crop" alt="Diseños de Aniversarios">
-                    </div>
-                    <div class="categoria-info">
-                        <h3>Aniversarios</h3>
-                        <span>Ver Colección</span>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <section class="collection-section section" id="catalogo" aria-labelledby="collections-title">
+      <div class="shell section-top"><div><p class="eyebrow">UN UNIVERSO DE CELEBRACIONES</p><h2 class="heading-xl" id="collections-title">Cada ocasión tiene <em>su propia magia.</em></h2></div><p>Elige el momento que estás por celebrar y descubre la colección creada para él.</p></div>
+      <div class="shell"><div class="event-grid"><a class="event-card event-card--large" href="categorias/bodas/bodas.html" aria-label="Explorar invitaciones de Bodas y enlaces"><img src="assets/img/bodas/BODA%20(1).webp" alt="Inspiración visual de bodas y enlaces" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">01 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Bodas y enlaces</span><span class="event-card__caption">La historia que comienza con un sí.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card event-card--large" href="categorias/xv-anos/xvanos.html" aria-label="Explorar invitaciones de XV años"><img src="assets/img/xv-anos/xv-anos%20(1).webp" alt="Inspiración visual de xv años" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">02 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">XV años</span><span class="event-card__caption">Una noche para recordar siempre.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/xv-anos-hombres/xv-anos-hombres.html" aria-label="Explorar invitaciones de XV años para ellos"><img src="assets/img/xv-hombres/xv-hombres%20(1).webp" alt="Inspiración visual de xv años para ellos" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">03 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">XV años para ellos</span><span class="event-card__caption">Una celebración con carácter.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/baby-shower/baby-shower.html" aria-label="Explorar invitaciones de Baby shower"><img src="assets/img/baby-shower/baby-shower%20(1).webp" alt="Inspiración visual de baby shower" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">04 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Baby shower</span><span class="event-card__caption">Una nueva historia está por llegar.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/cumpleanos-infantiles/cumpleanos-infantil.html" aria-label="Explorar invitaciones de Cumpleaños infantiles"><img src="assets/img/cumple-infantil/cumple-infantil%20(1).webp" alt="Inspiración visual de cumpleaños infantiles" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">05 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Cumpleaños infantiles</span><span class="event-card__caption">La magia de celebrar a lo grande.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/cumpleanos-adultos/cumpleanos-adultos.html" aria-label="Explorar invitaciones de Cumpleaños de adultos"><img src="assets/img/cumple-adultos/cumple-adultos%20(1).webp" alt="Inspiración visual de cumpleaños de adultos" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">06 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Cumpleaños de adultos</span><span class="event-card__caption">Los mejores años merecen fiesta.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/bautizos/bautizos.html" aria-label="Explorar invitaciones de Bautizos"><img src="assets/img/bautizos/bautizos%20(1).webp" alt="Inspiración visual de bautizos" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">07 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Bautizos</span><span class="event-card__caption">Un momento lleno de significado.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/primera-comunion/primera-comunion.html" aria-label="Explorar invitaciones de Primera comunión"><img src="assets/img/primera-comunion/primera-comunion%20(1).webp" alt="Inspiración visual de primera comunión" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">08 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Primera comunión</span><span class="event-card__caption">Recuerdos que acompañan toda la vida.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/confirmacion/confirmacion.html" aria-label="Explorar invitaciones de Confirmación"><img src="assets/img/confirmacion/confirmacion%20(1).webp" alt="Inspiración visual de confirmación" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">09 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Confirmación</span><span class="event-card__caption">Una ocasión para compartir con fe.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/graduaciones/graduaciones.html" aria-label="Explorar invitaciones de Graduaciones"><img src="assets/img/graduaciones/graduaciones%20(1).webp" alt="Inspiración visual de graduaciones" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">10 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Graduaciones</span><span class="event-card__caption">Un gran logro merece una gran entrada.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/revelacion-de-genero/revelacion-de-genero.html" aria-label="Explorar invitaciones de Revelación de género"><img src="assets/img/revelacion/revelacion%20(1).webp" alt="Inspiración visual de revelación de género" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">11 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Revelación de género</span><span class="event-card__caption">La sorpresa se vive desde la invitación.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a>
+<a class="event-card" href="categorias/aniversarios/aniversarios.html" aria-label="Explorar invitaciones de Aniversarios"><img src="assets/img/aniversarios/aniversarios%20(1)%20(1).webp" alt="Inspiración visual de aniversarios" width="600" height="760" loading="lazy" decoding="async"><span class="event-card__veil"></span><span class="event-card__number">12 / COLECCIÓN</span><span class="event-card__details"><span class="event-card__title">Aniversarios</span><span class="event-card__caption">Celebrar todos los capítulos compartidos.</span><span class="event-card__link">Explorar diseños <span aria-hidden="true">↗</span></span></span></a></div></div>
     </section>
-
-    <!-- =========================================================
-         CÓMO COMPRAR (LÍNEA DE TIEMPO)
-         ========================================================= -->
-    <section id="como-comprar" class="proceso seccion-padding">
-        <div class="contenedor">
-            <div class="titulo-seccion">
-                <h2>Tu invitación en 4 simples pasos</h2>
-                <p>Hicimos que el proceso sea rápido, seguro y sin estrés para ti.</p>
-            </div>
-
-            <div class="timeline">
-                <div class="paso paso-izquierda">
-                    <div class="paso-contenido">
-                        <h3>1. Elige tu Diseño y Paquete</h3>
-                        <p>Navega por nuestro catálogo, selecciona la categoría de tu evento y elige entre nuestros 3 paquetes (Básico, Intermedio o Premium).</p>
-                    </div>
-                </div>
-                <div class="paso paso-derecha">
-                    <div class="paso-contenido">
-                        <h3>2. Contáctanos y Aparta</h3>
-                        <p>Haz clic en "Pedir Ahora" para enviarnos un WhatsApp. Realiza un anticipo del 50% para asegurar la creación de tu invitación.</p>
-                    </div>
-                </div>
-                <div class="paso paso-izquierda">
-                    <div class="paso-contenido">
-                        <h3>3. Llena tu Formulario</h3>
-                        <p>Te enviaremos un formulario sencillo donde colocarás todos los datos de tu evento (nombres, ubicaciones, horarios) y subirás tus fotos.</p>
-                    </div>
-                </div>
-                <div class="paso paso-derecha">
-                    <div class="paso-contenido">
-                        <h3>4. ¡Lista en 24 Horas!</h3>
-                        <p>Te entregamos el enlace oficial de tu evento. Lo revisamos juntos y realizamos los cambios ilimitados que necesites. ¡A compartir se ha dicho!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="showcase-section section" aria-labelledby="showcase-title">
+      <div class="shell showcase">
+        <div class="showcase__text"><p class="eyebrow">TOCA. EXPLORA. IMAGINA.</p><h2 class="heading-xl" id="showcase-title">La diferencia está en <em>vivirla.</em></h2><p>Descubre cómo se siente abrir un diseño real, recorrer su historia y llegar a los detalles de la celebración.</p><a class="button button--gold" href="demos/bodas/demo-boda-premium/demo-boda-premium.html">Abrir demo Premium <span aria-hidden="true">↗</span></a></div>
+        <a class="showcase__image" href="demos/bodas/demo-boda-premium/demo-boda-premium.html" aria-label="Probar la invitación Premium de boda"><img src="assets/img/bodas/BODA%20(6).webp" width="600" height="800" loading="lazy" decoding="async" alt="Ejemplo de fotografía incluida en una invitación de boda"><span>PRUEBA UNA INVITACIÓN <span aria-hidden="true">↗</span></span></a>
+      </div>
     </section>
-
-    <!-- =========================================================
-         PRECIOS (LOS 3 PAQUETES)
-         ========================================================= -->
-    <section id="precios" class="precios seccion-padding">
-        <div class="contenedor">
-            <div class="titulo-seccion">
-                <h2>Paquetes a tu medida</h2>
-                <p>Nuestra garantía de cambios ilimitados y entrega en 24 hrs aplica para todos los planes.</p>
-            </div>
-
-            <div class="precios-grid">
-                
-                <!-- Paquete Básico -->
-                <div class="precio-card">
-                    <div class="precio-header">
-                        <h3>Básico</h3>
-                        <div class="precio-monto">$349 <span>MXN</span></div>
-                        <p>Elegante, rápido y al punto.</p>
-                    </div>
-                    <ul class="lista-funciones">
-                        <li><i class="ph-fill ph-check-circle"></i> Diseño responsivo y elegante</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Cuenta regresiva</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Ubicación GPS (Maps/Waze)</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Confirmación a WhatsApp</li>
-                        <li class="no-incluido"><i class="ph-fill ph-x-circle"></i> Música de fondo</li>
-                        <li class="no-incluido"><i class="ph-fill ph-x-circle"></i> Galería de fotos</li>
-                        <li class="no-incluido"><i class="ph-fill ph-x-circle"></i> Secciones Interactivas VIP</li>
-                    </ul>
-                    <a href="https://wa.me/525623721854?text=¡Hola!%20Arte%20En%20Link%20me%20gustaria%20que%20me%20Diseñes%20una%20Invitación%20Basica" class="btn-secundario" style="width: 100%;">Elegir Básico</a>
-                </div>
-
-                <!-- Paquete Intermedio (DESTACADO) -->
-                <div class="precio-card popular">
-                    <div class="etiqueta-popular">El Más Popular</div>
-                    <div class="precio-header">
-                        <h3 style="color: var(--color-acento-dorado);">Intermedio</h3>
-                        <div class="precio-monto">$549 <span>MXN</span></div>
-                        <p>La experiencia completa favorita.</p>
-                    </div>
-                    <ul class="lista-funciones">
-                        <li><i class="ph-fill ph-check-circle"></i> <b>Todo lo del Básico +</b></li>
-                        <li><i class="ph-fill ph-check-circle"></i> Reproductor de Música</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Galería de Fotos (hasta 10)</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Código de Vestimenta</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Sugerencia de Regalos/Sobre</li>
-                        <li><i class="ph-fill ph-check-circle"></i> Itinerario del Evento</li>
-                        <li class="no-incluido"><i class="ph-fill ph-x-circle"></i> Secciones Interactivas VIP</li>
-                    </ul>
-                    <a href="https://wa.me/525623721854?text=¡Hola!%20Arte%20En%20Link%20me%20gustaria%20que%20me%20Diseñes%20una%20Invitación%20Intermedia" class="btn-principal" style="width: 100%;">Elegir Intermedio</a>
-                </div>
-
-                <!-- Paquete Premium (ESTRELLA / VIP) -->
-                <div class="precio-card premium">
-                    <div class="etiqueta-estrella">Experiencia VIP</div>
-                    <div class="precio-header">
-                        <h3>Premium</h3>
-                        <div class="precio-monto">$799 <span>MXN</span></div>
-                        <p>La máxima experiencia de lujo interactivo.</p>
-                    </div>
-                    <ul class="lista-funciones">
-                        <li><i class="ph-fill ph-check-circle" style="color: var(--color-acento-dorado);"></i> <b>Todo lo del Intermedio +</b></li>
-                        <li><i class="ph-fill ph-check-circle" style="color: var(--color-acento-dorado);"></i> Línea de Tiempo (Historia/Crecimiento)</li>
-                        <li><i class="ph-fill ph-check-circle" style="color: var(--color-acento-dorado);"></i> Buzón de Mensajes Interactivo</li>
-                        <li><i class="ph-fill ph-check-circle" style="color: var(--color-acento-dorado);"></i> Galería 3D Premium</li>
-                        <li><i class="ph-fill ph-check-circle" style="color: var(--color-acento-dorado);"></i> Animaciones Avanzadas</li>
-                        <li><i class="ph-fill ph-check-circle" style="color: var(--color-acento-dorado);"></i> Botón "Agendar en Calendario"</li>
-                        <li><i class="ph-fill ph-check-circle" style="color: var(--color-acento-dorado);"></i> Loader Animado Exclusivo</li>
-                    </ul>
-                    <a href="https://wa.me/525623721854?text=¡Hola!%20Arte%20En%20Link%20me%20gustaria%20que%20me%20Diseñes%20una%20Invitación%20Premium" class="btn-premium">Elegir Premium</a>
-                </div>
-
-            </div>
-        </div>
+    <section class="prices-section section" id="planes" aria-labelledby="prices-title">
+      <div class="shell section-top section-top--light"><div><p class="eyebrow eyebrow--dark">INVITACIONES A TU MEDIDA</p><h2 class="heading-xl" id="prices-title">Tres formas de <em>hacerlo inolvidable.</em></h2></div><p>Elige la experiencia ideal. Cada paquete se adapta a la identidad de tu evento.</p></div>
+      <div class="shell price-grid">
+        <article class="price-card"><span class="price-card__tag">ESENCIAL</span><h3>Básico</h3><p>La belleza está en los detalles.</p><div class="price-card__amount">$349 <span>MXN</span></div><ul><li>Diseño personalizado para móvil</li><li>Cuenta regresiva</li><li>Ubicación en Maps / Waze</li><li>Confirmación por WhatsApp</li></ul><a class="button button--outline" href="https://wa.me/525623721854?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20B%C3%A1sico%20de%20ArteEnLink." target="_blank" rel="noopener noreferrer">Elegir Básico <span aria-hidden="true">↗</span></a></article>
+        <article class="price-card price-card--featured"><span class="price-card__tag">EL MÁS SOLICITADO</span><h3>Intermedio</h3><p>Un recorrido lleno de emociones.</p><div class="price-card__amount">$549 <span>MXN</span></div><ul><li>Todo lo del paquete Básico</li><li>Reproductor de música</li><li>Galería de hasta 10 fotos</li><li>Itinerario y código de vestimenta</li><li>Regalos y sugerencias</li></ul><a class="button button--gold" href="https://wa.me/525623721854?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20Intermedio%20de%20ArteEnLink." target="_blank" rel="noopener noreferrer">Elegir Intermedio <span aria-hidden="true">↗</span></a></article>
+        <article class="price-card"><span class="price-card__tag">LA EXPERIENCIA TOTAL</span><h3>Premium</h3><p>Para eventos que dejan huella.</p><div class="price-card__amount">$799 <span>MXN</span></div><ul><li>Todo lo del paquete Intermedio</li><li>Animaciones y galería 3D</li><li>Historia o línea de tiempo</li><li>Buzón de mensajes interactivo</li><li>Agendar en calendario</li></ul><a class="button button--outline" href="https://wa.me/525623721854?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20Premium%20de%20ArteEnLink." target="_blank" rel="noopener noreferrer">Elegir Premium <span aria-hidden="true">↗</span></a></article>
+      </div>
+      <p class="shell prices-note">Los contenidos y funciones se personalizan según el diseño elegido. Consulta los detalles, disponibilidad, tiempos y condiciones antes de contratar.</p>
     </section>
-
-    <!-- =========================================================
-         PIE DE PÁGINA (FOOTER)
-         ========================================================= -->
-    <footer>
-        <div class="contenedor">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3 class="logo" style="color: white;">ArteEn<span style="color: var(--color-acento-dorado);">Link</span></h3>
-                    <p>Agencia de diseño y desarrollo de invitaciones digitales de alta gama. Tu evento merece la mejor tecnología.</p>
-                    <div class="redes-sociales">
-                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
-                        <a href="#"><i class="ph ph-facebook-logo"></i></a>
-                        <a href="#"><i class="ph ph-tiktok-logo"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Enlaces Rápidos</h3>
-                    <a href="#inicio">Inicio</a>
-                    <a href="#catalogo">Catálogo de Eventos</a>
-                    <a href="#precios">Nuestros Paquetes</a>
-                    <a href="#garantias">Garantía de Satisfacción</a>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Contacto</h3>
-                    <p><i class="ph ph-whatsapp-logo" style="color: var(--color-acento-dorado);"></i> +52 56 2372 1854</p>
-                    <p><i class="ph ph-envelope-simple" style="color: var(--color-acento-dorado);"></i> hola@arteenlink.com</p>
-                    <p><i class="ph ph-map-pin" style="color: var(--color-acento-dorado);"></i> Cobertura Nacional e Internacional</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2026 ArteEnLink. Todos los derechos reservados. Desarrollado con pasión.
-            </div>
-        </div>
-    </footer>
-
-        <script src="script.js"></script>
-
+    <section class="process-section section" id="como-funciona" aria-labelledby="process-title">
+      <div class="shell"><p class="eyebrow">SENCILLO, CERCANO, PERSONAL</p><h2 class="heading-xl" id="process-title">De tu idea a <em>un recuerdo que se comparte.</em></h2>
+        <ol class="process-grid"><li><span>01</span><h3>Elige tu estilo</h3><p>Explora las colecciones y selecciona tu paquete.</p></li><li><span>02</span><h3>Cuéntanos tu historia</h3><p>Escríbenos por WhatsApp y comparte los datos de tu evento.</p></li><li><span>03</span><h3>Lo hacemos tuyo</h3><p>Personalizamos el diseño con tus textos y fotografías.</p></li><li><span>04</span><h3>Compártelo</h3><p>Revisa tu invitación y comparte tu enlace con tus invitados.</p></li></ol>
+      </div>
+    </section>
+    <section class="cta-section" aria-labelledby="cta-title"><div class="shell cta-content"><p class="eyebrow">HAGAMOS ALGO INOLVIDABLE</p><h2 id="cta-title">Tu gran momento <em>comienza aquí.</em></h2><p>Cuéntanos qué estás por celebrar. Diseñaremos la experiencia que imaginas.</p><a class="button button--light" href="https://wa.me/525623721854?text=Hola%2C%20vi%20las%20invitaciones%20de%20ArteEnLink%20y%20me%20gustar%C3%ADa%20cotizar%20una%20invitaci%C3%B3n%20digital%20personalizada." target="_blank" rel="noopener noreferrer">Quiero mi invitación <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><div class="shell footer-grid"><div><a class="wordmark wordmark--footer" href="#inicio"><span class="wordmark__symbol">A<span>·</span>E</span><span>ARTE<em>EN</em>LINK<small>INVITACIONES DIGITALES</small></span></a><p>Momentos extraordinarios merecen invitaciones inolvidables.</p></div><div><h3>Explora</h3><a href="#catalogo">Colecciones</a><a href="#planes">Paquetes</a><a href="#experiencia">La experiencia</a></div><div><h3>Conversemos</h3><a href="https://wa.me/525623721854?text=Hola%2C%20vi%20las%20invitaciones%20de%20ArteEnLink%20y%20me%20gustar%C3%ADa%20cotizar%20una%20invitaci%C3%B3n%20digital%20personalizada." target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:hola@arteenlink.com">hola@arteenlink.com</a><a href="https://www.instagram.com/arteenlink" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/share/1AwfmrsSus/" target="_blank" rel="noopener noreferrer">Facebook</a></div></div><div class="shell footer-bottom"><span>© 2026 ArteEnLink. Todos los derechos reservados.</span><span>DISEÑADO PARA EMOCIONAR</span></div></footer>
 </body>
 </html>
