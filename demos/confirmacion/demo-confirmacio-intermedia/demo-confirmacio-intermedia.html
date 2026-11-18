@@ -15,6 +15,8 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body class="bloqueado">
 
@@ -27,7 +29,7 @@
     <div class="contenedor-chispas" id="chispas-espiritu"></div>
 
     <!-- MÚSICA SOLEMNE -->
-    <audio id="audio-fondo" loop>
+    <audio id="audio-fondo" loop preload="none">
         <!-- Cello/Piano solemne -->
         <source src="/assets/audio/primera-comunion.mp3" type="audio/mpeg">
     </audio>
@@ -52,7 +54,7 @@
     <header class="hero">
         <div class="hero-bg">
             <!-- Arquitectura de iglesia o vitral -->
-            <img src="/assets/img/confirmacion/confirmacion (2).webp" alt="Fondo Confirmación" id="hero-img">
+            <img src="/assets/img/confirmacion/confirmacion (2).webp" alt="Fondo Confirmación" id="hero-img" decoding="async">
         </div>
         <div class="hero-marco-interno"></div>
         
@@ -94,11 +96,11 @@
 
             <!-- Galería Asimétrica de Lujo -->
             <div class="galeria-grid">
-                <div class="foto-galeria fade-up delay-1"><img src="/assets/img/confirmacion/confirmacion (6).webp" alt="Sesión Confirmación 1"></div>
-                <div class="foto-galeria fade-up delay-2"><img src="/assets/img/confirmacion/confirmacion (5).webp" alt="Detalle Espiritual"></div>
-                <div class="foto-galeria fade-up delay-3"><img src="/assets/img/confirmacion/confirmacion (8).webp" alt="Sesión Confirmación 2"></div>
-                <div class="foto-galeria fade-up delay-1"><img src="/assets/img/confirmacion/confirmacion (2).webp" alt="Detalle Luz"></div>
-                <div class="foto-galeria fade-up delay-2"><img src="/assets/img/confirmacion/confirmacion (10).webp" alt="Sesión Confirmación 3"></div>
+                <div class="foto-galeria fade-up delay-1"><img src="/assets/img/confirmacion/confirmacion (6).webp" alt="Sesión Confirmación 1" decoding="async" loading="lazy"></div>
+                <div class="foto-galeria fade-up delay-2"><img src="/assets/img/confirmacion/confirmacion (5).webp" alt="Detalle Espiritual" decoding="async" loading="lazy"></div>
+                <div class="foto-galeria fade-up delay-3"><img src="/assets/img/confirmacion/confirmacion (8).webp" alt="Sesión Confirmación 2" decoding="async" loading="lazy"></div>
+                <div class="foto-galeria fade-up delay-1"><img src="/assets/img/confirmacion/confirmacion (2).webp" alt="Detalle Luz" decoding="async" loading="lazy"></div>
+                <div class="foto-galeria fade-up delay-2"><img src="/assets/img/confirmacion/confirmacion (10).webp" alt="Sesión Confirmación 3" decoding="async" loading="lazy"></div>
             </div>
 
         </div>
@@ -205,7 +207,7 @@
 
                 <p style="color: var(--color-texto-medio); margin: 20px auto 35px; font-size: 0.95rem; max-width: 350px; position: relative; z-index: 2;">Por favor, confírmanos tu asistencia antes del 01 de Noviembre para considerarte en el banquete.</p>
                 
-                <a href="https://wa.me/520000000000?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20Confirmación%20de%20Mateo." target="_blank" class="btn-whatsapp-vino">
+                <a href="#demo-rsvp-notice" class="btn-whatsapp-vino">
                     <i class="ph-fill ph-whatsapp-logo"></i> Confirmar Asistencia
                 </a>
             </div>
@@ -238,5 +240,6 @@
 
     <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación se habilita con los datos reales al personalizar la invitación. Puedes explorar el diseño sin enviar respuestas.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>

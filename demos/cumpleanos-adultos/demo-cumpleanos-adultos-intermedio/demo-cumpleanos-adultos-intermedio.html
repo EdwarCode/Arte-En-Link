@@ -18,6 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
@@ -46,7 +48,7 @@
     <div id="music-player" class="glass-card">
         <i class="ph-fill ph-play-circle" id="music-icon"></i>
         <!-- Audio oculto (URL de ejemplo, jazz lounge) -->
-        <audio id="bg-audio" loop>
+        <audio id="bg-audio" loop preload="none">
             <source src="/assets/audio/DanzaKuduroRemix.mp3" type="audio/mpeg">
         </audio>
     </div>
@@ -67,7 +69,7 @@
     <!-- PORTADA (HERO) -->
     <header class="hero">
         <div class="hero-bg">
-            <img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="Fondo Cumpleaños VIP">
+            <img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="Fondo Cumpleaños VIP" decoding="async">
             <div class="hero-fade-bottom"></div>
         </div>
         <div class="hero-content fade-up visible">
@@ -189,10 +191,10 @@
         <div class="contenedor">
             <h2 class="titulo-seccion fade-up">Momentos</h2>
             <div class="galeria-editorial">
-                <div class="galeria-item fade-up"><img src="/assets/img/cumple-adultos/cumple-adultos (3).webp" alt="Editorial 1"></div>
-                <div class="galeria-item fade-left delay-1"><img src="/assets/img/cumple-adultos/cumple-adultos (5).webp" alt="Editorial 2"></div>
-                <div class="galeria-item fade-right delay-2"><img src="/assets/img/cumple-adultos/cumple-adultos (7).webp" alt="Editorial 3"></div>
-                <div class="galeria-item fade-up delay-1"><img src="/assets/img/cumple-adultos/cumple-adultos (10).webp" alt="Editorial 4"></div>
+                <div class="galeria-item fade-up"><img src="/assets/img/cumple-adultos/cumple-adultos (3).webp" alt="Editorial 1" decoding="async" loading="lazy"></div>
+                <div class="galeria-item fade-left delay-1"><img src="/assets/img/cumple-adultos/cumple-adultos (5).webp" alt="Editorial 2" decoding="async" loading="lazy"></div>
+                <div class="galeria-item fade-right delay-2"><img src="/assets/img/cumple-adultos/cumple-adultos (7).webp" alt="Editorial 3" decoding="async" loading="lazy"></div>
+                <div class="galeria-item fade-up delay-1"><img src="/assets/img/cumple-adultos/cumple-adultos (10).webp" alt="Editorial 4" decoding="async" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -236,7 +238,7 @@
         <section class="rsvp-section">
             <h2 style="font-family: var(--fuente-editorial); font-size: 2.5rem; color: var(--color-oro); margin-bottom: 15px; font-style: italic;">RSVP</h2>
             <p style="color: var(--color-texto-secundario); margin-bottom: 35px; letter-spacing: 1px;">Agradecemos confirmar antes del 15 de Octubre.</p>
-            <a href="https://wa.me/520000000000" target="_blank" class="btn-oro"><i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar Asistencia</a>
+            <a href="#demo-rsvp-notice" class="btn-oro"><i class="ph-fill ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Confirmar Asistencia</a>
         </section>
     </div>
 
@@ -244,5 +246,6 @@
 
     <script src="script.js"></script>
 
+  <aside class="demo-rsvp-notice" id="demo-rsvp-notice" role="note" tabindex="-1"><strong>Esta es una invitación de demostración</strong><p>La confirmación se habilita con los datos reales al personalizar la invitación. Puedes explorar el diseño sin enviar respuestas.</p><a href="/">Conocer ArteEnLink ↗</a></aside>
 </body>
 </html>

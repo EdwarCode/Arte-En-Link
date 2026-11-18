@@ -15,6 +15,8 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body class="bloqueado">
 
@@ -23,7 +25,7 @@
     <div class="chispas" id="contenedor-chispas"></div>
 
     <!-- MÚSICA CINEMATOGRÁFICA -->
-    <audio id="audio-fondo" loop>
+    <audio id="audio-fondo" loop preload="none">
         <source src="/assets/audio/primera-comunion.mp3" type="audio/mpeg">
     </audio>
 
@@ -52,7 +54,7 @@
     <header class="hero">
         <div class="hero-bg">
             <!-- Foto del festejado en tonos oscuros/elegantes -->
-            <img src="/assets/img/confirmacion/confirmacion (2).webp" alt="Mateo" id="hero-img">
+            <img src="/assets/img/confirmacion/confirmacion (2).webp" alt="Mateo" id="hero-img" decoding="async">
             <div class="god-rays"></div>
         </div>
         <div class="hero-content fade-up">
@@ -126,32 +128,32 @@
 
             <div class="timeline-fotos">
                 <div class="tf-item fade-up">
-                    <div class="tf-foto"><img src="/assets/img/bautizos/bautizos (1).webp" alt="Bautizo"></div>
+                    <div class="tf-foto"><img src="/assets/img/bautizos/bautizos (1).webp" alt="Bautizo" decoding="async" loading="lazy"></div>
                     <div class="tf-punto"></div>
                     <div class="tf-texto"><h3>La Semilla</h3><p>Mi Bautizo. El día que fui presentado ante Dios rodeado del amor de mi familia.</p></div>
                 </div>
                 <div class="tf-item fade-up">
-                    <div class="tf-foto"><img src="/assets/img/cumple-infantil/cumple-infantil (4).webp" alt="Primeros Pasos"></div>
+                    <div class="tf-foto"><img src="/assets/img/cumple-infantil/cumple-infantil (4).webp" alt="Primeros Pasos" decoding="async" loading="lazy"></div>
                     <div class="tf-punto"></div>
                     <div class="tf-texto"><h3>Mis primeros pasos</h3><p>Creciendo y aprendiendo los valores que me guían hoy.</p></div>
                 </div>
                 <div class="tf-item fade-up">
-                    <div class="tf-foto"><img src="/assets/img/primera-comunion/primera-comunion (7).webp" alt="Comunión"></div>
+                    <div class="tf-foto"><img src="/assets/img/primera-comunion/primera-comunion (7).webp" alt="Comunión" decoding="async" loading="lazy"></div>
                     <div class="tf-punto"></div>
                     <div class="tf-texto"><h3>El Encuentro</h3><p>Mi Primera Comunión. Recibiendo el cuerpo de Cristo por primera vez.</p></div>
                 </div>
                 <div class="tf-item fade-up">
-                    <div class="tf-foto"><img src="/assets/img/primera-comunion/primera-comunion (10).webp" alt="Crecimiento"></div>
+                    <div class="tf-foto"><img src="/assets/img/primera-comunion/primera-comunion (10).webp" alt="Crecimiento" decoding="async" loading="lazy"></div>
                     <div class="tf-punto"></div>
                     <div class="tf-texto"><h3>Mi Juventud</h3><p>Construyendo mi propia identidad y fortaleciendo mis creencias.</p></div>
                 </div>
                 <div class="tf-item fade-up">
-                    <div class="tf-foto"><img src="/assets/img/primera-comunion/primera-comunion (5).webp" alt="Guias"></div>
+                    <div class="tf-foto"><img src="/assets/img/primera-comunion/primera-comunion (5).webp" alt="Guias" decoding="async" loading="lazy"></div>
                     <div class="tf-punto"></div>
                     <div class="tf-texto"><h3>Mis Guías</h3><p>Acompañado siempre de la mano de mis padres y padrinos.</p></div>
                 </div>
                 <div class="tf-item fade-up">
-                    <div class="tf-foto"><img src="/assets/img/confirmacion/confirmacion (5).webp" alt="Hoy"></div>
+                    <div class="tf-foto"><img src="/assets/img/confirmacion/confirmacion (5).webp" alt="Hoy" decoding="async" loading="lazy"></div>
                     <div class="tf-punto"></div>
                     <div class="tf-texto"><h3>El Gran Día</h3><p>Listo para decir "Sí" por convicción propia. La Confirmación.</p></div>
                 </div>
@@ -185,9 +187,9 @@
                     </div>
                     <div class="mood-collage">
                         <!-- Imágenes de estilo/texturas -->
-                        <img src="https://images.unsplash.com/photo-1594938298596-03bf0b5c1650?q=80&w=300&auto=format&fit=crop" class="mood-img img-1" alt="Traje">
-                        <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=300&auto=format&fit=crop" class="mood-img img-2" alt="Vestido">
-                        <img src="https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=300&auto=format&fit=crop" class="mood-img img-3" alt="Textura">
+                        <img src="https://images.unsplash.com/photo-1594938298596-03bf0b5c1650?q=80&w=300&auto=format&fit=crop" class="mood-img img-1" alt="Traje" decoding="async" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=300&auto=format&fit=crop" class="mood-img img-2" alt="Vestido" decoding="async" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=300&auto=format&fit=crop" class="mood-img img-3" alt="Textura" decoding="async" loading="lazy">
                     </div>
                 </div>
             </div>

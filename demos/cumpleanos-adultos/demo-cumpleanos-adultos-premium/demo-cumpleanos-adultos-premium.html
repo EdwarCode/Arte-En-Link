@@ -15,6 +15,8 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="/demo-base.css">
 </head>
 <body>
 
@@ -52,7 +54,7 @@
     <!-- REPRODUCTOR DE MÚSICA -->
     <div id="music-player" class="premium-glass">
         <i class="ph-thin ph-play-circle" id="music-icon"></i>
-        <audio id="bg-audio" loop>
+        <audio id="bg-audio" loop preload="none">
             <source src="/assets/audio/DanzaKuduroRemix.mp3" type="audio/mpeg">
         </audio>
     </div>
@@ -76,7 +78,7 @@
         <div class="hero-marco-container tilt-card">
             <div class="hero-marco-inner">
                 <div class="hero-foto-wrapper">
-                    <img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="Festejado">
+                    <img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="Festejado" decoding="async">
                 </div>
             </div>
         </div>
@@ -112,19 +114,19 @@
         
         <div class="contenedor era-list">
             <div class="era-item slide-left" data-year="1986">
-                <div class="era-foto tilt-card"><img src="/assets/img/revelacion/revelacion (5).webp" alt="Juventud"></div>
+                <div class="era-foto tilt-card"><img src="/assets/img/revelacion/revelacion (5).webp" alt="Juventud" decoding="async" loading="lazy"></div>
                 <div class="era-caption">Supieron que seria niña</div>
             </div>
             <div class="era-item slide-right" data-year="2000">
-                <div class="era-foto tilt-card"><img src="/assets/img/cumple-adultos/cumple-adultos (3).webp" alt="Adolescencia"></div>
+                <div class="era-foto tilt-card"><img src="/assets/img/cumple-adultos/cumple-adultos (3).webp" alt="Adolescencia" decoding="async" loading="lazy"></div>
                 <div class="era-caption">La rebeldía de los 2000s</div>
             </div>
             <div class="era-item slide-left" data-year="2015">
-                <div class="era-foto tilt-card"><img src="/assets/img/cumple-adultos/cumple-adultos (10).webp" alt="Adulto"></div>
+                <div class="era-foto tilt-card"><img src="/assets/img/cumple-adultos/cumple-adultos (10).webp" alt="Adulto" decoding="async" loading="lazy"></div>
                 <div class="era-caption">Construyendo el camino</div>
             </div>
             <div class="era-item slide-right" data-year="2026">
-                <div class="era-foto tilt-card"><img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="Actualidad"></div>
+                <div class="era-foto tilt-card"><img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="Actualidad" decoding="async" loading="lazy"></div>
                 <div class="era-caption">El mejor momento es ahora</div>
             </div>
         </div>
@@ -283,12 +285,12 @@
             <div class="scene-3d">
                 <div class="carousel-3d" id="carousel">
                     <!-- 6 Fotos = 6 caras del cilindro -->
-                    <div class="carousel-item" style="--index: 0;"><img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="G"></div>
-                    <div class="carousel-item" style="--index: 1;"><img src="/assets/img/cumple-adultos/cumple-adultos (9).webp" alt="G"></div>
-                    <div class="carousel-item" style="--index: 2;"><img src="/assets/img/cumple-adultos/cumple-adultos (3).webp" alt="G"></div>
-                    <div class="carousel-item" style="--index: 3;"><img src="/assets/img/cumple-adultos/cumple-adultos (7).webp" alt="G"></div>
-                    <div class="carousel-item" style="--index: 4;"><img src="/assets/img/cumple-adultos/cumple-adultos (5).webp" alt="G"></div>
-                    <div class="carousel-item" style="--index: 5;"><img src="/assets/img/cumple-adultos/cumple-adultos (10).webp" alt="G"></div>
+                    <div class="carousel-item" style="--index: 0;"><img src="/assets/img/cumple-adultos/cumple-adultos (1).webp" alt="G" decoding="async" loading="lazy"></div>
+                    <div class="carousel-item" style="--index: 1;"><img src="/assets/img/cumple-adultos/cumple-adultos (9).webp" alt="G" decoding="async" loading="lazy"></div>
+                    <div class="carousel-item" style="--index: 2;"><img src="/assets/img/cumple-adultos/cumple-adultos (3).webp" alt="G" decoding="async" loading="lazy"></div>
+                    <div class="carousel-item" style="--index: 3;"><img src="/assets/img/cumple-adultos/cumple-adultos (7).webp" alt="G" decoding="async" loading="lazy"></div>
+                    <div class="carousel-item" style="--index: 4;"><img src="/assets/img/cumple-adultos/cumple-adultos (5).webp" alt="G" decoding="async" loading="lazy"></div>
+                    <div class="carousel-item" style="--index: 5;"><img src="/assets/img/cumple-adultos/cumple-adultos (10).webp" alt="G" decoding="async" loading="lazy"></div>
                 </div>
                 <div class="espejo-piso"></div>
             </div>
