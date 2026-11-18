@@ -49,8 +49,8 @@
 
         // 3. Función del botón de WhatsApp
         function confirmarAsistencia() {
-            const numeroWhatsApp = "520000000000"; // Reemplazar con el número de los papás o la quinceañera
+            // Demo: sin número de anfitrión.
             const mensaje = "¡Hola! He recibido la invitación para los XV Años de Valentina. 👑\n\nQuiero confirmar mi asistencia. ¡Ahí estaremos para celebrar!";
-            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(urlWhatsApp, '_blank');
+            // Demo: envío a WhatsApp deshabilitado.
+            window.ArteEnLinkDemo.showNotice();
         }

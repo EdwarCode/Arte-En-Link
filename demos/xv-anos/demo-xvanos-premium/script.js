@@ -189,11 +189,11 @@
                 const respuesta = document.getElementById('rsvp-respuesta').value;
                 const asistentes = document.getElementById('rsvp-asistentes').value;
                 
-                const numeroWhatsApp = "520000000000"; 
+                // Demo: sin número de anfitrión.
                 const mensaje = `¡Hola! Soy *${nombreFinal}*.\n\nHe revisado la invitación VIP de Valentina.\n*Respuesta:* ${respuesta}.\n*Asistentes:* ${asistentes} de los ${pasesFinal} pases asignados.\n\n¡Gracias por la invitación! ✨`;
                 
-                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-                window.open(urlWhatsApp, '_blank');
+                // Demo: envío a WhatsApp deshabilitado.
+                window.ArteEnLinkDemo.showNotice();
             });
 
             // 7. CUENTA REGRESIVA

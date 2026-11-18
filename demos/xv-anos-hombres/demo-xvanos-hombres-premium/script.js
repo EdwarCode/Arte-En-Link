@@ -120,7 +120,7 @@
             }, 1000);
 
             // 6. MEGA FORMULARIO A WHATSAPP
-            const telWA = "520000000000"; // Reemplazar
+            // Demo: sin número de anfitrión.
             window.copiarTexto = function(id) {
                 navigator.clipboard.writeText(document.getElementById(id).innerText).then(() => {
                     const btn = document.querySelector('.btn-copiar');
@@ -149,6 +149,6 @@
                 
                 textoWA += `¡Ahí nos vemos! ✨`;
 
-                window.open(`https://wa.me/${telWA}?text=${encodeURIComponent(textoWA)}`, '_blank');
+                window.ArteEnLinkDemo.showNotice();
             };
         });
